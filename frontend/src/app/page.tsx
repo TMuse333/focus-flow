@@ -103,7 +103,7 @@ const links = [
     "@type": "LocalBusiness",
     "name": "Focus Flow Software",
     "description": "Focus Flow Software is a leading software development company based in Nova Scotia, Canada, specializing in creating fast, creative, and customized web solutions for businesses.",
-    "image": "https://focusflowsoftware.vercel.app/logo.png",  // Add your logo or a relevant image
+    "image": "https://focusflowsoftware.vercel.app/media/gemeni-two-hand-stick.webp",  // Add your logo or a relevant image
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "123 Software St",  // Add your street address if available
@@ -115,7 +115,7 @@ const links = [
     "telephone": "902-999-1006",
     "email": "info@focusflowsoftware.com",  // Add your business email
     "url": "https://focusflowsoftware.vercel.app",
-    "logo": "https://focusflowsoftware.vercel.app/logo.png",
+    "logo": "https://focusflowsoftware.vercel.app/media/gemeni-two-hand-stick.webp",
     "sameAs": [
       "https://www.linkedin.com/company/focus-flow-software",  // Add social profiles if available
       "https://twitter.com/focusflowsoftware"
