@@ -85,11 +85,58 @@ const links = [
     <>
      <Head>
         <title>Creative and Fast Web Design Halifax</title>
-        <meta name="description" content="Experience the fastest and most creative web design in Halifax. We use the newest technologies along laser focus to make sure your website is custom created to fit your needs and delivered quickly" />
+        <title>Focus Flow Software - Creative and Fast Web Design Halifax</title>
+<meta property="og:title" content="Focus Flow Software - Creative and Fast Web Design Halifax" />
         <meta name="keywords" content="Halifax web design, web development, responsive design, SEO services" />
-        <meta property="og:title" content="Halifax Web Design -Fast and Creative solutions" />
+
         <meta property="og:description" content="The fastest and most creative web design in Halifax" />
-        <meta property="og:url" content="https://q3-visuals.vercel.app" />
+        <meta property="og:url" content="https://focusflowsoftware.vercel.app" />
+        <script type="application/ld+json">
+  {JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Focus Flow Software",
+    "description": "Focus Flow Software is a leading software development company based in Nova Scotia, Canada, specializing in creating fast, creative, and customized web solutions for businesses.",
+    "image": "https://focusflowsoftware.vercel.app/logo.png",  // Add your logo or a relevant image
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Software St",  // Add your street address if available
+      "addressLocality": "Nova Scotia",
+      "addressRegion": "NS",  // Add region/state code
+      "postalCode": "B1A2B3",  // Add postal/ZIP code if available
+      "addressCountry": "Canada"
+    },
+    "telephone": "902-999-1006",
+    "email": "info@focusflowsoftware.com",  // Add your business email
+    "url": "https://focusflowsoftware.vercel.app",
+    "logo": "https://focusflowsoftware.vercel.app/logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/focus-flow-software",  // Add social profiles if available
+      "https://twitter.com/focusflowsoftware"
+    ],
+    "priceRange": "$$$",  // Indicate the general price range of your services
+    "openingHours": [
+      "Mo-Fr 09:00-17:00"
+    ],
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "44.6488",  // Add your latitude
+      "longitude": "-63.5752"  // Add your longitude
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "24"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://focusflowsoftware.vercel.app/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  })}
+</script>
+
+
       </Head>
 
 <ParticlesComponent/>

@@ -30,7 +30,9 @@ export default function MultiLayerParallax() {
         style={{ y: !isMobile ?  textY : "-40%" }}
         className="relative z-[200] "
       >
-       <h1>Focus Flow Software</h1>
+       <h1 className="text-4xl 
+           sm:text-6xl md:text-8xl font-semibold text-center
+           mb-4 animate-gradient">Focus Flow Software</h1>
         <motion.h2
        
        className="text-white text-2xl 
