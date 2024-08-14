@@ -30,9 +30,8 @@ export default function MultiLayerParallax() {
         style={{ y: !isMobile ?  textY : "-40%" }}
         className="relative z-[200] "
       >
-        <Image src={q3} alt="Q3 Words"
-        priority layout="intrinsic" />
-        <motion.h1
+       <h1>Focus Flow Software</h1>
+        <motion.h2
        
        className="text-white text-2xl 
        h-min "
@@ -40,7 +39,7 @@ export default function MultiLayerParallax() {
        Elevating Brands with discipline and creativity
  
       
-     </motion.h1>
+     </motion.h2>
      <Link href='lets-work'>
 
      

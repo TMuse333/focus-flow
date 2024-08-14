@@ -108,7 +108,7 @@ passHref>
 
 
       <p className='mt-6
-      sm:text-2xl text-white '>Q3 Designs 2024</p>
+      sm:text-2xl text-white '>Focus Flow Software 2024</p>
       {/* <Link 
             to='https://q3designs.netlify.app'
             >

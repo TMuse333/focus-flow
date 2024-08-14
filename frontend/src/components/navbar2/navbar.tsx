@@ -30,7 +30,7 @@ const Navbar: React.FC<NavbarProps> = ({ links,transparentBg,
 
 
                 <p className="ml-2 font-cormorant-garamond text-white  text-3xl lg:text-4xl mr-auto lg:mr-0 pl-6 lg:pl-0 bg-gradient-to-b from-gold-light to-gold-dark bg-clip-text text-transparent font-dancing-script
-                ">Q3 Designs</p>
+                ">Focus Flow</p>
                 </Link>
                 <div
                     className={`relative right-[5%] top-[5px] flex flex-col justify-center items-center lg:relative lg:top-auto lg:right-auto`}
