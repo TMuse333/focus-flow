@@ -40,6 +40,7 @@ const Restaurant = () => {
         <meta property="og:description" content="Elevate your restaurant’s online presence with our secure and efficient food ordering software. Start boosting your profits today." />
         <meta property="og:url" content="https://focusflowsoftware.vercel.app/restaurant" />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://focusflowsoftware.vercel.app/media/generic-logo.png" />
         <link rel="canonical" href="https://focusflowsoftware.vercel.app/online-food-ordering-system" />
         <script type="application/ld+json">
   {JSON.stringify({
