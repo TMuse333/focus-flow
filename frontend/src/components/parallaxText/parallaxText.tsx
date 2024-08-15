@@ -59,12 +59,8 @@ thumbnail,subHeading,heading }) => {
             <p className="rounded-md bg-gray-400
             w-[80%] ml-auto mr-auto relative
             p-8 rounded-xl sm:text-xl w-full
-<<<<<<< HEAD
             mb-8 max-w-[1200px]
             text-lg">
-=======
-            mb-8 max-w-[1200px]">
->>>>>>> 95ec2b996528bc4a51beb21244fe3471bcba4395
               {description}
             </p>
         )}
