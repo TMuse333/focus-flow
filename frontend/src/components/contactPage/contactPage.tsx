@@ -59,6 +59,7 @@ const Contact = () => {
                     alt="Q3 logo"
                     className='w-[40vw] mt-[-10rem] ml-auto mr-auto
                     max-h-[540px] max-w-[411px] object-cover'
+                    priority
                 />
                 <ul className='text-center'>
                     {tenets.map((tenet, index) => (

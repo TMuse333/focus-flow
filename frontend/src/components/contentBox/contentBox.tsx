@@ -82,7 +82,7 @@ const componentRef = useIntersectionObserver(setInView,options)
                     }
                 }}
                  className="flex mt-4 mb-4 ml-auto mr-auto justify-center">
-                    {/* <Link href={destination}>
+                    <Link href={destination}>
                             <button className="
                             bg-[#00bfff] mr-6
                             rounded-xl p-3
@@ -90,7 +90,7 @@ const componentRef = useIntersectionObserver(setInView,options)
                             hover:bg-white transition-all">
                                 {buttonText}
                             </button>
-                    </Link> */}
+                    </Link>
                     <Link href='/lets-work'>
                         <button
                         className="rounded-xl p-3
@@ -157,6 +157,9 @@ const componentRef = useIntersectionObserver(setInView,options)
                         View a demo
                     </button>
                  </Link>
+                 
+
+               
                  </motion.p>
 
             </section>

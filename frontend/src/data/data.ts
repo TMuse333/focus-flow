@@ -192,7 +192,7 @@ export const RestaurantContentBoxData:ContentBoxProps = {
     description:'If you are a restaurant owner it is crucial to have an efficient online ordering system. We have taken care of this necessity for you with this easy to setup software that enables you to take online orders for far cheaper than other third party services like uber eats',
     src:restaurant,
     alt:'The restaurant logo',
-    destination:'/restaurant',
+    destination:'/online-food-ordering-system',
     buttonText:'Learn more'
 }
 
