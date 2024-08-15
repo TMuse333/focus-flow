@@ -28,9 +28,7 @@ export default function RootLayout({
 
    
     <html lang="en">
-      <Head>
-      <link rel="icon" href="/favicon.ico" />
-      </Head>
+    
 <ContextProvider>
 
 
