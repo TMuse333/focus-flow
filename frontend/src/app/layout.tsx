@@ -11,6 +11,11 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Focus Flow software",
   description: "The fastest and most creative web design",
+  icons: {
+    icon: "/favicon.ico", // Path to your favicon.ico file
+  },
+
+  
 };
 
 export default function RootLayout({
