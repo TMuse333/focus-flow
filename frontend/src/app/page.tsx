@@ -89,7 +89,7 @@ const links = [
 <meta name="description" content="Experience the fastest and most creative web design in Halifax. We use the newest technologies along laser focus to make sure your website is custom created to fit your needs and delivered quickly" />
 <meta property="og:description" content="The fastest and most creative web design in Halifax" />
 <meta property="og:url" content="https://focusflowsoftware.vercel.app" />
-
+<link rel="icon" href="/favicon.ico" />
 
 <meta property="og:image" content="https://focusflowsoftware.vercel.app/media/gemeni-two-hand-stick.webp" />
 <meta property="og:image:width" content="1200" />
