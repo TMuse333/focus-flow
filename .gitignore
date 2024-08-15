@@ -50,4 +50,8 @@ node_modules/
 
 /node_modules
 
+<<<<<<< HEAD
 .history/
+=======
+.history/
+>>>>>>> 95ec2b996528bc4a51beb21244fe3471bcba4395
