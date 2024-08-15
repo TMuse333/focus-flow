@@ -29,7 +29,9 @@ export default function RootLayout({
 <ContextProvider>
 
 
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>{children}
+      <Analytics/>
+      </body>
       </ContextProvider>
     </html>
 
