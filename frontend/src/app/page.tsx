@@ -182,6 +182,7 @@ const links = [
       floatingImage={true}
       image={laptop}
       />
+      <p>slatty</p>
 
       <ContentBox
       {...RestaurantContentBoxData}
