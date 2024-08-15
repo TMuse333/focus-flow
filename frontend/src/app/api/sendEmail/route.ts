@@ -39,7 +39,7 @@ export async function POST(request: Request) {
 
         const mailOptions = {
             from: `"${name}" <${email}>`,
-            to: 'focuspointsoftware33@gmail.com',
+            to: 'focusflowsoftware@gmail.com',
             subject: 'New Contact Form Submission',
             text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nProject Details: ${projectDetails}`,
             html: `
