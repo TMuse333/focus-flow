@@ -1,3 +1,2 @@
 User-agent: *
-Disallow: /admin/
-Sitemap: https://q3-visuals.vercel.app/sitemap.xml
+Sitemap: https://www.focusflowsoftware.com/sitemap.xml
