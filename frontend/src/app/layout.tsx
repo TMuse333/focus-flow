@@ -29,9 +29,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: 'FocusFlow Software'
   },
-  // icons: {
-  //   icon: "/favicon.ico" // Path to your favicon.ico file
-  // }
+  icons: {
+    icon: "/favicon.ico" // Path to your favicon.ico file
+  }
 }
 
 
