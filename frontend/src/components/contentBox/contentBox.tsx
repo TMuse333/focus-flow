@@ -150,7 +150,7 @@ const componentRef = useIntersectionObserver(setInView,options)
                 }}
                   className="w-[90vw] text-left md:w-4/5 ml-auto mr-auto
                  max-w-[1000px] md:text-lg mt-2 ">{description}<br/>
-                 <Link href='https://q3-restaurant-demo.vercel.app'>
+                 <Link href='https://focusflowrestaurant.vercel.app'>
                     <button className="p-3 rounded-xl bg-[#00bfff]
                     text-white hover:text-[#00bfff] hover:bg-white
                     mt-3 text-md">
