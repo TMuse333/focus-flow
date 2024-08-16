@@ -11,7 +11,7 @@ import Head from "next/head"
 import { slideShowImages } from "@/data/data"
 import type { Metadata } from 'next'
 
-export const Page = () => {
+ const Page = () => {
 
 
 
