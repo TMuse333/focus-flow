@@ -83,67 +83,22 @@ const links = [
 
   return (
     <>
-     <Head>
-     <title>Focus Flow Software - Creative and Fast Web Design Halifax</title>
-<meta property="og:title" content="Focus Flow Software - Creative and Fast Web Design Halifax" />
-<meta name="description" content="Experience the fastest and most creative web design in Halifax. We use the newest technologies along laser focus to make sure your website is custom created to fit your needs and delivered quickly" />
-<meta property="og:description" content="The fastest and most creative web design in Halifax" />
-<meta property="og:url" content="https://focusflowsoftware.vercel.app" />
-<link rel="icon" href="/favicon.ico" />
+    <Head>
+  <title>Let's Work Together | Halifax Web Design by Focus Flow Software</title>
+  <meta name="description" content="Ready to elevate your online presence? Let's work together to create a fast, creative, and responsive website that meets your business needs." />
+  <meta name="keywords" content="Halifax web design, collaborate with Q3 Visuals, responsive web design, creative web development, fast website design" />
+  <meta property="og:title" content="Let's Work Together | Halifax Web Design by Focus Flow Software" />
+  <meta property="og:description" content="Ready to elevate your online presence? Let's work together to create a fast, creative, and responsive website that meets your business needs." />
+  <meta property="og:url" content="https://www.focusflowsoftware.com/lets-work" />
+  <meta property="og:image" content="https://focusflowsoftware.com/media/gemeni-two-hand-stick.webp" /> 
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Let's Work Together | Halifax Web Design by Focus Flow Software" />
+  <meta name="twitter:description" content="Ready to elevate your online presence? Let's work together to create a fast, creative, and responsive website that meets your business needs." />
+  <meta name="twitter:image" content="https://focusflowsoftware.com/media/gemeni-two-hand-stick.webp" /> 
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="canonical" href="https://focusflowsoftware.com/lets-work" />
+</Head>
 
-<meta property="og:image" content="https://focusflowsoftware.vercel.app/media/gemeni-two-hand-stick.webp" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-
-<meta name="keywords" content="Halifax web design, web development, responsive design, SEO services" />
-
-        <script type="application/ld+json">
-  {JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Focus Flow Software",
-    "description": "Focus Flow Software is a leading software development company based in Nova Scotia, Canada, specializing in creating fast, creative, and customized web solutions for businesses.",
-    "image": "https://focusflowsoftware.vercel.app/media/gemeni-two-hand-stick.webp",  // Add your logo or a relevant image
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "123 Software St",  // Add your street address if available
-      "addressLocality": "Nova Scotia",
-      "addressRegion": "NS",  // Add region/state code
-      "postalCode": "B1A2B3",  // Add postal/ZIP code if available
-      "addressCountry": "Canada"
-    },
-    "telephone": "902-999-1006",
-    "email": "info@focusflowsoftware.com",  // Add your business email
-    "url": "https://focusflowsoftware.vercel.app",
-    "logo": "https://focusflowsoftware.vercel.app/media/gemeni-two-hand-stick.webp",
-    "sameAs": [
-      "https://www.linkedin.com/company/focus-flow-software",  // Add social profiles if available
-      "https://twitter.com/focusflowsoftware"
-    ],
-    "priceRange": "$$$",  // Indicate the general price range of your services
-    "openingHours": [
-      "Mo-Fr 09:00-17:00"
-    ],
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "44.6488",  // Add your latitude
-      "longitude": "-63.5752"  // Add your longitude
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "24"
-    },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://focusflowsoftware.vercel.app/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  })}
-</script>
-
-
-      </Head>
 
 <ParticlesComponent/>
    
@@ -182,7 +137,7 @@ const links = [
       floatingImage={true}
       image={laptop}
       />
-      <p>slatty</p>
+     
 
       <ContentBox
       {...RestaurantContentBoxData}

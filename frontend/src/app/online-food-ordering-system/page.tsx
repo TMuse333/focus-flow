@@ -38,10 +38,10 @@ const Restaurant = () => {
         <meta name="keywords" content="online food ordering system, restaurant software, food delivery software, restaurant online ordering" />
         <meta property="og:title" content="Online Food Ordering System for Restaurants" />
         <meta property="og:description" content="Elevate your restaurant’s online presence with our secure and efficient food ordering software. Start boosting your profits today." />
-        <meta property="og:url" content="https://focusflowsoftware.vercel.app/restaurant" />
+        <meta property="og:url" content="https://www.focusflowsoftware.com/online-food-ordering-system" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://focusflowsoftware.vercel.app/media/generic-logo.png" />
-        <link rel="canonical" href="https://focusflowsoftware.vercel.app/online-food-ordering-system" />
+        {/* <meta property="og:image" content="https://focusflowsoftware.vercel.app/media/generic-logo.png" /> */}
+        <link rel="canonical" href="https://www.focusflowsoftware.com/online-food-ordering-system" />
         <script type="application/ld+json">
   {JSON.stringify({
     "@context": "https://schema.org",
@@ -53,7 +53,7 @@ const Restaurant = () => {
       "addressCountry": "Canada"
     },
     "telephone": "902-999-1006",
-    "url": "https://focusflowsoftware.vercel.app",
+    "url": "https://www.focusflowsoftware.com",
     // "logo": "https://q3-visuals.vercel.app/logo.png",
     "sameAs": "", // No Facebook or other social media profiles
     "openingHours": "Mo-Su 00:00-23:59" // Open 24/7
@@ -65,7 +65,7 @@ const Restaurant = () => {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Online Food Ordering System for Restaurants",
-    "url": "https://q3-visuals.vercel.app/online-food-ordering-system",
+    "url": "https://www.focusflowsoftware.com/online-food-ordering-system",
     "description": "Our online food ordering system for restaurants helps streamline operations and boost profits with secure, seamless payments. Built with React.js and MongoDB, this software ensures high performance and scalability. Maximize your earnings with minimal transaction fees and get started quickly.",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
@@ -114,7 +114,7 @@ const Restaurant = () => {
     },
     "potentialAction": {
       "@type": "OrderAction",
-      "target": "https://focusflowsoftware.vercel.app",
+      "target": "https://www.focusflowsoftware.com",
       "actionStatus": "PotentialActionStatus",
       "expectsAcceptanceOf": {
         "@type": "Offer",
@@ -133,13 +133,13 @@ const Restaurant = () => {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://focusflowsoftware.vercel.app"
+          "item": "https://www.focusflowsoftware.com"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Online Food Ordering System",
-          "item": "https://focusflowsoftware.vercel.app/online-food-ordering-system"
+          "item": "https://www.focusflowsoftware.com/online-food-ordering-system"
         }
       ]
     },
@@ -147,10 +147,10 @@ const Restaurant = () => {
       "@type": "VideoObject",
       "name": "Introduction to Our Online Food Ordering System",
       "description": "Watch this video to learn how our online food ordering system can help boost your restaurant's sales and efficiency.",
-      "thumbnailUrl": "https://focusflowsoftware.vercel.app/thumbnail.jpg",
+      "thumbnailUrl": "https://www.focusflowsoftware.com/thumbnail.jpg",
       "uploadDate": "2024-08-01",
-      "contentUrl": "https://focusflowsoftware.vercel.app/video",
-      "embedUrl": "https://focusflowsoftware.vercel.app/video-embed"
+      "contentUrl": "https://focusflowsoftware.com/video",
+      "embedUrl": "https://focusflowsoftware.com/video-embed"
     },
     "faq": [
       {
@@ -162,7 +162,7 @@ const Restaurant = () => {
         },
         "image": {
           "@type": "ImageObject",
-          "url": "https://focusflowsoftware.vercel.app/media/stripe-integration.webp",
+          "url": "https://focusflowsoftware.com/media/stripe-integration.webp",
           "caption": "the stripe logo"
         }
       },
@@ -175,7 +175,7 @@ const Restaurant = () => {
         },
         "image": {
           "@type": "ImageObject",
-          "url": "https://focusflowsoftware.vercel.app/media/lightning-plug.webp",
+          "url": "https://focusflowsoftware.com/media/lightning-plug.webp",
           "caption": "the stripe logo"
         }
       },
@@ -188,7 +188,7 @@ const Restaurant = () => {
         },
         "image": {
           "@type": "ImageObject",
-          "url": "https://focusflowsoftware.vercel.app/media/react-logo.webp",
+          "url": "https://focusflowsoftware.com/media/react-logo.webp",
           "caption": "the stripe logo"
         }
       },
@@ -201,7 +201,7 @@ const Restaurant = () => {
         },
         "image": {
           "@type": "ImageObject",
-          "url": "https://focusflowsoftware.vercel.app/media/dollar-sign-logo.webp",
+          "url": "https://focusflowsoftware.com/media/dollar-sign-logo.webp",
           "caption": "Stripe logo"
         }
       }

@@ -39,17 +39,19 @@ import { slideShowImages } from "@/data/data"
     return (
         <>
          <Head>
-      <title>Why Choose Q3 Visuals | Creative Web Design in Halifax</title>
-      <meta name="description" content="Discover why Q3 Visuals is the top choice for creative, fast, and responsive web design services in Halifax." />
-      <meta name="keywords" content="Q3 Visuals, Halifax web design, creative web design, responsive websites, fast web design" />
-      <meta property="og:title" content="Why Choose Q3 Visuals | Creative Web Design in Halifax" />
-      <meta property="og:description" content="Discover why Q3 Visuals is the top choice for creative, fast, and responsive web design services in Halifax." />
-      <meta property="og:url" content="https://q3-visuals.vercel.app/why-us" />
-      <meta property="og:image" content="https://q3-visuals.vercel.app/images/og-image.jpg" /> {/* Replace with your actual image URL */}
+      <title>Why Choose Focus Flow Software | Creative Web Design in Halifax</title>
+      <meta name="description" content="Discover why Focus Flow Software is the top choice for creative, fast, and responsive web design services in Halifax." />
+      <meta name="keywords" content="FocusFlow Software, Halifax web design, creative web design, responsive websites, fast web design" />
+      <meta property="og:title" content="Why Choose FocusFlow | Creative and Fast Web Design in Halifax" />
+      <meta property="og:description" content="Discover why FocusFlow Software is the top choice for creative, fast, and responsive web design services in Halifax." />
+      <meta property="og:url" content="https://www.focusflowsoftware.com/why-us" />
+      {/* <meta property="og:image" content="https://q3-visuals.vercel.app/images/og-image.jpg" /> */}
+       {/* Replace with your actual image URL */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="Why Choose Q3 Visuals | Creative Web Design in Halifax" />
-      <meta name="twitter:description" content="Discover why Q3 Visuals is the top choice for creative, fast, and responsive web design services in Halifax." />
-      <meta name="twitter:image" content="https://q3-visuals.vercel.app/images/og-image.jpg" /> {/* Replace with your actual image URL */}
+      <meta name="twitter:title" content="Why Choose Focus Flow Software | Creative Web Design in Halifax" />
+      <meta name="twitter:description" content="Discover why Focus Flow Software is the top choice for creative, fast, and responsive web design services in Halifax." />
+      {/* <meta name="twitter:image" content="https://q3-visuals.vercel.app/images/og-image.jpg" /> */}
+      <link rel="canonical" href="https://focusflowsoftware.com/why-us" />
       <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     </Head>
             <Navbar
