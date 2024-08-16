@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico", // Path to your favicon.ico file
   },
+  keywords: 'web design, creative solutions, fastest web design',
+  
+
 
   
 };
