@@ -8,18 +8,31 @@ import Head from 'next/head'
 
 const inter = Inter({ subsets: ["latin"] });
 
+
 export const metadata: Metadata = {
-  title: "Focus Flow software",
-  description: "The fastest and most creative web design",
-  icons: {
-    icon: "/favicon.ico", // Path to your favicon.ico file
+  title: "Focus Flow Software",
+  description: "The fastest and most creative web design solutions.",
+  keywords: "web design, creative solutions, fastest web design",
+  openGraph: {
+    title: "Focus Flow Software | Creative Web Design",
+    description: "Experience the fastest and most creative web design solutions with Focus Flow Software.",
+    url: "https://www.focusflowsoftware.com", // Your homepage URL or specific page URL
+    images: [
+      {
+        url: "https://www.focusflowsoftware.com/media/gemeni-two-hand-stick.webp", // Path to your Open Graph image
+        width: 1200,
+        height: 630,
+        alt: "Focus Flow Software - Creative and Fast Web Design"
+      }
+    ],
+    type: "website",
+    locale: "en_US",
   },
-  keywords: 'web design, creative solutions, fastest web design',
+ 
   
-
-
   
-};
+}
+
 
 export default function RootLayout({
   children,

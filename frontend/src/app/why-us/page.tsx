@@ -9,8 +9,14 @@ import Navbar from "@/components/navbar2/navbar"
 import { SlideFlip } from "@/components/fancyText/fancyText"
 import Head from "next/head"
 import { slideShowImages } from "@/data/data"
+import type { Metadata } from 'next'
 
- const Page = () => {
+export const Page = () => {
+
+
+
+
+
 
 
     const links = [
