@@ -16,10 +16,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Focus Flow Software | Creative Web Design",
     description: "Experience the fastest and most creative web design solutions with Focus Flow Software.",
-    url: "https://www.focusflowsoftware.com", // Your homepage URL or specific page URL
+    url: "https://www.focusflowsoftware.com", // Default URL
     images: [
       {
-        url: "https://www.focusflowsoftware.com/media/gemeni-two-hand-stick.webp", // Path to your Open Graph image
+        url: "https://www.focusflowsoftware.com/media/gemeni-two-hand-stick.png", // Global Open Graph image
         width: 1200,
         height: 630,
         alt: "Focus Flow Software - Creative and Fast Web Design"
@@ -27,11 +27,13 @@ export const metadata: Metadata = {
     ],
     type: "website",
     locale: "en_US",
+    siteName: 'FocusFlow Software'
   },
- 
-  
-  
+  icons: {
+    icon: "/favicon.ico" // Path to your favicon.ico file
+  }
 }
+
 
 
 export default function RootLayout({
