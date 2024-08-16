@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     siteName: 'FocusFlow Software'
   },
   icons: {
-    icon: "/brain.ico" // Path to your favicon.ico file
+    icon: "/favicon.ico" // Path to your favicon.ico file
   }
 }
 
