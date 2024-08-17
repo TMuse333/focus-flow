@@ -25,14 +25,17 @@ interface SliderProps {
     description: string,
     index: number,
     carouselLength:number,
-    currentElement:number
+    currentElement:number,
+    shift:number
 }
 
 const CarouselController: React.FC<ControllerProps> = ({
   carouselLength,
   currentElement,
   setCurrentElement,
- inView
+ inView,
+ shift,
+ setShift
 }) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [slideProgress, setSlideProgress] = useState(0);
@@ -42,17 +45,25 @@ const CarouselController: React.FC<ControllerProps> = ({
 
 
 
-  const scrollToElement = (id: string, index: number) => {
+  // const scrollToElement = (id: string, index: number) => {
+  //   if(!inView){
+  //     return;
+  //   }
+  //     setCurrentElement(index)
+  //     console.log('inview',inView);
+  //     const element = document.getElementById(id);
+  //     if (element) {
+  //         element.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+  //     }
+  // };
+
+  function handleCircleClick(index:number){
     if(!inView){
-      return;
+      return
     }
-      setCurrentElement(index)
-      console.log('inview',inView);
-      const element = document.getElementById(id);
-      if (element) {
-          element.scrollIntoView({ behavior: 'smooth', inline: 'center' });
-      }
-  };
+    setCurrentElement(index)
+    setShift(-index)
+  }
 
 
 
@@ -65,7 +76,8 @@ function resetSlideShow(){
   setCurrentElement(0);
   setShowRefreshBar(false);
   setSlideProgress(0);
-  scrollToElement(`carousel-element-${0}`, 0);
+  setShift(0)
+  // scrollToElement(`carousel-element-${0}`, 0);
 }
 
 useEffect(()=> {
@@ -88,7 +100,8 @@ useEffect(() => {
 
     } else if (currentElement < carouselLength - 1) {
       setCurrentElement(currentElement + 1);
-      scrollToElement(`carousel-element-${currentElement + 1}`, currentElement + 1);
+      // scrollToElement(`carousel-element-${currentElement + 1}`, currentElement + 1);
+      setShift((prev)=>prev - 1)
       setSlideProgressReset(true);
       clearInterval(interval); // Stop the interval when slideProgress reaches 100
       setSlideProgress(0);
@@ -107,6 +120,9 @@ useEffect(() => {
   }
 }, [slideProgress, currentElement]);
 
+useEffect(()=> {
+  console.log('current shift',shift)
+},[shift])
 
 
   return (
@@ -118,7 +134,8 @@ useEffect(() => {
                   <div
                       key={index}
                       className={`relative bg-gray-400 hover:bg-gray-200 rounded-full h-[15px] w-[15px] mr-2 transition-all ${currentElement === index ? 'w-[60px]' : ''}`}
-                      onClick={() => scrollToElement(`carousel-element-${index}`, index)}
+                      // onClick={() => scrollToElement(`carousel-element-${index}`, index)}
+                      onClick={()=>handleCircleClick(index)}
                   >
                     {currentElement === index && (
                        <div className={`absolute  h-full bg-gray-100 rounded-full`}
@@ -146,7 +163,8 @@ const CarouselElement: React.FC<SliderProps> = ({
     description,
     index,
     carouselLength,
-    currentElement
+    currentElement,
+    shift
 }) => {
   
 const isCurrentSlide = currentElement === index;
@@ -177,11 +195,14 @@ const { isMobile } = useGeneralContext()
                 h-[105vw] 
                overflow-y-hidden
                 flex-shrink-0
+               
                 
                  `}
            style={{
+            transform:`translateX(${(shift * 100)}%)`,
+            transition:'transform 1s ease-in'
          
-             scrollSnapAlign: 'center',
+            //  scrollSnapAlign: 'center',
          }}
         >
 
@@ -236,7 +257,9 @@ interface ControllerProps {
     carouselLength: number,
     currentElement: number,
     setCurrentElement: (index: number) => void,
-    inView:boolean
+    inView:boolean,
+    shift:number,
+    setShift:React.Dispatch<React.SetStateAction<number>>;
 }
 
 
@@ -246,6 +269,7 @@ const SlideShowCarousel: React.FC<CarouselProps> = ({ images, title, description
     const containerRef = useRef<HTMLDivElement>(null);
 
     const {isMobile} = useGeneralContext()
+    const [shift, setShift] = useState(0)
 
     const options = {
       root: null,
@@ -259,37 +283,37 @@ const SlideShowCarousel: React.FC<CarouselProps> = ({ images, title, description
     
     const componentRef = useIntersectionObserver(setInView, options, false, true);
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const index = parseInt(entry.target.id.replace('carousel-element-', ''));
-                        setCurrentElement(index);
-                    }
-                });
-            },
-            {
-                root: containerRef.current,
-                threshold: 0.2,
-            }
-        );
+    // useEffect(() => {
+    //     const observer = new IntersectionObserver(
+    //         (entries) => {
+    //             entries.forEach((entry) => {
+    //                 if (entry.isIntersecting) {
+    //                     const index = parseInt(entry.target.id.replace('carousel-element-', ''));
+    //                     setCurrentElement(index);
+    //                 }
+    //             });
+    //         },
+    //         {
+    //             root: containerRef.current,
+    //             threshold: 0.2,
+    //         }
+    //     );
 
-        const elements = document.querySelectorAll('[id^="carousel-element-"]');
-        elements.forEach((el) => observer.observe(el));
+    //     const elements = document.querySelectorAll('[id^="carousel-element-"]');
+    //     elements.forEach((el) => observer.observe(el));
 
-        return () => observer.disconnect();
-    }, []);
+    //     return () => observer.disconnect();
+    // }, []);
 
 
-    useEffect(()=>{
-      setCurrentElement(0)
-      const element = document.getElementById('carousel-element-0');
-      if (element) {
-          element.scrollIntoView({ behavior: 'smooth', inline: 'center' });
-      }
+    // useEffect(()=>{
+    //   setCurrentElement(0)
+    //   const element = document.getElementById('carousel-element-0');
+    //   if (element) {
+    //       element.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+    //   }
      
-    },[])
+    // },[])
 
     return (
         <section className='relative ml-auto mr-auto w-screen mb-[10rem]
@@ -314,6 +338,7 @@ const SlideShowCarousel: React.FC<CarouselProps> = ({ images, title, description
                         index={index}
                         carouselLength={images.length}
                         currentElement={currentElement}
+                        shift={shift}
                     />
                 ))}
             </div>
@@ -323,6 +348,8 @@ const SlideShowCarousel: React.FC<CarouselProps> = ({ images, title, description
                 currentElement={currentElement}
                 setCurrentElement={setCurrentElement}
                 inView={inView}
+                shift={shift}
+                setShift={setShift}
             />
         </section>
     );
