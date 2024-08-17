@@ -136,9 +136,7 @@ const Video:React.FC<VideoProps> = (
     }
   }, [videoPlaying]);
 
-  useEffect(()=>{
-    console.log('thumbnail,',thumbnail)
-  },[])
+
 
 
 

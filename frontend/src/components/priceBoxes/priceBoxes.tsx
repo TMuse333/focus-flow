@@ -5,14 +5,16 @@ interface PriceBoxesProps {
   boxes:{
     src:string,
     alt:string,
-    price:string
+    price:string,
+    
   }[]
 }
 
 interface PriceBoxProps {
     src:string,
     alt:string,
-    price:string
+    price:string,
+
 }
 
 const PriceBoxElement:React.FC<PriceBoxProps> = (
@@ -46,12 +48,12 @@ const PriceBoxes:React.FC<PriceBoxesProps>
         mx-auto
         '>
             {boxes.map((box, index)=> (
-                <>
+        
                 <PriceBoxElement
-                key={index}
+              key={index}
                 {...box}
                 />
-                </>
+            
             ))}
         </section>
     )

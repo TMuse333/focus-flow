@@ -19,7 +19,7 @@ import { AuroraHero } from "@/components/auroraHero/auroraHero";
 import { motion } from "framer-motion";
 import moneyLaptop from '../../public/media/nobg-more-money-laptop.png'
 import Accordion from "@/components/accordion/accordion";
-import { accordion1Text } from "@/data/data";
+import { accordion1Text ,herobannerData} from "@/data/data";
 
 import ParticlesComponent from "@/components/particles/particles";
 import {useIntersectionObserver} from "@/components/intersectionObserver/intersectionObserver";
@@ -30,6 +30,7 @@ import Footer from "@/components/footer/footer";
 import Head from "next/head";
 import { scrollableImages } from "@/data/data";
 import ContentBox from "@/components/contentBox/contentBox";
+import Herobanner from "@/components/herobanner/herobanner";
 
 
 
@@ -126,8 +127,9 @@ const links = [
       absolute={false}
       />
      
-      
-      <MultiLayerParallax/>
+      <Herobanner
+      sections={herobannerData}/>
+      {/* <MultiLayerParallax/> */}
       </section>
       <AlternatingText/>
       <Content

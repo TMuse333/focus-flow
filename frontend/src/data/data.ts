@@ -292,4 +292,33 @@ export const restaurantFaq = [
 
 ]
 
+export const herobannerData = [
+    {
+        src: "/media/brain.png", // Empty for now
+        alt: "Creative Web Design in Halifax",
+        heading: "Creative Web Design in Halifax",
+    },
+    {
+        src: "/media/dollar-sign-logo.webp", // Empty for now
+        alt: "Custom Web Design Services",
+        heading: "Custom Web Design Services",
+    },
+    {
+        src: "/media/futuristic-money-ball-removebg-preview.webp", // Empty for now
+        alt: "Fast and Creative Solutions",
+        heading: "Fast and Creative Solutions",
+    },
+    {
+        src: "/media/gemeni-builder.webp", // Empty for now
+        alt: "Unique and Visually Appealing Websites",
+        heading: "Unique and Visually Appealing Websites",
+    },
+    {
+        src: "/media/gemeni-two-hand-stick.png", // Empty for now
+        alt: "Quickly Delivered Web Design",
+        heading: "Quickly Delivered Web Design",
+    }
+];
+
+
 
