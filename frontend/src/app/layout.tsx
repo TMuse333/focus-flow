@@ -10,8 +10,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 
 export const metadata: Metadata = {
-  title: "Focus Flow Software",
-  description: "The fastest and most creative web design solutions.",
+  title: "FocusFlow Software",
+  description: "We offer unique, custom coded and visually appealing websites delivered extremely quickly.",
   keywords: "web design, creative solutions, fastest web design",
   openGraph: {
     title: "Focus Flow Software | Creative Web Design",
@@ -30,8 +30,16 @@ export const metadata: Metadata = {
     siteName: 'FocusFlow Software'
   },
   icons: {
-    icon: "/favicon.ico" // Path to your favicon.ico file
-  }
+    icon: ["/favicon.ico?v=4"
+   ],
+  //  apple:[
+  //   '/apple-touch-icon.png?v=4'
+  //  ],
+  //  shortcut:[
+  //   '/apple-touch-icon.png'
+  //  ] 
+  },
+  // manifest:'/site.webmanifest'
 }
 
 
