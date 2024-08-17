@@ -32,6 +32,7 @@ import { scrollableImages } from "@/data/data";
 import ContentBox from "@/components/contentBox/contentBox";
 
 
+
 export default function Home() {
 
 

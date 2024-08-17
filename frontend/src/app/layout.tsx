@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react"
 import Head from 'next/head'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,7 +13,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "FocusFlow Software",
   description: "We offer unique, custom coded and visually appealing websites delivered extremely quickly.",
-  keywords: "web design, creative solutions, fastest web design",
+  keywords: "web design, creative solutions, fastest web design, custom web design",
   openGraph: {
     title: "Focus Flow Software | Creative Web Design",
     description: "Experience the fastest and most creative web design solutions with Focus Flow Software.",
@@ -60,6 +61,7 @@ export default function RootLayout({
 
       <body className={inter.className}>{children}
       <Analytics/>
+      <SpeedInsights/>
       </body>
       </ContextProvider>
     </html>
