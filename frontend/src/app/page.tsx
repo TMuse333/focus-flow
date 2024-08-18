@@ -31,6 +31,8 @@ import Head from "next/head";
 import { scrollableImages } from "@/data/data";
 import ContentBox from "@/components/contentBox/contentBox";
 import Herobanner from "@/components/herobanner/herobanner";
+import SlidingText from "@/components/slidingText/slidingText";
+import AppearingContent from "@/components/appearingContent/appearingContent";
 
 
 
@@ -131,7 +133,8 @@ const links = [
       sections={herobannerData}/>
       {/* <MultiLayerParallax/> */}
       </section>
-      <AlternatingText/>
+
+    
       <Content
       {...contentData1}
       reverse={false}
@@ -140,6 +143,15 @@ const links = [
       floatingImage={true}
       image={laptop}
       />
+    
+    <AppearingContent
+    sliderText="FocusFlow Software"
+    src={laptop.src}
+    id='appearing-video'
+    />
+
+
+    
      
 
       <ContentBox

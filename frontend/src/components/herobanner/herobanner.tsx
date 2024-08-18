@@ -88,7 +88,7 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
   const {isMobile} = useGeneralContext()
 
 
-
+//useAnimate hook nation
   
 
   return (

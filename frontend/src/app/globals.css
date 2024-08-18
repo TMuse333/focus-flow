@@ -56,6 +56,53 @@ body {
   animation: gradient-animation 8s ease-in-out infinite;
 }
 
+.custom-border-animation {
+  position: relative;
+}
+
+.custom-border-animation::before,
+.custom-border-animation::after,
+.custom-border-animation::after-second,
+.custom-border-animation::before-second {
+  content: '';
+  position: absolute;
+  background-color: red;
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+/* Top border */
+.custom-border-animation::before {
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0; /* Start with zero width */
+}
+
+/* Right border */
+.custom-border-animation::after {
+  top: 0;
+  right: 0;
+  width: 2px;
+  height: 0; /* Start with zero height */
+}
+
+/* Bottom border */
+.custom-border-animation::after-second {
+  bottom: 0;
+  right: 0;
+  height: 2px;
+  width: 0; /* Start with zero width */
+}
+
+/* Left border */
+.custom-border-animation::before-second {
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  height: 0; /* Start with zero height */
+}
+
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
