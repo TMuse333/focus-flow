@@ -320,5 +320,7 @@ export const herobannerData = [
     }
 ];
 
+export const laptop3d = '/models/laptop.gltf'
+
 
 
