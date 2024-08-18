@@ -42,8 +42,10 @@ const AlternatingText: React.FC = () => {
     
 
     return (
-        <section className="alternating-text-container text-center relative mb-4 h-[30vh] sm:h-[25vh] bg-[#003647]">
-            <h1 className='pt-10 text-white text-4xl mb-4 '>Your website is...</h1>
+        <section className="alternating-text-container text-center relative mb-4 
+        w-[50vw] bg-[#003647]
+        ">
+            <h1 className='pt-10 text-white text-2xl mb-4 '>FocusFlow Software</h1>
             {/* Display the typed text */}
             <h2 className="typed-text text-white  text-2xl pb-10"></h2>
         </section>
