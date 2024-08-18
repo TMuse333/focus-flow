@@ -135,17 +135,17 @@ const links = [
       </section>
 
     
-      <Content
+      {/* <Content
       {...contentData1}
       reverse={false}
       hasAnimation={true}
       customText={null}
       floatingImage={true}
       image={laptop}
-      />
+      /> */}
     
     <AppearingContent
-    sliderText="FocusFlow Software"
+    sliderText="Tailored for You, Delivered Fast"
     src={laptop.src}
     id='appearing-video'
     />

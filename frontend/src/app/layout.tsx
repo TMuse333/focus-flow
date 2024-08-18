@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     ],
     type: "website",
     locale: "en_US",
-    siteName: 'FocusFlow Software'
+    siteName: 'FocusFlow Software | Creative and Fast Web Design in Halifax'
   },
   icons: {
     icon: ["/favicon.ico?v=4"

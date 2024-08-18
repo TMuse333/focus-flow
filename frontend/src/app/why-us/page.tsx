@@ -62,8 +62,11 @@ import type { Metadata } from 'next'
     </Head>
             <Navbar
         links={links}
+        transparentBg={false}
+        absolute={true}
+        
         />
-        <main className=" ">
+        <main className="mt-[6rem] ">
             
         
             <SlideShowCarousel

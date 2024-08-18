@@ -92,10 +92,10 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
   
 
   return (
-    <section className="w-[95%] mx-auto flex flex-col flex-col-reverse overflow-x-hidden relative h-[80vh]
+    <section className="w-[95%] mx-auto flex flex-col flex-col-reverse overflow-x-hidden relative md:h-[80vh]
         md:flex-row md:flex-row-reverse  rounded-lg relative">
       <section className="relative w-full h-full  md:w-[50vw] mt-auto
-      
+      hidden md:block
       ">
         <h2 className="text-3xl px-4 sm:text-3xl md:text-4xl font-semibold text-center mb-4 animate-gradient">
           FocusFlow Software
@@ -124,9 +124,12 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
       )}
     </AnimatePresence>
 
-
+//text-2xl bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent 
+                text-4xl sm:text-5xl font-semibold text-center relative
                   </div> */}
-                  <h2 className="text-left px-3 text-4xl my-4">Stunning websites, delivered quickly</h2>
+                  <h2 className="text-left px-3 text-4xl my-4
+                  bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent 
+                  font-semibold">Stunning websites, delivered quickly</h2>
             <p className="text-left px-3 text-lg">FocusFlow Software specializes in delivering
             unique, attention grabbing websites with the latest
             technologies all in a quick manner to elevate your status and take your brand to the next level.
@@ -138,7 +141,7 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
               </p>
       </section>
       <section className="md:w-[50vw] flex justify-center items-center flex-col
-      h-[80vh]">
+      md:h-[80vh]">
         <h1 className="text-3xl px-4 sm:text-3xl md:text-4xl font-semibold text-center mb-4 animate-gradient">
           Creative and Custom Web Design in Halifax
         </h1>
@@ -152,10 +155,18 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
           <OrbitControls enablePan={false} enableZoom={false} />
         </Canvas>
         {isMobile && (
-            <button className="bg-[#00bfff]
-            p-3 rounded-lg -translate-y-[3rem]">
+            <>
+              <p className="text-left px-3 text-lg md:hidden">FocusFlow Software specializes in delivering
+              unique, attention grabbing websites with the latest
+              technologies all in a quick manner to elevate your status and take your brand to the next level.
+              <br/><br/>
+              <button className="bg-[#00bfff]
+            p-3 rounded-lg md:hidden ">
                 Win Today
             </button>
+              </p>
+           
+            </>
         )}
       </section>
     </section>

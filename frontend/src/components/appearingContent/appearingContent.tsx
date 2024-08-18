@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useAnimate } from "framer-motion";
+import React, { useEffect, useState , useRef} from "react";
+import { motion, useAnimate, useScroll, useTransform } from "framer-motion";
 import SlidingText from "../slidingText/slidingText";
 
 interface ContentProps {
@@ -47,14 +47,27 @@ const AppearingContent: React.FC<ContentProps> = ({
         }
     }, [animationStarted]);
 
+    const sectionRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"],
+    });
+
+    // Scaling the section when scrolling past it
+    const scale = useTransform(scrollYProgress, [0.25, 1], [1, 0.15]);
+
     return (
-        <section className="w-screen relative mb-8">
+        <motion.section
+        style={{
+            scale
+        }}
+         className="w-screen relative mb-8">
             <SlidingText text={sliderText} setSlideComplete={setAnimationStarted} />
 
             <section className="relative" ref={scope}>
                 <p id={`p-${id}`} className="text-left px-4 opacity-0 my-6
                 mx-auto max-w-[900px]">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae doloribus ad tenetur maiores laborum eveniet, saepe vero corrupti voluptate dignissimos?
+                  Every website we create at FocusFlow Software is a custom, one-of-a-kind experience, built with the latest technologies. We prioritize speed and innovation to ensure your brand stands out, uniquely crafted and quickly delivered.
                 </p>
 
                 <div
@@ -92,7 +105,7 @@ const AppearingContent: React.FC<ContentProps> = ({
                     />
                 </div>
             </section>
-        </section>
+        </motion.section>
     );
 };
 

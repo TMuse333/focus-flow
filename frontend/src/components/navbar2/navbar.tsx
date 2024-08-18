@@ -22,7 +22,7 @@ const Navbar: React.FC<NavbarProps> = ({ links,transparentBg,
         <nav className={` top-0 z-[225] w-screen left-0  h-[100px]
          flex justify-between items-center  text-gray-500
           z-[100] ${!transparentBg ? 'bg-main-color border-b-4 border-[#003549]' : ''}
-          ${absolute ? "absolute" : 'relative'}`}>
+          ${absolute ? "fixed" : 'fixed'}`}>
             <div className="relative flex justify-between 
              items-center  w-screen lg:w-[80vw] max-w-[1300px] lg:justify-between lg:items-stretch
             z-[100]  ml-auto mr-auto">
