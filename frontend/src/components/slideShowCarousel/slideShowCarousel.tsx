@@ -327,6 +327,7 @@ const SlideShowCarousel: React.FC<CarouselProps> = ({ images, title, description
                 h-[105vw] 
                 md:max-h-[800px]
                 overflow-y-scroll
+                overflow-x-hidden
                  "
                 style={{ scrollSnapType: 'x mandatory' }}
                 ref={containerRef}

@@ -46,9 +46,9 @@ const Work = () => {
        {/* Replace with your actual image URL */}
       <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       <link rel="canonical" href="https://focusflowsoftware.com/lets-work" />
-    </Head>
-        <main className="w-screen"> 
-        <Navbar links={links}/>
+    </Head> <Navbar links={links}/>
+        <main className="w-screen mt-[6rem]"> 
+       
 <Contact/>
 <Footer
 links={links}

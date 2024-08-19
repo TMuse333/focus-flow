@@ -38,7 +38,7 @@ const AppearingContent: React.FC<ContentProps> = ({
 
 
         // Animate image opacity
-        await animate(`#image-${id}`, { opacity: 1 });
+        await animate(`#content-${id}`, { opacity: 1 });
     };
 
     useEffect(() => {
@@ -96,13 +96,34 @@ const AppearingContent: React.FC<ContentProps> = ({
                         style={{ height: "0%" }} // Start with zero height
                     ></div>
 
-                    <img
-                        id={`image-${id}`}
-                        src={src}
-                        alt={alt}
-                        className="w-full mx-auto object-cover opacity-0
-                        max-h-[500px]"
-                    />
+                        {isVideo ? (
+                            <>
+
+<video
+id={`content-${id}`}
+
+controls
+className="w-full mx-auto object-contain opacity-0
+max-h-[500px]">
+    <source src={src} type='video/mp4'/>
+
+</video>
+
+
+</>
+
+                        ) : (
+
+                            <img
+                            id={`content-${id}`}
+                            src={src}
+                            alt={alt}
+                            className="w-full mx-auto object-cover opacity-0
+                            max-h-[500px]"
+                        />
+                        )}
+
+                   
                 </div>
             </section>
         </motion.section>

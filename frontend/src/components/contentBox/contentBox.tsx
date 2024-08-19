@@ -4,7 +4,7 @@ import Image, { StaticImageData } from 'next/image'
 import Link from "next/link";
 
 import {useIntersectionObserver} from "../intersectionObserver/intersectionObserver";
-
+import {lionSpeech} from '@/data/data'
 
 interface ContentBoxProps {
 
@@ -115,21 +115,31 @@ const componentRef = useIntersectionObserver(setInView,options)
                     }
                 }}
                 
-                className="mx-auto max-w-[1300px] flex flex-col
-                flex-col-reverse mt-0 justify-between
-                md:flex-row-reverse ">
-                    <ul className="mx-auto md:text-left md:ml-0 md:mr-auto md:mt-8
+                className="mx-auto max-w-[1000px] flex flex-col
+                flex-col-reverse mt-0 justify-center
+                sm:flex-row-reverse  ">
+                    {/* <ul className="mx-auto md:text-left md:ml-0 md:mr-auto md:mt-8
                     ">
                         <li className="mb-4 text-xl sm:text-2xl md:text-3xl">Save money</li>
                         <li className="mb-4 text-xl sm:text-2xl md:text-3xl">Track orders more efficiently</li>
                         <li className="mb-4 text-xl sm:text-2xl md:text-3xl">Gain insights on orders</li>
                         <li className="mb-4 text-xl sm:text-2xl md:text-3xl">Bring in more orders</li>
 
-                    </ul>
+                    </ul> */}
+                    <video controls
+                    className="w-[90vw] object-contain
+                    mx-auto md:w-[50vw] md:h-[45vw]  max-h-[385px]
+                    bg-black
+                    ">
+                            <source src={lionSpeech}/>
+
+
+                    </video>
                     <Image
                 src={src}
                 alt={alt}
-                className='mx-auto object-contain
+                className='mx-auto
+                my-auto object-contain
                 w-[90vw]
                 md:w-[50vw] md:h-[45vw] max-w-[420px] max-h-[385px]'
                 />

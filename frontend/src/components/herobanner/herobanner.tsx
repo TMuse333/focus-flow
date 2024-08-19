@@ -95,7 +95,7 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
     <section className="w-[95%] mx-auto flex flex-col flex-col-reverse overflow-x-hidden relative md:h-[80vh]
         md:flex-row md:flex-row-reverse  rounded-lg relative">
       <section className="relative w-full h-full  md:w-[50vw] mt-auto
-      hidden md:block
+      hidden sm:block 
       ">
         <h2 className="text-3xl px-4 sm:text-3xl md:text-4xl font-semibold text-center mb-4 animate-gradient">
           FocusFlow Software
@@ -140,8 +140,8 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
             </button>
               </p>
       </section>
-      <section className="md:w-[50vw] flex justify-center items-center flex-col
-      md:h-[80vh]">
+      <section className="hidden md:block md:w-[50vw] flex justify-center items-center flex-col
+      md:h-[80vh] ">
         <h1 className="text-3xl px-4 sm:text-3xl md:text-4xl font-semibold text-center mb-4 animate-gradient">
           Creative and Custom Web Design in Halifax
         </h1>

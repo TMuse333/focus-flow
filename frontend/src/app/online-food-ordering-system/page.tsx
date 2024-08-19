@@ -6,9 +6,11 @@ import Navbar from "@/components/navbar2/navbar"
 import { TextParallaxContentExample } from "@/components/parallaxText/parallaxText"
 import PriceBoxes from "@/components/priceBoxes/priceBoxes"
 import { accordion1Text, customParallax,
-    restaurantFaq, ownershipParallax, priceBoxesData, restaurantParallax } from "@/data/data"
+    restaurantFaq, ownershipParallax, priceBoxesData, restaurantParallax, restaurantCloser } from "@/data/data"
 import React from "react"
 import Head from "next/head"
+import Footer from "@/components/footer/footer"
+import Closer from "@/components/closer/closer"
 
 
 const Restaurant = () => {
@@ -226,22 +228,9 @@ const Restaurant = () => {
             <TextParallaxContentExample
             {...ownershipParallax}
             />
-            <section className="text-left px-4 mb-8
-            mx-auto max-w-[1200px]">
+           
 
-            
-            <h2 className="text-2xl bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent 
-           text-4xl sm:text-5xl font-semibold text-center
-           mb-4">Experience the Freedom of More Profits
-                </h2>
 
-<p className="sm:text-md md:text-lg
-px-6">We believe in empowering your business, not taking from it. Unlike other platforms, our online ordering system is built to give you more of what you earn. By integrating Stripe, we’ve ensured that your payments are secure, seamless, and come with a fraction of the fees you’d see elsewhere.
-    <br/><br/>
-    No hefty commissions. No unnecessary costs. Just more of what belongs to you.
-
-</p>
-</section>
 
 
 
@@ -255,7 +244,15 @@ px-6">We believe in empowering your business, not taking from it. Unlike other p
            description="Elevate your restaurant’s online presence and streamline your operations with our cutting-edge software. Designed for efficiency and ease of use, our solution goes beyond a simple digital menu—it’s a comprehensive tool that propels your business forward. Explore the following answers to some of the most common questions about our software, and discover how it enhances your operations, ensures security, and drives growth."
            items={restaurantFaq}
            />
+
+           <Closer
+           {...restaurantCloser}
+           />
            
+
+           <Footer
+           links={links}
+           />
         </main>
         </>
     )

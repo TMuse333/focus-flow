@@ -21,7 +21,7 @@ const Navbar: React.FC<NavbarProps> = ({ links,transparentBg,
     return (
         <nav className={` top-0 z-[225] w-screen left-0  h-[100px]
          flex justify-between items-center  text-gray-500
-          z-[100] ${!transparentBg ? 'bg-main-color border-b-4 border-[#003549]' : ''}
+          z-[100] ${!transparentBg ? 'bg-[#00bfff] bg-opacity-[1] border-b-4 border-[#003549]' : ''}
           ${absolute ? "fixed" : 'fixed'}`}>
             <div className="relative flex justify-between 
              items-center  w-screen lg:w-[80vw] max-w-[1300px] lg:justify-between lg:items-stretch
@@ -50,15 +50,14 @@ const Navbar: React.FC<NavbarProps> = ({ links,transparentBg,
                            lg:top-auto lg:right-auto lg:flex-row
                            text-center
                             ${subMenuClicked ? `h-[175px] p-0 
-                            border-l-4
-                         border-b-4 border-r-4 border-[#EBE6DC]` : 'h-[0px] p-0 lg:h-auto'}`}
+                           ` : 'h-[0px] p-0 lg:h-auto'}`}
                     >
                         {links.map((link, index) => (
                             <Link key={index} href={link.destination}
                             passHref>
                                 <li className="text-md lg:text-lg mb-2
                                  pl-2 pr-2 lg:mb-0 text-white
-                                 hover:text-[#00bfff] ">{link.name}</li>
+                                 hover:text-[#009acc] ">{link.name}</li>
                             </Link>
                         ))}
                     </ul>

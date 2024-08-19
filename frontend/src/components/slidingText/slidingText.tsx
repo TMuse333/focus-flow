@@ -18,7 +18,7 @@ const SlidingText: React.FC<TextProps> = ({ text, setSlideComplete }) => {
 
     // Transform scroll progress to x position, scale, and opacity
     const x = useTransform(scrollYProgress, [0, 0.8], [350, 0]); // Adjust as needed
-    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.55], [0, 0.6, 1]);
+    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.55], [0, 0.0, 1]);
 
     // Monitor changes in the `x` value and set `setSlideComplete` to true when x reaches 0
     useEffect(() => {

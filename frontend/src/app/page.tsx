@@ -33,6 +33,7 @@ import ContentBox from "@/components/contentBox/contentBox";
 import Herobanner from "@/components/herobanner/herobanner";
 import SlidingText from "@/components/slidingText/slidingText";
 import AppearingContent from "@/components/appearingContent/appearingContent";
+import { lionSpeech } from "@/data/data";
 
 
 
@@ -109,10 +110,14 @@ const links = [
       <SelectedCarouselImage/>
       
 
-
+      <Navbar
+      links={links}
+     
+      absolute={false}
+      />
 
     <main className="text-center z-[30]
-    overflow-x-hidden "
+    overflow-x-hidden mt-[8rem] "
     style={{
       filter:selectedCarouselImageIndex !== null ? 'blur(8px)' : 'none',
       // Ensures full viewport height to avoid scrolling in the main content
@@ -123,11 +128,7 @@ const links = [
   <section>
 
   
-      <Navbar
-      links={links}
-      transparentBg={true}
-      absolute={false}
-      />
+      
      
       <Herobanner
       sections={herobannerData}/>
@@ -146,8 +147,9 @@ const links = [
     
     <AppearingContent
     sliderText="Tailored for You, Delivered Fast"
-    src={laptop.src}
+    src={lionSpeech}
     id='appearing-video'
+    isVideo={true}
     />
 
 

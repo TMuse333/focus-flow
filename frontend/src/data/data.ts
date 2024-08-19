@@ -17,7 +17,7 @@ export const contentData1 = {
     mainTitle:'Your Digital Presence is Important',
     description:[
     'In todays world your website can be one of the biggest factors contributing to your success. Your website is a reflection of you and your brand so it is essential that you stand out by having a visually appealing a custom build website where you can put your best foot forward and stand out above your competition',
-    'Q3 Designs specializes in creating visually appealing and attention grabbing websites so that your brand can be displayed to the world in a way that gives you the highest probability for success.',
+    'FocusFlow Software specializes in creating visually appealing and attention grabbing websites so that your brand can be displayed to the world in a way that gives you the highest probability for success.',
    
 ],
 // image:'/src/media/laptop.jpg'
@@ -212,7 +212,7 @@ interface ParallaxProps {
 const lorem30 = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt illo corporis, ut doloremque corrupti officiis aliquid veniam non. Molestiae, sunt voluptatum. Numquam voluptas vero magni dolores? Earum cupiditate blanditiis doloribus!'
 
 
-export const lionSpeech = '/videos/q3-lion-speech.mp4'
+export const lionSpeech = '/videos/restaurant-speech.mp4'
 
 
 export const restaurantParallax:ParallaxProps = {
@@ -321,6 +321,15 @@ export const herobannerData = [
 ];
 
 export const laptop3d = '/models/laptop.gltf'
+
+
+export const restaurantCloser = {
+    title:'Elevate Your Restaurant',
+    description:`Step into the future of dining with FocusFlow Software. It's not just a tool—it's a revolution in how you connect with customers. Own your success, drive growth, and deliver an unparalleled experience, all on your terms. Your restaurant, your rules, with technology that adapts to you.`,
+    buttonText:'Get yours today',
+    destination:'/lets-work',
+    image:'/media/gemeni-two-hand-stick.webp'
+}
 
 
 

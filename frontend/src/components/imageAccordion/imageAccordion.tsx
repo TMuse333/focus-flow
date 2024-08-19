@@ -39,7 +39,7 @@ const ImageAccordion: React.FC<AccordionProps> = ({ title, description, items })
 
     return (
         <>
-        <section className="mx-auto max-w-[1300px] mt-4
+        <section className="mx-auto max-w-[1300px] my-4
         ">
 
        
@@ -58,7 +58,7 @@ const ImageAccordion: React.FC<AccordionProps> = ({ title, description, items })
 
             
         <section className="bg-gray-800 rounded-xl mx-auto w-[90vw] p-5
-        lg:w-[40vw] lg:max-w-[550px]   ">
+        lg:w-[40vw] lg:max-w-[550px] mb-7   ">
           
             <div className="space-y-4">
                 {items.map((item, index) => (
