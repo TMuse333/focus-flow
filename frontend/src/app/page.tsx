@@ -145,12 +145,12 @@ const links = [
       image={laptop}
       /> */}
     
-    <AppearingContent
+    {/* <AppearingContent
     sliderText="Tailored for You, Delivered Fast"
     src={lionSpeech}
     id='appearing-video'
     isVideo={true}
-    />
+    /> */}
 
 
     

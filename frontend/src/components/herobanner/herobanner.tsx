@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, OrbitControls } from "@react-three/drei";
-import { laptop3d } from '@/data/data';
+import { laptop3d, coloredLaptop } from '@/data/data';
 import { useGeneralContext } from "@/context/context";
 import AlternatingText from "../alternatingText/alternatingText";
 import brain from '../../../public/media/no-bg-brain.webp'
 import { motion, AnimatePresence } from "framer-motion";
 import {lerp} from 'three/src/math/MathUtils';
+
 
 interface HerobannerProps {
   sections: {
@@ -70,10 +71,11 @@ const Model: React.FC<{ url: string }> = ({ url }) => {
   
     return (
       <primitive
+      
         ref={ref}
         object={gltf.scene}
-        scale={[scale, scale, scale]} // Apply the animated scale
-        position={!isMobile ? [0, -0.5, 0] : [0, 0.5, 0]}
+        scale={[1, 1, 1]} // Apply the animated scale
+        position={!isMobile ? [8, 8, 0] : [8, 8, 0]}
       />
     );
   };
@@ -146,12 +148,13 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
           Creative and Custom Web Design in Halifax
         </h1>
         <Canvas className="w-full h-full
+     
       
         
         ">
           <ambientLight intensity={0.5} />
           <directionalLight position={[5, 5, 5]} intensity={1} />
-          <Model url={laptop3d} />
+          <Model url={coloredLaptop} />
           <OrbitControls enablePan={false} enableZoom={false} />
         </Canvas>
         {isMobile && (
