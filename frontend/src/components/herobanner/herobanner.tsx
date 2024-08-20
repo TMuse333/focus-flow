@@ -74,8 +74,9 @@ const Model: React.FC<{ url: string }> = ({ url }) => {
       
         ref={ref}
         object={gltf.scene}
-        scale={[1, 1, 1]} // Apply the animated scale
-        position={!isMobile ? [8, 8, 0] : [8, 8, 0]}
+        scale={[1, 1, 1]}
+        position={[0,5,0]} // Apply the animated scale
+        // position={!isMobile ? [-8, 8, 0] : [-8, 8, 0]}
       />
     );
   };
@@ -97,7 +98,8 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
     <section className="w-[95%] mx-auto flex flex-col flex-col-reverse overflow-x-hidden relative md:h-[80vh]
         md:flex-row md:flex-row-reverse  rounded-lg relative">
       <section className="relative w-full h-full  md:w-[50vw] mt-auto
-      hidden sm:block 
+       sm:block 
+       
       ">
         <h2 className="text-3xl px-4 sm:text-3xl md:text-4xl font-semibold text-center mb-4 animate-gradient">
           FocusFlow Software
@@ -142,19 +144,20 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
             </button>
               </p>
       </section>
-      <section className="hidden md:block md:w-[50vw] flex justify-center items-center flex-col
-      md:h-[80vh] ">
+      <section className=" md:block md:w-[50vw] flex justify-center items-center flex-col
+      md:h-[80vh] mb-8 ">
         <h1 className="text-3xl px-4 sm:text-3xl md:text-4xl font-semibold text-center mb-4 animate-gradient">
           Creative and Custom Web Design in Halifax
         </h1>
         <Canvas className="w-full h-full
+        flex items-start
      
       
         
         ">
           <ambientLight intensity={0.5} />
           <directionalLight position={[5, 5, 5]} intensity={1} />
-          <Model url={coloredLaptop} />
+          <Model url={laptop3d} />
           <OrbitControls enablePan={false} enableZoom={false} />
         </Canvas>
         {isMobile && (
