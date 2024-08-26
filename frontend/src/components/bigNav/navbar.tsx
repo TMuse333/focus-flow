@@ -18,6 +18,7 @@ interface DesktopSubMenuProps {
     isClicked:boolean
     description:string,
     setIsClicked:React.Dispatch<React.SetStateAction<number | null>>
+    index:number
    
 }
 
@@ -34,18 +35,109 @@ interface SubMenuProps {
     }[]
   }
 
+  const bigLinks = [
+    // {
+    //   name: 'Our Work',
+    //   secondaryLinks: [
+    //     {
+    //       name: 'Our Best Designs',
+    //       destination: 'showcase',
+    //     },
+    //     {
+    //       name: 'Client Work',
+    //       destination: 'portfolio',
+    //     },
+    //   ],
+    //   listSubMenu: true,
+    // },
+    {
+      name: 'Products',
+      secondaryLinks: [
+        {
+          name: 'Restaurant Software',
+          destination: 'online-food-ordering-system',
+        },
+        // {
+        //   name: 'Realtor Website',
+        //   destination: 'realtor',
+        // },
+      ],
+      listSubMenu: true,
+      subMenuSrc:twoHand.src,
+      subMenuAlt:'Two hands',
+      desktopDescription:'Here are some of our signature pieces of software that are ready to be implemented in your business quickly and take your business to the next level'
+    },
+    // {
+    //   name: 'Resources',
+    //   secondaryLinks: [
+    //     {
+    //       name: 'Focus Strategies',
+    //       destination: 'focus-strategies',
+    //     },
+    //     {
+    //       name: 'Skill Refinement',
+    //       destination: 'skill-refinement',
+    //     },
+    //   ],
+    //   listSubMenu: true,
+    //   subMenuSrc:twoHand.src,
+    //   subMenuAlt:'Two hands',
+    //   desktopDescription:'To be able to get to this level of web design, it has taken many hours of deep, focused work daily. Check these pages out to learn how learn the value of focused work and take your skills to the next level.'
+    // },
+    // {
+    //   name:'Websites',
+    //   secondaryLinks:[
+    //     {
+    //       name:'What makes a great website?',
+    //       destination:'great-website'
+    //     },
+    //     {
+    //       name:'Potential of websites',
+    //       destination:'/potential'
+    //     },
+    //     {
+    //       name:'Website maintenance',
+    //       destination:'Web-maintenance'
+    //     }
+    //   ],
+    //   listSubMenu:true,
+    //   subMenuSrc:twoHand.src,
+    //   subMenuAlt:'Two hands',
+    //   desktopDescription:'Your website is the cornerstone of your digital presence. Discover what makes a website truly great, explore its full potential, and learn the importance of regular maintenance to ensure your site stays ahead in the fast-paced digital world.'
+    // },
+    {
+      name: 'Why Us',
+      secondaryLinks: [
+        {
+            name:'Why Us',
+            destination:'why-us'
+        }
+      ],
+      listSubMenu: false,
+    },
+    {
+      name: 'Contact',
+      secondaryLinks: [
+        {
+            name:'Contact',
+            destination:'lets-work'
+        }
+      ],
+      listSubMenu: false,
+    },
+  ];
+
 
   const DesktopSubMenu:React.FC<DesktopSubMenuProps> = ({
     src, alt, secondaryLinks,isClicked,description,
+    index,
     setIsClicked
   }) => {
 
     const [isHovered, setIsHovered] = useState(false)
 
-    function handleMouseEnter(){
-        if(isClicked !== null){
-            setIsHovered(true)
-        }
+    function handleMouseEnter(index:number){
+      setIsClicked(index)
     }
 
     function handleMouseLeave(){
@@ -54,10 +146,11 @@ interface SubMenuProps {
 
     return (
         <div className={`bg-[#036080] fixed top-[70px] w-screen
-        h-[200px] left-0 transition-opacity  
-        flex justify-evenly ${isClicked  ? 'opacity-1 z-[3]' : 'hidden'}`
+         left-0  transition-[height] overflow-hidden
+         pt-4
+        flex justify-evenly ${isClicked  ? 'h-[200px]' : 'h-[0px]'}`
         }
-        onMouseEnter={handleMouseEnter}
+        onMouseEnter={()=>handleMouseEnter(index)}
         onMouseLeave={handleMouseLeave}
         >
             <Image
@@ -79,7 +172,8 @@ interface SubMenuProps {
         key={index}
         >
             <li className="mb-2 mr-4
-            text-lg hover:text-gray-300">
+            text-lg hover:text-gray-300
+            bg-gray-700 p-3 rounded-xl">
                 {link.name}
             </li>
         </Link>
@@ -207,87 +301,7 @@ const BigNav: React.FC<NavbarProps> = ({ excludedLink }) => {
     const [hoveredSubMenuIndex, setHoveredSubMenuIndex] =
     useState<number | null>(null)
 
-    const bigLinks = [
-        {
-          name: 'Our Work',
-          secondaryLinks: [
-            {
-              name: 'Our Best Designs',
-              destination: 'showcase',
-            },
-            {
-              name: 'Client Work',
-              destination: 'portfolio',
-            },
-          ],
-          listSubMenu: true,
-        },
-        {
-          name: 'Products',
-          secondaryLinks: [
-            {
-              name: 'Restaurant Software',
-              destination: 'online-food-ordering-system',
-            },
-            {
-              name: 'Realtor Website',
-              destination: 'realtor',
-            },
-          ],
-          listSubMenu: true,
-          subMenuSrc:twoHand.src,
-          subMenuAlt:'Two hands',
-          desktopDescription:'Here are some of our signature pieces of software that are ready to be implemented in your business quickly and take your business to the next level'
-        },
-        {
-          name: 'Resources',
-          secondaryLinks: [
-            {
-              name: 'Focus Strategies',
-              destination: 'focus-strategies',
-            },
-            {
-              name: 'Skill Refinement',
-              destination: 'skill-refinement',
-            },
-          ],
-          listSubMenu: true,
-          subMenuSrc:twoHand.src,
-          subMenuAlt:'Two hands',
-          desktopDescription:'To be able to get to this level of web design, it has taken many hours of deep, focused work daily. Check these pages out to learn how learn the value of focused work and take your skills to the next level.'
-        },
-        {
-          name:'Websites',
-          secondaryLinks:[
-            {
-              name:'What makes a great website?',
-              destination:'great-website'
-            },
-            {
-              name:'Potential of websites',
-              destination:'/potential'
-            },
-            {
-              name:'Website maintenance',
-              destination:'Web-maintenance'
-            }
-          ],
-          listSubMenu:true,
-          subMenuSrc:twoHand.src,
-          subMenuAlt:'Two hands',
-          desktopDescription:'Your website is the cornerstone of your digital presence. Discover what makes a website truly great, explore its full potential, and learn the importance of regular maintenance to ensure your site stays ahead in the fast-paced digital world.'
-        },
-        {
-          name: 'About Us',
-          secondaryLinks: [],
-          listSubMenu: false,
-        },
-        {
-          name: 'Contact',
-          secondaryLinks: [],
-          listSubMenu: false,
-        },
-      ];
+   
 
       const filteredLinks = bigLinks.filter(link => link.name !== excludedLink);
     
@@ -351,7 +365,8 @@ const BigNav: React.FC<NavbarProps> = ({ excludedLink }) => {
 
         ) : (
             <>
-           <h3>
+         <h3 className="my-auto relative pb-3
+         translate-y-[1rem]" >
             FocusFlow Software
            </h3>
             <section className="flex
@@ -360,17 +375,23 @@ const BigNav: React.FC<NavbarProps> = ({ excludedLink }) => {
           
             max-w-[1000px]
             ">
-
+  
           
             {filteredLinks.map((link,index) => (
+              
                 <div key={index}
-                onMouseEnter={()=>handleSubMenuHover(index)}
-                            onMouseLeave={handleSubMenuLeave}
+               
                  className=" relative 
-                 text-white  pb-[2rem] pt-[0rem] mt-auto">
-                    <h3 className="mt-auto">{link.name}</h3>
+                 text-white   my-auto
+                
+                 ">
+                   
                     {link.listSubMenu ? (
                      <>
+                      <h3 
+                       onMouseEnter={()=>handleSubMenuHover(index)}
+                       onMouseLeave={handleSubMenuLeave}
+                      className="mt-auto pb-3 translate-y-[1rem]">{link.name}</h3>
                                  {link.subMenuSrc && link.subMenuAlt &&
                                  link.desktopDescription && (
 
@@ -382,13 +403,17 @@ src={link.subMenuSrc}
   isClicked={hoveredSubMenuIndex === index}
   setIsClicked={setHoveredSubMenuIndex}
 description={link.desktopDescription}
+index={index}
 />
 
 )}
                      </>
                     ) : (
                         <>
-            
+            <Link href={link.secondaryLinks[0].destination}>
+                <p className="pb-3 mb-auto
+                translate-y-[1rem]">{link.secondaryLinks[0].name}</p>
+            </Link>
                         </>
                     )}
                     

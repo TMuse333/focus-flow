@@ -15,7 +15,7 @@ import { CircleInfoGraphic } from "@/components/circleInfographic/circleInfoGrap
 import {ScrollableCarousel, SelectedCarouselImage} from "@/components/scrollableCarousel/scrollableCarousel";
 import { useGeneralContext } from "@/context/context";
 
-// import { AuroraHero } from "@/components/auroraHero/auroraHero";
+
 import { motion } from "framer-motion";
 import moneyLaptop from '../../public/media/nobg-more-money-laptop.png'
 import Accordion from "@/components/accordion/accordion";
@@ -24,14 +24,12 @@ import { accordion1Text ,herobannerData} from "@/data/data";
 import ParticlesComponent from "@/components/particles/particles";
 import {useIntersectionObserver} from "@/components/intersectionObserver/intersectionObserver";
 import { useState } from "react";
-import Navbar from "@/components/navbar2/navbar";
-// import { SlideFlip } from "@/components/fancyText/fancyText";
-// import Footer from "@/components/footer/footer";
+
 import Head from "next/head";
 import { scrollableImages } from "@/data/data";
 import ContentBox from "@/components/contentBox/contentBox";
 import Herobanner from "@/components/herobanner/herobanner";
-// import SlidingText from "@/components/slidingText/slidingText";
+
 import AppearingContent from "@/components/appearingContent/appearingContent";
 import { lionSpeech } from "@/data/data";
 import dynamic from "next/dynamic";
@@ -146,7 +144,7 @@ excludedLink="/"
      
       <Herobanner
       sections={herobannerData}/>
-      {/* <MultiLayerParallax/> */}
+     
       </section>
 
     

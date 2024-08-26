@@ -108,13 +108,13 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
         <h1 className="text-3xl px-4 sm:text-3xl sm:text-4xl font-semibold text-center mb-4 animate-gradient">
           Creative and Custom Web Design in Halifax
         </h1>
-        {/* <Canvas className="w-full h-full flex items-start">
+        <Canvas className="w-full h-full flex items-start">
           <ambientLight intensity={1.5} />
           <directionalLight position={[5, 5, 5]} intensity={1} />
           <CameraControls /> 
           <Model url={coloredLaptop} />
           <OrbitControls enablePan={false} enableZoom={false} />
-        </Canvas> */}
+        </Canvas>
       </section>
     </section>
   );
