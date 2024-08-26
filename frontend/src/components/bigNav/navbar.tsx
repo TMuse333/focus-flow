@@ -8,9 +8,24 @@ interface NavbarProps {
         secondaryLinks:{
             name:string
             destination:string
+           
         }[],
-        listSubMenu:boolean
+        listSubMenu:boolean,
+        subMenuSrc?:string,
+        subMenuAlt?:string
+       
     }[]
+}
+
+
+interface DesktopSubMenuProps {
+    src:string,
+    alt:string,
+    secondaryLinks:{
+        name:string
+        destination:string
+    }[],
+    isClicked:boolean
 }
 
 interface SubMenuProps {
@@ -24,6 +39,23 @@ interface SubMenuProps {
             destination:string
         }[]
     }[]
+  }
+
+
+  const DesktopSubMenu:React.FC<DesktopSubMenuProps> = ({
+    src, alt, secondaryLinks,isClicked
+  }) => {
+
+    return (
+        <div className={`bg-[#00bfff] fixed top-[70px] w-screen
+        h-[200px] left-0 transition-opacity transition-transform
+        flex ${isClicked ? 'opacity-1' : 'opacity-0'}`
+        }>
+
+        
+       
+        </div>
+    )
   }
 
   const MobileSubMenu: React.FC<SubMenuProps>
@@ -187,9 +219,9 @@ const BigNav: React.FC<NavbarProps> = ({ links }) => {
           
               
             <div onClick={handleSubmenuClick}
-            className="lg:hidden  lg:w-auto flex flex-col justify-center items-center
+            className={`lg:hidden  lg:w-auto flex flex-col justify-center items-center
             z-20 relative
-            p-0 pr-7">
+            p-0 pr-7 ${subMenuClicked ? 'hidden' : ''}`}>
             <div className="h-[3px] bg-white w-[20px] mb-1" />
             <div className="h-[3px] bg-white w-[20px] mb-1" />
             <div className="h-[3px] bg-white w-[20px]" />
@@ -218,30 +250,22 @@ const BigNav: React.FC<NavbarProps> = ({ links }) => {
                  text-white  pb-[2rem] pt-[0rem] mt-auto">
                     <h3 className="mt-auto">{link.name}</h3>
                     {link.listSubMenu ? (
-                        <ul className={`absolute text-center bg-[#032029]
-                   pt-5 pb-5 pr-8 pl-8 left-[50%] mt-0  -translate-x-1/2 w-[175px]
-                   h-[200px] ${hoveredSubMenuIndex === index ? 'opacity-1 z-20 ' : 'opacity-0 z-[-3] -translate-y-[30rem] '} `}>
-                        
-                        {link.secondaryLinks.map((subLink, innerIndex) => (
-                            <Link href={subLink.destination}>
-                            <li 
-                            className="mb-3 hover:text-q-blue transition-colors"
-                            key={innerIndex}
-                            >
-                                {subLink.name}
-                            </li>
-                            </Link>
+                     <>
+                                 {link.subMenuSrc && link.subMenuAlt && (
 
-                        ))}
-                    </ul>
+              
+<DesktopSubMenu
+secondaryLinks={link.secondaryLinks}
+src={link.subMenuSrc}
+  alt={link.subMenuAlt}
+  isClicked={hoveredSubMenuIndex === index}
+/>
+
+)}
+                     </>
                     ) : (
                         <>
-                        <div className={`bg-[#032029] fixed top-[70px] w-screen
-                        h-[200px] left-0 transition-opacity transition-transform ${hoveredSubMenuIndex === index ? 'opacity-1 z-20 ' : 'opacity-0 z-[-3] -translate-y-[30rem] '}}`}>
-
-                        
-                        <p>Coming soon!</p>
-                        </div>
+            
                         </>
                     )}
                     

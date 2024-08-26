@@ -6,6 +6,7 @@ import { useGeneralContext } from "@/context/context";
 import brain from '../../../public/media/no-bg-brain.webp';
 import { motion, AnimatePresence } from "framer-motion";
 import { lerp } from 'three/src/math/MathUtils';
+import {Vector3} from 'three'
 
 interface HerobannerProps {
   sections: {
@@ -16,67 +17,58 @@ interface HerobannerProps {
 }
 
 const Model: React.FC<{ url: string }> = ({ url }) => {
-    const gltf: any = useGLTF(url);
-    const ref = useRef<any>();
-    const { isMobile } = useGeneralContext();
-    
-    // State for scale and rotation
-    const [scale, setScale] = useState(0);
-    const [rotation, setRotation] = useState([0, 0, 0]);
-    const [isAnimating, setIsAnimating] = useState(true);
+  const gltf: any = useGLTF(url);
+  const ref = useRef<any>();
+  const { isMobile } = useGeneralContext();
   
-    // useEffect(() => {
-    //   // Animate scale from 0 to 0.8
-    //   let startTime: number = performance.now();
-    //   const duration: number = 1000; // Duration of the scale animation in milliseconds
-  
-    //   const animate = (time: number) => {
-    //     const elapsed = time - startTime;
-    //     const progress = Math.min(elapsed / duration, 1); // Ensure progress doesn't exceed 1
-  
-    //     const newScale = lerp(0, 0.8, progress);
-    //     const newRotation = [
-    //       lerp(0, -5.5, progress),
-    //       lerp(0, Math.PI, progress),
-    //       lerp(0, 0, progress),
-    //     ];
-  
-    //     setScale(newScale);
-    //     setRotation(newRotation);
-  
-    //     if (progress < 1) {
-    //       requestAnimationFrame(animate);
-    //     } else {
-    //       setIsAnimating(false); // Stop animating after reaching full scale
-    //     }
-    //   };
-  
-    //   requestAnimationFrame(animate);
-    // }, []);
-  
-    // useFrame(({ clock }) => {
-    //   if (!isAnimating) {
-    //     // Ensure final rotation position after scaling completes
-    //     ref.current.rotation.set(-5.5, Math.PI, 0);
-    //   } else {
-    //     // Apply rotation updates only during scaling animation
-    //     ref.current.rotation.set(rotation[0], rotation[1], rotation[2]);
-    //   }
-      
-    //   // Adjust the Y position to create a floating effect
-    //   ref.current.position.y = -0.5 + Math.sin(clock.getElapsedTime()) * 0.1;
-    // });
-  
-    return (
-      <primitive
-  ref={ref}
-  object={gltf.scene}
-  scale={[1, 1, 1]}
-  position={[0, 5, 0]} // Apply the animated scale
-  rotation={[21, Math.PI,0]} // Rotate downwards
-/>
-    );
+  // State for scale and floating effect
+  const [scale, setScale] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(true);
+  const [floatY, setFloatY] = useState(0); // State to control Y position for floating
+
+  useEffect(() => {
+    // Animate the scale to 1 over 1 second
+    const scaleInterval = setInterval(() => {
+      setScale((prevScale) => {
+        if (prevScale >= 1) {
+          clearInterval(scaleInterval);
+          setIsAnimating(false);
+          return 1;
+        }
+        return prevScale + 0.05;
+      });
+    }, 50);
+
+    return () => clearInterval(scaleInterval);
+  }, []);
+
+  useFrame(({ clock }) => {
+    if (ref.current) {
+      // Calculate a new Y position using a sine wave for a floating effect
+      const newY = Math.sin(clock.getElapsedTime()) * 1.5; // Adjust amplitude for subtlety
+      setFloatY(newY);
+
+      // Only animate the scale if it's still scaling up
+      if (isAnimating) {
+        ref.current.scale.set(scale, scale, scale);
+      }
+
+      // Apply the floating effect by adjusting the Y position
+      ref.current.position.y = 5 + floatY; // Original Y position (5) + floating effect
+    }
+  });
+
+  return (
+    <primitive
+      ref={ref}
+      object={gltf.scene}
+      scale={new Vector3(scale, scale, scale)}
+      position={[0, 5, 0]} // Initial position
+      rotation={[21, Math.PI, 0]} // Initial rotation
+    />
+  );
 };
+
 
 const CameraControls = () => {
   const { camera } = useThree();
@@ -95,9 +87,9 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
   const { isMobile } = useGeneralContext();
 
   return (
-    <section className="w-[95%] mx-auto flex flex-col flex-col-reverse overflow-x-hidden relative md:h-[80vh] md:flex-row md:flex-row-reverse rounded-lg relative">
-      <section className="relative w-full h-full md:w-[50vw] mt-auto sm:block">
-        <h2 className="text-3xl px-4 sm:text-3xl md:text-4xl font-semibold text-center mb-4 animate-gradient">
+    <section className="w-[95%] mx-auto flex flex-col flex-col-reverse overflow-hidden relative sm:h-[80vh] sm:flex-row sm:flex-row-reverse rounded-lg relative">
+      <section className="relative w-full h-full sm:w-[50vw] mt-auto sm:block">
+        <h2 className="text-3xl px-4 sm:text-3xl sm:text-4xl font-semibold text-center mb-4 animate-gradient">
           FocusFlow Software
         </h2>
         <img className="w-[50vw] max-w-[200px] max-h-[200px] mx-auto object-cover rounded-xl" src={brain.src} alt='le brain' />
@@ -112,31 +104,21 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
           </button>
         </p>
       </section>
-      <section className="md:block md:w-[50vw] flex justify-center items-center flex-col md:h-[80vh] mb-8">
-        <h1 className="text-3xl px-4 sm:text-3xl md:text-4xl font-semibold text-center mb-4 animate-gradient">
+      <section className=" sm:block sm:w-[50vw] flex justify-center items-center flex-col sm:h-[80vh] mb-8">
+        <h1 className="text-3xl px-4 sm:text-3xl sm:text-4xl font-semibold text-center mb-4 animate-gradient">
           Creative and Custom Web Design in Halifax
         </h1>
-        <Canvas className="w-full h-full flex items-start">
+        {/* <Canvas className="w-full h-full flex items-start">
           <ambientLight intensity={1.5} />
           <directionalLight position={[5, 5, 5]} intensity={1} />
-          <CameraControls /> {/* Add CameraControls here */}
+          <CameraControls /> 
           <Model url={coloredLaptop} />
-          <OrbitControls enablePan={false} enableZoom={true} />
-        </Canvas>
-        {isMobile && (
-          <>
-            <p className="text-left px-3 text-lg md:hidden">
-              FocusFlow Software specializes in delivering unique, attention-grabbing websites with the latest technologies all in a quick manner to elevate your status and take your brand to the next level.
-              <br /><br />
-              <button className="bg-[#00bfff] p-3 rounded-lg md:hidden">
-                Win Today
-              </button>
-            </p>
-          </>
-        )}
+          <OrbitControls enablePan={false} enableZoom={false} />
+        </Canvas> */}
       </section>
     </section>
   );
+  
 };
 
 export default Herobanner;

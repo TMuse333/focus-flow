@@ -35,6 +35,8 @@ import Herobanner from "@/components/herobanner/herobanner";
 import AppearingContent from "@/components/appearingContent/appearingContent";
 import { lionSpeech } from "@/data/data";
 import dynamic from "next/dynamic";
+import BigNav from "@/components/bigNav/navbar";
+import twoHand from '../../public/media/gemeni-two-hand-stick.webp'
 
 
 const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
@@ -48,11 +50,87 @@ const Footer = dynamic(() => import('@/components/footer/footer'), {
 });
 
 
+
+
 export default function Home() {
 
 
 
-
+  const bigLinks = [
+    {
+      name: 'Our Work',
+      secondaryLinks: [
+        {
+          name: 'Our Best Designs',
+          destination: 'showcase',
+        },
+        {
+          name: 'Client Work',
+          destination: 'portfolio',
+        },
+      ],
+      listSubMenu: true,
+    },
+    {
+      name: 'Products',
+      secondaryLinks: [
+        {
+          name: 'Restaurant Software',
+          destination: 'online-food-ordering-system',
+        },
+        {
+          name: 'Realtor Website',
+          destination: 'realtor',
+        },
+      ],
+      listSubMenu: true,
+    },
+    {
+      name: 'Resources',
+      secondaryLinks: [
+        {
+          name: 'Focus Strategies',
+          destination: 'focus-strategies',
+        },
+        {
+          name: 'Skill Refinement',
+          destination: 'skill-refinement',
+        },
+      ],
+      listSubMenu: true,
+    },
+    {
+      name:'Websites',
+      secondaryLinks:[
+        {
+          name:'What makes a great website?',
+          destination:'great-website'
+        },
+        {
+          name:'Potential of websites',
+          destination:'/potential'
+        },
+        {
+          name:'Website maintenance',
+          destination:'Web-maintenance'
+        }
+      ],
+      listSubMenu:true,
+      subMenuSrc:twoHand.src,
+      subMenuAlt:'Two hands'
+    },
+    {
+      name: 'About Us',
+      secondaryLinks: [],
+      listSubMenu: false,
+    },
+    {
+      name: 'Contact',
+      secondaryLinks: [],
+      listSubMenu: false,
+    },
+  ];
+  
 
 
 const links = [
@@ -120,15 +198,13 @@ const links = [
    
       <SelectedCarouselImage/>
       
+<BigNav
+links={bigLinks}
+/>
 
-      <Navbar
-      links={links}
-     
-      absolute={false}
-      />
 
     <main className="text-center z-[30]
-    overflow-x-hidden mt-[8rem] "
+    overflow-x-hidden mt-[3rem] lg:mt-[8rem] "
     style={{
       filter:selectedCarouselImageIndex !== null ? 'blur(8px)' : 'none',
       // Ensures full viewport height to avoid scrolling in the main content
@@ -136,7 +212,7 @@ const links = [
       
     }}>
   
-
+  <section>
 
   
       
@@ -144,24 +220,24 @@ const links = [
       <Herobanner
       sections={herobannerData}/>
       {/* <MultiLayerParallax/> */}
-     
+      </section>
 
     
-      <Content
+      {/* <Content
       {...contentData1}
       reverse={false}
       hasAnimation={true}
       customText={null}
       floatingImage={true}
       image={laptop}
-      />
+      /> */}
     
-    {/* <AppearingContent
+    <AppearingContent
     sliderText="Tailored for You, Delivered Fast"
     src={lionSpeech}
     id='appearing-video'
     isVideo={true}
-    /> */}
+    />
 
 
     

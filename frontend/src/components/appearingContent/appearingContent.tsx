@@ -61,7 +61,7 @@ const AppearingContent: React.FC<ContentProps> = ({
         style={{
             scale
         }}
-         className="w-screen relative mb-8">
+         className="w-screen relative my-8">
             <SlidingText text={sliderText} setSlideComplete={setAnimationStarted} />
 
             <section className="relative" ref={scope}>

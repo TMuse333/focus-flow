@@ -10,6 +10,8 @@ interface NavbarProps {
     absolute?:boolean
 }
 
+
+
 const Navbar: React.FC<NavbarProps> = ({ links,transparentBg,
     absolute }) => {
     const [subMenuClicked, setSubMenuClicked] = useState(false);
