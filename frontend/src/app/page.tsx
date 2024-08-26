@@ -1,13 +1,13 @@
 "use client"
 
-import AlternatingText from "@/components/alternatingText/alternatingText";
+// import AlternatingText from "@/components/alternatingText/alternatingText";
 import Content from "@/components/content/content";
-import MultiLayerParallax from "@/components/mountainParallax/mountainParallax";
+// import MultiLayerParallax from "@/components/mountainParallax/mountainParallax";
 
-import { contentData1, RestaurantContentBoxData } from "@/data/data";
-import dynamic from "next/dynamic";
-import Image from "next/image";
-import laptop from '../../public/media/laptop.jpg'
+import {  RestaurantContentBoxData } from "@/data/data";
+// import dynamic from "next/dynamic";
+// import Image from "next/image";
+// import laptop from '../../public/media/laptop.jpg'
 // import CircleList from "@/components/circleListElement/circleList";
 import { CircleInfoGraphic } from "@/components/circleInfographic/circleInfoGraphic";
 
@@ -15,7 +15,7 @@ import { CircleInfoGraphic } from "@/components/circleInfographic/circleInfoGrap
 import {ScrollableCarousel, SelectedCarouselImage} from "@/components/scrollableCarousel/scrollableCarousel";
 import { useGeneralContext } from "@/context/context";
 
-import { AuroraHero } from "@/components/auroraHero/auroraHero";
+// import { AuroraHero } from "@/components/auroraHero/auroraHero";
 import { motion } from "framer-motion";
 import moneyLaptop from '../../public/media/nobg-more-money-laptop.png'
 import Accordion from "@/components/accordion/accordion";
@@ -25,16 +25,27 @@ import ParticlesComponent from "@/components/particles/particles";
 import {useIntersectionObserver} from "@/components/intersectionObserver/intersectionObserver";
 import { useState } from "react";
 import Navbar from "@/components/navbar2/navbar";
-import { SlideFlip } from "@/components/fancyText/fancyText";
-import Footer from "@/components/footer/footer";
+// import { SlideFlip } from "@/components/fancyText/fancyText";
+// import Footer from "@/components/footer/footer";
 import Head from "next/head";
 import { scrollableImages } from "@/data/data";
 import ContentBox from "@/components/contentBox/contentBox";
 import Herobanner from "@/components/herobanner/herobanner";
-import SlidingText from "@/components/slidingText/slidingText";
+// import SlidingText from "@/components/slidingText/slidingText";
 import AppearingContent from "@/components/appearingContent/appearingContent";
 import { lionSpeech } from "@/data/data";
+import dynamic from "next/dynamic";
 
+
+const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
+  ssr: false,
+  loading: () => <p>Loading Aurora Hero...</p>, // Optional: a loading component
+});
+
+const Footer = dynamic(() => import('@/components/footer/footer'), {
+  ssr: false,
+  loading: () => <p>Loading Footer...</p>, // Optional: a loading component
+});
 
 
 export default function Home() {
@@ -203,43 +214,16 @@ ref={contentRef}>
       reverse={true}
       image={moneyLaptop}
       />
-
-      {/* <SlideFlip
-      startLeft={false}
-      text={'Flip Nation'}
-      /> */}
-
-    
-
 <ScrollableCarousel
 images={scrollableImages}
 title='Creating Digital Excellence'
 description="Explore some of our showcased projects. Click on each for detailed insights and excellence in digital creation."
 />
 
-
-
-
-           
-        
-
 <CircleInfoGraphic
 title='Built to work, work to build'
 description='We are ready to work! Here is why we are well 
 suited to take your business to the next level'/>
-
-
-
-
-{/* <CircleList/> */}
-
-
-
-
-
-
-
-
 
 <AuroraHero/>
 
