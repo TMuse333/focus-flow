@@ -322,6 +322,8 @@ export const herobannerData = [
 
 export const laptop3d = '/models/laptop.gltf'
 
+export const coloredLaptop = '/models/colored-laptop.gltf'
+
 
 export const restaurantCloser = {
     title:'Elevate Your Restaurant',

@@ -136,7 +136,7 @@ const links = [
       
     }}>
   
-  <section>
+
 
   
       
@@ -144,24 +144,24 @@ const links = [
       <Herobanner
       sections={herobannerData}/>
       {/* <MultiLayerParallax/> */}
-      </section>
+     
 
     
-      {/* <Content
+      <Content
       {...contentData1}
       reverse={false}
       hasAnimation={true}
       customText={null}
       floatingImage={true}
       image={laptop}
-      /> */}
+      />
     
-    <AppearingContent
+    {/* <AppearingContent
     sliderText="Tailored for You, Delivered Fast"
     src={lionSpeech}
     id='appearing-video'
     isVideo={true}
-    />
+    /> */}
 
 
     
