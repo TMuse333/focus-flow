@@ -36,7 +36,7 @@ import AppearingContent from "@/components/appearingContent/appearingContent";
 import { lionSpeech } from "@/data/data";
 import dynamic from "next/dynamic";
 import BigNav from "@/components/bigNav/navbar";
-import twoHand from '../../public/media/gemeni-two-hand-stick.webp'
+
 
 
 const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
@@ -56,80 +56,7 @@ export default function Home() {
 
 
 
-  const bigLinks = [
-    {
-      name: 'Our Work',
-      secondaryLinks: [
-        {
-          name: 'Our Best Designs',
-          destination: 'showcase',
-        },
-        {
-          name: 'Client Work',
-          destination: 'portfolio',
-        },
-      ],
-      listSubMenu: true,
-    },
-    {
-      name: 'Products',
-      secondaryLinks: [
-        {
-          name: 'Restaurant Software',
-          destination: 'online-food-ordering-system',
-        },
-        {
-          name: 'Realtor Website',
-          destination: 'realtor',
-        },
-      ],
-      listSubMenu: true,
-    },
-    {
-      name: 'Resources',
-      secondaryLinks: [
-        {
-          name: 'Focus Strategies',
-          destination: 'focus-strategies',
-        },
-        {
-          name: 'Skill Refinement',
-          destination: 'skill-refinement',
-        },
-      ],
-      listSubMenu: true,
-    },
-    {
-      name:'Websites',
-      secondaryLinks:[
-        {
-          name:'What makes a great website?',
-          destination:'great-website'
-        },
-        {
-          name:'Potential of websites',
-          destination:'/potential'
-        },
-        {
-          name:'Website maintenance',
-          destination:'Web-maintenance'
-        }
-      ],
-      listSubMenu:true,
-      subMenuSrc:twoHand.src,
-      subMenuAlt:'Two hands'
-    },
-    {
-      name: 'About Us',
-      secondaryLinks: [],
-      listSubMenu: false,
-    },
-    {
-      name: 'Contact',
-      secondaryLinks: [],
-      listSubMenu: false,
-    },
-  ];
+
   
 
 
@@ -178,7 +105,7 @@ const links = [
   return (
     <>
     <Head>
-  <title>Let's Work Together | Halifax Web Design by Focus Flow Software</title>
+  <title>Creative Web Design | Halifax Web Design by Focus Flow Software</title>
   <meta name="description" content="Ready to elevate your online presence? Let's work together to create a fast, creative, and responsive website that meets your business needs." />
   <meta name="keywords" content="Halifax web design, collaborate with Q3 Visuals, responsive web design, creative web development, fast website design" />
   <meta property="og:title" content="Let's Work Together | Halifax Web Design by Focus Flow Software" />
@@ -199,7 +126,7 @@ const links = [
       <SelectedCarouselImage/>
       
 <BigNav
-links={bigLinks}
+excludedLink="/"
 />
 
 
