@@ -7,7 +7,7 @@ import Content from "@/components/content/content";
 import {  RestaurantContentBoxData } from "@/data/data";
 // import dynamic from "next/dynamic";
 // import Image from "next/image";
-// import laptop from '../../public/media/laptop.jpg'
+import laptop from '../../public/media/laptop.jpg'
 // import CircleList from "@/components/circleListElement/circleList";
 import { CircleInfoGraphic } from "@/components/circleInfographic/circleInfoGraphic";
 
@@ -26,7 +26,7 @@ import {useIntersectionObserver} from "@/components/intersectionObserver/interse
 import { useState } from "react";
 
 import Head from "next/head";
-import { scrollableImages } from "@/data/data";
+import { scrollableImages, contentData1 } from "@/data/data";
 import ContentBox from "@/components/contentBox/contentBox";
 import Herobanner from "@/components/herobanner/herobanner";
 
@@ -102,21 +102,22 @@ const links = [
 
   return (
     <>
-    <Head>
+<Head>
   <title>Creative Web Design | Halifax Web Design by Focus Flow Software</title>
-  <meta name="description" content="Ready to elevate your online presence? Let's work together to create a fast, creative, and responsive website that meets your business needs." />
-  <meta name="keywords" content="Halifax web design, collaborate with Q3 Visuals, responsive web design, creative web development, fast website design" />
-  <meta property="og:title" content="Let's Work Together | Halifax Web Design by Focus Flow Software" />
-  <meta property="og:description" content="Ready to elevate your online presence? Let's work together to create a fast, creative, and responsive website that meets your business needs." />
-  <meta property="og:url" content="https://www.focusflowsoftware.com/lets-work" />
+  <meta name="description" content="Experience fast, creative, and responsive web design tailored to elevate your business. Let's build a website that meets your needs and stands out in Halifax." />
+  <meta name="keywords" content="Halifax web design, creative web development, fast website design, responsive web design, Focus Flow Software" />
+  <meta property="og:title" content="Creative Web Design by Focus Flow Software - Halifax" />
+  <meta property="og:description" content="Elevate your business with our fast and creative web design services. FocusFlow software uses to latest technologies to stand out and quickly deliver a phenomenal website" />
+  <meta property="og:url" content="https://www.focusflowsoftware.com/" />
   <meta property="og:image" content="https://focusflowsoftware.com/media/gemeni-two-hand-stick.webp" /> 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Let's Work Together | Halifax Web Design by Focus Flow Software" />
-  <meta name="twitter:description" content="Ready to elevate your online presence? Let's work together to create a fast, creative, and responsive website that meets your business needs." />
+  <meta name="twitter:title" content="Creative Web Design by Focus Flow Software - Halifax" />
+  <meta name="twitter:description" content="Experience fast and creative web design that stands out to take your business to the next level." />
   <meta name="twitter:image" content="https://focusflowsoftware.com/media/gemeni-two-hand-stick.webp" /> 
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="canonical" href="https://focusflowsoftware.com/lets-work" />
+  <link rel="canonical" href="https://focusflowsoftware.com/" />
 </Head>
+
 
 
 <ParticlesComponent/>
@@ -148,21 +149,21 @@ excludedLink="/"
       </section>
 
     
-      {/* <Content
+      <Content
       {...contentData1}
       reverse={false}
       hasAnimation={true}
       customText={null}
       floatingImage={true}
       image={laptop}
-      /> */}
+      />
     
-    <AppearingContent
+    {/* <AppearingContent
     sliderText="Tailored for You, Delivered Fast"
     src={lionSpeech}
     id='appearing-video'
     isVideo={true}
-    />
+    /> */}
 
 
     
