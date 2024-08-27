@@ -59,27 +59,23 @@ export const ContextProvider: React.FC<{ children: ReactNode }> = ({ children })
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsMobile(window.innerWidth <= 655);
+      if (typeof window !== 'undefined') {
+        setIsMobile(window.innerWidth <= 655);
+      }
     };
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', handleScroll);
+      handleScroll(); // Initial check
+    }
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('scroll', handleScroll);
+      }
     };
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsMobile2(window.innerWidth <= 400);
-    };
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   useEffect(() => {
     console.log('is mobile', isMobile);

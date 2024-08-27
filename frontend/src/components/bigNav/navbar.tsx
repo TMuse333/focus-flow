@@ -297,7 +297,7 @@ interface SubMenuProps {
 
 const BigNav: React.FC<NavbarProps> = ({ excludedLink }) => {
     const [subMenuClicked, setSubMenuClicked] = useState(false);
-    const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 900)
+    const [isDesktop, setIsDesktop] = useState(false)
     const [hoveredSubMenuIndex, setHoveredSubMenuIndex] =
     useState<number | null>(null)
 
@@ -306,17 +306,24 @@ const BigNav: React.FC<NavbarProps> = ({ excludedLink }) => {
       const filteredLinks = bigLinks.filter(link => link.name !== excludedLink);
     
 
-    useEffect(()=> {
+      useEffect(() => {
         const handleResize = () => {
-            setIsDesktop(window.innerWidth >= 900)
+          if (typeof window !== 'undefined') {
+            setIsDesktop(window.innerWidth >= 900);
+          }
+        };
+    
+        if (typeof window !== 'undefined') {
+          handleResize(); // Initial check
+          window.addEventListener('resize', handleResize);
         }
-        handleResize()
-        window.addEventListener('resize',handleResize)
-
+    
         return () => {
-            window.removeEventListener('resize',handleResize)
-        }
-    })
+          if (typeof window !== 'undefined') {
+            window.removeEventListener('resize', handleResize);
+          }
+        };
+      }, []);
 
     function handleSubmenuClick() {
         setSubMenuClicked(!subMenuClicked);
