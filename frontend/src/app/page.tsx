@@ -29,11 +29,11 @@ import { scrollableImages, contentData1 } from "@/data/data";
 import ContentBox from "@/components/contentBox/contentBox";
 import Herobanner from "@/components/herobanner/herobanner";
 
-import AppearingContent from "@/components/appearingContent/appearingContent";
-import { lionSpeech } from "@/data/data";
+// import AppearingContent from "@/components/appearingContent/appearingContent";
+// import { lionSpeech } from "@/data/data";
 import dynamic from "next/dynamic";
 import BigNav from "@/components/bigNav/navbar";
-import VideoImage from "@/components/videoImg/videoImg";
+// import VideoImage from "@/components/videoImg/videoImg";
 
 
 
@@ -159,7 +159,7 @@ excludedLink="/"
       floatingImage={true}
       image={laptop}
       />
-       <VideoImage/>
+       {/* <VideoImage/> */}
     
     {/* <AppearingContent
     sliderText="Tailored for You, Delivered Fast"
