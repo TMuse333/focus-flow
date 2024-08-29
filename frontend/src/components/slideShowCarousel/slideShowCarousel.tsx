@@ -225,7 +225,7 @@ const { isMobile } = useGeneralContext()
       opacity: 0,
       transform: 'translateX(50px)' // Replace x:50 with translateX
     }}
-    className='absolute z-[14] text-white w-4/5 md:w-2/5 text-md sm:text-lg md:text-4xl'
+    className='absolute z-[14] text-white w-3/4 md:w-2/5 text-md sm:text-lg md:text-4xl'
     style={{
       transform: 'translateY(5%) translateX(15%)' // Handle positioning with transform
     }}
@@ -239,7 +239,7 @@ const { isMobile } = useGeneralContext()
             id={`carousel-element-${index}`}
                 src={src}
                 alt={alt}
-                className={`w-[80%] ml-auto mr-auto object-cover 
+                className={`w-[90%] ml-auto mr-auto object-cover 
                 h-full max-w-[1200px] overflow-y-hidden
                `}
                 style={{ filter:'brightness(0.6)',
