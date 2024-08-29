@@ -20,41 +20,37 @@ const Model: React.FC<{ url: string }> = ({ url }) => {
   const gltf: any = useGLTF(url);
   const ref = useRef<any>();
   const { isMobile } = useGeneralContext();
-  
-  // State for scale and floating effect
-  const [scale, setScale] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(true);
+
+  // State for floating effect
   const [floatY, setFloatY] = useState(0); // State to control Y position for floating
+  const [scale, setScale] = useState(0.1); // Initialize scale at 0.1
+  const targetScale = 1; // The target scale you want to reach
+  const lerpFactor = 0.05; // Factor for lerping both scale and rotation
 
-  useEffect(() => {
-    // Animate the scale to 1 over 1 second
-    const scaleInterval = setInterval(() => {
-      setScale((prevScale) => {
-        if (prevScale >= 1) {
-          clearInterval(scaleInterval);
-          setIsAnimating(false);
-          return 1;
-        }
-        return prevScale + 0.05;
-      });
-    }, 50);
-
-    return () => clearInterval(scaleInterval);
-  }, []);
+  const targetRotation = [
+    (21 ) , // Target rotation around the x-axis (converted to radians)
+    Math.PI, // Target rotation around the y-axis (180 degrees)
+    0, // No rotation on the z-axis
+  ];
 
   useFrame(({ clock }) => {
     if (ref.current) {
-      // Calculate a new Y position using a sine wave for a floating effect
-      const newY = Math.sin(clock.getElapsedTime()) * 1.5; // Adjust amplitude for subtlety
+      // Floating effect
+      const newY = Math.sin(clock.getElapsedTime()) * 1.5;
       setFloatY(newY);
 
-      // Only animate the scale if it's still scaling up
-      if (isAnimating) {
-        ref.current.scale.set(scale, scale, scale);
-      }
+      // Smooth scaling from 0.1 to 1
+      const newScale = scale + (targetScale - scale) * lerpFactor;
+      setScale(newScale);
+      ref.current.scale.set(newScale, newScale, newScale);
 
-      // Apply the floating effect by adjusting the Y position
-      ref.current.position.y = 5 + floatY; // Original Y position (5) + floating effect
+      // Smooth rotation towards the target rotation
+      ref.current.rotation.x += (targetRotation[0] - ref.current.rotation.x) * lerpFactor;
+      ref.current.rotation.y += (targetRotation[1] - ref.current.rotation.y) * lerpFactor;
+      ref.current.rotation.z += (targetRotation[2] - ref.current.rotation.z) * lerpFactor;
+
+      // Ensure the model ends up in its correct Y position
+      ref.current.position.y = 5 + floatY;
     }
   });
 
@@ -62,12 +58,19 @@ const Model: React.FC<{ url: string }> = ({ url }) => {
     <primitive
       ref={ref}
       object={gltf.scene}
-      scale={new Vector3(scale, scale, scale)}
       position={[0, 5, 0]} // Initial position
-      rotation={[21, Math.PI, 0]} // Initial rotation
+      rotation={[0, 0, 0]} // Start rotation at 0, 0, 0
     />
   );
 };
+
+
+
+
+
+
+
+
 
 
 const CameraControls = () => {

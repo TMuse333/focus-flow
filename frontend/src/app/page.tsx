@@ -5,8 +5,7 @@ import Content from "@/components/content/content";
 // import MultiLayerParallax from "@/components/mountainParallax/mountainParallax";
 
 import {  RestaurantContentBoxData } from "@/data/data";
-// import dynamic from "next/dynamic";
-// import Image from "next/image";
+
 import laptop from '../../public/media/laptop.jpg'
 // import CircleList from "@/components/circleListElement/circleList";
 import { CircleInfoGraphic } from "@/components/circleInfographic/circleInfoGraphic";
@@ -34,6 +33,7 @@ import AppearingContent from "@/components/appearingContent/appearingContent";
 import { lionSpeech } from "@/data/data";
 import dynamic from "next/dynamic";
 import BigNav from "@/components/bigNav/navbar";
+import VideoImage from "@/components/videoImg/videoImg";
 
 
 
@@ -148,6 +148,8 @@ excludedLink="/"
      
       </section>
 
+     
+
     
       <Content
       {...contentData1}
@@ -157,6 +159,7 @@ excludedLink="/"
       floatingImage={true}
       image={laptop}
       />
+       <VideoImage/>
     
     {/* <AppearingContent
     sliderText="Tailored for You, Delivered Fast"

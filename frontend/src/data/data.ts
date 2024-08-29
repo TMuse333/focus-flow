@@ -334,4 +334,6 @@ export const restaurantCloser = {
 }
 
 
+export const pageScroll = '/videos/homepage-scrol.mp4'
+
 
