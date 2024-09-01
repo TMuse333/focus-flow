@@ -28,9 +28,9 @@ const Model: React.FC<{ url: string }> = ({ url }) => {
   const lerpFactor = 0.05; // Factor for lerping both scale and rotation
 
   const targetRotation = [
-    (21 ) , // Target rotation around the x-axis (converted to radians)
-    Math.PI, // Target rotation around the y-axis (180 degrees)
-    0, // No rotation on the z-axis
+    (14.5 ) , // Target rotation around the x-axis (converted to radians)
+    Math.PI , // Target rotation around the y-axis (180 degrees)
+    0.1, // No rotation on the z-axis
   ];
 
   useFrame(({ clock }) => {
@@ -107,7 +107,7 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
           </button>
         </p>
       </section>
-      <section className=" sm:block sm:w-[50vw] flex justify-center items-center flex-col sm:h-[80vh] mb-8">
+      <section className=" sm:block sm:w-[50vw] flex justify-center items-center flex-col h-[80vh] mb-8">
         <h1 className="text-3xl px-4 sm:text-3xl sm:text-4xl font-semibold text-center mb-4 animate-gradient">
           Creative and Custom Web Design in Halifax
         </h1>

@@ -238,11 +238,10 @@ function handleImageClick(index: number) {
 
               
            '
-               
-             layout="position"
+          
       width={1000} // Base width as a percentage
       height={55} // Base height as a percentage
-      objectFit="cover"
+    
               
                 style={{
                     transform: `

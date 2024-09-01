@@ -37,8 +37,8 @@ title, description, index,titleInView}) => {
     //-120px
     const options = {
         root: null,
-        rootMargin: !isMobile ? '-120px' : '-150px',
-        threshold:!isMobile ?  0.5 : 0.1,
+        rootMargin: !isMobile ? '-120px' : '-120px',
+        threshold:!isMobile ?  0.5 : 0.2,
     };
 
 
@@ -193,7 +193,7 @@ export const CircleInfoGraphic:React.FC<Props> = ({
 
     const options = {
         root: null,
-        rootMargin: !isMobile ? '500px' : '100px',
+        rootMargin: !isMobile ? '500px' : '80px',
         threshold:!isMobile ?  0.6 : 0.1,
     };
 
@@ -226,7 +226,7 @@ export const CircleInfoGraphic:React.FC<Props> = ({
            
        </div> */}
 
-       <div className=""
+       <div className="w-screen"
        ref={contentRef}>
        {title && (
             <>
@@ -262,7 +262,7 @@ export const CircleInfoGraphic:React.FC<Props> = ({
 
 
         <section ref={contentRef}
-         className={`flex
+         className={`flex relative
          justify-center flex-col items-center
           sm:grid sm:grid-cols-2 xl:grid-cols-3
            gap-4 lg:gap-0 w-screen max-w-[1500px]  ml-auto mr-auto

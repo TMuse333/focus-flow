@@ -255,7 +255,7 @@ interface SubMenuProps {
                     ${!secondarySubMenuClicked ? 'translate-x-full': ''}`}>
 
                             <button className="bg-transparent
-                            top-[5%] absolute left-[10%] !text-2xl
+                            top-[5%] absolute right-[10%] !text-2xl
                             hover:text-q-blue"
                             onClick={exitFullMobileNav}>
                                 X
