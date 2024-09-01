@@ -74,21 +74,21 @@ const Content: React.FC<contentProps> = ({
 
 
 
-//   const textVariants = (delay: number): Variants => {
-//     return {
-//       initial: {
-//         x: reverse ? -30 : 30,
-//         opacity: 0,
-//       },
-//       animate: {
-//         x: 0,
-//         opacity: 1,
-//         transition: {
-//           delay: delay,
-//         },
-//       },
-//     };
-//   };
+  const textVariants = (delay: number): Variants => {
+    return {
+      initial: {
+        x: reverse ? -30 : 30,
+        opacity: 0,
+      },
+      animate: {
+        x: 0,
+        opacity: 1,
+        transition: {
+          delay: delay,
+        },
+      },
+    };
+  };
 
   const headerVariants = (delay:number): Variants => {
     return {
