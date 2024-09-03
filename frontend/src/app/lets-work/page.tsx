@@ -2,7 +2,7 @@
 
 import Contact from "@/components/contactPage/contactPage";
 import Footer from "@/components/footer/footer";
-import Navbar from "@/components/navbar2/navbar";
+import Navbar from "@/components/bigNav/navbar";
 import React from "react";
 import Head from "next/head";
 
@@ -46,7 +46,8 @@ const Work = () => {
        {/* Replace with your actual image URL */}
       <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       <link rel="canonical" href="https://focusflowsoftware.com/lets-work" />
-    </Head> <Navbar links={links}/>
+    </Head> <Navbar 
+    excludedLink="Contact"/>
         <main className="w-screen mt-[6rem]"> 
        
 <Contact/>

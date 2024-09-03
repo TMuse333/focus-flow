@@ -4,7 +4,7 @@ import React, { Suspense } from "react";
 import Head from "next/head";
 const Accordion = React.lazy(() => import("@/components/accordion/accordion"));
 const ImageAccordion = React.lazy(() => import("@/components/imageAccordion/imageAccordion"));
-const Navbar = React.lazy(() => import("@/components/navbar2/navbar"));
+const Navbar = React.lazy(() => import("@/components/bigNav/navbar"));
 const TextParallaxContentExample = React.lazy(() => import("@/components/parallaxText/parallaxText").then(module => ({ default: module.TextParallaxContentExample })));
 const PriceBoxes = React.lazy(() => import("@/components/priceBoxes/priceBoxes"));
 const Footer = React.lazy(() => import("@/components/footer/footer"));
@@ -200,7 +200,8 @@ const Restaurant = () => {
 
 </Head>
             <Suspense fallback={<div>Loading...</div>}>
-                <Navbar links={links} />
+                <Navbar 
+                excludedLink="Products" />
             </Suspense>
             <main className="mt-[4rem]">
                 <Suspense fallback={<div>Loading...</div>}>

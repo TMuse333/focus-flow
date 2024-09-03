@@ -5,7 +5,8 @@ import Head from "next/head";
 import type { Metadata } from 'next';
 import { slideShowImages } from "@/data/data"; 
 
-const Navbar = React.lazy(() => import("@/components/navbar2/navbar"));
+
+const Navbar = React.lazy(() => import("@/components/bigNav/navbar"));
 const SlideShowCarousel = React.lazy(() => import("@/components/slideShowCarousel/slideShowCarousel"));
 const CircleList = React.lazy(() => import("@/components/circleListElement/circleList"));
 const Footer = React.lazy(() => import("@/components/footer/footer"));
@@ -32,9 +33,7 @@ const Page = () => {
 
             <Suspense fallback={<div>Loading...</div>}>
                 <Navbar
-                    links={links}
-                    transparentBg={false}
-                    absolute={true}
+                    excludedLink="Why Us"
                 />
             </Suspense>
 

@@ -55,7 +55,7 @@ interface SubMenuProps {
       secondaryLinks: [
         {
           name: 'Restaurant Software',
-          destination: 'online-food-ordering-system',
+          destination: '/online-food-ordering-system',
         },
         // {
         //   name: 'Realtor Website',
@@ -110,7 +110,7 @@ interface SubMenuProps {
       secondaryLinks: [
         {
             name:'Why Us',
-            destination:'why-us'
+            destination:'/why-us'
         }
       ],
       listSubMenu: false,
@@ -120,7 +120,7 @@ interface SubMenuProps {
       secondaryLinks: [
         {
             name:'Contact',
-            destination:'lets-work'
+            destination:'/lets-work'
         }
       ],
       listSubMenu: false,
@@ -372,10 +372,14 @@ const BigNav: React.FC<NavbarProps> = ({ excludedLink }) => {
 
         ) : (
             <>
+            <Link href='/'
+            passHref>
+             
          <h3 className="my-auto relative pb-3
          translate-y-[1rem]" >
             FocusFlow Software
            </h3>
+           </Link>
             <section className="flex
             w-[80%] h-full
             justify-around items-center

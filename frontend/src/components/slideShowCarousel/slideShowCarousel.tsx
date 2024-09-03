@@ -190,7 +190,7 @@ const { isMobile } = useGeneralContext()
             
    relative
    
-   md:max-h-[800px]
+   md:max-h-[700px]
                ml-auto mr-auto
                 h-[105vw] 
                overflow-y-hidden
@@ -215,7 +215,7 @@ const { isMobile } = useGeneralContext()
     }}
     animate={{
       opacity: isCurrentSlide ? 1 : 0,
-      transform: isCurrentSlide && isMobile ? 'translate(20%,10%)' : isCurrentSlide ? 'translate(35%,10%)' : 'translate(20%,-50%)', // Use transform for movement
+      transform: isCurrentSlide && isMobile ? 'translate(20%,10%)' : isCurrentSlide ? 'translate(25%,10%)' : 'translate(20%,-50%)', // Use transform for movement
       transition: {
         delay: animationComplete ? 0.4 : 0,
         duration: 0.4
