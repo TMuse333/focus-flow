@@ -38,7 +38,8 @@ const AppearingContent: React.FC<ContentProps> = ({
 
 
         // Animate image opacity
-        await animate(`#content-${id}`, { opacity: 1 });
+        await animate(`#content-${id}`, { opacity: 1 },
+        { duration: 0.5 });
     };
 
     useEffect(() => {
@@ -114,11 +115,12 @@ max-h-[500px]">
 
                         ) : (
 
-                            <img
+                            <motion.img
                             id={`content-${id}`}
                             src={src}
                             alt={alt}
                             className="w-full mx-auto object-cover opacity-0
+
                             max-h-[500px]"
                         />
                         )}

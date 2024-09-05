@@ -24,7 +24,7 @@ const Model: React.FC<{ url: string }> = ({ url }) => {
   // State for floating effect
   const [floatY, setFloatY] = useState(0); // State to control Y position for floating
   const [scale, setScale] = useState(0.1); // Initialize scale at 0.1
-  const targetScale = 1; // The target scale you want to reach
+  const targetScale = isMobile ? 1.2 : 1; // The target scale you want to reach
   const lerpFactor = 0.05; // Factor for lerping both scale and rotation
 
   const targetRotation = [
@@ -107,7 +107,7 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
           </button>
         </p>
       </section>
-      <section className=" sm:block sm:w-[50vw] flex justify-center items-center flex-col h-[80vh] mb-8">
+      <section className=" sm:block sm:w-[50vw] flex justify-center items-center flex-col  h-[60vh] md:h-[80vh] mb-8">
         <h1 className="text-3xl px-4 sm:text-3xl sm:text-4xl font-semibold text-center mb-4 animate-gradient">
           Creative and Custom Web Design in Halifax
         </h1>

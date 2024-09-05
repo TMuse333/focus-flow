@@ -29,11 +29,12 @@ import { scrollableImages, contentData1 } from "@/data/data";
 import ContentBox from "@/components/contentBox/contentBox";
 import Herobanner from "@/components/herobanner/herobanner";
 
-// import AppearingContent from "@/components/appearingContent/appearingContent";
-// import { lionSpeech } from "@/data/data";
+import AppearingContent from "@/components/appearingContent/appearingContent";
+import { lionSpeech } from "@/data/data";
 import dynamic from "next/dynamic";
 import BigNav from "@/components/bigNav/navbar";
 // import VideoImage from "@/components/videoImg/videoImg";
+import goku from '../../public/media/goku-vs-jiren.jpg'
 
 
 
@@ -138,7 +139,7 @@ excludedLink="/"
       
     }}>
   
-  <section>
+  <section className="">
 
   
       
@@ -151,21 +152,21 @@ excludedLink="/"
      
 
     
-      <Content
+      {/* <Content
       {...contentData1}
       reverse={false}
       hasAnimation={true}
       customText={null}
       floatingImage={true}
       image={laptop}
-      />
+      /> */}
        {/* <VideoImage/> */}
     
     {/* <AppearingContent
     sliderText="Tailored for You, Delivered Fast"
-    src={lionSpeech}
+    src={goku.src}
     id='appearing-video'
-    isVideo={true}
+    isVideo={false}
     /> */}
 
 
