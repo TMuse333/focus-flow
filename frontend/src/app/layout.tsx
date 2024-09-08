@@ -11,8 +11,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 
 export const metadata: Metadata = {
-  title: "FocusFlow Software",
-  description: "We offer unique, custom coded and visually appealing websites delivered extremely quickly to make your business stand out and take you to the next level.",
+  title: "Creative and Custom Web Design in Halifax | FocusFlow Software",
+  description: "Focusflow Software offers top tier websites made cutting edge technology and creativity, while being delivered quickly.",
   keywords: "web design halifax, custom web design services, creative web page design, web designer halifax ",
   openGraph: {
     title: "Focus Flow Software | Creative Web Design",
