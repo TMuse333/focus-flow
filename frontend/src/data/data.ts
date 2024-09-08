@@ -336,4 +336,4 @@ export const restaurantCloser = {
 
 export const pageScroll = '/videos/homepage-scrol.mp4'
 
-
+export const focusFlowPromo = '/videos/focusflow-promotional-video1.mp4'

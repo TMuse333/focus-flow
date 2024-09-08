@@ -35,7 +35,7 @@ import dynamic from "next/dynamic";
 import BigNav from "@/components/bigNav/navbar";
 // import VideoImage from "@/components/videoImg/videoImg";
 import goku from '../../public/media/goku-vs-jiren.jpg'
-
+import { focusFlowPromo } from "@/data/data";
 
 
 const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
@@ -162,12 +162,12 @@ excludedLink="/"
       /> */}
        {/* <VideoImage/> */}
     
-    {/* <AppearingContent
+    <AppearingContent
     sliderText="Tailored for You, Delivered Fast"
-    src={goku.src}
+    src={focusFlowPromo}
     id='appearing-video'
-    isVideo={false}
-    /> */}
+    isVideo={true}
+    />
 
 
     
