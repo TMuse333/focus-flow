@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from 'next/link'
 import Image from 'next/image'
 import twoHand from '../../../public/media/gemeni-two-hand-stick.webp'
-
+import brain from '../../../public/media/focusFlow-brain-nobg.webp';
 interface NavbarProps {
     excludedLink:string
 }
@@ -125,6 +125,16 @@ interface SubMenuProps {
       ],
       listSubMenu: false,
     },
+    // {
+    //   name: 'Canvas',
+    //   secondaryLinks: [
+    //     {
+    //         name:'Canvas',
+    //         destination:'/canvas'
+    //     }
+    //   ],
+    //   listSubMenu: false,
+    // },
   ];
 
 
@@ -375,10 +385,16 @@ const BigNav: React.FC<NavbarProps> = ({ excludedLink }) => {
             <Link href='/'
             passHref>
              
-         <h3 className="my-auto relative pb-3
+         {/* <h3 className="my-auto relative pb-3
          translate-y-[1rem]" >
             FocusFlow Software
-           </h3>
+           </h3> */}
+           <Image src={brain}
+           className='w-[100px]'
+           width={600}
+           height={1300}
+           alt='Focusflow brain'
+           />
            </Link>
             <section className="flex
             w-[80%] h-full

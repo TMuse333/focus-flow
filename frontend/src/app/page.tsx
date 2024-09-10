@@ -36,6 +36,7 @@ import BigNav from "@/components/bigNav/navbar";
 // import VideoImage from "@/components/videoImg/videoImg";
 import goku from '../../public/media/goku-vs-jiren.jpg'
 import { focusFlowPromo } from "@/data/data";
+import SlideScrollCarousel from "@/components/slideScrollCarousel/slideScrollCarousel";
 
 
 const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
@@ -139,28 +140,15 @@ excludedLink="/"
       
     }}>
   
-  <section className="">
-
   
+
+  <SlideScrollCarousel
+  />
       
      
       <Herobanner
       sections={herobannerData}/>
      
-      </section>
-
-     
-
-    
-      {/* <Content
-      {...contentData1}
-      reverse={false}
-      hasAnimation={true}
-      customText={null}
-      floatingImage={true}
-      image={laptop}
-      /> */}
-       {/* <VideoImage/> */}
     
     <AppearingContent
     sliderText="Tailored for You, Delivered Fast"

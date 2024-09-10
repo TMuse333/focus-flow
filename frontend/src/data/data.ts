@@ -11,7 +11,7 @@ import coder2 from '../../public/media/focused-coder.webp'
 import meditate from '../../public/media/q3-visuals-logo-2.webp'
 import functional from '../../public/media/gemeni-functional.webp'
 import laptop from '../../public/media/q3-imac.webp'
-
+import placeholder from '../../public/media/placeholder.jpeg'
 
 export const contentData1 = {
     mainTitle:'Your Digital Presence is Important',
@@ -337,3 +337,65 @@ export const restaurantCloser = {
 export const pageScroll = '/videos/homepage-scrol.mp4'
 
 export const focusFlowPromo = '/videos/focusflow-promotional-video1.mp4'
+
+
+export const slideScrollImages = [
+    {
+        src:'/media/focusFlow-brain-nobg.webp',
+        alt:'the focusflow brain',
+        title:'The FocusFlow Brain'
+    },
+    {
+        src:'/media/focusFlow-brain-nobg.webp',
+        alt:'the focusflow brain',
+        title:'The FocusFlow Brain'
+    },
+    {
+        src:'/media/focusFlow-brain-nobg.webp',
+        alt:'the focusflow brain',
+        title:'The FocusFlow Brain'
+    },
+    {
+        src:'/media/focusFlow-brain-nobg.webp',
+        alt:'the focusflow brain',
+        title:'The FocusFlow Brain'
+    },
+    {
+        src:'/media/focusFlow-brain-nobg.webp',
+        alt:'the focusflow brain',
+        title:'The FocusFlow Brain'
+    },
+
+]
+
+export const genericContent = {
+    description:[`This is a staple in any website, a 
+    clean and simple way to introduce a page with an image or video that
+     slides in along with text right besides it and an optional button towards the page`,
+     'we typically use this component on the homepage but it can also be used when an image is needed to go along with some text in any scenario, the format of the text can also be completly customized to any format as well like a list or other components '
+]
+    }
+
+    export const genericSlideShow = [
+    
+        {
+            src:placeholder.src,
+            alt:'Quantum coder',
+            description:lorem30
+        },
+        {
+            src:placeholder.src,
+            alt:'meditate',
+            description:lorem30
+        },
+        {
+            src:placeholder.src,
+            alt:'functional',
+            description:lorem30
+        },
+        {
+            src:placeholder.src,
+            alt:'laptop',
+            description:lorem30
+        }
+    ]

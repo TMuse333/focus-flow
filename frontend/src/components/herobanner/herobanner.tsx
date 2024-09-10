@@ -3,7 +3,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useGLTF, OrbitControls } from "@react-three/drei";
 import { laptop3d, coloredLaptop } from '@/data/data';
 import { useGeneralContext } from "@/context/context";
-import brain from '../../../public/media/no-bg-brain.webp';
+import brain from '../../../public/media/focusFlow-brain-nobg.webp';
 import { motion, AnimatePresence } from "framer-motion";
 import { lerp } from 'three/src/math/MathUtils';
 import {Vector3} from 'three'

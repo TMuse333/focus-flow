@@ -9,9 +9,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ["latin"] });
 
-
+//<meta name="google-site-verification" content="SVVgC1gEFw6eo2gimpl7oudHF2MFExUUlsdeB1Jg1dM" />
 export const metadata: Metadata = {
-  title: "Creative and Custom Web Design in Halifax | FocusFlow Software",
+  title: "Focusflow Software",
   description: "Focusflow Software offers top tier websites made cutting edge technology and creativity, while being delivered quickly.",
   keywords: "web design halifax, custom web design services, creative web page design, web designer halifax ",
   openGraph: {
@@ -55,6 +55,12 @@ export default function RootLayout({
 
    
     <html lang="en">
+
+      {/* <Head
+      >
+       <meta name="google-site-verification" content="SVVgC1gEFw6eo2gimpl7oudHF2MFExUUlsdeB1Jg1dM" />
+      </Head> */}
+
     
 <ContextProvider>
 

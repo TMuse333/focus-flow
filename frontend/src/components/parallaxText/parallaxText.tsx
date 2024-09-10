@@ -42,7 +42,7 @@ thumbnail,subHeading,heading }) => {
 
   const [textYPosition, setTextYPosition] = useState(0)
   return (
-    <div className=" relative bg-black mb-4">
+    <div className=" relative bg-black mb-4 w-screen">
       <TextParallaxContent
         imgUrl={src}
         alt={alt}
@@ -277,12 +277,10 @@ const TextParallaxContent = ({
 }) => {
   return (
     <div
-      style={{
-        // paddingLeft: IMG_PADDING,
-        // paddingRight: IMG_PADDING,
-      }}
+    
     >
-      <div className="relative h-[150vh]">
+      <div className="relative h-[150vh] w-screen
+      ">
         <StickyImage 
         imgUrl={imgUrl}
         isVideo={isVideo}
@@ -371,7 +369,7 @@ const StickyImage = ({ imgUrl, isVideo, alt,muted,thumbnail,textYPosition }: { i
        
       }}
       ref={targetRef}
-      className="sticky z-[0] overflow-hidden  relative"
+      className=" z-[0] overflow-hidden  sticky  relative"
     >
         {!isVideo ? (
 

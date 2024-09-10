@@ -66,7 +66,8 @@ const PriceBoxes: React.FC<PriceBoxesProps> = ({ boxes, title, description }) =>
     <>
       <section
         ref={scope}
-        className="text-left px-4 mb-8 mx-auto max-w-[1200px]"
+        className="text-left px-4 mb-8 mx-auto max-w-[1200px]
+        overflow-x-hidden"
       >
         <SlidingText
           text="Experience the Freedom of More Profits"
