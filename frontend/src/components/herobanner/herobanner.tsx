@@ -97,10 +97,13 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
         </h2>
         <img className="w-[50vw] max-w-[200px] max-h-[200px] mx-auto object-cover rounded-xl" src={brain.src} alt='le brain' />
         <h2 className="text-left px-3 text-4xl my-4 bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent font-semibold">
-          Stunning websites, delivered quickly
+        Custom Web Design Services Tailored to Your Needs
         </h2>
         <p className="text-left px-3 text-lg">
-          FocusFlow Software specializes in delivering unique, attention-grabbing websites with the latest technologies all in a quick manner to elevate your status and take your brand to the next level.
+        At FocusFlow Software, we specialize in web design in Halifax, Nova Scotia, <span className="font-bold">offering custom web design services that are both innovative
+          </span> and tailored to your business.
+           We are dedicated constantly improving our craft and delivering web page designs that capture your brand and engage your audience, positioning us as <span className='font-bold'>your go-to web designer in Halifax.
+          </span>
           <br /><br />
           <button className="bg-[#00bfff] p-3 rounded-lg">
             Win Today

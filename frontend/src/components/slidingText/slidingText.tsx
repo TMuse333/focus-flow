@@ -35,8 +35,8 @@ const SlidingText: React.FC<TextProps> = ({ text, setSlideComplete }) => {
     return (
         <div ref={targetRef}>
             <motion.h2
-                className="text-2xl bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent 
-                text-4xl sm:text-5xl font-semibold text-center relative"
+                className="text-xl bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent 
+                text-3xl sm:text-4xl font-semibold text-center relative"
                 style={{ x, opacity }} // Apply the animated styles
             >
                 {text}

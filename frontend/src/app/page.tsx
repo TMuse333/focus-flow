@@ -105,9 +105,9 @@ const links = [
   return (
     <>
 <Head>
-  <title>Creative Web Design | Halifax Web Design by Focus Flow Software</title>
+  <title>Creative Web Design | Web design in Halifax by Focus Flow Software</title>
   <meta name="description" content="Experience fast, creative, and responsive web design tailored to elevate your business. Let's build a website that meets your needs and stands out in Halifax." />
-  <meta name="keywords" content="Halifax web design, creative web development, fast website design, responsive web design, Focus Flow Software" />
+  <meta name="keywords" content="web design halifax, creative web development, fast website design, responsive web design, Focus Flow Software" />
   <meta property="og:title" content="Creative Web Design by Focus Flow Software - Halifax" />
   <meta property="og:description" content="Elevate your business with our fast and creative web design services. FocusFlow software uses to latest technologies to stand out and quickly deliver a phenomenal website" />
   <meta property="og:url" content="https://www.focusflowsoftware.com/" />
@@ -151,7 +151,7 @@ excludedLink="/"
      
     
     <AppearingContent
-    sliderText="Tailored for You, Delivered Fast"
+    sliderText="Creative Web Page Design to Elevate Your Online Presence"
     src={focusFlowPromo}
     id='appearing-video'
     isVideo={true}

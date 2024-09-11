@@ -68,7 +68,17 @@ const AppearingContent: React.FC<ContentProps> = ({
             <section className="relative" ref={scope}>
                 <p id={`p-${id}`} className="text-left px-4 opacity-0 my-6
                 mx-auto max-w-[900px]">
-                  Every website we create at FocusFlow Software is a custom, one-of-a-kind experience, built with the latest technologies. We prioritize speed and innovation to ensure your brand stands out, uniquely crafted and quickly delivered.
+                  At FocusFlow Software, we believe that creative web page design is the key to unlocking your business's full potential online.
+                  With our <span className="font-semibold">
+                    creative, custom-coded websites
+                  </span> and years of honing our craft we are confident
+                  we are confident we are the <span className='font-semibold'>
+                    the best web design in Halifax, Nova Scotia.
+                  </span>
+
+                    <br/>
+                    <br/>
+We’ve helped countless clients in Halifax and beyond <span className='font-semibold'>transform</span> their digital presence with our custom web design services, and we’re excited to do the same for you. Watch the video to discover how we build websites that stand out from the competition, meet your specific needs, and are delivered <span className='font-semibold'>quickly</span> and <span className='font-semibold'>efficiently</span>. Your journey to a better online presence starts here!
                 </p>
 
                 <div
