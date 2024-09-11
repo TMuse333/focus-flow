@@ -5,7 +5,44 @@ import Footer from "@/components/footer/footer";
 import Navbar from "@/components/bigNav/navbar";
 import React from "react";
 import Head from "next/head";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+    title: "Let's Work Together | Halifax Web Design by Focus Flow Software",
+    description: "Ready to elevate your online presence? Let's work together to create a fast, creative, and responsive website that meets your business needs.",
+    keywords: "Halifax web design, collaborate with Focus Flow Software, responsive web design, creative web development, fast website design",
+    openGraph: {
+      title: "Let's Work Together | Halifax Web Design by Focus Flow Software",
+      description: "Ready to elevate your online presence? Let's work together to create a fast, creative, and responsive website that meets your business needs.",
+      url: "https://www.focusflowsoftware.com/lets-work",
+      // Uncomment and replace with your actual image URL
+      // images: [
+      //   {
+      //     url: "https://q3-visuals.vercel.app/images/og-image.jpg",
+      //     width: 1200,
+      //     height: 630,
+      //     alt: "Let's Work Together - Focus Flow Software"
+      //   }
+      // ],
+      type: "website",
+      locale: "en_US",
+      siteName: "Focus Flow Software | Halifax Web Design"
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Let's Work Together | Halifax Web Design by Focus Flow Software",
+      description: "Ready to elevate your online presence? Let's work together to create a fast, creative, and responsive website that meets your business needs.",
+      // Uncomment and replace with your actual image URL
+      // images: ["https://q3-visuals.vercel.app/images/og-image.jpg"]
+    },
+    icons: {
+      icon: ["/favicon.ico"]
+    },
+    alternates: {
+      canonical: "https://www.focusflowsoftware.com/lets-work"
+    }
+  };
+  
 
 
 const Work = () => {
@@ -28,25 +65,12 @@ const Work = () => {
         
     ]
 
+
+
     return (
         <>
-         <Head>
-      <title>Let's Work Together | Halifax Web Design by Focus Flow Software</title>
-      <meta name="description" content="Ready to elevate your online presence? Let's work together to create a fast, creative, and responsive website that meets your business needs." />
-      <meta name="keywords" content="Halifax web design, collaborate with Q3 Visuals, responsive web design, creative web development, fast website design" />
-      <meta property="og:title" content="Let's Work Together | Halifax Web Design by Q3 Visuals" />
-      <meta property="og:description" content="Ready to elevate your online presence? Let's work together to create a fast, creative, and responsive website that meets your business needs." />
-      <meta property="og:url" content="https://www.focusflowsoftware.com/lets-work" />
-      {/* <meta property="og:image" content="https://q3-visuals.vercel.app/images/og-image.jpg" />  */}
-      {/* Replace with your actual image URL */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="Let's Work Together | Halifax Web Design by Focus Flow Software" />
-      <meta name="twitter:description" content="Ready to elevate your online presence? Let's work together to create a fast, creative, and responsive website that meets your business needs." />
-      {/* <meta name="twitter:image" content="https://q3-visuals.vercel.app/images/og-image.jpg" /> */}
-       {/* Replace with your actual image URL */}
-      <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-      <link rel="canonical" href="https://focusflowsoftware.com/lets-work" />
-    </Head> <Navbar 
+        
+    <Navbar 
     excludedLink="Contact"/>
         <main className="w-screen mt-[6rem]"> 
        

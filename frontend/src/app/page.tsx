@@ -161,13 +161,13 @@ excludedLink="/"
     
      
 
-      <ContentBox
+      {/* <ContentBox
       {...RestaurantContentBoxData}
-      />
+      /> */}
 
 <div className="relative"
 ref={contentRef}>
-            <motion.h3
+            <motion.h2
             initial={{
               opacity:0,
               y:50
@@ -177,7 +177,8 @@ ref={contentRef}>
               y: contentInView ? 0 : 50
             }}
             className='text-2xl bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent 
-           text-4xl sm:text-5xl font-semibold text-center'>Creativity and Functionality</motion.h3>
+           text-4xl sm:text-5xl font-semibold text-center'>Creativity and Functionality
+           </motion.h2>
             <motion.p
             initial={{
               opacity:0,

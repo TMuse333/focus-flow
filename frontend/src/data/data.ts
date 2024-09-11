@@ -32,9 +32,7 @@ export const workTenets = [
         'We have the ability the lock in and commit hours and hours of concentrated work every day to your website gives is as high quality as it can be and it '+
         ' gives your business a great boost '
     },
-    // {
-    //     title:'Refusal to Fail'
-    // },
+
     {
         title:'Fantastic Creativity',
         description:'With years of drawing experience along with custom coded websites as opposed to generic drag and drop templates, '+
@@ -46,10 +44,7 @@ export const workTenets = [
         'get your website up and running quickly. We understand websites are very and can execute and very fast speeds to '+
         'deliver your website on time.'
     },
-    // {
-    //     title:'Supreme Dedication',
-    //     description:''
-    // },
+  
     {
         title:'Daily Communication',
         description:'Your input and is very important to us. We can give you daily updates on the '+
@@ -74,31 +69,33 @@ export const workTenets = [
 export const accordion1Text = [
 
     {
-        title:'Top Tier Design',
-        description:'We are confident that we can design your website as good if not better than anyone else'+
-        'you can find, with a background in art we are sure that we can '+
-        'create a design that you will love and elevate your digital presence'
+        title:'Use of latest and most powerful technology',
+        description:`The technologies we use are react js, which was developed by Facebook,
+         this website framework allows for unlimited creative potential as
+         we can use custom code to make highly customizable components
+         that you just cannot replicate with regular drag and drop
+         minimal code websites`
     },
     {
-        title:'Functional websites',
-        description:'Our websites have capabilities beyond appealing designs to help your business grow.'+
-        'We can inegegrate databases, user accounts e-commerce and booking appointments all through your website to save you more time and let you do what you do best, run your business.'
+        title:'Interactive Components',
+        description:`Given the interactive nature of our websites, this leads to
+        higher user engagement as their is a lot to discover on our web pages. This leads
+        to more time spent on your website and a higher probability to convert clients`
     },
     {
-        title:'Custom Code',
+        title:'Stunning but simple animations',
         description:'We have spent a great amount of time creating custom made designs '+
         'through many difficult hours of coding, as opposed to generic drag and drop'
     },
     {
-        title:'Fast Worker',
+        title:'Ready for implementation',
         description:'We have been building websites for a long time and have developed an efficient system'+
         ' to produces high quality websites as quickly as possible.'
     },
     {
-        title:'Phenomenal animations',
-        description:'Your website is extremely important to your success online and we take it very seriously.'+
-        ' When you work with us we will not stop working until you are satisfied with your lovely website.'
-    },
+        title:'Long term reliability',
+        description:``
+    }
    
 ]
 
