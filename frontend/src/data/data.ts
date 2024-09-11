@@ -399,3 +399,54 @@ export const genericContent = {
             description:lorem30
         }
     ]
+
+
+ export const genericAccordion = [
+
+        {
+            title:'Point 1',
+            description:'We are confident that we can design your website as good if not better than anyone else'+
+            'you can find, with a background in art we are sure that we can '+
+            'create a design that you will love and elevate your digital presence'
+        },
+        {
+            title:'Point 2',
+            description:'Our websites have capabilities beyond appealing designs to help your business grow.'+
+            'We can inegegrate databases, user accounts e-commerce and booking appointments all through your website to save you more time and let you do what you do best, run your business.'
+        },
+        {
+            title:'Point 3',
+            description:'We have spent a great amount of time creating custom made designs '+
+            'through many difficult hours of coding, as opposed to generic drag and drop'
+        },
+        {
+            title:'Point 4',
+            description:'We have been building websites for a long time and have developed an efficient system'+
+            ' to produces high quality websites as quickly as possible.'
+        },
+        {
+            title:'Point 5',
+            description:'Your website is extremely important to your success online and we take it very seriously.'+
+            ' When you work with us we will not stop working until you are satisfied with your lovely website.'
+        },
+       
+    ]
+
+    //words to add
+//     digital marketing
+// web design development
+// award winning
+// customer service
+// medium sized businesses
+// start to finish
+// online presence
+// search engine optimization
+// design projects
+// designed and developed
+// social media marketing
+// user friendly
+// website development
+// logo design
+// custom website
+// halifax website design company
+// halifax nova scotia
