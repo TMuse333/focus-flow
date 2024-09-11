@@ -142,8 +142,8 @@ excludedLink="/"
   
   
 
-  <SlideScrollCarousel
-  />
+  {/* <SlideScrollCarousel
+  /> */}
       
      
       <Herobanner

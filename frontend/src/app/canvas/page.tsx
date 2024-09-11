@@ -6,8 +6,10 @@ import React from "react";
 import { slideScrollImages } from "@/data/data";
 import Content from "@/components/content/content";
 import placeholder from '../../../public/media/placeholder.jpeg'
-import { genericContent, genericSlideShow } from "@/data/data";
+import { genericContent, genericSlideShow, genericAccordion } from "@/data/data";
 import SlideShowCarousel from "@/components/slideShowCarousel/slideShowCarousel";
+import Accordion from "@/components/accordion/accordion";
+
 const Canvas = () => {
 
     
@@ -52,6 +54,19 @@ const Canvas = () => {
             title="he"
             images={genericSlideShow}
             />
+            <div className="h-[30vh]">
+
+            </div>
+            <Accordion
+            hasIntro={true}
+            intro='The accordion'
+            description='This component is great for answer frequently asked questions as you can condense multiple answers into one part of the website, expanding them to answers when needed.'
+            text={genericAccordion}
+            />
+
+<div className="h-[30vh]">
+
+</div>
 
 
 
