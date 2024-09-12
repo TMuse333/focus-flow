@@ -1,3 +1,5 @@
+"use client"
+
 import React, {useState} from "react";
 import AppearingCircle from "../circleContent/appearingCircle";
 import ball from '../../../public/media/futuristic-money-ball-removebg-preview.webp'

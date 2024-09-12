@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect, useState , useRef} from "react";
 import { motion, useAnimate, useScroll, useTransform } from "framer-motion";
 import SlidingText from "../slidingText/slidingText";

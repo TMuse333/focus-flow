@@ -1,4 +1,4 @@
-"use client"
+
 
 import Contact from "@/components/contactPage/contactPage";
 import Footer from "@/components/footer/footer";
@@ -6,7 +6,8 @@ import Navbar from "@/components/bigNav/navbar";
 import React from "react";
 import Head from "next/head";
 import { Metadata } from "next";
-
+import { useGeneralContext } from "@/context/context";
+import WorkPage from "../pageComponents/workPage";
 export const metadata: Metadata = {
     title: "Let's Work Together | Halifax Web Design by Focus Flow Software",
     description: "Ready to elevate your online presence? Let's work together to create a fast, creative, and responsive website that meets your business needs.",
@@ -67,18 +68,12 @@ const Work = () => {
 
 
 
+
+
     return (
         <>
         
-    <Navbar 
-    excludedLink="Contact"/>
-        <main className="w-screen mt-[6rem]"> 
-       
-<Contact/>
-<Footer
-links={links}
-/>
-        </main>
+    <WorkPage/>
         </>
     )
 }

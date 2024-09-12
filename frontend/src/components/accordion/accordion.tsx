@@ -1,3 +1,5 @@
+"use client"
+
 import React, {useState} from 'react'
 import {motion, Variants} from 'framer-motion'
 import {useIntersectionObserver} from '../intersectionObserver/intersectionObserver'

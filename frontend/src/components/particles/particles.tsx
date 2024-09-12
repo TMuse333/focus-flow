@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useMemo, useState } from "react";
 import Particles from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim"; 

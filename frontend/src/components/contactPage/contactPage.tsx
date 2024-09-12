@@ -1,4 +1,5 @@
 // Assuming you're using TypeScript, ensure the imports and types are correct
+"use client"
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';

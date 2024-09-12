@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState, useEffect } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa"; // Import arrow icons
 import {motion, AnimatePresence} from 'framer-motion'

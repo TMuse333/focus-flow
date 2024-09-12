@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useRef, Dispatch, SetStateAction } from "react";
 
 interface IntersectionObserverOptions {
@@ -85,6 +87,8 @@ interface IntersectionObserverOptions {
 
   return componentRef;
 };
+
+
 
 export const useVideoIntersectionObserver = (
   setInView: Dispatch<SetStateAction<boolean>>,
