@@ -173,12 +173,12 @@ excludedLink="/"
     
      
 
-      {/* <ContentBox
+      <ContentBox
       {...RestaurantContentBoxData}
-      /> */}
+      />
 
-{/* <div className="relative"
-// ref={contentRef}
+<div className="relative"
+ref={contentRef}
 >
             <motion.h2
             initial={{
@@ -207,7 +207,7 @@ excludedLink="/"
              className='text-left  md:text-center pl-4 pr-5 mt-5
            w-[100%] max-w-[900px] ml-auto mr-auto'>We are very dedicated to our craft
            and are ready to give you a fantastic website that will take your business to the next level.</motion.p>
-            </div> */}
+            </div>
 
   <Content
   floatingImage={true}
