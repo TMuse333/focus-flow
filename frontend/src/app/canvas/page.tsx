@@ -10,6 +10,8 @@ import { genericContent, genericSlideShow, genericAccordion } from "@/data/data"
 import SlideShowCarousel from "@/components/slideShowCarousel/slideShowCarousel";
 import Accordion from "@/components/accordion/accordion";
 import AppearingGradient from "@/components/appearingGradient/appearingGradient";
+import FlashContent from "@/components/flashConent/flashContent";
+import infinity from '../../../public/media/infinity.webp'
 
 const Canvas = () => {
 
@@ -24,10 +26,11 @@ const Canvas = () => {
             <section className="h-[100vh]">
                 filler
             </section>
-            <AppearingGradient
-            text="True Custom Web Design"
-            subText='We really are built different'
-            />
+          <FlashContent
+          src={infinity.src}
+          alt='alt'
+          />
+
             <div className="h-[30vh]">
 
             </div>
