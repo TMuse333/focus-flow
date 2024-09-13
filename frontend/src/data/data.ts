@@ -83,7 +83,7 @@ export const accordion1Text = [
         to more time spent on your website and a higher probability to convert clients`
     },
     {
-        title:'Stunning but simple animations',
+        title:'Subtle but stunning animations',
         description:'We have spent a great amount of time creating custom made designs '+
         'through many difficult hours of coding, as opposed to generic drag and drop'
     },
@@ -93,8 +93,18 @@ export const accordion1Text = [
         ' to produces high quality websites as quickly as possible.'
     },
     {
-        title:'Long term reliability',
-        description:``
+        title: 'Long-Term Reliability',
+    description: `Unlike popular no code websites, which require regular updates and ongoing maintenance
+    to stay secure and perform well, our React-based websites are built with long-term reliability
+    in mind. React's modern architecture minimizes the need for frequent updates, reducing the risk
+    of security vulnerabilities, plugin conflicts, and downtime. This means less ongoing maintenance
+    and a more stable website for your business.`
+  },
+    {
+        title: '3D Models',
+        description: `Our advanced web development capabilities also extend to 3D models and
+        other cutting-edge interactive elements that can truly set your website apart from competitors.`
+    
     }
    
 ]
@@ -427,7 +437,15 @@ export const genericContent = {
             ' When you work with us we will not stop working until you are satisfied with your lovely website.'
         },
        
+
+
+
     ]
+
+
+   export const builtDifferent = {
+
+    }
 
     //words to add
 //     digital marketing

@@ -6,11 +6,11 @@ import Content from "@/components/content/content";
 
 import {  RestaurantContentBoxData } from "@/data/data";
 
-import laptop from '../../../public/media/laptop.jpg'
-// import CircleList from "@/components/circleListElement/circleList";
+
+
 import { CircleInfoGraphic } from "@/components/circleInfographic/circleInfoGraphic";
 
-// import Carousel from "@/components/carousel/carousel";
+
 import {ScrollableCarousel, SelectedCarouselImage} from "@/components/scrollableCarousel/scrollableCarousel";
 import { useGeneralContext } from "@/context/context";
 
@@ -24,19 +24,19 @@ import ParticlesComponent from "@/components/particles/particles";
 import {useIntersectionObserver} from "@/components/intersectionObserver/intersectionObserver";
 import { useState } from "react";
 
-import Head from "next/head";
-import { scrollableImages, contentData1 } from "@/data/data";
+
+import { scrollableImages } from "@/data/data";
 import ContentBox from "@/components/contentBox/contentBox";
 import Herobanner from "@/components/herobanner/herobanner";
 
 import AppearingContent from "@/components/appearingContent/appearingContent";
-import { lionSpeech } from "@/data/data";
+
 import dynamic from "next/dynamic";
 import BigNav from "@/components/bigNav/navbar";
-// import VideoImage from "@/components/videoImg/videoImg";
-import goku from '../../public/media/goku-vs-jiren.jpg'
+
+
 import { focusFlowPromo } from "@/data/data";
-import SlideScrollCarousel from "@/components/slideScrollCarousel/slideScrollCarousel";
+
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -173,9 +173,7 @@ excludedLink="/"
     
      
 
-      <ContentBox
-      {...RestaurantContentBoxData}
-      />
+   
 
 <div className="relative"
 ref={contentRef}
@@ -209,7 +207,7 @@ ref={contentRef}
            and are ready to give you a fantastic website that will take your business to the next level.</motion.p>
             </div>
 
-  <Content
+            <Content
   floatingImage={true}
       hasAnimation={false}
       customText={<Accordion
@@ -222,6 +220,12 @@ ref={contentRef}
       reverse={true}
       image={moneyLaptop}
       />
+
+            <ContentBox
+      {...RestaurantContentBoxData}
+      />
+
+  
 <ScrollableCarousel
 images={scrollableImages}
 title='Creating Digital Excellence'

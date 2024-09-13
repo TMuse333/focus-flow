@@ -9,6 +9,7 @@ import placeholder from '../../../public/media/placeholder.jpeg'
 import { genericContent, genericSlideShow, genericAccordion } from "@/data/data";
 import SlideShowCarousel from "@/components/slideShowCarousel/slideShowCarousel";
 import Accordion from "@/components/accordion/accordion";
+import AppearingGradient from "@/components/appearingGradient/appearingGradient";
 
 const Canvas = () => {
 
@@ -20,13 +21,20 @@ const Canvas = () => {
         excludedLink="Canvas"/>
 
         <main className="mt-[4rem] w-screen">
-            <section className="h-[60vh]">
+            <section className="h-[100vh]">
                 filler
             </section>
+            <AppearingGradient
+            text="True Custom Web Design"
+            subText='We really are built different'
+            />
+            <div className="h-[30vh]">
+
+            </div>
             {/* <SlideScrollCarousel
             images={slideScrollImages}/> */}
 
-            <Content
+            {/* <Content
             image={placeholder}
             mainTitle='The content component'
             description={genericContent.description}
@@ -66,7 +74,7 @@ const Canvas = () => {
 
 <div className="h-[30vh]">
 
-</div>
+</div> */}
 
 
 
