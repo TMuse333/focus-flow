@@ -157,7 +157,7 @@ interface SubMenuProps {
     }
 
     return (
-        <div className={`bg-[#036080] fixed top-[70px] w-screen
+        <div className={`bg-[#036080] fixed top-[20px] w-screen
          left-0  transition-[height] overflow-hidden
          pt-4
         flex justify-evenly ${isClicked  ? 'h-[200px]' : 'h-[0px]'}`
@@ -354,7 +354,7 @@ const BigNav: React.FC<NavbarProps> = ({ excludedLink }) => {
 
 
     return (
-        <nav className="fixed top-0 z-50 w-screen left-0 bg-transparent h-[80px] flex justify-between items-center
+        <nav className="fixed top-0 z-50 w-screen left-0 bg-transparent h-[30px] flex justify-between items-center
         lg:bg-[#036080]
         ">
             <MobileSubMenu
@@ -392,7 +392,7 @@ const BigNav: React.FC<NavbarProps> = ({ excludedLink }) => {
             FocusFlow Software
            </h3> */}
            <Image src={brain}
-           className='w-[100px]'
+           className='w-[50px] relative z-[2]'
            width={600}
            height={1300}
            alt='Focusflow brain'
@@ -420,7 +420,7 @@ const BigNav: React.FC<NavbarProps> = ({ excludedLink }) => {
                       <h3 
                        onMouseEnter={()=>handleSubMenuHover(index)}
                        onMouseLeave={handleSubMenuLeave}
-                      className="mt-auto pb-3 translate-y-[1rem]">{link.name}</h3>
+                      className="mt-auto  text-sm">{link.name}</h3>
                                  {link.subMenuSrc && link.subMenuAlt &&
                                  link.desktopDescription && (
 
@@ -440,8 +440,8 @@ index={index}
                     ) : (
                         <>
             <Link href={link.secondaryLinks[0].destination}>
-                <p className="pb-3 mb-auto
-                translate-y-[1rem]">{link.secondaryLinks[0].name}</p>
+                <p className=" my-auto text-sm
+                ">{link.secondaryLinks[0].name}</p>
             </Link>
                         </>
                     )}
