@@ -18,7 +18,8 @@ import { useGeneralContext } from "@/context/context";
 import { motion } from "framer-motion";
 import moneyLaptop from '../../../public/media/nobg-more-money-laptop.png'
 import Accordion from "@/components/accordion/accordion";
-import { accordion1Text ,herobannerData} from "@/data/data";
+import { accordion1Text ,herobannerData, planningContent
+,monthlyContent} from "@/data/data";
 
 import ParticlesComponent from "@/components/particles/particles";
 import {useIntersectionObserver} from "@/components/intersectionObserver/intersectionObserver";
@@ -38,6 +39,9 @@ import BigNav from "@/components/bigNav/navbar";
 import { focusFlowPromo } from "@/data/data";
 
 import { Metadata } from "next";
+import infinity from '../../../public/media/infinity.webp'
+import FlashContent from "@/components/flashConent/flashContent";
+import Testimonials from "@/components/testimonials/testimonials";
 
 export const metadata: Metadata = {
   title: "Web Design Halifax | Focusflow Software",
@@ -160,7 +164,10 @@ excludedLink="/"
      
       <Herobanner
       sections={herobannerData}/>
+
+
      
+    
     
     <AppearingContent
     sliderText="Creative Web Page Design to Elevate Your Online Presence"
@@ -168,58 +175,31 @@ excludedLink="/"
     id='appearing-video'
     isVideo={true}
     />
+ <div className="h-[30vh]"
+     />
+   
+<FlashContent
+    src={infinity.src}
+    alt='We offer the most creative web design in halifax'
+    />
 
+    <Content
+    {...planningContent}
+    />
+
+    <Content
+    {...monthlyContent}
+    />
 
     
      
 
    
 
-<div className="relative"
-ref={contentRef}
->
-            <motion.h2
-            initial={{
-              opacity:0,
-              y:50
-            }} 
-            animate={{
-              opacity:contentInView ? 1 : 0,
-              y: contentInView ? 0 : 50
-            }}
-            className='text-2xl bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent 
-           text-4xl sm:text-5xl font-semibold text-center'>Creativity and Functionality
-           </motion.h2>
-            <motion.p
-            initial={{
-              opacity:0,
-              x:50
-            }} 
-            animate={{
-              opacity:contentInView ? 1 : 0,
-              x: contentInView ? 0 : 50,
-              transition:{
-                delay:0.5
-              }
-            }}
-             className='text-left  md:text-center pl-4 pr-5 mt-5
-           w-[100%] max-w-[900px] ml-auto mr-auto'>We are very dedicated to our craft
-           and are ready to give you a fantastic website that will take your business to the next level.</motion.p>
-            </div>
 
-            <Content
-  floatingImage={true}
-      hasAnimation={false}
-      customText={<Accordion
-      text={accordion1Text}
-      hasIntro={false}
-      link='why-us'
-      intro='Creativity and Functionality'
-      description='We are very dedicated to our craft
-      and are ready to give you a fantastic website that will take your business to the next level.'/> }
-      reverse={true}
-      image={moneyLaptop}
-      />
+
+  
+  
 
             <ContentBox
       {...RestaurantContentBoxData}
@@ -232,10 +212,9 @@ title='Creating Digital Excellence'
 description="Explore some of our showcased projects. Click on each for detailed insights and excellence in digital creation."
 />
 
-<CircleInfoGraphic
-title='Built to work, work to build'
-description='We are ready to work! Here is why we are well 
-suited to take your business to the next level'/>
+<Testimonials/>
+
+
 
 <AuroraHero/>
 

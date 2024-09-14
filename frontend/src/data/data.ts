@@ -3,6 +3,7 @@ import dolceVita from '../../public/media/dolce-vita-screenshot.webp'
 import cards2 from '../../public/media/card-game2-screenshot.png'
 import sainey from '../../public/media/sainey-media-picture.png'
 import restaurant from '../../public/media/generic-logo.png'
+import cashHome from '../../public/media/cash-for-house.webp'
 
 import twoHands from '../../public/media/gemeni-two-hand-stick.webp'
 import coder from '../../public/media/quantum-coder.webp'
@@ -12,6 +13,8 @@ import meditate from '../../public/media/q3-visuals-logo-2.webp'
 import functional from '../../public/media/gemeni-functional.webp'
 import laptop from '../../public/media/q3-imac.webp'
 import placeholder from '../../public/media/placeholder.jpeg'
+import plan from '../../public/media/planningboard.jpg'
+import arrow from '../../public/media/blue-arrow.webp'
 
 export const contentData1 = {
     mainTitle:'Your Digital Presence is Important',
@@ -118,6 +121,20 @@ const circleText = [
 
 
 export const scrollableImages = [
+    {
+        src:cashHome.src,
+        alt:'Cash for houses',
+        details:{
+            mainImage:cashHome.src,
+            secondaryImage:cashHome.src,
+            title:'Ontario Cash For Houses',
+            description:['A website made for a cash for houses business in Ontario',
+          'A key focus point for this website was to showcase the owners explanations in a visually appealing way, while keeping it simple to get the information accross in a stress free way due to the stress of selling a houses, so we implemented parallax videos and slideshows to get the owners point across effectively in a appealing and easy to follow manner'],
+            link:'https://dolcevitaconstructionandpm.com'
+          }
+
+
+    },
   
     {
       src:dolceVita.src,
@@ -156,6 +173,7 @@ export const scrollableImages = [
     link:'https://saineymedia.com'
     }
     },
+
   ]
 
   interface ContentBoxProps {
@@ -442,10 +460,39 @@ export const genericContent = {
 
     ]
 
+    interface ContentProps {
+        image: StaticImageData;
+        customText?: React.ReactNode;
+        description?: string[];
+        reverse?: boolean;
+        mainTitle?: string;
+        floatingImage?: boolean;
+        hasAnimation?: boolean;
+        buttonLink?: string;
+        buttonText?: string;
+      }
 
-   export const builtDifferent = {
+  export const planningContent = {
+    mainTitle:'Designed to succeed',
+    description:[`Your website is the foundation of your online presence. It can either position you as an authority in your field or fade into the digital background. We take the planning process seriously, working closely with you to understand your industry and goals. Through clear communication and collaboration, we ensure every detail is purposefully crafted.
+    `,'By carefully planning the user experience—what your visitors will see, feel, and do—we create websites that engage your audience and drive real results. Let’s work together to build a website that truly elevates your business.'],
+    image:plan,
+    hasAnimation:true,
+    buttonLink:'/plan',
+    buttonText:'Learn our process'
+  }
 
-    }
+  export const monthlyContent = {
+    mainTitle:'Long term success',
+    description:['Creating an effective website is a long-term investment that goes beyond launch day. To stay competitive, it’s essential to continuously collect data, optimize for SEO, and analyze metrics like screen time and visitor behavior. As markets evolve, your website needs regular updates to reflect new trends and user expectations.',`We’re committed to your long-term success, ensuring your site remains a powerful tool for growth and adapts with your business needs. With our support, your website will not only perform well today but continue driving results for years to come.`],
+    image:arrow,
+    hasAnimation:true,
+    buttonLink:'/monthly-subscription',
+    buttonText:'Ensure Long-Term Success',
+    reverse:true
+  }
+
+
 
     //words to add
 //     digital marketing

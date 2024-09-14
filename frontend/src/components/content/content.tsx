@@ -17,6 +17,7 @@ interface ContentProps {
   hasAnimation?: boolean;
   buttonLink?: string;
   buttonText?: string;
+  alt?:string
 }
 
 const Content: React.FC<ContentProps> = ({
@@ -28,7 +29,8 @@ const Content: React.FC<ContentProps> = ({
   floatingImage = false,
   hasAnimation = true,
   buttonLink,
-  buttonText = 'button'
+  buttonText = 'button',
+  alt
 }) => {
   const [inView, setInView] = useState(false);
   const { isMobile } = useGeneralContext();
@@ -68,13 +70,16 @@ const Content: React.FC<ContentProps> = ({
   return (
     <article
       ref={componentRef}
-      className={`flex flex-col justify-center align-center pt-8 pb-8
-        relative mr-auto ml-auto
-        md:w-[95vw] md:max-w-[1200px] sm:max-w-[668px] z-1
+      className={`flex flex-col justify-center items-center pt-8 pb-8
+        relative mr-auto ml-auto 
+        md:w-screen md:max-w-[1200px] sm:max-w-[668px] z-1
+        md:justify-around
         ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}`}
     >
       <MotionImage
-        className="rounded-md w-[90vw] h-[55vw] max-h-[567px] max-w-[668px] ml-auto mr-auto object-contain"
+        className="rounded-xl w-[90vw] h-[55vw] max-h-[567px] max-w-[668px] ml-auto mr-auto object-contain
+        my-auto
+        "
         variants={hasAnimation ? imageVariants : {}}
         initial={hasAnimation ? 'initial' : ''}
         animate={shouldAnimate ? 'animate' : ''}
@@ -90,7 +95,8 @@ const Content: React.FC<ContentProps> = ({
             variants={baseVariants(reverse ? -30 : 30, 0)}
             initial={hasAnimation ? 'initial' : ''}
             animate={shouldAnimate ? 'animate' : ''}
-            className="text-left pl-5 sm:pl-12 pt-5 sm:text-4xl font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-3xl"
+            className="text-left pl-5 sm:pl-12 pt-5 sm:text-4xl font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-3xl
+            pr-3"
           >
             {mainTitle}
           </motion.h2>
@@ -98,7 +104,8 @@ const Content: React.FC<ContentProps> = ({
             variants={baseVariants(reverse ? -30 : 30, 0.45)}
             initial={hasAnimation ? 'initial' : ''}
             animate={shouldAnimate ? 'animate' : ''}
-            className="mt-6 pl-5 text-left sm:pl-12 whitespace-pre-line"
+            className="mt-6 pl-5 text-left sm:pl-12 whitespace-pre-line
+            pr-4"
           >
             {description[0] || 'Default description text.'}
           </motion.p>
@@ -107,9 +114,10 @@ const Content: React.FC<ContentProps> = ({
               variants={baseVariants(reverse ? -30 : 30, 0.65)}
               initial={hasAnimation ? 'initial' : ''}
               animate={shouldAnimate ? 'animate' : ''}
-              className="mt-6 text-left pl-5 sm:pl-12"
+              className="mt-6 text-left pl-5 sm:pl-12 pr-4"
             >
               {description[1]}
+              <br/>
               {buttonLink && (
                 <Link href={buttonLink}>
                   <motion.button

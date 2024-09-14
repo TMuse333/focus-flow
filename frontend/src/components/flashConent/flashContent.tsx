@@ -22,20 +22,22 @@ const FlashContent:React.FC<Props> = (
 
     return (
         <>
-        <section className='mx-auto w-screen max-w-[1200px]'>
+        <section className='mx-auto w-screen max-w-[1200px] relative
+        mb-8'>
 
   
         <AppearingGradient
         text='True Custom Web Design'
         subText='We really are built different'
         />
+        
         <MotionImage
         src={src}
         alt={alt}
         width={600}
         height={1300}
-        className='w-[70vw] mx-auto my-5
-        md:w-[50vw] h-[150px] md:h-[250px] object-cover 
+        className='w-[70vw] mx-auto my-5 
+        md:w-[50vw] h-[175px] sm:h-[200px] md:h-[250px] object-cover 
         '
         animate={{
             y: [0, -4, 0], // Oscillate up and down
@@ -47,7 +49,7 @@ const FlashContent:React.FC<Props> = (
           }}
         />
         <p className='px-4 mx-auto md:w-[80%] md:text-lg
-       rounded-2xl'>
+       rounded-2xl text-white text-left sm:text-center'>
         In today's web design market, many websites rely on basic drag-and-drop, low-code frameworks. However, we've taken a more <span className='font-bold'>
         advanced  </span>  approach by offering custom web design services through <span className='font-bold'>100% custom-coded applications</span> using React.js—the same technology powering platforms like Facebook, Instagram, and Netflix. This ensures that your website stands out from the crowd, providing limitless creativity and control that basic templates can't match.
         <br/>
