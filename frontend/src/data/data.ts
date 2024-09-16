@@ -1,7 +1,7 @@
 import { StaticImageData } from "next/image"
-import dolceVita from '../../public/media/dolce-vita-screenshot.webp'
-import cards2 from '../../public/media/card-game2-screenshot.png'
-import sainey from '../../public/media/sainey-media-picture.png'
+import dolceVita from '../../public/media/custom-web-design-halifax-dolce-vita.webp'
+import cards2 from '../../public/media/custom-web-design-halifax-cards1.png'
+import sainey from '../../public/media/custom-web-design-halifax-sainey1.png'
 import restaurant from '../../public/media/generic-logo.png'
 import cashHome from '../../public/media/cash-for-house.webp'
 
@@ -15,6 +15,10 @@ import laptop from '../../public/media/q3-imac.webp'
 import placeholder from '../../public/media/placeholder.jpeg'
 import plan from '../../public/media/planningboard.jpg'
 import arrow from '../../public/media/blue-arrow.webp'
+import cashProcess from '../../public/media/custom-web-design-halifax-cash-homes-process.webp'
+import dolceVita2 from '../../public/media/custom-web-design-halifax-dolce-vita2.webp'
+import cards23 from '../../public/media/custom-web-design-halifax-cards2.webp'
+import sainey2 from '../../public/media/sainey2.webp'
 
 export const contentData1 = {
     mainTitle:'Your Digital Presence is Important',
@@ -126,11 +130,11 @@ export const scrollableImages = [
         alt:'Cash for houses',
         details:{
             mainImage:cashHome.src,
-            secondaryImage:cashHome.src,
+            secondaryImage:cashProcess.src,
             title:'Ontario Cash For Houses',
             description:['A website made for a cash for houses business in Ontario',
           'A key focus point for this website was to showcase the owners explanations in a visually appealing way, while keeping it simple to get the information accross in a stress free way due to the stress of selling a houses, so we implemented parallax videos and slideshows to get the owners point across effectively in a appealing and easy to follow manner'],
-            link:'https://dolcevitaconstructionandpm.com'
+            link:'https://ontariocashforhouses.com'
           }
 
 
@@ -141,10 +145,10 @@ export const scrollableImages = [
       alt:'Dolce Vita',
       details:{
         mainImage:dolceVita.src,
-        secondaryImage:dolceVita.src,
+        secondaryImage:dolceVita2.src,
         title:'Dolce Vita Construction',
         description:['A website for a construction company based out of Halifax, Nova scotia',
-      'The construction website had to have many different ways to display all of its projects and construction, so we integrated numerous carousels to showcase everything properly.'],
+      'With many images needing to be displayed on this website, we made a grid that when clicked on can be transformed into an image carousel for a closer look on each image '],
         link:'https://dolcevitaconstructionandpm.com'
       }
     },
@@ -154,10 +158,13 @@ export const scrollableImages = [
       alt:'cards2',
       details:{
         mainImage:cards2.src,
-    secondaryImage:cards2.src,
+    secondaryImage:cards23.src,
     title:'The Quantum Card game',
-    description:['A website to test your reaction time and memory skills',
-  'This showcases my quality art skills and complex state management with react'],
+    description: [
+        'Test your memory with a hand-drawn card matching game designed to challenge your skills and engage your mind. Each card is uniquely illustrated by us, showcasing our design capabilities and attention to detail.',
+        'This game is a demonstrates our ability to handle complex game logic and state management, ensuring seamless gameplay and interactions. Whether you need advanced functionality or custom designs, FocusFlow Software has the skills to implement whatever your website requires.'
+      ],
+      
     link:'https://quantumcardgame.netlify.app'
     }
     },

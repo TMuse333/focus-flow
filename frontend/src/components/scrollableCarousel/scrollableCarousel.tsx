@@ -358,7 +358,7 @@ function handleImageClick(index: number) {
                     max-w-[1200px] bg-gray-400 sm:w-[75vw] rounded-xl ">
 
                     
-                    <img src={selectedCarouselImageMainImage}
+                    <img src={selectedCarouselImageSecondaryImage}
                     className='w-[90vw]  mr-auto ml-auto object-cover
                     mb-5 sm:w-[70vw] max-w-[640px] lg:w-[60vw]  lg:max-w-[750px] rounded-2xl 
                     lg:mb-0'
