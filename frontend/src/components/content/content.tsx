@@ -78,13 +78,12 @@ const Content: React.FC<ContentProps> = ({
     >
       <MotionImage
         className="rounded-xl w-[90vw] h-[55vw] max-h-[567px] max-w-[668px] ml-auto mr-auto object-contain
-        my-auto
-        "
+        my-auto"
         variants={hasAnimation ? imageVariants : {}}
         initial={hasAnimation ? 'initial' : ''}
         animate={shouldAnimate ? 'animate' : ''}
         src={image.src}
-        alt="Image description"
+        alt={alt ? alt : 'creative web design halifax'}
         width={1300}
         height={600}
       />

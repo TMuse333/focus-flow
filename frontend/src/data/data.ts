@@ -126,62 +126,71 @@ const circleText = [
 
 export const scrollableImages = [
     {
-        src:cashHome.src,
-        alt:'Cash for houses',
-        details:{
-            mainImage:cashHome.src,
-            secondaryImage:cashProcess.src,
-            title:'Ontario Cash For Houses',
-            description:['A website made for a cash for houses business in Ontario',
-          'A key focus point for this website was to showcase the owners explanations in a visually appealing way, while keeping it simple to get the information accross in a stress free way due to the stress of selling a houses, so we implemented parallax videos and slideshows to get the owners point across effectively in a appealing and easy to follow manner'],
-            link:'https://ontariocashforhouses.com'
-          }
-
-
-    },
-  
-    {
-      src:dolceVita.src,
-      alt:'Dolce Vita',
-      details:{
-        mainImage:dolceVita.src,
-        secondaryImage:dolceVita2.src,
-        title:'Dolce Vita Construction',
-        description:['A website for a construction company based out of Halifax, Nova scotia',
-      'With many images needing to be displayed on this website, we made a grid that when clicked on can be transformed into an image carousel for a closer look on each image '],
-        link:'https://dolcevitaconstructionandpm.com'
+      src: cashHome.src,
+      alt: "Creative web design Halifax for Ontario cash for houses business, featuring parallax videos and slideshows to present stress-free home-selling information",
+      details: {
+        mainImage: cashHome.src,
+        alt: "Main image of Ontario cash for houses business website, showcasing a creative web design with stress-free home-selling information",
+        secondaryImage: cashProcess.src,
+        alt2: "Secondary image displaying the cash for houses process with parallax videos for a creative web design Halifax",
+        title: 'Ontario Cash For Houses',
+        description: [
+          'A website made for a cash for houses business in Ontario',
+          'A key focus point for this website was to showcase the owners explanations in a visually appealing way, while keeping it simple to get the information across in a stress-free way due to the stress of selling a house, so we implemented parallax videos and slideshows to get the owners point across effectively in an appealing and easy-to-follow manner'
+        ],
+        link: 'https://ontariocashforhouses.com'
       }
     },
-   
     {
-      src:cards2.src,
-      alt:'cards2',
-      details:{
-        mainImage:cards2.src,
-    secondaryImage:cards23.src,
-    title:'The Quantum Card game',
-    description: [
-        'Test your memory with a hand-drawn card matching game designed to challenge your skills and engage your mind. Each card is uniquely illustrated by us, showcasing our design capabilities and attention to detail.',
-        'This game is a demonstrates our ability to handle complex game logic and state management, ensuring seamless gameplay and interactions. Whether you need advanced functionality or custom designs, FocusFlow Software has the skills to implement whatever your website requires.'
-      ],
-      
-    link:'https://quantumcardgame.netlify.app'
-    }
+      src: dolceVita.src,
+      alt: "Creative web design Halifax for Dolce Vita Construction, featuring an interactive image grid and carousel to showcase construction projects in Nova Scotia",
+      details: {
+        mainImage: dolceVita.src,
+        alt: "Main image showcasing Dolce Vita Construction's creative web design Halifax with a focus on Nova Scotia construction projects",
+        secondaryImage: dolceVita2.src,
+        alt2: "Secondary image of construction projects in an interactive grid and carousel for Dolce Vita Construction's website",
+        title: 'Dolce Vita Construction',
+        description: [
+          'A website for a construction company based out of Halifax, Nova Scotia',
+          'With many images needing to be displayed on this website, we made a grid that when clicked on can be transformed into an image carousel for a closer look at each image'
+        ],
+        link: 'https://dolcevitaconstructionandpm.com'
+      }
     },
     {
-      src:sainey.src,
-      alt:'sainey',
-      details:{
-        mainImage:sainey.src,
-    secondaryImage:sainey.src,
-    title:'Sainey Media',
-    description:['A website for my a big time social media influencer',
-  'I implemented particles.js to give off a new and modern vibe'],
-    link:'https://saineymedia.com'
-    }
+      src: cards2.src,
+      alt: "Creative web design Halifax for The Quantum Card Game, a hand-drawn memory game demonstrating complex game logic and seamless state management",
+      details: {
+        mainImage: cards2.src,
+        alt: "Main image of The Quantum Card Game website featuring a hand-drawn card matching game and creative web design Halifax",
+        secondaryImage: cards23.src,
+        alt2: "Secondary image of the hand-drawn card matching game showcasing complex logic and design on The Quantum Card Game website",
+        title: 'The Quantum Card game',
+        description: [
+          'Test your memory with a hand-drawn card matching game designed to challenge your skills and engage your mind. Each card is uniquely illustrated by us, showcasing our design capabilities and attention to detail.',
+          'This game demonstrates our ability to handle complex game logic and state management, ensuring seamless gameplay and interactions. Whether you need advanced functionality or custom designs, FocusFlow Software has the skills to implement whatever your website requires.'
+        ],
+        link: 'https://quantumcardgame.netlify.app'
+      }
     },
-
-  ]
+    {
+      src: sainey.src,
+      alt: "Creative web design Halifax for Sainey Media, a modern website built for a social media influencer featuring dynamic particles.js effects",
+      details: {
+        mainImage: sainey.src,
+        alt: "Main image of Sainey Media website, a creative web design Halifax with dynamic particles.js effects for a social media influencer",
+        secondaryImage: sainey.src,
+        alt2: "Secondary image highlighting the modern, creative web design for Sainey Media using particles.js effects",
+        title: 'Sainey Media',
+        description: [
+          'A website for a big-time social media influencer',
+          'I implemented particles.js to give off a new and modern vibe'
+        ],
+        link: 'https://saineymedia.com'
+      }
+    }
+  ];
+  
 
   interface ContentBoxProps {
 
@@ -256,6 +265,25 @@ export const restaurantParallax:ParallaxProps = {
     heading:'Online ordering software',
     subHeading:'Quick, easy, Efficient and Profitable'
 }
+
+export const stickyScrollables = [
+    {
+        src:'/media/focused-coder.webp',
+        alt:'the focused codeer'
+    },
+    {
+        src:'/media/focused-coder.webp',
+        alt:'the focused codeer'
+    },
+    {
+        src:'/media/focused-coder.webp',
+        alt:'the focused codeer'
+    },
+    {
+        src:'/media/focused-coder.webp',
+        alt:'the focused codeer'
+    }
+]
 
 export const ownershipParallax:ParallaxProps = {
     src:'media/gemeni-functional.webp',
@@ -486,7 +514,8 @@ export const genericContent = {
     image:plan,
     hasAnimation:true,
     buttonLink:'/plan',
-    buttonText:'Learn our process'
+    buttonText:'Learn our process',
+    alt:'An image of a planning board that signifies the process of making websites to prove FocusFlow Software has the best creative web design in halifax'
   }
 
   export const monthlyContent = {
@@ -496,7 +525,8 @@ export const genericContent = {
     hasAnimation:true,
     buttonLink:'/monthly-subscription',
     buttonText:'Ensure Long-Term Success',
-    reverse:true
+    reverse:true,
+    alt:'An image of an arrow glowing across the sky to demonstrate the importance of how creative web design is a long term investment and requires monthly maintenance'
   }
 
 

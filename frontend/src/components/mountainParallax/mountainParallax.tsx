@@ -30,27 +30,27 @@ export default function MultiLayerParallax() {
         style={{ y: !isMobile ?  textY : "-40%" }}
         className="relative z-[200] "
       >
-       <h1 className="text-4xl 
-           sm:text-6xl md:text-8xl font-semibold text-center
-           mb-4 animate-gradient">Focus Flow Software</h1>
+       <h1 className="text-4xl mx-auto
+           sm:text-6xl md:text-5xl w-[80%] font-semibold text-center
+           mb-4 animate-gradient">Creative Web Design in Halifax by FocusFlow Software</h1>
         <motion.h2
        
-       className="text-white text-2xl 
+       className="text-white text-2xl mx-auto text-center
        h-min "
      >
-       Elevating Brands with discipline and creativity
+       Scroll Down to see why we have the most creative web design in halifax
  
       
      </motion.h2>
      <Link href='lets-work'>
 
      
-     <motion.button className="relative bg-[#00bfff] p-3 rounded-xl mt-4
+     {/* <motion.button className="relative bg-[#00bfff] p-3 rounded-xl mt-4
        hover:text-[#00bfff] hover:bg-white z-[200]
        hover:scale-[1.05] transition-all
        mt-5">
          Win today
-       </motion.button>
+       </motion.button> */}
        </Link>
       </motion.div>
 

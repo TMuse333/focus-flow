@@ -20,6 +20,8 @@ interface props {
             mainImage:string,
             secondaryImage:string,
             title:string,
+            alt:string,
+            alt2:string,
             description:string[]
             link:string
         }
@@ -52,6 +54,8 @@ interface props {
     
         setSelectedCarouselImageLink,
         setSelectedCarouselImageIndex,
+        setSelectedCarouselImageAlt,
+        setSelectedCarouselImageAlt2
         
       } = useGeneralContext();
 
@@ -64,6 +68,9 @@ function handleImageClick(index: number) {
     setSelectedCarouselImageDescription(images[index].details.description);
     setSelectedCarouselImageLink(images[index].details.link);
     setSelectedCarouselImageIndex(index)
+    setSelectedCarouselImageAlt(images[index].details.alt)
+    setSelectedCarouselImageAlt2(images[index].details.alt2)
+
     
 }
 
@@ -236,6 +243,7 @@ function handleImageClick(index: number) {
                transition-all
                h-[85vw]
                max-h-[500px]
+               rounded-lg
 
               
            '
@@ -299,7 +307,11 @@ function handleImageClick(index: number) {
 
             selectedCarouselImageIndex,
 
-            setSelectedCarouselImageIndex
+            setSelectedCarouselImageIndex,
+            selectedCarouselImageAlt,
+             setSelectedCarouselImageAlt,
+             selectedCarouselImageAlt2,
+             setSelectedCarouselImageAlt2 
            
           } = useGeneralContext();
 
@@ -349,6 +361,7 @@ function handleImageClick(index: number) {
                     <img src={selectedCarouselImageMainImage}
                     className='w-[90vw]   mr-auto ml-auto object-cover
                     mb-5 sm:w-[70vw] lg:w-[60vw]  lg:max-w-[750px] max-w-[640px] rounded-2xl '
+                    alt={selectedCarouselImageAlt}
                     />
                     <p className=" sm:w-[70vw] pl-3 pr-3 mb-5 text-left max-w-[650px]
                     ml-auto mr-auto  lg:mt-[5rem] lg:text-center
@@ -358,7 +371,9 @@ function handleImageClick(index: number) {
                     max-w-[1200px] bg-gray-400 sm:w-[75vw] rounded-xl ">
 
                     
-                    <img src={selectedCarouselImageSecondaryImage}
+                    <img 
+                    alt={selectedCarouselImageAlt2}
+                    src={selectedCarouselImageSecondaryImage}
                     className='w-[90vw]  mr-auto ml-auto object-cover
                     mb-5 sm:w-[70vw] max-w-[640px] lg:w-[60vw]  lg:max-w-[750px] rounded-2xl 
                     lg:mb-0'

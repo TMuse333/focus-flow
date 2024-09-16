@@ -180,7 +180,7 @@ excludedLink="/"
    
 <FlashContent
     src={infinity.src}
-    alt='We offer the most creative web design in halifax'
+    alt={`An infinity logo symbolizing limitless possibilities and custom web design services using advanced technologies like React.js to show FocusFlow Software has the most Creative web design in Halifax `}
     />
 
     <Content

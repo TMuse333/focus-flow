@@ -72,14 +72,15 @@ const AppearingGradient = ({ text, subText }: { text: string; subText: string })
     }, [inView, animate, text]); // Add text to dependencies to avoid stale closures
 
     return (
-        <div ref={componentRef}>
+        <div ref={componentRef}
+        className='mb-10'>
             <section ref={scope}>
                 <div
                     id={`${text}-line`}
                     className={`w-[0vw] mx-auto relative z-[3]
                     h-[0px] transition-all bg-gradient-to-b from-[#a6e9ff] to-[#00bfff]
                     shadow-lg shadow-[#00bfff]
-                    rounded-b-full`}
+                    rounded-b-full `}
                     style={{
                         transition: `width 0.2s, height ${lineComplete ? '1s 1s' : '0.2s'}, border-bottom 1.1s ease-in`,
                        

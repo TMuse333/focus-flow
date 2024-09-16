@@ -21,6 +21,7 @@
     "dotenv": "^16.4.5",
     "framer-motion": "^11.2.9",
     "gray-matter": "^4.0.3",
+    "gsap": "^3.12.5",
     "heroicons": "^2.1.4",
     "next": "14.2.3",
     "nodemailer": "^6.9.14",

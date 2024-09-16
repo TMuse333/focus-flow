@@ -111,11 +111,30 @@ interface SubMenuProps {
       name: 'Why Us',
       secondaryLinks: [
         {
-            name:'Why Us',
-            destination:'/why-us'
-        }
+            name:'Top tier custom web design',
+            destination:'/best-web-design-halifax'
+        },
+        {
+          name: 'Monthly Subscription',
+          destination: '/monthly-subscription',
+        },
+        {
+          name: 'Our Process',
+          destination: '/process',
+        },
+        // {
+        //   name:'Monthly Subscription',
+        //   destination:'/monthly-subscription', 
+        // },
+        // {
+        //   name:'Planning for Success',
+        //   destination:'/process'
+        // }
       ],
-      listSubMenu: false,
+      listSubMenu: true,
+      subMenuSrc:twoHand.src,
+      subMenuAlt:'Two hands',
+      desktopDescription:'Learn here why we give you the highest probability of success with our professional services'
     },
     {
       name: 'Contact',
@@ -420,7 +439,7 @@ const BigNav: React.FC<NavbarProps> = ({ excludedLink }) => {
                       <h3 
                        onMouseEnter={()=>handleSubMenuHover(index)}
                        onMouseLeave={handleSubMenuLeave}
-                      className="mt-auto  text-sm">{link.name}</h3>
+                      className="mt-auto relative z-[4]   text-sm">{link.name}</h3>
                                  {link.subMenuSrc && link.subMenuAlt &&
                                  link.desktopDescription && (
 
@@ -440,7 +459,7 @@ index={index}
                     ) : (
                         <>
             <Link href={link.secondaryLinks[0].destination}>
-                <p className=" my-auto text-sm
+                <p className=" my-auto text-sm  relative z-[4]
                 ">{link.secondaryLinks[0].name}</p>
             </Link>
                         </>

@@ -4,8 +4,7 @@ import React, { createContext, useState, useContext, ReactNode, useEffect } from
 
 // Define the type for the context value
 interface GeneralContextType {
-  textYPosition: number;
-  setTextYPosition: React.Dispatch<React.SetStateAction<number>>;
+
   isMobile: boolean;
   setIsMobile: React.Dispatch<React.SetStateAction<boolean>>;
   setSecondCircleComplete: React.Dispatch<React.SetStateAction<boolean[]>>;
@@ -25,6 +24,11 @@ interface GeneralContextType {
   setSelectedCarouselImageLink: React.Dispatch<React.SetStateAction<string>>;
   selectedCarouselImageIndex:number | null,
   setSelectedCarouselImageIndex:React.Dispatch<React.SetStateAction<number | null>>;
+  setSelectedCarouselImageAlt:React.Dispatch<React.SetStateAction<string>>;
+  selectedCarouselImageAlt:string
+  setSelectedCarouselImageAlt2:React.Dispatch<React.SetStateAction<string>>;
+  selectedCarouselImageAlt2:string
+  
 }
 
 // Create the context
@@ -33,7 +37,7 @@ export const GeneralContext = createContext<GeneralContextType | undefined>(unde
 // Create a provider component
 export const ContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // Initialize the value state
-  const [textYPosition, setTextYPosition] = useState<number>(0);
+
 
   // Detect mobile devices
   const [isMobile, setIsMobile] = useState<boolean>(true);
@@ -47,6 +51,9 @@ export const ContextProvider: React.FC<{ children: ReactNode }> = ({ children })
   const [selectedCarouselImageTitle, setSelectedCarouselImageTitle] = useState<string>('');
   const [selectedCarouselImageDescription, setSelectedCarouselImageDescription] = useState<string[]>([]);
   const [selectedCarouselImageLink, setSelectedCarouselImageLink] = useState<string>('');
+  const [selectedCarouselImageAlt, setSelectedCarouselImageAlt] = useState('')
+  const [selectedCarouselImageAlt2, setSelectedCarouselImageAlt2] = useState('')  
+
 
   const [selectedCarouselImageIndex, setSelectedCarouselImageIndex] = useState<number | null>(null)
   const handleCircleComplete = (index: number, value: boolean) => {
@@ -82,8 +89,7 @@ export const ContextProvider: React.FC<{ children: ReactNode }> = ({ children })
   }, [isMobile]);
 
   const contextValue = {
-    textYPosition,
-    setTextYPosition,
+
     isMobile,
     setIsMobile,
     secondCircleComplete,
@@ -102,7 +108,11 @@ export const ContextProvider: React.FC<{ children: ReactNode }> = ({ children })
     selectedCarouselImageLink,
     setSelectedCarouselImageLink,
     setSelectedCarouselImageIndex,
-    selectedCarouselImageIndex
+    selectedCarouselImageIndex,
+    selectedCarouselImageAlt,
+    setSelectedCarouselImageAlt,
+    selectedCarouselImageAlt2,
+    setSelectedCarouselImageAlt2
   };
 
   return <GeneralContext.Provider value={contextValue}>{children}</GeneralContext.Provider>;
