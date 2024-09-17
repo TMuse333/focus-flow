@@ -16,15 +16,16 @@ const DesignPage = () => {
         excludedLink="Top tier custom web design"
         />
        <main className="mt-[3rem] relative z-[4]">
-        {/* <MultiLayerParallax/> */}
+        {/* <MultiLayerParallax/>
         
       <StickyCarousel
       images={stickyScrollables}
    
-      />
+      /> */}
+       {/* <section className="h-[100vh]"/> */}
       <PortalContent
       image={infinity.src}/>
-        <section className="h-[30vh]"/>
+        <section className="h-[60vh]"/>
        </main>
         </>
     )

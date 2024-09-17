@@ -60,6 +60,20 @@ body {
   position: relative;
 }
 
+.text-glow {
+  /* Apply a gradient to the text */
+/* Gradient from white to slightly darker than #00bfff */
+
+
+  /* Text shadow glow */
+  text-shadow: 0 0 10px #00bfff,   /* Outer glow */
+               0 0 20px #00bfff,   /* Outer glow */
+               0 0 30px #00bfff,   /* Further glow */
+               0 0 40px #00bfff;   /* Strongest glow */
+}
+
+
+
 .custom-border-animation::before,
 .custom-border-animation::after,
 .custom-border-animation::after-second,
