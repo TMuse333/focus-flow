@@ -103,6 +103,10 @@ const links = [
   {
     name:'Restaurant Software',
     destination:'online-food-ordering-system'
+  },
+  {
+    name:'Our design',
+    destination:'best-web-design-halifax'
   }
 ]
 

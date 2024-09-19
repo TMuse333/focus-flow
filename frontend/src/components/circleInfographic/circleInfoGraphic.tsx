@@ -17,6 +17,7 @@ import coder from '../../../public/media/focused-coder.webp'
 import thinker from '../../../public/media/quantum-thinker.webp'
 import sprinter from '../../../public/media/gemeni-sprinter.webp'
 import communicator from '../../../public/media/gemeni-communicator.webp'
+import AppearingGradient from "../appearingGradient/appearingGradient";
 
 interface CircleProps {
 
@@ -92,6 +93,7 @@ title, description, index,titleInView}) => {
 
 
     return (
+        
         <motion.div
         ref={componentRef}
         id={`infographic-container-${index}`}
@@ -102,12 +104,12 @@ title, description, index,titleInView}) => {
         whileHover='hover'
         whileTap="hover"
         exit="exit"
-         className={`mt-5 mb-[4rem] p-0
+         className={`mt-5 mb-[4rem] 
         
          overflow-x-hidden
             rounded-xl
         mr-auto ml-auto 
-        h-[95vw] w-[95vw] border border-[#2dc0eb]
+        h-[105vw] w-[95vw] border border-[#2dc0eb]
         flex flex-col  shadow-xl max-w-[360px] 
         max-h-[360px]
         sm:w-[45vw] sm:h-[50vw]
@@ -150,7 +152,7 @@ title, description, index,titleInView}) => {
             items-center justify-center mb-auto mt-auto">
 
             
-            <motion.h1
+            <motion.h3
             initial={{
                 opacity:0,
                 y:60
@@ -159,7 +161,7 @@ title, description, index,titleInView}) => {
                 opacity:animationComplete ? 1 : 0,
                 y:animationComplete ? 0 : 30
             }}
-             className="text-3xl ml-auto mr-auto pr-2 pl-2 ">{title}</motion.h1>
+             className="text-xl ml-auto text-center mr-auto pr-2 pl-2 pt-2 ">{title}</motion.h3>
             <motion.p 
             initial={{
                 opacity:0
@@ -170,7 +172,8 @@ title, description, index,titleInView}) => {
                     delay:0.33
                 }
             }}
-            className=" ml-auto mr-auto text-md  pr-5 pl-5 mt-3 sm:mt-6">
+            className=" ml-auto mr-auto text-md  pr-5 pl-5 mt-3 sm:mt-6
+            pb-4">
                 {description}
             </motion.p>
             </section>
@@ -216,7 +219,17 @@ export const CircleInfoGraphic:React.FC<Props> = ({
     return (
         <>
 
-        
+        <AppearingGradient
+        text="Maximizing Business Impact Through Design"
+        subText="Uncover the Benefits of Our Designs for Your Brand’s Growth"
+        />
+
+<div className="mt-5
+        w-[90vw] h-[5px]
+         bg-gradient-to-r from-[#003647] via-[#3e7384] to-[#003647]
+        ml-auto mr-auto rounded-[200rem] mb-8">
+           
+       </div>
 
           {/* <div 
            className="mt-5
@@ -286,12 +299,12 @@ export const CircleInfoGraphic:React.FC<Props> = ({
             ))}
             
         </section>
-        <div className="mt-5
+        {/* <div className="mt-5
         w-[90vw] h-[5px]
          bg-gradient-to-r from-[#003647] via-[#3e7384] to-[#003647]
         ml-auto mr-auto rounded-[200rem] mb-8">
            
-       </div>
+       </div> */}
        </>
     )
 }

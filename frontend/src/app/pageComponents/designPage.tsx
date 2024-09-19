@@ -4,28 +4,70 @@ import React from "react";
 import BigNav from "@/components/bigNav/navbar";
 import MultiLayerParallax from "@/components/mountainParallax/mountainParallax";
 import SlideScrollCarousel from "@/components/slideScrollCarousel/slideScrollCarousel";
-import { scrollableImages, stickyScrollables } from "@/data/data";
+import { scrollableImages, stickyScrollables, designCloser  } from "@/data/data";
 import StickyCarousel from "@/components/stickyCarousel/stickyCarousel";
 import PortalContent from "@/components/portalContent/portalContent";
 import infinity from '../../../public/media/atom-gif.gif'
+import { CircleInfoGraphic } from "@/components/circleInfographic/circleInfoGraphic";
+import AppearingSquare from "@/components/appearingSquare/appearingSquare";
+import Closer from "@/components/closer/closer";
+import Footer from "@/components/footer/footer";
 const DesignPage = () => {
+
+  const links = [
+    {
+      name:'Home',
+      destination:'/best-web-design-halifax'
+    },
+    {
+      name:'Why us',
+      destination:'/why-us'
+    },
+    {
+      name:'Lets work!',
+      destination:'/lets-work'
+    },
+    {
+      name:'Restaurant Software',
+      destination:'/online-food-ordering-system'
+    },
+   
+  ]
 
     return (
         <>
         <BigNav
         excludedLink="Top tier custom web design"
         />
-       <main className="mt-[3rem] relative z-[4]">
-        {/* <MultiLayerParallax/>
+       <main className="mt-[3rem] relative z-[4]
+   ">
+        <MultiLayerParallax/>
         
       <StickyCarousel
       images={stickyScrollables}
    
-      /> */}
-       {/* <section className="h-[100vh]"/> */}
+      />
+    
       <PortalContent
       image={infinity.src}/>
-        <section className="h-[60vh]"/>
+
+      <CircleInfoGraphic/>
+
+      <AppearingSquare/>
+
+      <Footer
+      links={links}
+      />
+
+
+  
+  {/* <Closer
+  {...designCloser}
+  /> */}
+
+
+
+       
        </main>
         </>
     )

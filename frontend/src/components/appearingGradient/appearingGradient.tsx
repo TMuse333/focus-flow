@@ -106,7 +106,8 @@ const AppearingGradient = ({ text, subText }: { text: string; subText: string })
                    <motion.h2
     id={`${text}-header`}
     className="mt-6 text-center font-semibold text-3xl sm:text-5xl md:text-6xl
-    bg-clip-text text-transparent relative z-[2] pb-4"
+    bg-clip-text text-transparent relative z-[2] pb-4
+    px-4"
     style={{
         backgroundImage: "linear-gradient(to right, #00e0ff, #00a2e4, #00e0ff)",
     }}

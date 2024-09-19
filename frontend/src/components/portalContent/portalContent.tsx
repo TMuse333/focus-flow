@@ -117,10 +117,11 @@ const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
      
     <div className=" relative z-[4] w-screen 
     mx-auto   flex flex-col items-center justify-center
-    
+    mt-[8rem]
+    md:mt-[-8rem]
    ">
     
-    <motion.div 
+    {/* <motion.div 
   className={`bg-[#00bfff] w-[10px] top-0 absolute mx-auto z-[15]
   transition-opacity
   ${animationComplete ? 'opacity-0' : ''}`}
@@ -128,18 +129,18 @@ const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
     height:!animationComplete ? height : '0px',
   }}
 >
-  {/* Arrow pointing downwards at the bottom of the line */}
+ 
   <div 
     className={`absolute bottom-[-16px] left-1/2
-    -translate-x-1/2 w-[0] h-[0] 
+    -translate-x-1/2 w-[0] h-[0] z-[4]
                 border-l-[15px] border-r-[15px] border-t-[16px] 
                 border-transparent border-t-[#00bfff]
                  scale-[1.3] `}
   />
-</motion.div>
+</motion.div> */}
 
-<div className={`w-screen  bg-black relative top-0 transition-all
-       z-[5] h-[60vh]`}
+<div className={`w-screen  bg-black relative top-[0%] transition-all
+       z-[5] h-[30vh] `}
        />
        
       <section ref={ref}
@@ -148,7 +149,7 @@ const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
       relative 
       md:h-screen
       items-center
-      my-auto
+      my-auto z-[4]
      '>
        
      
@@ -156,6 +157,7 @@ const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
       <div id="portal"
       className={`relative mx-auto bg-gradient-to-br from-[#80d4ff] to-[#00bfff] 
            h-[20px] mb-8 max-w-[600px] rounded-full  shadow-xl shadow-[#00bfff]
+ 
            z-[3]  w-[0vw] `}
           style={{
             transition: `width 0.3s linear, height 0.3s linear`, // Longer duration when atomLanded is true
@@ -167,14 +169,14 @@ const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
 <h3 id='portal-header'
 
 className={`opacity-0  mx-auto
-py-4 font-semibold
+py-4 font-semibold px-3
 text-center text-2xl sm:text-3xl md:text-4xl 
 ${animationComplete ? 'text-glow' : ''}`}
 
 // style={{
 //   transition:'opacity 0.2s 0s ease-in'
 // }}
->Creative and technically sound</h3>
+>More than a website: A piece of art</h3>
 <section className={`flex transition-none w-screen
 justify-evenly items-end ${isDesktop ? 'flex-row' : 'flex-col'} `}>
 
@@ -183,11 +185,21 @@ justify-evenly items-end ${isDesktop ? 'flex-row' : 'flex-col'} `}>
 <article id='portal-article-1'
 className={`ml-auto order-2 opacity-0 
 ${isDesktop ? 'translate-x-1/2' : ''}`}>
-<h3 className={`text-left pl-4 mr-auto font-semibold mb-2
 
-
-${isDesktop ? 'text-red-400' : ''}`}>point 1 </h3>
-<p className="w-[95w] md:w-[27vw] lg:w-[30vw] px-4 mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum expedita beatae officiis iste aliquid facilis nulla, unde hic! Dolorum necessitatibus exercitationem culpa est voluptatem, unde quos accusantium enim quibusdam maxime?</p>
+<h3 
+className="text-left text-green-300 pl-4 mr-auto font-semibold mb-2
+bg-clip-text text-transparent"
+style={{
+  backgroundImage: "linear-gradient(to right, #00e0ff, #00a2e4, #00e0ff)",
+}}>
+Aesthetic Brilliance </h3>
+<p className="w-[95w] md:w-[27vw] lg:w-[30vw] px-4 mb-4">
+  With years of art and design experience well before web design, each website is crafted
+  with the same attention to detail and care that goes into a work of art.
+  Our websites are designed to be visually striking with unique and aesthetic
+  layouts, color and imagery to captivate users from the moment
+  they land on the page to help elevate your brand.
+</p>
 </article>
 
   
@@ -196,7 +208,7 @@ id='portal-image'
 src={image}
 alt='alt'
 className={`w-[40vw] object-contain 
-mx-auto  z-[2] flex-shrink-0 max-w-[437px]
+mx-auto relative z-[-1] flex-shrink-0 max-w-[437px]
 
 
 ${!isDesktop ? 'order-0' : 'order-1'}`}
@@ -204,7 +216,7 @@ ${!isDesktop ? 'order-0' : 'order-1'}`}
 width={300}
 height={1300}
 style={{
-    transform:`translateY(${isDesktop ? '-23rem' : '-23rem'}) scale(0.5)`,
+    transform:`translateY(${isDesktop ? '-23rem' : '-23rem'}) scale(0.2)`,
     transition: 'transform 1s 1s ease-in',
 }} 
  />
@@ -214,8 +226,20 @@ style={{
 <article id='portal-article-2'
 className={`mr-auto opacity-0
 ${isDesktop ? 'translate-x-1/2' : ''}`}>
-<h3 className="text-left text-green-300 pl-4 mr-auto font-semibold mb-2">point 1 </h3>
-<p className="w-[95w] md:w-[27vw] px-4 mb-4 lg:w-[30vw]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum expedita beatae officiis iste aliquid facilis nulla, unde hic! Dolorum necessitatibus exercitationem culpa est voluptatem, unde quos accusantium enim quibusdam maxime?</p>
+<h3 
+className="text-left text-green-300 pl-4 mr-auto font-semibold mb-2
+bg-clip-text text-transparent"
+style={{
+  backgroundImage: "linear-gradient(to right, #00e0ff, #00a2e4, #00e0ff)",
+}}>
+   Captivating Story Telling</h3>
+<p className="w-[95w] md:w-[27vw] px-4 mb-4 lg:w-[30vw]"
+>
+  Just like art, our websites are designed to evoke emotions
+  a tell the unique story about your brand. We design our websites
+  with the intent of giving your viewers a unique and memorable interaction
+  with your website to establish a connection and get your story accross
+  to your audience so they understand your greatness</p>
 </article>
 
 
@@ -224,8 +248,19 @@ ${isDesktop ? 'translate-x-1/2' : ''}`}>
 <article id='portal-article-3'
 className={`mx-auto md:w-[50vw] text-center opacity-0 
 ${isDesktop ? '-translate-y-1/2' : ''}`}>
-<h3 className="text-center text-blue-200  font-semibold mb-2 mx-auto ">point 1 </h3>
-<p className="w-[95w] md:w-[50vw] px-4 mb-4 text-left mx-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum expedita beatae officiis iste aliquid facilis nulla, unde hic! Dolorum necessitatibus exercitationem culpa est voluptatem, unde quos accusantium enim quibusdam maxime?</p>
+<h3 
+className="text-left text-green-300 pl-4 mr-auto font-semibold mb-2
+bg-clip-text text-transparent"
+style={{
+  backgroundImage: "linear-gradient(to right, #00e0ff, #00a2e4, #00e0ff)",
+}}>
+   Personalized design </h3>
+<p className="w-[95w] md:w-[50vw] px-4 mb-4 text-left mx-auto">
+  Everyone business is unique and its essential that your website reflects
+  this uniqueness, especially in todays competitive marketplace,
+  thats why when we plan your website we take into account
+  aspects that make you unique and create distinct desings
+  to help you stand out.</p>
 </article>
 
 

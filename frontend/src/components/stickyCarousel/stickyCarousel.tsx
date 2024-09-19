@@ -7,24 +7,23 @@ import AppearingGradient from '../appearingGradient/appearingGradient';
 
 interface ElementProps {
   title:string,
-  description:string
+  description:string,
+
 }
 
 
 const CarouselElement:React.FC<ElementProps> = ({
-  title, description
+  title, description, 
 }) =>
 {
     return (
       <>
       <section className='h-[120vw] max-h-[500px] rounded-lg transition-transform
       bg-[linear-gradient(to_bottom_right,#80d4ff,#00bfff)]
-      relative z-[5]'>
+      relative z-[5] '>
         <h3 className='text-2xl text-center font-semibold
-        py-6'>Title here</h3>
-        <p className='text-left px-4'>Lorem ipsum dolor, sit amet
-          
-           consectetur adipisicing elit. Rem ipsam laborum soluta cumque asperiores laboriosam repellendus aliquid provident. Officiis suscipit, placeat libero laboriosam ea qui maiores ut nostrum laborum tempore?</p>
+        py-6'>{title}</h3>
+        <p className='text-left px-4'>{description}</p>
       </section>
       </>
     )
@@ -35,7 +34,8 @@ gsap.registerPlugin(ScrollTrigger);
 interface Props {
   title?: string;
   description?: string;
-  images: Array<{ src: string; alt: string }>;
+  images: Array<{ src: string; alt: string,
+  title: string, description:string }>;
 }
 
 const StickyCarousel: React.FC<Props> = ({ title, description, images }) => {
@@ -108,8 +108,7 @@ const StickyCarousel: React.FC<Props> = ({ title, description, images }) => {
               height={55}
             /> */}
             <CarouselElement
-            title=''
-            description=''/>
+            {...image}/>
           </div>
         ))}
       </div>

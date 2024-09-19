@@ -34,38 +34,31 @@ export const contentData1 = {
 
 export const workTenets = [
     {
-        title:'Laser Focus',
-        description:'When we put our mind to a project, it is the primary focus of life.'+
-        'We have the ability the lock in and commit hours and hours of concentrated work every day to your website gives is as high quality as it can be and it '+
-        ' gives your business a great boost '
-    },
-
-    {
-        title:'Fantastic Creativity',
-        description:'With years of drawing experience along with custom coded websites as opposed to generic drag and drop templates, '+
-        'we are able to make unique looking websites that will attract attention. But we are also able to analyze other other popular websites and apply our own unique style to them to ensure your website has all the qualities of a great website while standing out.'
+        title: 'Enhanced User Experience Leads to Higher Conversions',
+        description: 'Our focus on user experience ensures that every interaction on your website is seamless and intuitive. By prioritizing usability and aesthetic appeal, we create engaging environments that not only captivate visitors but also guide them toward taking action, ultimately boosting your conversion rates and driving sales.'
     },
     {
-        title:'Fast Worker',
-        description:'With over 1000 hours of dedication to web design in the last year, we have developed a efficient and quick process to '+
-        'get your website up and running quickly. We understand websites are very and can execute and very fast speeds to '+
-        'deliver your website on time.'
-    },
-  
-    {
-        title:'Daily Communication',
-        description:'Your input and is very important to us. We can give you daily updates on the '+
-        'progress of your website and listen to your feedback to ensure your website turns out the way you want it.'
+        title: 'Brand Credibility and Trust',
+        description: 'A professionally designed website instills confidence in your brand. We understand the importance of establishing trust with your audience, and our designs reflect your values and mission, ensuring that potential customers feel secure and motivated to engage with your business. Trust translates to loyalty, and loyalty leads to growth.'
     },
     {
-        title:'Constant improvement',
-        description:'We are always striving to add new features to our websites and make them even better, you are a direct beneficiary of this work because we will add our discoveries to your website to make them even better!'
+        title: 'Quick Delivery',
+        description: 'With over 1000 hours dedicated to web design in the last year, we have streamlined our process to ensure rapid delivery without compromising quality. We recognize the urgency of launching your online presence, and our efficient approach guarantees that your website will be up and running in record time, ready to serve your audience.'
     },
     {
-        title:'A lot to gain',
-        description:'We are just starting out, it is extremley important that our projects go well so we can do this for a long time. When you work with us we ensure we do everything we can to make sure your project turns out as best as it can.'
+        title: 'Frequent Communication',
+        description: 'Your vision is our priority. We believe in maintaining open lines of communication throughout the project. With daily updates and active engagement, we ensure that your feedback is integral to our process, resulting in a website that not only meets but exceeds your expectations.'
+    },
+    {
+        title: 'Constant Improvement',
+        description: 'Our commitment to innovation means your website will continually evolve. We proactively seek out new features and enhancements, integrating the latest technologies and design trends. As we discover new ways to improve functionality and user engagement, your website benefits from these advancements, keeping you ahead of the competition.'
+    },
+    {
+        title: 'Built for Scalability and Growth',
+        description: 'We understand that your business is dynamic, and your website should reflect that. Our designs are strategically built to accommodate future growth, allowing you to scale easily as your needs evolve. Partnering with us means investing in a solution that will grow alongside your business, adapting seamlessly to new challenges and opportunities.'
     }
-]
+];
+
 
 
 
@@ -269,19 +262,40 @@ export const restaurantParallax:ParallaxProps = {
 export const stickyScrollables = [
     {
         src:'/media/focused-coder.webp',
-        alt:'the focused codeer'
+        alt:'the focused codeer',
+        title:'New technologies and 100% control',
+        description:'The vast majority of websites today are made with the same generic templates that dont use the full potential of whats availaibel today'
     },
     {
         src:'/media/focused-coder.webp',
-        alt:'the focused codeer'
+        alt:'the focused codeer',
+        title:'Constant inovation',
+        description:`There are limitless possibilites with websites when you can use custom code and we are interetsted in trying as many as we can.
+         We are constanly creating new components and are dedicated to making
+         websites with animations and designs never seen before 
+         to ensure you stay ahead of the competition`
     },
     {
         src:'/media/focused-coder.webp',
-        alt:'the focused codeer'
+        alt:'the focused codeer',
+        title:'A lifetime of design experience',
+        description:`Long before ever making websites, the founder of FocusFlow software has been doing design with animation, video creation and
+         digital art. We have taken all of this experience to the world of websites
+         and along with us so we will always have the right design
+         for you and the technical skills to pull it off just how you want it.
+        `
     },
     {
         src:'/media/focused-coder.webp',
-        alt:'the focused codeer'
+        alt:'the focused codeer',
+        title:'3D models and advanced animations',
+        description:lorem30
+    },
+    {
+        src:'/media/focused-coder.webp',
+        alt:'We will win',
+        title:'Strive for greatness',
+        description:'We strive to have top tier web design, if you see a design you like, we are confident we can emulate and outdo your competitors, we will not be out designed'
     }
 ]
 
@@ -549,3 +563,35 @@ export const genericContent = {
 // custom website
 // halifax website design company
 // halifax nova scotia
+
+// <section className="flex flex-col justify-center
+// md:text-lg px-4  relative z-[4]
+// mb-8">
+
+
+// <p className="mx-auto px-4">
+//   Now that you've seen firsthand why FocusFlow stands above the rest, it's time to take the next step. Your website is more than just an online presence — it's a crucial part of your business's success. It deserves to be built and managed by a team with the technical expertise and creative vision to set you apart from the competition.
+//   <br/><br/>
+//   Don't settle for average when you can have a website that truly reflects the heart of your brand and drives results. We’re ready to design a site that not only captures your audience's attention but also elevates your business to new heights.
+//   <br/><br/>
+//   Start your project with us today and let's bring your vision to life. Click below to get started — we're excited to work with you and create something extraordinary.
+// </p>
+
+// <button className="mx-auto mt-8 px-6 py-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-all">
+//   Get Started with FocusFlow
+// </button>
+
+//  </section>
+
+
+export const designCloser = {
+    image:twoHands.src,
+    title:'Focusflow',
+    description:` Now that you've seen firsthand why FocusFlow stands above the rest, it's time to take the next step. Your website is more than just an online presence — it's a crucial part of your business's success. It deserves to be built and managed by a team with the technical expertise and creative vision to set you apart from the competition.
+   
+      Don't settle for average when you can have a website that truly reflects the heart of your brand and drives results. We’re ready to design a site that not only captures your audience's attention but also elevates your business to new heights.
+   
+       Start your project with us today and let's bring your vision to life. Click below to get started — we're excited to work with you and create something extraordinary.`,
+       buttonText:'Get Started with Focusflow',
+       destination:'/contact'
+}

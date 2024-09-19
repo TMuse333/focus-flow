@@ -27,11 +27,11 @@ export default function MultiLayerParallax() {
       className="w-full h-screen overflow-hidden relative grid place-items-center"
     >
       <motion.div
-        style={{ y: !isMobile ?  textY : "-40%" }}
-        className="relative z-[200] "
+        style={{ y: !isMobile ?  textY : textY }}
+        className="relative z-[20] "
       >
        <h1 className="text-4xl mx-auto
-           sm:text-6xl md:text-5xl w-[80%] font-semibold text-center
+           sm:text-6xl md:text-5xl md:w-[80%] px-4 font-semibold text-center
            mb-4 animate-gradient">Creative Web Design in Halifax by FocusFlow Software</h1>
         <motion.h2
        
@@ -63,7 +63,7 @@ export default function MultiLayerParallax() {
           backgroundImage: `url(${full.src})`,
           backgroundPosition: "bottom",
           backgroundSize: "cover",
-          y:!isMobile ?  backgroundY : undefined,
+          y:!isMobile ?  backgroundY : backgroundY,
         }}
       />
 
