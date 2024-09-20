@@ -121,23 +121,7 @@ const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
     md:mt-[-8rem]
    ">
     
-    {/* <motion.div 
-  className={`bg-[#00bfff] w-[10px] top-0 absolute mx-auto z-[15]
-  transition-opacity
-  ${animationComplete ? 'opacity-0' : ''}`}
-  style={{
-    height:!animationComplete ? height : '0px',
-  }}
->
- 
-  <div 
-    className={`absolute bottom-[-16px] left-1/2
-    -translate-x-1/2 w-[0] h-[0] z-[4]
-                border-l-[15px] border-r-[15px] border-t-[16px] 
-                border-transparent border-t-[#00bfff]
-                 scale-[1.3] `}
-  />
-</motion.div> */}
+  
 
 <div className={`w-screen  bg-black relative top-[0%] transition-all
        z-[5] h-[30vh] md:h-[10vh]`}
