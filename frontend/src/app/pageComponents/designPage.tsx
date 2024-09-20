@@ -4,7 +4,8 @@ import React from "react";
 import BigNav from "@/components/bigNav/navbar";
 import MultiLayerParallax from "@/components/mountainParallax/mountainParallax";
 import SlideScrollCarousel from "@/components/slideScrollCarousel/slideScrollCarousel";
-import { scrollableImages, stickyScrollables, designCloser  } from "@/data/data";
+import { scrollableImages, stickyScrollables, designCloser,
+genericAccordion  } from "@/data/data";
 import StickyCarousel from "@/components/stickyCarousel/stickyCarousel";
 import PortalContent from "@/components/portalContent/portalContent";
 import infinity from '../../../public/media/atom-gif.gif'
@@ -12,6 +13,7 @@ import { CircleInfoGraphic } from "@/components/circleInfographic/circleInfoGrap
 import AppearingSquare from "@/components/appearingSquare/appearingSquare";
 import Closer from "@/components/closer/closer";
 import Footer from "@/components/footer/footer";
+import Accordion from "@/components/accordion/accordion";
 const DesignPage = () => {
 
   const links = [
@@ -47,11 +49,18 @@ const DesignPage = () => {
       images={stickyScrollables}
    
       />
+
+    
     
       <PortalContent
       image={infinity.src}/>
 
+
+
       <CircleInfoGraphic/>
+
+      {/* <section className="h-[50vh]"
+      /> */}
 
       <AppearingSquare/>
 

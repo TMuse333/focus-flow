@@ -140,7 +140,7 @@ const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
 </motion.div> */}
 
 <div className={`w-screen  bg-black relative top-[0%] transition-all
-       z-[5] h-[30vh] `}
+       z-[5] h-[30vh] md:h-[10vh]`}
        />
        
       <section ref={ref}

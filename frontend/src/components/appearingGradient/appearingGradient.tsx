@@ -73,7 +73,7 @@ const AppearingGradient = ({ text, subText }: { text: string; subText: string })
 
     return (
         <div ref={componentRef}
-        className='mb-10'>
+        className='mb-10 relative'>
             <section ref={scope}>
                 <div
                     id={`${text}-line`}

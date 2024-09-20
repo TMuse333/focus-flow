@@ -19,7 +19,7 @@ import cashProcess from '../../public/media/custom-web-design-halifax-cash-homes
 import dolceVita2 from '../../public/media/custom-web-design-halifax-dolce-vita2.webp'
 import cards23 from '../../public/media/custom-web-design-halifax-cards2.webp'
 import sainey2 from '../../public/media/sainey2.webp'
-
+import focusFlow from '../../public/media/focusFlow-brain-nobg.webp'
 export const contentData1 = {
     mainTitle:'Your Digital Presence is Important',
     description:[
@@ -261,13 +261,13 @@ export const restaurantParallax:ParallaxProps = {
 
 export const stickyScrollables = [
     {
-        src:'/media/focused-coder.webp',
+        src:focusFlow.src,
         alt:'the focused codeer',
         title:'New technologies and 100% control',
-        description:'The vast majority of websites today are made with the same generic templates that dont use the full potential of whats availaibel today'
+        description:'The vast majority of websites today are made with the same generic templates that dont use the full potential of whats available today'
     },
     {
-        src:'/media/focused-coder.webp',
+        src:focusFlow.src,
         alt:'the focused codeer',
         title:'Constant inovation',
         description:`There are limitless possibilites with websites when you can use custom code and we are interetsted in trying as many as we can.
@@ -276,7 +276,7 @@ export const stickyScrollables = [
          to ensure you stay ahead of the competition`
     },
     {
-        src:'/media/focused-coder.webp',
+        src:focusFlow.src,
         alt:'the focused codeer',
         title:'A lifetime of design experience',
         description:`Long before ever making websites, the founder of FocusFlow software has been doing design with animation, video creation and
@@ -286,13 +286,14 @@ export const stickyScrollables = [
         `
     },
     {
-        src:'/media/focused-coder.webp',
+        src:focusFlow.src,
         alt:'the focused codeer',
         title:'3D models and advanced animations',
-        description:lorem30
+        description:`To make sure our websites truly stand out so that your business grabs attention, one of our specialites is sequencing animations to give your users a one of a kind experience, we also can make 3d models of logos or objects
+        to show to your viewers that you are competent and mean business.`
     },
     {
-        src:'/media/focused-coder.webp',
+        src:focusFlow,
         alt:'We will win',
         title:'Strive for greatness',
         description:'We strive to have top tier web design, if you see a design you like, we are confident we can emulate and outdo your competitors, we will not be out designed'

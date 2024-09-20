@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Image from 'next/image'; // Assuming you're using Next.js for image optimization
+import Image, { StaticImageData } from 'next/image'; // Assuming you're using Next.js for image optimization
 import AppearingGradient from '../appearingGradient/appearingGradient';
-
+import brain from '../../../public/media/focusFlow-brain-nobg.webp'
 
 interface ElementProps {
   title:string,
@@ -16,11 +16,20 @@ const CarouselElement:React.FC<ElementProps> = ({
   title, description, 
 }) =>
 {
+
     return (
       <>
-      <section className='h-[120vw] max-h-[500px] rounded-lg transition-transform
-      bg-[linear-gradient(to_bottom_right,#80d4ff,#00bfff)]
-      relative z-[5] '>
+      <section className='  rounded-2xl transition-transform
+      bg-gradient-to-br from-blue-500 via-blue-400 to-blue-200
+    mx-auto h-[87vh] max-h-[600px] pb-5 rounded-b-2xl
+border border-white
+      relative z-[5] w-[90vw] md:w-[40vw]'>
+        <Image
+        src={brain}
+        alt='The focusflow brain'
+        className='w-[150px] object-contain
+        relative  rounded-xl mx-auto'
+        />
         <h3 className='text-2xl text-center font-semibold
         py-6'>{title}</h3>
         <p className='text-left px-4'>{description}</p>
@@ -34,7 +43,7 @@ gsap.registerPlugin(ScrollTrigger);
 interface Props {
   title?: string;
   description?: string;
-  images: Array<{ src: string; alt: string,
+  images: Array<{ src: string|StaticImageData; alt: string,
   title: string, description:string }>;
 }
 
@@ -72,10 +81,15 @@ const StickyCarousel: React.FC<Props> = ({ title, description, images }) => {
   }, []);
 
   return (
+    <>
+    <AppearingGradient
+    text='Custom and creative'
+    subText='We have the technical expertiese and creativity'
+    />
     <section
       ref={containerRef}
       className="relative w-screen  py-8
-      h-[100vh] z-[4]"
+       z-[4] "
     >
       {title && (
         <>
@@ -88,17 +102,15 @@ const StickyCarousel: React.FC<Props> = ({ title, description, images }) => {
         </>
       )}
 
-      <AppearingGradient
-      text='Custom and creative'
-      subText='We have the technical expertiese and creativity'
-      />
+  
 
       <div ref={carouselRef} className="flex w-max overflow-hidden
-      ">
+      h-screen">
         {images.map((image, index) => (
           <div
             key={index}
-            className="w-[70vw] h-[120vw] max-h-[700px] relative flex-shrink-0 mr-10"
+            className="w-[95vw]  max-h-[600px] md:w-[45vw] max-h-[700px] relative flex-shrink-0 
+            mx-auto my-auto" 
           >
             {/* <Image
               src={image.src}
@@ -113,6 +125,7 @@ const StickyCarousel: React.FC<Props> = ({ title, description, images }) => {
         ))}
       </div>
     </section>
+    </>
   );
 };
 

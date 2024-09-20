@@ -68,7 +68,7 @@ hasIntro,intro,description, link}) => {
     return (
         <>
         <article className='flex flex-col justify-start items-center
-        mb-5'>
+        mb-12 overflow-visible '>
 
        
         {hasIntro && (
