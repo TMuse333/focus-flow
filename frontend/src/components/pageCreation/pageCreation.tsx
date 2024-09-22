@@ -1,0 +1,201 @@
+import React, { useEffect } from "react";
+import { useAnimate,useInView } from "framer-motion";
+import { useGeneralContext } from "@/context/context";
+import AppearingGradient from "../appearingGradient/appearingGradient";
+
+interface PageProps {
+    title:string,
+    number:number,
+    objectives:string[]
+    id:string
+}
+
+interface PageData {
+    pageContent:{
+        title:string,
+       
+        objectives:string[]
+       
+    }[]
+}
+
+
+const PageElement:React.FC<PageProps> = ({
+    id,number,objectives
+}) => {
+
+    return (
+        <div id={id}
+        className="w-[45vw]   mx-auto bg-[#00bfff]
+        rounded-md pb-0 mb-8 max-w-[470px] h-0 overflow-hidden  ">
+            <h4 className="text-center mt-2">Page&nbsp;{number}</h4>
+            <ul className="px-2 text-center">
+                <li className="my-4 font-bold text-lg">Objectives</li>
+                
+               {objectives.map((objective, index) => (
+                <>
+
+                <li key={index}
+                className="mb-2 text-left
+                md:text-center">
+                    {objective}
+                    </li>
+                    </>
+                    
+               ))}
+               
+            </ul>
+        </div>
+    )
+}
+
+
+const PageCreation:React.FC<PageData> = ({
+    pageContent
+}) => {
+
+    const [scope, animate] = useAnimate()
+
+    const inView = useInView(scope,{
+        amount:1
+    })
+
+    const {isMobile} = useGeneralContext()
+
+    const handleAnimation = async () => {
+
+        const uxButton = document.getElementById('ux-button')
+        const industry = document.getElementById('industry-button')
+        const plan = document.getElementById('plan-button')
+        const page1 = document.getElementById('page-1')
+        const page2 = document.getElementById('page-2')
+        const page3 = document.getElementById('page-3')
+        const page4 = document.getElementById('page-4')
+
+        if(uxButton){
+            await animate(uxButton, {opacity:1
+    })
+        }
+        
+        if(industry){
+            await animate(industry, {opacity:1
+    })
+        }
+
+        if(uxButton){
+            await animate(uxButton, {top:'50%',
+        left:'50%',x:"-50%"
+    })
+        }
+        
+        if(industry){
+            await animate(industry, {top:'50%',
+        left:'50%',x:"-50%"
+    })
+        }
+
+        if(plan){
+            await animate(plan,{opacity:1, })
+        }
+
+        if(uxButton && industry){
+            await animate(industry,{opacity:0})
+            await animate(uxButton,{opacity:0})
+        }
+
+        if(page1){
+            await animate(page1, {height:'auto',
+       }, {duration:0.5})
+        }
+
+        if(page2){
+            await animate(page2, {height:'auto',
+       }, {duration:0.5})
+        }
+
+        if(page3){
+            await animate(page3, {height:'auto',
+       }, {duration:0.5})
+        }
+
+        if(page4){
+            await animate(page4, {height:'auto',
+       }, {duration:0.5})
+        }
+
+
+
+    }
+
+    useEffect(() => {
+        if(inView){
+            handleAnimation()
+        }
+    },[inView])
+
+   
+
+
+    return (
+        <>
+        <section ref={scope}
+         className="overflow-x-hidden max-auto mt-[12rem]
+         h-[80vh] relative max-w-[1000px]">
+           {/* <AppearingGradient
+           text="Creation of Pages"
+           subText={`After we gather enough information about
+           the ideal user experience and industry trends, we formulate
+           the ideal pages to elevate your online presence
+           `}
+           description={true}
+           /> */}
+           <h3 className="text-center mb-4
+           text-3xl sm:text-4xl md:text-5xl">
+            Creation of Pages
+           </h3>
+           <p className="px-4 sm:text-lg md:text-xl
+           max-w-[1000px] mx-auto">
+           After we gather enough information about
+           the ideal user experience and industry trends, we formulate
+           the ideal pages to elevate your online presence
+           </p>
+
+            <section className="w-full mt-2 relative h-[25vh]">
+                <p id='ux-button'
+                className="absolute top-0 opacity-0 bg-[#00bfff] p-2 rounded-xl">
+                    user experience</p>
+                <p id='industry-button'
+                className="absolute top-0 opacity-0 right-0 bg-[#00bfff] p-2 rounded-xl
+                w-[70px]">
+                    industry</p>
+                    <p id='plan-button'
+                    className="bg-green-400 absolute top-1/2
+                    left-1/2 -translate-x-1/2 p-3 rounded-2xl
+                    opacity-0">
+                        Your plan to greatness
+                    </p>
+            </section>
+
+
+            <section className="grid grid-cols-2 mx-auto mt-5 
+            max-w-[1000px]
+            ">
+                {pageContent.map((page,index) => (
+                    <PageElement
+                    id={`page-${index + 1}`}
+                    number={index+1}
+                    {...page}
+                    key={index}
+                    />
+                ))}
+                
+            </section>
+            <p className="mx-auto text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis temporibus perferendis obcaecati fugit deserunt, dicta voluptatum eaque sapiente, esse officiis aut cum voluptates impedit doloremque sint consequuntur sequi quis blanditiis quia dolorum accusantium eveniet, unde maxime autem! Possimus, illum quidem?</p>
+        </section>
+        </>
+    )
+}
+
+export default PageCreation
+
+

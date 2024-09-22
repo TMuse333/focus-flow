@@ -2,7 +2,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import { motion, useAnimate, useInView } from "framer-motion";
 import { useIntersectionObserver } from "../intersectionObserver/intersectionObserver";
 
-const AppearingGradient = ({ text, subText }: { text: string; subText: string }) => {
+const AppearingGradient = ({ text, subText, description }: { text: string; subText: string,
+description?:boolean }) => {
     const options = {
         root: null,
         rootMargin: '0px',
@@ -135,9 +136,9 @@ const AppearingGradient = ({ text, subText }: { text: string; subText: string })
 </motion.h2>
 
                 <h3 id={`${text}-subHeader`} 
-                className="text-center mt-4 text-xl
-                sm:text-2xl md:text-3xl
-                opacity-0"
+                className={`text-center mt-4 
+                ${!description ? 'text-xl sm:text-2xl md:text-3xl' : 'text-md sm:text-lg md:text-xl'}
+                opacity-0`}
                
                 >
                     {subText}

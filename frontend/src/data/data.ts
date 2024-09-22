@@ -596,3 +596,51 @@ export const designCloser = {
        buttonText:'Get Started with Focusflow',
        destination:'/contact'
 }
+
+
+export const processPageContent = [
+    {
+        title:'Homepage',
+        objectives:[
+            'prove you are a real one',
+            'introduce your company',
+            'introduce the other pages'
+        ]
+
+    },
+    {
+        title:'Homepage',
+        objectives:[
+            'prove you are a real one',
+            'introduce your company',
+            'introduce the other pages'
+        ]
+
+    },
+    {
+        title:'Homepage',
+        objectives:[
+            'prove you are a real one',
+            'introduce your company',
+            'introduce the other pages'
+        ]
+
+    },
+    {
+        title:'Homepage',
+        objectives:[
+            'prove you are a real one',
+            'introduce your company',
+            'introduce the other pages'
+        ]
+
+    },
+
+]
+
+export const processSlideShow = [
+    {
+        title:'being a real one',
+        description:lorem30
+    }
+]
