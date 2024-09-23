@@ -21,14 +21,18 @@ const ProcessPage = () => {
             {/* <Curtain/>
            
             <PageCreation
-            pageContent={processPageContent}/>
+            pageContent={processPageContent}/> */}
              <div className="h-[60vh]
             bg-gray-800
-            "/> */}
+            "/>
 
             <SlideShowCarousel
             images={processSlideShow}
             />
+
+<div className="h-[60vh]
+            bg-gray-800
+            "/>
             </main>
             </>
     )

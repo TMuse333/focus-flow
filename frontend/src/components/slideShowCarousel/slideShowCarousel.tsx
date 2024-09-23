@@ -100,8 +100,8 @@ useEffect(() => {
 
     } else if (currentElement < carouselLength - 1) {
       setCurrentElement(currentElement + 1);
-      // scrollToElement(`carousel-element-${currentElement + 1}`, currentElement + 1);
-      setShift((prev)=>prev - 1)
+      scrollToElement(`carousel-element-${currentElement + 1}`, currentElement + 1);
+      // setShift((prev)=>prev - 1)
       setSlideProgressReset(true);
       clearInterval(interval); // Stop the interval when slideProgress reaches 100
       setSlideProgress(0);
@@ -158,99 +158,99 @@ useEffect(()=> {
 }
 
 const CarouselElement: React.FC<SliderProps> = ({
-    src,
-    alt,
-    description,
-    index,
-    carouselLength,
-    currentElement,
-    shift
+  src,
+  alt,
+  description,
+  index,
+  carouselLength,
+  currentElement,
+  shift
 }) => {
+  const [scrollMarginTop, setScrollMarginTop] = useState(0);
+  const isCurrentSlide = currentElement === index;
+  const [animationComplete, setAnimationComplete] = useState(false);
   
-const isCurrentSlide = currentElement === index;
-const [animationComplete, setAnimationComplete] = useState(false);
+  const { isMobile } = useGeneralContext();
 
-function handleAnimationComplete(){
-  setAnimationComplete(!animationComplete);
-  console.log('animation completed!');
+  const updateScrollMargin = () => {
+    const element = document.getElementById(`carousel-element-${index}`);
+    if (element) {
+        const rect = element.getBoundingClientRect();
+        const distanceFromTop = rect.top; // Distance from the viewport top
+        setScrollMarginTop(distanceFromTop);
+        console.warn('scroll margin top', distanceFromTop);
+    }
+};
 
+useEffect(() => {
+  // Initial calculation of scroll margin
+  updateScrollMargin();
 
+  // Add scroll event listener
+  const handleScroll = () => {
+      updateScrollMargin();
+  };
 
-}
+  window.addEventListener('scroll', handleScroll);
 
-const { isMobile } = useGeneralContext()
+  // Clean up event listener on component unmount
+  return () => {
+      window.removeEventListener('scroll', handleScroll);
+  };
+}, [index]); 
 
-    return (
-        <section 
-            
-            className=
-            {`
-         
-            w-screen
-            
-   relative
-   
-   md:max-h-[800px]
-               ml-auto mr-auto
-                h-[105vw] 
-               overflow-y-hidden
-                flex-shrink-0
-               
-                
-                 `}
-           style={{
-            transform:`translateX(${(shift * 100)}%)`,
-            transition:'transform 1s ease-in',
-         
-             scrollSnapAlign: 'center',
-         }}
-        >
+  const handleAnimationComplete = () => {
+      setAnimationComplete(!animationComplete);
+      console.log('animation completed!');
+  };
 
-<AnimatePresence>
-  <motion.p
-    // onAnimationComplete={handleAnimationComplete}
-    initial={{
-      opacity: 0,
-      transform: 'translate(0%,-50%)' // Replace y:30 with translateY
-    }}
-    animate={{
-      opacity: isCurrentSlide ? 1 : 0,
-      transform: isCurrentSlide && isMobile ? 'translate(10%,10%)' : isCurrentSlide ? 'translate(35%,10%)' : 'translate(20%,-50%)', // Use transform for movement
-      transition: {
-        delay: animationComplete ? 0.4 : 0,
-        duration: 0.4
-      }
-    }}
-    exit={{
-      opacity: 0,
-      transform: 'translateX(50px)' // Replace x:50 with translateX
-    }}
-    className='absolute z-[14] text-white w-4/5 md:w-2/5 text-md sm:text-lg md:text-4xl'
-    style={{
-      transform: 'translateY(5%) translateX(15%)' // Handle positioning with transform
-    }}
-  >
-    {description}
-  </motion.p>
-</AnimatePresence>
-
-          
-            <Image
-            id={`carousel-element-${index}`}
-                src={src}
-                alt={alt}
-                className={`w-[90%] ml-auto mr-auto object-cover 
-                h-full max-w-[1200px] overflow-y-hidden
-               `}
-                style={{ filter:'brightness(0.6)',
-              objectPosition:'50% 50%' }}
-              layout="position"
+  return (
+      <section 
+          id={`carousel-element-${index}`}
+          className={`w-screen relative md:max-h-[800px] ml-auto mr-auto h-[105vw]  flex-shrink-0 `}
+          style={{
+              transform: `translateX(${(shift * 100)}%)`,
+              transition: 'transform 1s ease-in',
+              scrollSnapAlign: 'center',
+              scrollMarginTop: `${scrollMarginTop}px` // Use the calculated scroll margin
+          }}
+      >
+          <AnimatePresence>
+              <motion.p
+                  initial={{
+                      opacity: 0,
+                      transform: 'translate(0%,-50%)'
+                  }}
+                  animate={{
+                      opacity: isCurrentSlide ? 1 : 0,
+                      transform: isCurrentSlide && isMobile ? 'translate(10%,10%)' : isCurrentSlide ? 'translate(35%,10%)' : 'translate(20%,-50%)',
+                      transition: {
+                          delay: animationComplete ? 0.4 : 0,
+                          duration: 0.4
+                      }
+                  }}
+                  exit={{
+                      opacity: 0,
+                      transform: 'translateX(50px)'
+                  }}
+                  className='absolute z-[14] text-white w-4/5 md:w-2/5 text-md sm:text-lg md:text-4xl'
+                  style={{
+                      transform: 'translateY(5%) translateX(15%)'
+                  }}
+              >
+                  {description}
+              </motion.p>
+          </AnimatePresence>
+          <Image
+              src={src}
+              alt={alt}
+              className={`w-[90%] ml-auto mr-auto object-cover h-full max-w-[1200px] overflow-y-hidden`}
+              style={{ filter: 'brightness(0.6)', objectPosition: '50% 50%' }}
               width={1000} // Base width as a percentage
               height={55} // Base height as a percentage
-              objectFit="cover"
-            />
-        </section>
-    );
+          />
+      </section>
+  );
 }
 
 interface ControllerProps {
