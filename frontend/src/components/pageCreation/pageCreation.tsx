@@ -27,7 +27,7 @@ const PageElement:React.FC<PageProps> = ({
     return (
         <div id={id}
         className="w-[45vw]   mx-auto bg-[#00bfff]
-        rounded-md pb-0 mb-8 max-w-[470px] h-0 overflow-hidden  ">
+        rounded-md pb-0 mb-8 max-w-[470px] opacity-0 overflow-hidden  ">
             <h4 className="text-center mt-2">Page&nbsp;{number}</h4>
             <ul className="px-2 text-center">
                 <li className="my-4 font-bold text-lg">Objectives</li>
@@ -57,7 +57,8 @@ const PageCreation:React.FC<PageData> = ({
     const [scope, animate] = useAnimate()
 
     const inView = useInView(scope,{
-        amount:1
+        amount:0.7,
+        // margin:'-150px 0px'
     })
 
     const {isMobile} = useGeneralContext()
@@ -104,22 +105,22 @@ const PageCreation:React.FC<PageData> = ({
         }
 
         if(page1){
-            await animate(page1, {height:'auto',
+            await animate(page1, {opacity:1,
        }, {duration:0.5})
         }
 
         if(page2){
-            await animate(page2, {height:'auto',
+            await animate(page2, {opacity:1,
        }, {duration:0.5})
         }
 
         if(page3){
-            await animate(page3, {height:'auto',
+            await animate(page3, {opacity:1,
        }, {duration:0.5})
         }
 
         if(page4){
-            await animate(page4, {height:'auto',
+            await animate(page4, {opacity:1,
        }, {duration:0.5})
         }
 
@@ -139,8 +140,8 @@ const PageCreation:React.FC<PageData> = ({
     return (
         <>
         <section ref={scope}
-         className="overflow-x-hidden max-auto mt-[12rem]
-         h-[80vh] relative max-w-[1000px]">
+         className="overflow-x-hidden mx-auto mt-[12rem]
+          relative z-[3] max-w-[1000px] ">
            {/* <AppearingGradient
            text="Creation of Pages"
            subText={`After we gather enough information about

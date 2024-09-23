@@ -306,7 +306,7 @@ const Curtain = () => {
       <section 
       id='section-2-container'
       ref={newSectionRef} className="w-[98vw] bg-black mx-auto
-      relative  z-[16] p-4"
+      relative  z-[16] p-4 overflow-x-hidden"
       
       >
          <h3 className='text-center text-2xl mt-8 sm:text-3xl
@@ -385,7 +385,9 @@ const Curtain = () => {
         className='absolute bottom-0 right-0 bg-[#00bfff]  h-[2px] w-0 z-[10]'
        
         />
+        <p className='max-w-[1000px] px-4 mx-auto my-4'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam vero minima et magnam excepturi alias sit natus, recusandae, adipisci omnis, aut ratione nostrum neque voluptates accusamus vel porro harum blanditiis perferendis magni? Unde recusandae ratione consequuntur deserunt sapiente vel dolores quibusdam sunt. Aspernatur sunt itaque nam officiis quas omnis accusamus!</p>
       </section>
+      
       </section>
     </>
   );

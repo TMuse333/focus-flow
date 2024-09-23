@@ -640,7 +640,27 @@ export const processPageContent = [
 
 export const processSlideShow = [
     {
-        title:'being a real one',
-        description:lorem30
+        // title:'being a real one',
+        description:lorem30,
+        src:'/media/focusFlow-brain-nobg.webp',
+        alt:'two hand sam'
+    },
+    {
+        // title:'being a real one',
+        description:lorem30,
+        src:'/media/quantum-village.webp',
+        alt:'two hand sam'
+    },
+    {
+        // title:'being a real one',
+        description:lorem30,
+        src:'/media/quantum-coder.webp',
+        alt:'two hand sam'
+    },
+    {
+        // title:'being a real one',
+        description:lorem30,
+        src:'/media/focusFlow-brain-nobg.webp',
+        alt:'two hand sam'
     }
 ]
