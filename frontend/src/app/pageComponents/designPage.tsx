@@ -5,7 +5,8 @@ import BigNav from "@/components/bigNav/navbar";
 import MultiLayerParallax from "@/components/mountainParallax/mountainParallax";
 import SlideScrollCarousel from "@/components/slideScrollCarousel/slideScrollCarousel";
 import { scrollableImages, stickyScrollables, designCloser,
-genericAccordion  } from "@/data/data";
+genericAccordion,  
+designPageCloser} from "@/data/data";
 import StickyCarousel from "@/components/stickyCarousel/stickyCarousel";
 import PortalContent from "@/components/portalContent/portalContent";
 import infinity from '../../../public/media/atom-gif.gif'
@@ -57,12 +58,14 @@ const DesignPage = () => {
 
 
 
-      <CircleInfoGraphic/>
+      <CircleInfoGraphic
+      />
 
       {/* <section className="h-[50vh]"
       /> */}
 
-      <AppearingSquare/>
+      <AppearingSquare
+      {...designPageCloser}/>
 
       <Footer
       links={links}

@@ -1,24 +1,29 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, useAnimate, useInView } from "framer-motion";
 import { useIntersectionObserver } from "../intersectionObserver/intersectionObserver";
+import { useGeneralContext } from "@/context/context";
 
 const AppearingGradient = ({ text, subText, description }: { text: string; subText: string,
 description?:boolean }) => {
-    const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5,
-    };
+    // const options = {
+    //     root: null,
+    //     rootMargin: '0px',
+    //     threshold: 0.5,
+    // };
 
-    const [inView, setInView] = useState(false);
-    const componentRef = useIntersectionObserver(setInView, options);
+
+    // const componentRef = useIntersectionObserver(setInView, options);
     const [scope, animate] = useAnimate();
+
+    const {isMobile} = useGeneralContext()
 
     const [halfwayDone, setHalfwayDone] = useState(false)
     const [lineComplete, setLineComplete] = useState(false)
     const [startSpring, setStartSpring] = useState(false)
 
-    const isInView = useInView(scope)
+    const isInView = useInView(scope,{
+        amount: isMobile ? 0.1 : 0.7
+    })
 
     useEffect(()=> {
         if(halfwayDone){
@@ -70,10 +75,10 @@ description?:boolean }) => {
         if (isInView) {
             handleAnimation();
         }
-    }, [inView, animate, text]); // Add text to dependencies to avoid stale closures
+    }, [isInView,]); // Add text to dependencies to avoid stale closures
 
     return (
-        <div ref={componentRef}
+        <div 
         className='mb-10 relative'>
             <section ref={scope}>
                 <div

@@ -26,16 +26,30 @@ interface SliderProps {
     index: number,
     carouselLength:number,
     currentElement:number,
-    shift:number
+    shift:number,
+    title?:string
+}
+
+interface ControllerProps {
+  carouselLength: number;
+  currentElement: number;
+  setCurrentElement: (index: number) => void;
+  inView: boolean;
+  shift: number;
+  setShift: (value: number) => void;
+  scrollPercent: number; // Add this prop for scroll percentage
+  scrollDirection:string | null
 }
 
 const CarouselController: React.FC<ControllerProps> = ({
   carouselLength,
   currentElement,
   setCurrentElement,
- inView,
- shift,
- setShift
+  inView,
+  shift,
+  setShift,
+  scrollPercent,
+  scrollDirection
 }) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [slideProgress, setSlideProgress] = useState(0);
@@ -45,117 +59,164 @@ const CarouselController: React.FC<ControllerProps> = ({
 
 
 
+
+
+  
+  
+
   const scrollToElement = (id: string, index: number) => {
-    if(!inView){
+    if (!inView) {
       return;
     }
-      setCurrentElement(index)
-      console.log('inview',inView);
-      const element = document.getElementById(id);
-      if (element) {
-          element.scrollIntoView({ behavior: 'smooth', inline: 'center' });
-      }
+    setCurrentElement(index);
+    // console.log('inview', inView);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+    }
   };
 
-  function handleCircleClick(index:number){
-    if(!inView){
-      return
-    }
-    setCurrentElement(index)
-    setShift(-index)
-  }
+  const relativeScrollPercent = () => {
+    const offset = currentElement * (100 / (carouselLength - 1));
+    return Math.max(0, Math.min(100, scrollPercent - offset));
+  };
 
-
-
-function togglePlay(){
-  setSlideShowPaused(!slideShowPaused);
-  console.log('pause nation');
-}
-
-function resetSlideShow(){
-  setCurrentElement(0);
-  setShowRefreshBar(false);
-  setSlideProgress(0);
-  setShift(0)
-  scrollToElement(`carousel-element-${0}`, 0);
-}
-
-useEffect(()=> {
-  setSlideProgress(0);
-  setSlideProgressReset(true);
-},[currentElement])
-
-useEffect(() => {
-  const interval = setInterval(() => {
-    if(slideShowPaused || !inView){
-      
+  function handleCircleClick(index: number) {
+    if (!inView) {
       return;
     }
+    setCurrentElement(index);
+    scrollToElement(`carousel-element-${index}`, index);
+    
+  }
 
-    if (slideProgress < 100 ) {
-      console.log('filling the bar')
-      setShowRefreshBar(false);
-      setSlideProgressReset(false);
-      setSlideProgress((curr) => curr + 8); // Increment by 8 to reach 100 in a slower time
+  useEffect(()=>{
+    console.log('current element',currentElement)
+  },[currentElement])
 
-    } else if (currentElement < carouselLength - 1) {
-      setCurrentElement(currentElement + 1);
-      scrollToElement(`carousel-element-${currentElement + 1}`, currentElement + 1);
-      // setShift((prev)=>prev - 1)
-      setSlideProgressReset(true);
-      clearInterval(interval); // Stop the interval when slideProgress reaches 100
-      setSlideProgress(0);
+  function togglePlay() {
+    setSlideShowPaused(!slideShowPaused);
+    // console.log('pause nation');
+  }
+
+  function resetSlideShow() {
+    setCurrentElement(0);
+    setShowRefreshBar(false);
+    setSlideProgress(0);
+    setShift(0);
+    scrollToElement(`carousel-element-${0}`, 0);
+  }
+
+  useEffect(() => {
+    setSlideProgress(0);
+    setSlideProgressReset(true);
+  }, [currentElement]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (slideShowPaused || !inView) {
+        return;
+      }
+
+      if (slideProgress < 100) {
+        // console.log('filling the bar');
+        setShowRefreshBar(false);
+        setSlideProgressReset(false);
+        setSlideProgress((curr) => curr + 8); // Increment by 8 to reach 100 in a slower time
+
+      } else if (currentElement < carouselLength - 1) {
+        setCurrentElement(currentElement + 1);
+        scrollToElement(`carousel-element-${currentElement + 1}`, currentElement + 1);
+        setSlideProgressReset(true);
+        clearInterval(interval); // Stop the interval when slideProgress reaches 100
+        setSlideProgress(0);
+      }
+    }, 250); // Interval of 250ms for smoother transition
+
+    return () => clearInterval(interval); // Clean up the interval on component unmount
+  }, [slideProgress, currentElement, setCurrentElement, carouselLength, slideShowPaused, inView]);
+
+  useEffect(() => {
+    if (currentElement === carouselLength - 1 && slideProgress >= 100) {
+      // console.log('Reached end of carousel with slideProgress at 100');
+      setTimeout(() => {
+        setShowRefreshBar(true);
+      }, 300);
     }
-  }, 250); // Interval of 250ms for smoother transition
+  }, [slideProgress, currentElement]);
 
-  return () => clearInterval(interval); // Clean up the interval on component unmount
-}, [slideProgress, currentElement, setCurrentElement, carouselLength, slideShowPaused, inView]);
+  const [prevScrollPercent, setPrevScrollPercent] = useState(0);
+const adjustedScrollPercent = relativeScrollPercent();
 
 useEffect(() => {
-  if (currentElement === carouselLength - 1 && slideProgress >= 100) {
-    console.log('Reached end of carousel with slideProgress at 100');
-    setTimeout(() => {
-      setShowRefreshBar(true);
-    }, 300);
+  setPrevScrollPercent(adjustedScrollPercent);
+}, [adjustedScrollPercent]);
+
+  // Function to calculate width based on scroll percentage
+const getCircleWidth = (index: number) => {
+  const baseWidth = 15; // Base width for non-current elements
+  const currentWidth = 60; // Width for the current element
+
+  // Ensure the scroll direction is valid
+  if (!scrollDirection) return baseWidth;
+
+  // For the current element
+  if (index === currentElement) {
+    return Math.max(currentWidth - (adjustedScrollPercent / 50) * currentWidth, 0);
+  } 
+  
+  // For the left neighbor of the current element when scrolling right
+  if (scrollDirection === 'left' && index === currentElement - 1 && currentElement > 0) {
+    return Math.min(baseWidth + (adjustedScrollPercent / 20) * (currentWidth - baseWidth), currentWidth);
   }
-}, [slideProgress, currentElement]);
+  
+  // For the right neighbor of the current element when scrolling left
+  if (scrollDirection === 'right' && index === currentElement + 1 && currentElement < carouselLength - 1) {
+    return Math.min(baseWidth + (adjustedScrollPercent / 20) * (currentWidth - baseWidth), currentWidth);
+  }
+  
+  // Default for other elements
+  return baseWidth;
+};
 
-useEffect(()=> {
-  console.log('current shift',shift)
-},[shift])
 
+
+  //only scroll in direction should change
 
   return (
-      <div 
-      className='absolute left-[50%] -translate-x-[50%] flex
-      bottom-0'>
-          <button className='bg-gray-700 ml-auto mr-auto p-4 rounded-xl flex'>
-              {Array.from({ length: carouselLength }, (_, index) => (
-                  <div
-                      key={index}
-                      className={`relative bg-gray-400 hover:bg-gray-200 rounded-full h-[15px] w-[15px] mr-2 transition-all ${currentElement === index ? 'w-[60px]' : ''}`}
-                      // onClick={() => scrollToElement(`carousel-element-${index}`, index)}
-                      onClick={()=>handleCircleClick(index)}
-                  >
-                    {currentElement === index && (
-                       <div className={`absolute  h-full bg-gray-100 rounded-full`}
-                       style={{ width:`${slideProgress}%`, transition:!slideProgressReset ? 'width 0.3s ease-in' : 'none' }}/>
-                    )}
-                  </div>
-              ))}
-          </button>
-          <button className='rounded-full bg-gray-700 h-[50px] w-[50px] mt-auto mb-auto ml-6'>
-            {showRefreshBar ? (
-               <FaRedo className="icon ml-auto mr-auto scale-[1.5]" onClick={resetSlideShow} />
-            ) : slideShowPaused ?  (
-              <FaPlay className="icon ml-auto mr-auto scale-[1.5]" onClick={togglePlay}/>
-            ) : (
-              <FaPause className="icon ml-auto mr-auto scale-[1.5]" onClick={togglePlay} />
+    <div className='absolute left-[50%] -translate-x-[50%] flex bottom-0'>
+      <button className='bg-gray-700 ml-auto mr-auto p-4 rounded-xl flex w-[200px]
+      justify-center'>
+        {Array.from({ length: carouselLength }, (_, index) => (
+          <div
+            key={index}
+            className={`relative bg-gray-400 hover:bg-gray-200 rounded-full
+              h-[15px] mr-2 transition-all`}
+            style={{ width: index === currentElement ? '60px' : '15px' }} // Set dynamic width
+            onClick={() => handleCircleClick(index)}
+          >
+            {index === currentElement && (
+              <div className={`absolute h-full bg-gray-100 rounded-full`}
+                style={{ width: `${slideProgress}%`, transition: !slideProgressReset ? 'width 0.3s ease-in' : 'none' }} />
             )}
-          </button>
-      </div>
+          </div>
+        ))}
+      </button>
+      <button className='rounded-full bg-gray-700 h-[50px] w-[50px] mt-auto mb-auto ml-6'>
+        {showRefreshBar ? (
+          <FaRedo className="icon ml-auto mr-auto scale-[1.5]" onClick={resetSlideShow} />
+        ) : slideShowPaused ? (
+          <FaPlay className="icon ml-auto mr-auto scale-[1.5]" onClick={togglePlay} />
+        ) : (
+          <FaPause className="icon ml-auto mr-auto scale-[1.5]" onClick={togglePlay} />
+        )}
+      </button>
+    </div>
   );
 }
+
+
+
 
 const CarouselElement: React.FC<SliderProps> = ({
   src,
@@ -164,7 +225,8 @@ const CarouselElement: React.FC<SliderProps> = ({
   index,
   carouselLength,
   currentElement,
-  shift
+  shift,
+  title
 }) => {
   const [scrollMarginTop, setScrollMarginTop] = useState(0);
   const isCurrentSlide = currentElement === index;
@@ -178,7 +240,7 @@ const CarouselElement: React.FC<SliderProps> = ({
         const rect = element.getBoundingClientRect();
         const distanceFromTop = rect.top; // Distance from the viewport top
         setScrollMarginTop(distanceFromTop);
-        console.warn('scroll margin top', distanceFromTop);
+        // console.warn('scroll margin top', distanceFromTop);
     }
 };
 
@@ -199,68 +261,48 @@ useEffect(() => {
   };
 }, [index]); 
 
-  const handleAnimationComplete = () => {
-      setAnimationComplete(!animationComplete);
-      console.log('animation completed!');
-  };
+
 
   return (
       <section 
           id={`carousel-element-${index}`}
-          className={`w-screen relative md:max-h-[800px] ml-auto mr-auto h-[105vw]  flex-shrink-0 `}
+          className={`w-[90vw] pt-8  relative md:max-h-[800px]  h-[90vh]
+             flex-shrink-0 overflow-y-hidden
+     `}
           style={{
-              transform: `translateX(${(shift * 100)}%)`,
+              transform: `translateX(${(shift * 75)}%)`,
               transition: 'transform 1s ease-in',
               scrollSnapAlign: 'center',
-              scrollMarginTop: `${scrollMarginTop}px` // Use the calculated scroll margin
+              scrollMarginTop: `${scrollMarginTop}px`, // Use the calculated scroll margin
+              scrollBehavior: 'smooth'
           }}
       >
-          <AnimatePresence>
-              <motion.p
-                  initial={{
-                      opacity: 0,
-                      transform: 'translate(0%,-50%)'
-                  }}
-                  animate={{
-                      opacity: isCurrentSlide ? 1 : 0,
-                      transform: isCurrentSlide && isMobile ? 'translate(10%,10%)' : isCurrentSlide ? 'translate(35%,10%)' : 'translate(20%,-50%)',
-                      transition: {
-                          delay: animationComplete ? 0.4 : 0,
-                          duration: 0.4
-                      }
-                  }}
-                  exit={{
-                      opacity: 0,
-                      transform: 'translateX(50px)'
-                  }}
-                  className='absolute z-[14] text-white w-4/5 md:w-2/5 text-md sm:text-lg md:text-4xl'
-                  style={{
-                      transform: 'translateY(5%) translateX(15%)'
-                  }}
-              >
-                  {description}
-              </motion.p>
-          </AnimatePresence>
+
+<div className='flex mx-auto flex-col items-center
+justify-center  bg-[#00bfff] bg-opacity-[0.2] rounded-2xl mr-4 ml-4
+h-[90vh] bg-red-200 md:max-h-[800px] overflow-y-visible py-4'>
+
+
+       <p className='mt-6 px-4 sm:text-lg
+       md:text-xl px-8 '>{description}</p>
+         
           <Image
               src={src}
               alt={alt}
-              className={`w-[90%] ml-auto mr-auto object-cover h-full max-w-[1200px] overflow-y-hidden`}
+              className={`w-full mt-8 ml-auto mr-auto object-contain
+              h-[70vh] overflow-y-visible
+              md:max-h-[600px]  
+              rounded-2xl`}
               style={{ filter: 'brightness(0.6)', objectPosition: '50% 50%' }}
               width={1000} // Base width as a percentage
               height={55} // Base height as a percentage
           />
+          </div>
       </section>
   );
 }
 
-interface ControllerProps {
-    carouselLength: number,
-    currentElement: number,
-    setCurrentElement: (index: number) => void,
-    inView:boolean,
-    shift:number,
-    setShift:React.Dispatch<React.SetStateAction<number>>;
-}
+
 
 
 
@@ -283,6 +325,46 @@ const SlideShowCarousel: React.FC<CarouselProps> = ({ images, title, description
     
     const componentRef = useIntersectionObserver(setInView, options, false, true);
 
+    const [relativeScrollPosition, setRelativeScrollPosition] = useState(0)
+
+    const [scrollDirection, setScrollDirection] = useState<'left' | 'right' | null>(null);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+
+  useEffect(() => {
+    const container = containerRef.current;
+
+    const handleScroll = () => {
+      if (container) {
+        const currentScrollPos = container.scrollLeft;
+
+        // Compare the previous scroll position with the current one
+        if (currentScrollPos > prevScrollPos) {
+          // Scrolling to the right
+          setScrollDirection('right');
+        } else if (currentScrollPos < prevScrollPos) {
+          // Scrolling to the left
+          setScrollDirection('left');
+        }
+
+        // Update the previous scroll position
+        setPrevScrollPos(currentScrollPos);
+        console.warn('we are scrolling',scrollDirection)
+      }
+    };
+
+    if (container) {
+      // Add the scroll event listener
+      container.addEventListener('scroll', handleScroll);
+    }
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      if (container) {
+        container.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, [prevScrollPos]);
+
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
@@ -295,7 +377,7 @@ const SlideShowCarousel: React.FC<CarouselProps> = ({ images, title, description
             },
             {
                 root: containerRef.current,
-                threshold: 0.2,
+                threshold: 0.8,
             }
         );
 
@@ -320,12 +402,13 @@ const SlideShowCarousel: React.FC<CarouselProps> = ({ images, title, description
         const container = containerRef.current;
         if (container) {
           // Log the horizontal scroll position
-          console.log('Scroll position:', container.scrollLeft);
+          // console.log('Scroll position:', container.scrollLeft);
           
           // Optional: You can calculate and log the percentage scrolled
           const maxScrollLeft = container.scrollWidth - container.clientWidth;
           const scrollPercentage = (container.scrollLeft / maxScrollLeft) * 100;
-          console.log('Scrolled percentage:', scrollPercentage.toFixed(2) + '%');
+          setScrollPercentage(scrollPercentage);
+          console.log('Scrolled percentage:', scrollPercentage );
         }
       };
   
@@ -343,19 +426,27 @@ const SlideShowCarousel: React.FC<CarouselProps> = ({ images, title, description
       };
     }, []);
 
+    const [scrollPercentage, setScrollPercentage] = useState(0); 
+
+
     return (
         <section className='relative ml-auto mr-auto w-screen mb-[10rem]
+   h-[90vh] 
+        md:max-h-[800px]
       
         '>
           <div ref={componentRef}
-          className='relative ml-auto mr-auto w-screen '>
+          className='relative ml-auto mr-auto w-screen 
+       h-[90vh] 
+          md:max-h-[800px]'>
             <div 
                 className=" flex 
                 w-screen relative
-                h-[105vw] 
+                h-[90vh] 
                 md:max-h-[800px]
                 overflow-y-scroll
-           
+                px-[4rem]
+
                
                  "
                 style={{ scrollSnapType: 'x mandatory' }}
@@ -380,6 +471,8 @@ const SlideShowCarousel: React.FC<CarouselProps> = ({ images, title, description
                 inView={inView}
                 shift={shift}
                 setShift={setShift}
+                scrollPercent={scrollPercentage}
+                scrollDirection={scrollDirection}
             />
         </section>
     );

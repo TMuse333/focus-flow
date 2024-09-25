@@ -184,7 +184,8 @@ title, description, index,titleInView}) => {
 
 interface Props {
     title?:string,
-    description?:string
+    description?:string,
+    
 }
 
 export const CircleInfoGraphic:React.FC<Props> = ({

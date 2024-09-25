@@ -86,13 +86,13 @@ const PageCreation:React.FC<PageData> = ({
         if(uxButton){
             await animate(uxButton, {top:'50%',
         left:'50%',x:"-50%"
-    })
+    },{delay:1})
         }
         
         if(industry){
             await animate(industry, {top:'50%',
         left:'50%',x:"-50%"
-    })
+    }, {delay:1})
         }
 
         if(plan){

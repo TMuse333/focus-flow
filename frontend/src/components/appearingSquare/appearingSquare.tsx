@@ -3,8 +3,21 @@ import { useAnimate, useScroll, motion, useTransform, useMotionValue, useMotionT
 useInView, animate } from 'framer-motion';
 import Image from "next/image";
 import brain from '../../../public/media/focusFlow-brain-nobg.webp';
+import Link from 'next/link'
+import AppearingGradient from "../appearingGradient/appearingGradient";
+import { useGeneralContext } from "@/context/context";
 
-const AppearingSquare = () => {
+interface Props {
+  title:string,
+  description:string,
+  buttonText:string,
+  buttonDestination:string
+}
+
+const AppearingSquare:React.FC<Props> = ({
+  title, description,
+  buttonText, buttonDestination
+}) => {
   const [scope, scopeAnimate] = useAnimate();
 
   const COLORS = [
@@ -26,11 +39,13 @@ const AppearingSquare = () => {
 
   const { scrollY } = useScroll();
 
+  const {isMobile} = useGeneralContext()
+
   // Ensure you're transforming the y values based on the scroll position
 
   const inView = useInView(scope,{
    
-    amount: 0.7
+    amount:!isMobile ? 0.7 : 0.2
   })
 
 
@@ -99,7 +114,7 @@ const AppearingSquare = () => {
       
 
         {/* Motion heading */}
-        <h3 id='closing-header'
+        {/* <h3 id='closing-header'
 className="text-center relative pb-4  mr-auto font-semibold mb-2
 bg-clip-text text-transparent text-3xl sm:text-4xl md:text-5xl
 translate-y-[4rem] transition-transform opacity-0"
@@ -110,7 +125,12 @@ style={{
           
         
           Time to elevate your digital presence
-        </h3>
+        </h3> */}
+
+        <AppearingGradient
+        text={title}
+        subText=""
+        />
      
      
 
@@ -125,15 +145,14 @@ style={{
       {/* Call to action section */}
       <section id='closing-paragraph'
       className="flex flex-col justify-center md:text-lg px-4 relative z-[4] mb-8
-      opacity-0">
-      <p className="mx-auto px-4">
-  Now that you've seen firsthand why FocusFlow stands above the rest, it's time to take the next step. Your website is more than just an online presence — it's a crucial part of your business's success. It deserves to be built and managed by a team with the technical expertise and creative vision to set you apart from the competition.
-   <br/><br/>
-   Don't settle for average when you can have a website that truly reflects the heart of your brand and drives results. We’re ready to design a site that not only captures your audience's attention but also elevates your business to new heights.
-   <br/><br/>
-   Start your project with us today and let's bring your vision to life. Click below to get started — we're excited to work with you and create something extraordinary.
+      opacity-0 items-center">
+      <p className="mx-auto px-4 text-pre-line
+      whitespace-pre-line">
+  {description}
  </p>
 
+        <Link
+        href={buttonDestination}>
         <motion.button id='closing-button'
         style={{
             backgroundImage
@@ -144,8 +163,9 @@ style={{
          className="mx-auto mt-8 opacity-0 px-6 py-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 
          shadow-lg shadow-all-around
          ">
-          Get Started with FocusFlow
+          {buttonText}
         </motion.button>
+        </Link>
       </section>
     </section>
   );

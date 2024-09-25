@@ -17,7 +17,7 @@ const Curtain = () => {
   const [curtainsOpen, setCurtainsOpen] = useState(false);
 
   const { scrollYProgress } = useScroll();
-  const height = useTransform(scrollYProgress, [0.4, 1], [1, 500]);
+  const height = useTransform(scrollYProgress, [0.1, 1], [1, 600]);
 
   const [heightValue, setHeightValue] = useState(1);
   const [heightReached, setHeightReached] = useState(false);
@@ -137,15 +137,15 @@ const Curtain = () => {
 
     if(question1){
       await animate(question1, {opacity:1},
-        {delay:0.3,duration:0.5},)
+        {delay:0.3,duration:0.2},)
     }
     if(question2){
       await animate(question2, {opacity:1},
-        {delay:0.3,duration:0.5})
+        {delay:0,duration:0.2})
     }
     if(question3){
       await animate(question3, {opacity:1},
-        {delay:0.3,duration:0.5})
+        {delay:0,duration:0.2})
     }
   }
   

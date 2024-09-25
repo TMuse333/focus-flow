@@ -538,12 +538,71 @@ export const genericContent = {
     description:['Creating an effective website is a long-term investment that goes beyond launch day. To stay competitive, it’s essential to continuously collect data, optimize for SEO, and analyze metrics like screen time and visitor behavior. As markets evolve, your website needs regular updates to reflect new trends and user expectations.',`We’re committed to your long-term success, ensuring your site remains a powerful tool for growth and adapts with your business needs. With our support, your website will not only perform well today but continue driving results for years to come.`],
     image:arrow,
     hasAnimation:true,
-    buttonLink:'/monthly-subscription',
+    buttonLink:'/long-term-success',
     buttonText:'Ensure Long-Term Success',
     reverse:true,
     alt:'An image of an arrow glowing across the sky to demonstrate the importance of how creative web design is a long term investment and requires monthly maintenance'
   }
 
+
+  export const monthlyAccordion = [
+    {
+        title: 'SEO and Monthly Report',
+        description: `Each month, we provide a detailed report on your website’s performance, including metrics on 
+        traffic, page speed, and SEO progress. Using advanced tools like SEMrush, we analyze your site’s visibility, 
+        keyword rankings, and competitor insights to identify areas for improvement. This data-driven approach allows 
+        us to continuously refine your site’s SEO strategy, ensuring it ranks higher in search results, attracts more 
+        visitors, and converts them into clients. Our goal is to optimize your website’s performance and drive measurable growth.`
+      },
+      
+
+    {
+        title:'Competitor analysis and staying up to trends',
+        description:`We use advanced analytics to discover what 
+        top ranking websites in your industry and we will
+        adopt those trends so you can surpass them, we will
+        keep in touch with your industry and recommend articles
+        based on what is trending`
+    },
+    {
+        title:'Hosting and analytics',
+        description:`When make the correct decision
+        of being a part of our long term success 
+        group, we will host your website on a fast service
+        that gives your users the fast experience they need to
+        turn into your clients. We will also analyze where your
+        visitors came from and how long they stayed on your
+        website so we can made adjustments if necessary `
+    },
+    {
+        title:'Content edits',
+        description:`We are here to free up your free
+        time, with us you will get edits of the words,
+        pictures and videos for free while keeping
+        the layout of the page. We will also do the work
+        of uploading case studies to add to your portfolio
+        and updating products to ensure your website is fresh and
+        up to date`
+    },
+    {
+        title:'Unlimited bug fixes',
+        description:'We will repair any functionalities or visual elements that are not working.'
+    },
+    {
+        title:'Component updates',
+        description:'We are constantly updating our code bases are striving to make our code more efficient, whenever we update one of our components, we will update it on your website so that your website is optimized'
+    },
+    {
+        title: 'Backlink Building',
+        description: `Backlinks are crucial to improving your website's authority and search engine rankings. 
+        We leverage industry-leading tools like SEMrush to analyze and build high-quality, relevant backlinks 
+        from trusted sites in your industry. By securing these links, we boost your site's credibility, helping 
+        it rank higher in search results and driving more organic traffic to your business. Each month, we’ll 
+        provide insights into new backlinks gained and monitor existing ones to ensure your site maintains a 
+        strong and healthy link profile.`
+      }
+      
+  ]
 
 
     //words to add
@@ -640,27 +699,68 @@ export const processPageContent = [
 
 export const processSlideShow = [
     {
-        // title:'being a real one',
-        description:lorem30,
-        src:'/media/focusFlow-brain-nobg.webp',
+        
+        description:`Once we have a plan in place, the we will get to putting the website
+        together with marvelous components`,
+        src:'/media/initial-code.webp',
         alt:'two hand sam'
     },
     {
-        // title:'being a real one',
-        description:lorem30,
-        src:'/media/quantum-village.webp',
+        
+        description:`Once you approve the layout for your website, add the necessary functionalites like databases
+        , email sending or whatever other functionalities your project requires to elevate your
+        business`,
+        src:'/media/functionality.webp',
         alt:'two hand sam'
     },
     {
-        // title:'being a real one',
-        description:lorem30,
-        src:'/media/quantum-coder.webp',
+     
+        description:`Once we have the design and functionality, it's time to configure your
+        website to be findable by search engines`,
+        src:'/media/seo-gears.webp',
         alt:'two hand sam'
     },
     {
-        // title:'being a real one',
-        description:lorem30,
-        src:'/media/focusFlow-brain-nobg.webp',
+        
+        description:`Once everything is ready, we will go over final adjustments and once you are satisfied, will will launch your website to the world to
+        digital presence!`,
+        src:'/media/global-money.webp',
         alt:'two hand sam'
     }
+
+
+
 ]
+
+
+export const designPageCloser = {
+    title:'Time to elevate your digital presence',
+    description:`Now that you've seen firsthand why FocusFlow stands above the rest, it's time to take the next step. Your website is more than just an online presence — it's a crucial part of your business's success. It deserves to be built and managed by a team with the technical expertise and creative vision to set you apart from the competition.
+    \n
+    Don't settle for average when you can have a website that truly reflects the heart of your brand and drives results. We’re ready to design a site that not only captures your audience's attention but also elevates your business to new heights.
+    \n
+    Start your project with us today and let's bring your vision to life. Click below to get started — we're excited to work with you and create something extraordinary.`,
+    buttonDestination:'/lets-work',
+    buttonText:'Get started with FocusFlow'
+}
+
+export const processPageCloser = {
+    title: 'The Journey to Your Ideal Website Starts Here',
+    description: `Now that you've learned about our process, it's time to put it into action. Building a website is more than just creating pages — it's about crafting an online experience that represents your brand and connects with your audience.
+    \n
+    At FocusFlow, we don’t just build websites; we create digital ecosystems designed to elevate your online presence and make an impact. From the initial concept to the final product, our process ensures every element is fine-tuned to meet your needs and exceed expectations.
+    \n
+    Ready to start building a site that works for your business? Click below to begin your journey with us — we're excited to collaborate and bring your project to life.`,
+    buttonDestination: '/lets-work',
+    buttonText: 'Start Your Project with FocusFlow'
+}
+
+export const monthlyPageOutro = {
+    title: 'Achieve Long-Term Success with Continuous Website Growth',
+    description: `Your website is the digital heartbeat of your business, and maintaining it is crucial for staying competitive in today's fast-paced online world. By committing to regular updates, optimization, and cutting-edge strategies like SEO and backlink building, you'll ensure your site not only stays relevant but continues to grow and succeed.
+  
+    With our monthly website management service, you'll have a partner dedicated to driving ongoing improvements, keeping your site secure, and adapting to market trends. Together, we can take your website and business to new heights — all while saving you time and effort. Don’t let your online presence go stagnant. Let us handle the technical work so you can focus on growing your business.`,
+    buttonText: 'Start Your Monthly Plan',
+    buttonDestination: '/contact',
+  };
+  

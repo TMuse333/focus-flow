@@ -92,22 +92,25 @@ const Homepage = () => {
 
 
 const links = [
-  {
-    name:'Why us',
-    destination:'why-us'
-  },
-  {
-    name:'Lets work!',
-    destination:'lets-work'
-  },
+  
+ 
   {
     name:'Restaurant Software',
-    destination:'online-food-ordering-system'
+    destination:'/online-food-ordering-system'
   },
   {
     name:'Our design',
-    destination:'best-web-design-halifax'
-  }
+    destination:'/best-web-design-halifax'
+  },
+  {
+    name:'Lets work!',
+    destination:'/lets-work'
+  },
+  {
+    name:'Your long term success',
+    destination:'/long-term-success'
+  },
+
 ]
 
 const { isMobile, selectedCarouselImageIndex} = useGeneralContext()
