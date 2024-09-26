@@ -20,7 +20,7 @@ const CarouselElement:React.FC<ElementProps> = ({
     return (
       <>
       <section className='  rounded-2xl transition-transform
-      bg-gradient-to-br from-blue-500 via-blue-400 to-blue-200
+      bg-gradient-to-br from-blue-500 via-blue-400 to-blue-300
     mx-auto h-[87vh] max-h-[600px] pb-5 rounded-b-2xl
 border border-white
       relative z-[5] w-[90vw] md:w-[40vw]'>

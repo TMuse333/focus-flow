@@ -131,7 +131,7 @@ max-h-[500px]">
                             id={`content-${id}`}
                             src={src}
                             alt={alt}
-                            className="w-full mx-auto object-cover opacity-0
+                            className="w-full mx-auto object-contain opacity-0
 
                             max-h-[500px]"
                         />

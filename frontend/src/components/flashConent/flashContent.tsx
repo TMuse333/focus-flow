@@ -38,7 +38,7 @@ const FlashContent:React.FC<Props> = (
         width={600}
         height={1300}
         className='w-[70vw] mx-auto my-5 
-        md:w-[50vw] h-[175px] sm:h-[200px] md:h-[250px] object-cover 
+        md:w-[50vw] h-[205px] sm:h-[223px] md:h-[270px] object-contain 
         '
         animate={{
             y: [0, -4, 0], // Oscillate up and down

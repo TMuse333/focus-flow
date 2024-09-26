@@ -21,14 +21,14 @@ interface PageData {
 
 
 const PageElement:React.FC<PageProps> = ({
-    id,number,objectives
+    id,number,objectives,title
 }) => {
 
     return (
         <div id={id}
-        className="w-[45vw]   mx-auto bg-[#00bfff]
-        rounded-md pb-0 mb-8 max-w-[470px] opacity-0 overflow-hidden  ">
-            <h4 className="text-center mt-2">Page&nbsp;{number}</h4>
+        className="w-[45vw]    mx-auto  bg-gradient-to-br from-blue-500 via-blue-400 to-blue-300
+        rounded-md pb-0 mb-8 max-w-[470px] opacity-1 overflow-hidden  ">
+            <h4 className="text-center mt-2">Page&nbsp;{number}:&nbsp;{title}</h4>
             <ul className="px-2 text-center">
                 <li className="my-4 font-bold text-lg">Objectives</li>
                 
@@ -191,7 +191,7 @@ const PageCreation:React.FC<PageData> = ({
                 ))}
                 
             </section>
-            <p className="mx-auto text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis temporibus perferendis obcaecati fugit deserunt, dicta voluptatum eaque sapiente, esse officiis aut cum voluptates impedit doloremque sint consequuntur sequi quis blanditiis quia dolorum accusantium eveniet, unde maxime autem! Possimus, illum quidem?</p>
+           
         </section>
         </>
     )

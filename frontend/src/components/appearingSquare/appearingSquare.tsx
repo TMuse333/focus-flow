@@ -139,6 +139,7 @@ style={{
         src={brain}
         alt="brain"
         className="w-[40vw] object-contain mx-auto relative z-[4]
+        max-w-[420px] max-h-[420px] mt-[-5rem]
         "
       />
 

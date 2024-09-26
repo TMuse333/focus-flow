@@ -42,6 +42,7 @@ import { Metadata } from "next";
 import infinity from '../../../public/media/infinity.webp'
 import FlashContent from "@/components/flashConent/flashContent";
 import Testimonials from "@/components/testimonials/testimonials";
+import Navbar from "@/components/navbar2/navbar";
 
 export const metadata: Metadata = {
   title: "Web Design Halifax | Focusflow Software",
@@ -149,8 +150,11 @@ const { isMobile, selectedCarouselImageIndex} = useGeneralContext()
       <SelectedCarouselImage/>
       
 <BigNav
-excludedLink="/"
+excludedLink="Home"
 />
+
+{/* <Navbar links={links}
+/> */}
 
 
     <main className="text-center z-[30]
@@ -225,9 +229,9 @@ description="Explore some of our showcased projects. Click on each for detailed 
 
 <AuroraHero/>
 
-<Footer
+{/* <Footer
 links={links}
-/>
+/> */}
     </main>
     </>
   );

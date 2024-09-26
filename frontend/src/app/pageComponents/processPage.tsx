@@ -39,6 +39,7 @@ const ProcessPage = () => {
         excludedLink="/"
         />
         <main className="mt-[3rem] relative z-[4]
+        overflow-x-hidden
         
         ">
             <Curtain/>

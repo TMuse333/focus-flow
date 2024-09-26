@@ -246,7 +246,8 @@ const Curtain = () => {
        
       >
         <h1
-          className="relative text-2xl sm:text-3xl md:text-4xl top-[20%] z-[4] text-center"
+          className="font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent relative text-2xl sm:text-3xl md:text-4xl top-[20%] z-[4] text-center
+          px-12 mx-auto"
         >
           Planning for your success: Our website process
         </h1>
@@ -325,43 +326,51 @@ const Curtain = () => {
          '>
 
         <div id='question-1'
-        className='bg-white rounded-2xl text-black mb-6 p-4 mt-6
+        className='      bg-gradient-to-br from-blue-500 via-blue-400 to-blue-300 rounded-2xl text-black mb-6 p-4 mt-6
            my-auto opacity-0 relative z-[16] mx-auto 
-           md:w-[30vw] 
+           md:w-[30vw]   md:h-[80vh] overflow-y-scroll
            '>
           <h4 className='text-2xl text-center mb-4'>
             What do we want users to see?
           </h4>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto deleniti sunt, ullam eos cumque rerum ipsum beatae perspiciatis laudantium possimus ab atque aliquid, doloremque praesentium necessitatibus qui officiis iure esse quam amet. Praesentium officia dolor quae mollitia modi debitis atque!
+          We’ll talk about what your visitors should notice right away when they land on your website. What’s the most important message or content you want front and center?
+We’ll strategically place eye-catching visuals and headlines that quickly communicate your key offerings. Whether it’s a stunning hero image, a catchy headline, or a promotional video, we’ll ensure the first thing they see grabs their attention.
+Additionally, we’ll ensure that important elements like your contact information, product highlights, or recent blog posts are easily accessible. We’ll prioritize content that matters most to your business goals.
+
           </p>
          </div>
 
   
 
          <div id='question-2'
-        className='bg-white rounded-2xl text-black mb-6 p-4 mt-6
+        className='      bg-gradient-to-br from-blue-500 via-blue-400 to-blue-300 rounded-2xl text-black mb-6 p-4 mt-6
            my-auto opacity-0 relative z-[16] mx-auto 
-           md:w-[30vw] 
+           md:w-[30vw]    md:h-[80vh]
            '>
           <h4 className='text-2xl text-center mb-4'>
-            What do we want users to see?
+            What do we want the website to do?
           </h4>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto deleniti sunt, ullam eos cumque rerum ipsum beatae perspiciatis laudantium possimus ab atque aliquid, doloremque praesentium necessitatibus qui officiis iure esse quam amet. Praesentium officia dolor quae mollitia modi debitis atque!
+          First, we’ll discuss your website’s goals. Is it for leads, sales, showcasing work, or providing information?
+We’ll cover the core functionalities to make this happen, like speed, navigation, and mobile optimization.
+We’ll also plan for the future, ensuring the site can grow with your business and easily integrate new tools.
           </p>
          </div>
 
          <div id='question-3'
-        className='bg-white rounded-2xl text-black mb-6 p-4 mt-6
+        className='     bg-gradient-to-br from-blue-500 via-blue-400 to-blue-300 rounded-2xl text-black mb-6 p-4 mt-6
            my-auto opacity-0 relative z-[16] mx-auto 
-           md:w-[30vw] 
+           md:w-[30vw]  md:h-[80vh] overflow-y-scroll
            '>
           <h4 className='text-2xl text-center mb-4'>
-            What do we want users to see?
+            What do we want users to feel?
           </h4>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto deleniti sunt, ullam eos cumque rerum ipsum beatae perspiciatis laudantium possimus ab atque aliquid, doloremque praesentium necessitatibus qui officiis iure esse quam amet. Praesentium officia dolor quae mollitia modi debitis atque!
+          Next, we’ll talk about how you want your visitors to feel when they land on your site. Do you want to project trust and credibility right away? Should they feel inspired, excited, or maybe reassured that they’ve come to the right place?
+We’ll work on creating the right vibe for your brand through colors, images, and the overall design. This isn’t just about looking good — it’s about creating an emotional connection with your audience. We’ll think about how to make your site visually engaging while staying true to your brand’s voice and identity.
+User experience is key. We’ll make sure everything feels easy and intuitive for your users, so they don’t get frustrated or lost. The goal is for them to enjoy their experience and keep exploring the site.
+
           </p>
          </div>
 
@@ -385,7 +394,10 @@ const Curtain = () => {
         className='absolute bottom-0 right-0 bg-[#00bfff]  h-[2px] w-0 z-[10]'
        
         />
-        <p className='max-w-[1000px] px-4 mx-auto my-4'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam vero minima et magnam excepturi alias sit natus, recusandae, adipisci omnis, aut ratione nostrum neque voluptates accusamus vel porro harum blanditiis perferendis magni? Unde recusandae ratione consequuntur deserunt sapiente vel dolores quibusdam sunt. Aspernatur sunt itaque nam officiis quas omnis accusamus!</p>
+
+        <p className='max-w-[1000px] px-4 mx-auto my-4'>
+        Once we've gathered this information and set clear objectives, we’ll craft a detailed strategy to ensure each goal is effectively achieved. Our approach will be focused, systematic, and tailored to your needs, so every aspect of your website works in harmony to meet and exceed expectations. From design to functionality, we’ll make sure the final product is aligned with your vision and built for success.
+        </p>
       </section>
       
       </section>

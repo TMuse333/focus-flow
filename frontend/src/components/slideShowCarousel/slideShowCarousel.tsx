@@ -38,7 +38,8 @@ interface ControllerProps {
   shift: number;
   setShift: (value: number) => void;
   scrollPercent: number; // Add this prop for scroll percentage
-  scrollDirection:string | null
+  scrollDirection:string | null,
+  isScrolling:boolean
 }
 
 const CarouselController: React.FC<ControllerProps> = ({
@@ -49,7 +50,8 @@ const CarouselController: React.FC<ControllerProps> = ({
   shift,
   setShift,
   scrollPercent,
-  scrollDirection
+  scrollDirection,
+  isScrolling
 }) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [slideProgress, setSlideProgress] = useState(0);
@@ -114,7 +116,7 @@ const CarouselController: React.FC<ControllerProps> = ({
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (slideShowPaused || !inView) {
+      if (slideShowPaused || !inView || isScrolling) {
         return;
       }
 
@@ -122,7 +124,7 @@ const CarouselController: React.FC<ControllerProps> = ({
         // console.log('filling the bar');
         setShowRefreshBar(false);
         setSlideProgressReset(false);
-        setSlideProgress((curr) => curr + 8); // Increment by 8 to reach 100 in a slower time
+        setSlideProgress((curr) => curr + 4); // Increment by 8 to reach 100 in a slower time
 
       } else if (currentElement < carouselLength - 1) {
         setCurrentElement(currentElement + 1);
@@ -329,6 +331,7 @@ const SlideShowCarousel: React.FC<CarouselProps> = ({ images, title, description
 
     const [scrollDirection, setScrollDirection] = useState<'left' | 'right' | null>(null);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false)
 
   useEffect(() => {
     const container = containerRef.current;
@@ -431,7 +434,7 @@ const SlideShowCarousel: React.FC<CarouselProps> = ({ images, title, description
 
     return (
         <section className='relative ml-auto mr-auto w-screen mb-[10rem]
-   h-[90vh] 
+   h-[90vh] overflow-x-hidden
         md:max-h-[800px]
       
         '>
@@ -473,6 +476,7 @@ const SlideShowCarousel: React.FC<CarouselProps> = ({ images, title, description
                 setShift={setShift}
                 scrollPercent={scrollPercentage}
                 scrollDirection={scrollDirection}
+                isScrolling={isScrolling}
             />
         </section>
     );

@@ -659,48 +659,44 @@ export const designCloser = {
 
 export const processPageContent = [
     {
-        title:'Homepage',
-        objectives:[
-            'prove you are a real one',
-            'introduce your company',
-            'introduce the other pages'
-        ]
-
+        title: 'Homepage',
+        objectives: [
+            'Establish credibility and trust with visitors immediately',
+            'Provide a clear and concise introduction to your brand and what you offer',
+            'Guide users to explore the key pages on your site with intuitive navigation',
+        ],
     },
     {
-        title:'Homepage',
-        objectives:[
-            'prove you are a real one',
-            'introduce your company',
-            'introduce the other pages'
-        ]
-
+        title: 'About Us',
+        objectives: [
+            'Tell the story of your brand and highlight your company’s unique value',
+            'Showcase your team, mission, and vision to create a personal connection with users',
+            'Build trust by featuring key achievements, certifications, or client testimonials',
+        ],
     },
     {
-        title:'Homepage',
-        objectives:[
-            'prove you are a real one',
-            'introduce your company',
-            'introduce the other pages'
-        ]
-
+        title: 'Services/Products',
+        objectives: [
+            'Detail your core offerings in a way that’s easy for users to understand',
+            'Use clear calls-to-action (CTAs) to encourage users to request quotes or make a purchase',
+            'Demonstrate the benefits and value of each service/product, backed by visuals or case studies',
+        ],
     },
     {
-        title:'Homepage',
-        objectives:[
-            'prove you are a real one',
-            'introduce your company',
-            'introduce the other pages'
-        ]
-
+        title: 'Contact Page',
+        objectives: [
+            'Make it easy for users to reach out via multiple methods (form, email, phone, social media)',
+            'Reinforce your location and availability with a map or business hours',
+            'Provide an engaging and professional final step to convert visitors into clients or leads',
+        ],
     },
+];
 
-]
 
 export const processSlideShow = [
     {
         
-        description:`Once we have a plan in place, the we will get to putting the website
+        description:`Once we have a plan in place, then we will get to putting the website
         together with marvelous components`,
         src:'/media/initial-code.webp',
         alt:'two hand sam'
@@ -723,7 +719,7 @@ export const processSlideShow = [
     {
         
         description:`Once everything is ready, we will go over final adjustments and once you are satisfied, will will launch your website to the world to
-        digital presence!`,
+       elevate digital presence!`,
         src:'/media/global-money.webp',
         alt:'two hand sam'
     }

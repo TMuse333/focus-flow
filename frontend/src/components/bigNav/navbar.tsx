@@ -38,98 +38,47 @@ interface SubMenuProps {
   }
 
   const bigLinks = [
-    // {
-    //   name: 'Our Work',
-    //   secondaryLinks: [
-    //     {
-    //       name: 'Our Best Designs',
-    //       destination: 'showcase',
-    //     },
-    //     {
-    //       name: 'Client Work',
-    //       destination: 'portfolio',
-    //     },
-    //   ],
-    //   listSubMenu: true,
-    // },
     {
-      name: 'Products',
+      name: 'Home',
+      secondaryLinks: [
+        {
+            name:'Home',
+            destination:'/'
+        }
+      ],
+      listSubMenu: false,
+    },
+ 
+    {
+      name: 'Pre built Software',
       secondaryLinks: [
         {
           name: 'Restaurant Software',
           destination: '/online-food-ordering-system',
         },
-        // {
-        //   name: 'Realtor Website',
-        //   destination: 'realtor',
-        // },
+      
       ],
       listSubMenu: true,
       subMenuSrc:twoHand.src,
       subMenuAlt:'Two hands',
       desktopDescription:'Here are some of our signature pieces of software that are ready to be implemented in your business quickly and take your business to the next level'
     },
-    // {
-    //   name: 'Resources',
-    //   secondaryLinks: [
-    //     {
-    //       name: 'Focus Strategies',
-    //       destination: 'focus-strategies',
-    //     },
-    //     {
-    //       name: 'Skill Refinement',
-    //       destination: 'skill-refinement',
-    //     },
-    //   ],
-    //   listSubMenu: true,
-    //   subMenuSrc:twoHand.src,
-    //   subMenuAlt:'Two hands',
-    //   desktopDescription:'To be able to get to this level of web design, it has taken many hours of deep, focused work daily. Check these pages out to learn how learn the value of focused work and take your skills to the next level.'
-    // },
-    // {
-    //   name:'Websites',
-    //   secondaryLinks:[
-    //     {
-    //       name:'What makes a great website?',
-    //       destination:'great-website'
-    //     },
-    //     {
-    //       name:'Potential of websites',
-    //       destination:'/potential'
-    //     },
-    //     {
-    //       name:'Website maintenance',
-    //       destination:'Web-maintenance'
-    //     }
-    //   ],
-    //   listSubMenu:true,
-    //   subMenuSrc:twoHand.src,
-    //   subMenuAlt:'Two hands',
-    //   desktopDescription:'Your website is the cornerstone of your digital presence. Discover what makes a website truly great, explore its full potential, and learn the importance of regular maintenance to ensure your site stays ahead in the fast-paced digital world.'
-    // },
+   
     {
-      name: 'Why Us',
+      name: 'Bulding Your Success',
       secondaryLinks: [
         {
             name:'Top tier custom web design',
             destination:'/best-web-design-halifax'
         },
         {
-          name: 'Monthly Subscription',
-          destination: '/monthly-subscription',
+          name: 'Your long term success',
+          destination: '/long-term-success',
         },
         {
           name: 'Our Process',
           destination: '/process',
         },
-        // {
-        //   name:'Monthly Subscription',
-        //   destination:'/monthly-subscription', 
-        // },
-        // {
-        //   name:'Planning for Success',
-        //   destination:'/process'
-        // }
       ],
       listSubMenu: true,
       subMenuSrc:twoHand.src,
@@ -158,6 +107,7 @@ interface SubMenuProps {
     // },
   ];
 
+  
 
   const DesktopSubMenu:React.FC<DesktopSubMenuProps> = ({
     src, alt, secondaryLinks,isClicked,description,
@@ -333,8 +283,24 @@ const BigNav: React.FC<NavbarProps> = ({ excludedLink }) => {
     useState<number | null>(null)
 
    
-
-      const filteredLinks = bigLinks.filter(link => link.name !== excludedLink);
+    
+  
+  
+    const filteredLinks = bigLinks.map(link => {
+      // Filter the secondaryLinks to exclude any link with the excluded name
+      const filteredSecondaryLinks = link.secondaryLinks.filter(
+        secondary => secondary.name !== excludedLink
+      );
+    
+      // Return the link with the filtered secondaryLinks
+      return {
+        ...link,
+        secondaryLinks: filteredSecondaryLinks
+      };
+    });
+    
+    
+    
     
 
       useEffect(() => {

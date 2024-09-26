@@ -21,12 +21,14 @@ const Herobanner = () => {
     }}>Monthly Website Management for Long-Term Success</h1>
     <Image
     src={brain}
-    className='w-[60vw] mx-auto object-contain '
+    className='w-[60vw] mx-auto object-contain 
+    max-w-[420px] max-h-[420px]
+    '
     alt='focusflow brain'
     width={600}
     height={1300}
     />
-            <p className="px-6 ">
+            <p className="px-6  max-w-[1200px] mx-auto">
             Just like any great business, a successful website requires time, ongoing improvements, and strategic planning. With our Monthly Website Management and Success Plan, we ensure your site evolves and adapts to changing trends and user needs. 
             <br/>
             <br/>

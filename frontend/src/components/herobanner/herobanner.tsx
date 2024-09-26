@@ -92,13 +92,13 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
   const { isMobile } = useGeneralContext();
 
   return (
-    <section className="w-[95%] mx-auto flex flex-col flex-col-reverse overflow-hidden relative sm:h-[80vh] sm:flex-row sm:flex-row-reverse rounded-lg relative">
-      <section className="relative w-full h-full sm:w-[50vw] mt-auto sm:block">
-        <h2 className="text-3xl px-4 sm:text-3xl sm:text-4xl font-semibold text-center mb-4 animate-gradient">
+    <section className="w-[95%] mx-auto flex flex-col flex-col-reverse overflow-hidden relative  sm:flex-row sm:flex-row-reverse rounded-lg relative">
+      <section className="relative w-full h-full sm:w-[50vw] mt-auto sm:block pl-6">
+        <h2 className="text-3xl px-4  sm:text-4xl font-semibold text-center mb-4 animate-gradient">
           FocusFlow Software
         </h2>
-        <img className="w-[50vw] max-w-[200px] max-h-[200px] mx-auto object-cover rounded-xl" src={brain.src} alt='le brain' />
-        <h2 className="text-left px-3 text-4xl my-4 bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent font-semibold">
+        {/* <img className="w-[50vw] max-w-[200px] max-h-[200px] mx-auto object-cover rounded-xl" src={brain.src} alt='le brain' /> */}
+        <h2 className="text-left px-3 text-3xl my-4 bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent font-semibold">
         Custom Web Design Services Tailored to Your Needs
         </h2>
         <p className="text-left px-3 text-lg">

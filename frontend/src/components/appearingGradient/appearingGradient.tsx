@@ -22,7 +22,7 @@ description?:boolean }) => {
     const [startSpring, setStartSpring] = useState(false)
 
     const isInView = useInView(scope,{
-        amount: isMobile ? 0.1 : 0.7
+        amount: isMobile ? 0.4 : 0.75
     })
 
     useEffect(()=> {
@@ -111,7 +111,7 @@ description?:boolean }) => {
               
                    <motion.h2
     id={`${text}-header`}
-    className="mt-6 text-center font-semibold text-3xl sm:text-5xl md:text-6xl
+    className="mt-6 text-center font-semibold text-3xl sm:text-4xl md:text-5xl
     bg-clip-text text-transparent relative z-[2] pb-4
     px-4"
     style={{
@@ -141,7 +141,7 @@ description?:boolean }) => {
 </motion.h2>
 
                 <h3 id={`${text}-subHeader`} 
-                className={`text-center mt-4 
+                className={`text-center mt-4 px-6
                 ${!description ? 'text-xl sm:text-2xl md:text-3xl' : 'text-md sm:text-lg md:text-xl'}
                 opacity-0`}
                
