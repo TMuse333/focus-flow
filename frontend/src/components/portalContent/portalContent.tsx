@@ -118,7 +118,7 @@ const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
     <div className=" relative z-[4] w-screen 
     mx-auto   flex flex-col items-center justify-center
     mt-[8rem]
-    md:mt-[-8rem]
+    
    ">
     
   

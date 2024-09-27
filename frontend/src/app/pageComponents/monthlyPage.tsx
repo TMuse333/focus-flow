@@ -36,7 +36,7 @@ const MonthlyPage = () => {
     return (
       <>
       <BigNav
-      excludedLink="Long term success"
+      excludedLink="Your long term success"
       />
         <main className="mt-4">
             <Herobanner/>

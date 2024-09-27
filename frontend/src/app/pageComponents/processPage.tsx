@@ -36,7 +36,7 @@ const ProcessPage = () => {
     return (
         <>
         <BigNav
-        excludedLink="/"
+        excludedLink="Our Process"
         />
         <main className="mt-[3rem] relative z-[4]
         overflow-x-hidden

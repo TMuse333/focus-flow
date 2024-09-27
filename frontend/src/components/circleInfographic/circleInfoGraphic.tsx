@@ -219,6 +219,8 @@ export const CircleInfoGraphic:React.FC<Props> = ({
 
     return (
         <>
+<section className="mt-[10rem]">
+
 
         <AppearingGradient
         text="Maximizing Business Impact Through Design"
@@ -299,6 +301,7 @@ export const CircleInfoGraphic:React.FC<Props> = ({
 
             ))}
             
+        </section>
         </section>
         {/* <div className="mt-5
         w-[90vw] h-[5px]

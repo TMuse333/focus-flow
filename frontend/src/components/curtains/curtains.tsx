@@ -266,7 +266,7 @@ const Curtain = () => {
         className='w-[40vw]   relative object-contain mx-auto opacity-0 z-[2]
         top-[35%] sm:top-[35%] md:top-[25%]'
         />
-        <motion.div
+        {/* <motion.div
           id="process-arrow"
           className={`bg-[#00bfff] opacity-0 w-[10px] top-0 absolute mx-auto  z-[1] top-[60%] left-1/2 -translate-x-1/2 
            `}
@@ -283,23 +283,36 @@ const Curtain = () => {
 />
 
 
-        </motion.div>
+        </motion.div> */}
         <motion.div
           ref={leftCurtainRef}
           className="absolute top-0 left-0 bg-[#00bfff] w-[50.5vw] h-full z-[2]
-          border-4 border-white border-r-0"
+          border-4 border-white border-r-0 flex justify-center
+          items-center"
           style={{
             backgroundImage
           }}
-        ></motion.div>
+          
+        >
+          <h2 className='my-auto px-4'>Planning to create a great project is 
+          <span className='font-bold'>
+            &nbsp; essential&nbsp;</span>
+            as it give a clear goal and steps to acheive that
+            goal effieceint and get you the 
+            best results</h2>
+        </motion.div>
         <motion.div
         style={{
           backgroundImage
         }}
           ref={rightCurtainRef}
           className="absolute top-0 right-0 bg-[#00bfff] w-[50.5vw] h-full z-[2]
-          border-4 border-white border-l-0"
-        ></motion.div>
+          border-4 border-white border-l-0
+          flex justify-center
+          items-center"
+        >
+         <h3 className='px-4'>Scroll down to open the curtains and discover how we plan for your success</h3>
+        </motion.div>
       </section>
 
 {/* the section above is the first section, the section below is the second */}

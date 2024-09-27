@@ -6,9 +6,11 @@ import { useGLTF, OrbitControls } from "@react-three/drei";
 import { laptop3d, coloredLaptop } from '@/data/data';
 import { useGeneralContext } from "@/context/context";
 import brain from '../../../public/media/focusFlow-brain-nobg.webp';
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionTemplate, useMotionValue, animate } from "framer-motion";
 import { lerp } from 'three/src/math/MathUtils';
 import {Vector3} from 'three'
+import Link from "next/link";
+
 
 interface HerobannerProps {
   sections: {
@@ -26,7 +28,7 @@ const Model: React.FC<{ url: string }> = ({ url }) => {
   // State for floating effect
   const [floatY, setFloatY] = useState(0); // State to control Y position for floating
   const [scale, setScale] = useState(0.1); // Initialize scale at 0.1
-  const targetScale = isMobile ? 1.2 : 1; // The target scale you want to reach
+  const targetScale = isMobile ? 1.2 : 1.4; // The target scale you want to reach
   const lerpFactor = 0.05; // Factor for lerping both scale and rotation
 
   const targetRotation = [
@@ -60,7 +62,7 @@ const Model: React.FC<{ url: string }> = ({ url }) => {
     <primitive
       ref={ref}
       object={gltf.scene}
-      position={[0, 5, 0]} // Initial position
+      position={[0, 100, 20]} // Initial position
       rotation={[0, 0, 0]} // Start rotation at 0, 0, 0
     />
   );
@@ -80,7 +82,7 @@ const CameraControls = () => {
   const { isMobile } = useGeneralContext();
   useEffect(() => {
     // Set initial camera position and zoom
-    camera.position.set(0,50, isMobile? 80 : 120); // Adjust as needed
+    camera.position.set(0,-59, isMobile? 80 : 160); // Adjust as needed
     camera.lookAt(0, 0, 0); // Ensure the camera looks at the model
   }, [camera]);
 
@@ -88,42 +90,104 @@ const CameraControls = () => {
 };
 
 const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+
   const { isMobile } = useGeneralContext();
 
+  const COLORS = [
+    "#00bfff", 
+    '#30a3c9',
+    "#5dcff5", 
+    "#0080a1", 
+    "#3ab7e0", 
+    "#00bfff", 
+  ];
+  
+  const color1 = useMotionValue(COLORS[0]);
+  const color2 = useMotionValue(COLORS[1]);
+
+  const backgroundImage = useMotionTemplate`linear-gradient(45deg,${color1}, ${color2})`
+
+  useEffect(() => {
+    // Animate the colors for the gradient
+   
+       animate(color1, COLORS, {
+        ease: "easeInOut",
+        duration: 10,
+        repeat: Infinity,
+        repeatType: "loop",
+      });
+
+       animate(color2, COLORS, {
+        ease: "easeInOut",
+        duration: 10,
+        repeat: Infinity,
+        repeatType: "loop",
+      });
+    
+
+  
+}, []);
+
   return (
-    <section className="w-[95%] mx-auto flex flex-col flex-col-reverse overflow-hidden relative  sm:flex-row sm:flex-row-reverse rounded-lg relative">
-      <section className="relative w-full h-full sm:w-[50vw] mt-auto sm:block pl-6">
-        <h2 className="text-3xl px-4  sm:text-4xl font-semibold text-center mb-4 animate-gradient">
+    <section className="w-[95%] 
+     mx-auto flex flex-col flex-col overflow-hidden relative  sm:flex-row sm:flex-row-reverse rounded-lg relative
+     z-[4]"
+     >
+      {/* <section className="relative w-full h-full sm:w-[50vw] mt-auto sm:block pl-6">
+      
+      </section> */}
+      <section className=" sm:block w-full flex justify-center items-center flex-col  h-screen mb-8">
+        <h1 className="text-sm px-4 sm:text-md mb-4  font-semibold text-center mb-4 animate-gradient">
+          Creative and Custom Web Design in Halifax
+        </h1>
+        <h2 className="
+        animate-gradient  font-semibold
+        text-4xl mb-4
+        sm:text-5xl md:text-6xl">
           FocusFlow Software
         </h2>
-        {/* <img className="w-[50vw] max-w-[200px] max-h-[200px] mx-auto object-cover rounded-xl" src={brain.src} alt='le brain' /> */}
-        <h2 className="text-left px-3 text-3xl my-4 bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent font-semibold">
-        Custom Web Design Services Tailored to Your Needs
-        </h2>
-        <p className="text-left px-3 text-lg">
+        <p className="text-left px-3 text-sm">
         At FocusFlow Software, we specialize in web design in Halifax, Nova Scotia, <span className="font-bold">offering custom web design services that are both innovative
           </span> and tailored to your business.
            We are dedicated constantly improving our craft and delivering web page designs that capture your brand and engage your audience, positioning us as <span className='font-bold'>your go-to web designer in Halifax.
           </span>
           <br /><br />
-          <button className="bg-[#00bfff] p-3 rounded-lg">
-            Win Today
-          </button>
+         
         </p>
-      </section>
-      <section className=" sm:block sm:w-[50vw] flex justify-center items-center flex-col  h-[60vh] md:h-[80vh] mb-8">
-        <h1 className="text-3xl px-4 sm:text-3xl sm:text-4xl font-semibold text-center mb-4 animate-gradient">
-          Creative and Custom Web Design in Halifax
-        </h1>
-        <Canvas className="w-full h-full flex items-start
-        bg-gray-200 bg-opacity-[0.1] md:bg-transparent rounded-xl ">
+        <Link
+        href='/lets-work'
+        passHref>
+
+        
+         <motion.button
+        
+         style={{
+          backgroundImage
+         }}
+         whileHover={{
+          scale:1.05
+      }}
+       className="mx-auto mt-8 py-3 px-6  bg-blue-500 text-white rounded-full hover:bg-blue-600 
+       shadow-lg shadow-all-around mt-[-0rem] mb-[-1rem]
+       "
+         >
+            Win Today
+          </motion.button>
+          </Link>
+        <Canvas className="w-full  flex items-start
+        mt-[-5rem]
+        md:bg-transparent rounded-xl
+        pb-[10rem] h-[40vh] "
+        style={{
+          background: 'radial-gradient(circle, #00bfff -150%, rgba(0, 191, 255, 0%) 80%)'
+        }}>
           <ambientLight intensity={1.5} />
           <directionalLight position={[5, 5, 5]} intensity={1} />
           <CameraControls /> 
           <Model url={coloredLaptop} />
           <OrbitControls enablePan={false} enableZoom={false} />
         </Canvas>
+     
       </section>
     </section>
   );

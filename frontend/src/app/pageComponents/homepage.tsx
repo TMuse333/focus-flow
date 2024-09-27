@@ -150,7 +150,7 @@ const { isMobile, selectedCarouselImageIndex} = useGeneralContext()
       <SelectedCarouselImage/>
       
 <BigNav
-excludedLink="Home"
+excludedLink=""
 />
 
 {/* <Navbar links={links}
@@ -158,7 +158,7 @@ excludedLink="Home"
 
 
     <main className="text-center z-[30]
-    overflow-x-hidden mt-[3rem] lg:mt-[8rem] "
+    overflow-x-hidden  lg:mt-[8rem] "
     style={{
       filter:selectedCarouselImageIndex !== null ? 'blur(8px)' : 'none',
       // Ensures full viewport height to avoid scrolling in the main content
@@ -189,7 +189,7 @@ excludedLink="Home"
  <div className="h-[30vh]"
      />
    
-<FlashContent
+< FlashContent
     src={infinity.src}
     alt={`An infinity logo symbolizing limitless possibilities and custom web design services using advanced technologies like React.js to show FocusFlow Software has the most Creative web design in Halifax `}
     />

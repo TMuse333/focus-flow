@@ -44,7 +44,11 @@ interface SubMenuProps {
         {
             name:'Home',
             destination:'/'
-        }
+        },
+        {
+          name:'Home',
+          destination:'/'
+      }
       ],
       listSubMenu: false,
     },
@@ -91,7 +95,11 @@ interface SubMenuProps {
         {
             name:'Contact',
             destination:'/lets-work'
-        }
+        },
+        {
+          name:'Contact',
+          destination:'/lets-work'
+      },
       ],
       listSubMenu: false,
     },
@@ -287,10 +295,12 @@ const BigNav: React.FC<NavbarProps> = ({ excludedLink }) => {
   
   
     const filteredLinks = bigLinks.map(link => {
-      // Filter the secondaryLinks to exclude any link with the excluded name
-      const filteredSecondaryLinks = link.secondaryLinks.filter(
-        secondary => secondary.name !== excludedLink
-      );
+      // Check if secondaryLinks exist before filtering
+      const filteredSecondaryLinks = link.secondaryLinks
+        ? link.secondaryLinks.filter(
+            secondary => secondary.name !== excludedLink
+          )
+        : []; // If no secondaryLinks, return an empty array
     
       // Return the link with the filtered secondaryLinks
       return {
@@ -298,6 +308,7 @@ const BigNav: React.FC<NavbarProps> = ({ excludedLink }) => {
         secondaryLinks: filteredSecondaryLinks
       };
     });
+    
     
     
     
@@ -335,7 +346,10 @@ const BigNav: React.FC<NavbarProps> = ({ excludedLink }) => {
         setHoveredSubMenuIndex(null)
     }
 
-
+useEffect(()=>{
+  console.log('filtered links,',filteredLinks)
+  console.log(filteredLinks[0].secondaryLinks[0].destination)
+},[])
 
 
     return (
@@ -424,10 +438,13 @@ index={index}
                      </>
                     ) : (
                         <>
-            <Link href={link.secondaryLinks[0].destination}>
-                <p className=" my-auto text-sm  relative z-[4]
-                ">{link.secondaryLinks[0].name}</p>
-            </Link>
+                      {link.secondaryLinks.length > 0  && (
+ <Link href={link.secondaryLinks[0].destination}>
+ <p className=" my-auto text-sm  relative z-[4]
+ ">{link.secondaryLinks[0].name}</p>
+</Link>
+                      )}  
+           
                         </>
                     )}
                     
