@@ -12,7 +12,7 @@ import Herobanner from "@/components/herobanner2/herobanner2";
 import { ContactOpener } from "@/data/data";
 
 
-  
+  //
 
 
 const WorkPage = () => {
@@ -49,6 +49,7 @@ const WorkPage = () => {
      {
         ...ContactOpener
      }/>  
+      
      <section className="w-full py-6 flex justify-center
      items-center relative flex-col
      mx-auto my-10 bg-[#00bfff] bg-opacity-[0.2]">
