@@ -5,7 +5,7 @@ import { monthlyAccordion, monthlyPageOutro } from "@/data/data";
 import Accordion from "@/components/accordion/accordion";
 import Herobanner from "@/components/herobanner2/herobanner2";
 import AppearingSquare from "@/components/appearingSquare/appearingSquare";
-import Footer from "@/components/footer/footer";
+import Footer from "@/components/footer2/footer2";
 import BigNav from "@/components/bigNav/navbar";
 
 
@@ -53,7 +53,7 @@ const MonthlyPage = () => {
             />
 
             <Footer
-            links={links}
+           excludedLink='Your long term success'
             />
            
         </main>

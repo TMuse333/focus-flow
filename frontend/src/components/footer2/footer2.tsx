@@ -1,6 +1,7 @@
 import React from "react";
 import twoHand from '../../../public/media/gemeni-two-hand-stick.webp'
 import brain from '../../../public/media/focusFlow-brain-nobg.webp';
+import { filter } from "lodash";
 
 
 interface props  {
@@ -17,6 +18,12 @@ const Footer2:React.FC<props> = ({
     {
       name: 'Home',
       destination:'/',
+      secondaryLinks: [
+        {
+          name: 'Homepage',
+          destination: '/',
+        },
+      ],
      
       //  
       
@@ -64,6 +71,12 @@ const Footer2:React.FC<props> = ({
      
       destination:'/lets-work',
       listSubMenu: false,
+      secondaryLinks: [
+        {
+          name: 'Lets work!',
+          destination: '/lets-work',
+        },
+      ],
     },
     // {
     //   name: 'Canvas',
@@ -94,8 +107,33 @@ const Footer2:React.FC<props> = ({
 
 
     return (
-        <footer className="w-screen">
-            <h6 className="text-3xl">Site map</h6>
+        <footer className="w-screen relative flex flex-col
+        items-center justify-center  my-12">
+            <h6 className="text-3xl sm:text-4xl font-semibold">Site map</h6>
+            
+<ul className="flex flex-col mx-auto
+            md:flex-row w-full mt-6
+            max-w-[1000px] 
+            justify-around items-start " >
+
+
+{filteredLinks.map((link, index) => (
+  <React.Fragment key={index}>
+    <ul className="flex flex-col">
+   
+    <p className="text-xl sm:text-2xl md:text-3xl mb-4 font-semibold">{link.name}</p>
+    {link.secondaryLinks && link.secondaryLinks.map((link2, innerIndex) => (
+      
+      <li className="mb-2 text-left hover:text-[#00bfff]"
+      key={innerIndex}>{link2.name}</li>
+    ))}
+     </ul>
+  </React.Fragment>
+))}
+</ul>
+
+
+
 
 
         </footer>

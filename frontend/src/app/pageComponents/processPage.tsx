@@ -7,7 +7,7 @@ import React from "react";
 import { designPageCloser, processPageCloser, processPageContent, processSlideShow } from "@/data/data";
 import SlideShowCarousel from "@/components/slideShowCarousel/slideShowCarousel";
 import AppearingSquare from "@/components/appearingSquare/appearingSquare";
-import Footer from "@/components/footer/footer";
+import Footer from "@/components/footer2/footer2";
 
 
 const ProcessPage = () => {
@@ -56,7 +56,7 @@ const ProcessPage = () => {
             {...processPageCloser}/>
 
             <Footer
-            links={links}
+            excludedLink="Our Process"
             />
 
 

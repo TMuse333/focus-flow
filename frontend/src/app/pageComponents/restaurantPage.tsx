@@ -1,4 +1,4 @@
-// "use client"
+"use client"
 import { Metadata } from "next";
 import React, { Suspense } from "react";
 import Head from "next/head";
@@ -7,10 +7,12 @@ const ImageAccordion = React.lazy(() => import("@/components/imageAccordion/imag
 const Navbar = React.lazy(() => import("@/components/bigNav/navbar"));
 const TextParallaxContentExample = React.lazy(() => import("@/components/parallaxText/parallaxText").then(module => ({ default: module.TextParallaxContentExample })));
 const PriceBoxes = React.lazy(() => import("@/components/priceBoxes/priceBoxes"));
-const Footer = React.lazy(() => import("@/components/footer/footer"));
-const Closer = React.lazy(() => import("@/components/closer/closer"));
+const Footer = React.lazy(() => import("@/components/footer2/footer2"));
 
-import { accordion1Text, customParallax, restaurantFaq, ownershipParallax, priceBoxesData, restaurantParallax, restaurantCloser } from "@/data/data";
+const Closer = React.lazy(()=> import("@/components/appearingSquare/appearingSquare"))
+
+import { accordion1Text, customParallax, restaurantFaq, ownershipParallax, priceBoxesData, restaurantParallax, restaurantCloser,
+restaurantPageCloser } from "@/data/data";
 
 
 
@@ -53,10 +55,12 @@ const RestaurantPage = () => {
                     />
                 </Suspense>
                 <Suspense fallback={<div>Loading...</div>}>
-                    <Closer {...restaurantCloser} />
+                    <Closer
+                    {...restaurantPageCloser}
+                    />
                 </Suspense>
                 <Suspense fallback={<div>Loading...</div>}>
-                    <Footer links={links} />
+                    <Footer excludedLink="Restaurant Software" />
                 </Suspense>
             </main>
         </>

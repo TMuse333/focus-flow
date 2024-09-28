@@ -7,6 +7,7 @@ import React from "react";
 import Head from "next/head";
 import { Metadata } from "next";
 import { useGeneralContext } from "@/context/context";
+import Footer2 from "@/components/footer2/footer2";
 
 
   
@@ -44,8 +45,8 @@ const WorkPage = () => {
         <main className="w-screen mt-[6rem]"> 
        
 <Contact/>
-<Footer
-links={links}
+<Footer2
+excludedLink='Contact'
 />
         </main>
         </>

@@ -15,6 +15,7 @@ import AppearingSquare from "@/components/appearingSquare/appearingSquare";
 import Closer from "@/components/closer/closer";
 import Footer from "@/components/footer/footer";
 import Accordion from "@/components/accordion/accordion";
+import Footer2 from "@/components/footer2/footer2";
 const DesignPage = () => {
 
   const links = [
@@ -67,8 +68,8 @@ const DesignPage = () => {
       <AppearingSquare
       {...designPageCloser}/>
 
-      <Footer
-      links={links}
+      <Footer2
+      excludedLink='Top tier custom web design'
       />
 
 

@@ -254,7 +254,8 @@ export const restaurantParallax:ParallaxProps = {
     alt:'Explaining how focus software has the best online ordering system',
     isVideo:true,
     description:lorem30,
-    thumbnail:'/media/focused-coder.webp',
+    thumbnail:'/media/generic-logo.png',
+    
     heading:'Online ordering software',
     subHeading:'Quick, easy, Efficient and Profitable'
 }
@@ -311,7 +312,7 @@ export const ownershipParallax:ParallaxProps = {
 }
 
 export const customParallax:ParallaxProps = {
-    src:'media/gemeni-two-hand-stick.webp',
+    src:'media/restaurant-main.webp',
     alt:'Explaining how focus software has the best online ordering system',
     isVideo:false,
     description:'From start to finish, this is your software. Customize it, scale it, and make it your own. You’re not just getting a product—you’re getting the freedom to shape your restaurant’s digital presence exactly how you envision it.',
@@ -745,6 +746,13 @@ export const processPageCloser = {
     Ready to start building a site that works for your business? Click below to begin your journey with us — we're excited to collaborate and bring your project to life.`,
     buttonDestination: '/lets-work',
     buttonText: 'Start Your Project with FocusFlow'
+}
+
+export const restaurantPageCloser = {
+    title:'Elevate Your Restaurant',
+    description:`Step into the future of dining with FocusFlow Software. It's not just a tool—it's a revolution in how you connect with customers. Own your success, drive growth, and deliver an unparalleled experience, all on your terms. Your restaurant, your rules, with technology that adapts to you.`,
+    buttonDestination: '/lets-work',
+    buttonText: 'Get yours today'
 }
 
 export const monthlyPageOutro = {
