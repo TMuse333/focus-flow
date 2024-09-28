@@ -197,18 +197,22 @@ const Curtain = () => {
   }, []);
 
   const COLORS = [
-    "#00bfff", 
-    '#30a3c9',
-    "#5dcff5", 
-    "#0080a1", 
-    "#3ab7e0", 
-    "#00bfff", 
+    "#004080",  // Darker blue
+    "#003366",  // Even darker blue
+    "#005999",  // Slightly lighter but still dark
+    "#00264d",  // Very dark
+    "#006080",  // Medium dark shade
+    "#003f5c",  // Dark blue-gray
   ];
   
   const color1 = useMotionValue(COLORS[0]);
   const color2 = useMotionValue(COLORS[1]);
-
-  const backgroundImage = useMotionTemplate`linear-gradient(45deg,${color1}, ${color2})`
+  
+  // Update the gradient to use radial instead of linear for a more "stream-like" flow
+  const backgroundImage = useMotionTemplate`radial-gradient(circle at 50% 50%, ${color1}, ${color2})`;
+  
+  
+  
 
   useEffect(() => {
     // Animate the colors for the gradient
@@ -294,7 +298,8 @@ const Curtain = () => {
           }}
           
         >
-          <h2 className='my-auto px-4'>Planning to create a great project is 
+          <h2 className='my-auto px-6 bg-[#00bfff]
+          rounded-2xl py-4 w-[80%] mx-auto'>Planning to create a great project is 
           <span className='font-bold'>
             &nbsp; essential&nbsp;</span>
             as it give a clear goal and steps to acheive that
@@ -311,7 +316,8 @@ const Curtain = () => {
           flex justify-center
           items-center"
         >
-         <h3 className='px-4'>Scroll down to open the curtains and discover how we plan for your success</h3>
+         <h3 className='my-auto px-6 bg-[#00bfff]
+          rounded-2xl py-4 w-[80%] mx-auto'>Scroll down to open the curtains and discover how we plan for your success</h3>
         </motion.div>
       </section>
 
@@ -333,61 +339,37 @@ const Curtain = () => {
 
          
 
-         <section className='flex flex-col justify-center items-center
-         mx-auto md:flex-row md:justify-between  relative z-[2]
-   
-         '>
+         <section className='flex flex-col justify-center items-center mx-auto md:flex-row md:justify-between relative z-[2]'>
 
-        <div id='question-1'
-        className='      bg-gradient-to-br from-blue-500 via-blue-400 to-blue-300 rounded-2xl text-black mb-6 p-4 mt-6
-           my-auto opacity-0 relative z-[16] mx-auto 
-           md:w-[30vw]   md:h-[80vh] overflow-y-scroll
-           '>
-          <h4 className='text-2xl text-center mb-4'>
-            What do we want users to see?
-          </h4>
-          <p>
-          We’ll talk about what your visitors should notice right away when they land on your website. What’s the most important message or content you want front and center?
-We’ll strategically place eye-catching visuals and headlines that quickly communicate your key offerings. Whether it’s a stunning hero image, a catchy headline, or a promotional video, we’ll ensure the first thing they see grabs their attention.
-Additionally, we’ll ensure that important elements like your contact information, product highlights, or recent blog posts are easily accessible. We’ll prioritize content that matters most to your business goals.
+  <div id='question-2' className='bg-gradient-to-br from-blue-500 via-blue-400 to-blue-300 rounded-2xl text-black mb-6 p-4 mt-6 my-auto opacity-0 relative z-[16] mx-auto md:w-[30vw] md:h-[60vh]'>
+    <h4 className='text-2xl text-center mb-4'>
+      What do we want the website to do?
+    </h4>
+    <p>
+      We’ll define your website’s purpose, whether it's generating leads, driving sales, showcasing work, or providing information. We'll focus on speed, navigation, and mobile optimization, ensuring the site is scalable for future growth.
+    </p>
+  </div>
 
-          </p>
-         </div>
+  <div id='question-3' className='bg-gradient-to-br from-blue-500 via-blue-400 to-blue-300 rounded-2xl text-black mb-6 p-4 mt-6 my-auto opacity-0 relative z-[16] mx-auto md:w-[30vw] md:h-[60vh] overflow-y-scroll'>
+    <h4 className='text-2xl text-center mb-4'>
+      What do we want users to feel?
+    </h4>
+    <p>
+      We’ll discuss the emotions you want to evoke — whether it's trust, excitement, or reassurance. By carefully selecting colors, images, and design elements, we'll create a visual experience that connects emotionally with users, stays true to your brand, and offers an intuitive, frustration-free user experience.
+    </p>
+  </div>
 
-  
+  <div id='question-1' className='bg-gradient-to-br from-blue-500 via-blue-400 to-blue-300 rounded-2xl text-black mb-6 p-4 mt-6 my-auto opacity-0 relative z-[16] mx-auto md:w-[30vw] md:h-[60vh] overflow-y-scroll'>
+    <h4 className='text-2xl text-center mb-4'>
+      What do we want users to see?
+    </h4>
+    <p>
+      Now, we need to know what users need to see to make this happen. Key messages, a standout headline, or visuals will be strategically placed to quickly convey your offerings. We’ll also ensure that important information like contact details or product highlights are easy to find, prioritizing the content that aligns with your business goals.
+    </p>
+  </div>
 
-         <div id='question-2'
-        className='      bg-gradient-to-br from-blue-500 via-blue-400 to-blue-300 rounded-2xl text-black mb-6 p-4 mt-6
-           my-auto opacity-0 relative z-[16] mx-auto 
-           md:w-[30vw]    md:h-[80vh]
-           '>
-          <h4 className='text-2xl text-center mb-4'>
-            What do we want the website to do?
-          </h4>
-          <p>
-          First, we’ll discuss your website’s goals. Is it for leads, sales, showcasing work, or providing information?
-We’ll cover the core functionalities to make this happen, like speed, navigation, and mobile optimization.
-We’ll also plan for the future, ensuring the site can grow with your business and easily integrate new tools.
-          </p>
-         </div>
+</section>
 
-         <div id='question-3'
-        className='     bg-gradient-to-br from-blue-500 via-blue-400 to-blue-300 rounded-2xl text-black mb-6 p-4 mt-6
-           my-auto opacity-0 relative z-[16] mx-auto 
-           md:w-[30vw]  md:h-[80vh] overflow-y-scroll
-           '>
-          <h4 className='text-2xl text-center mb-4'>
-            What do we want users to feel?
-          </h4>
-          <p>
-          Next, we’ll talk about how you want your visitors to feel when they land on your site. Do you want to project trust and credibility right away? Should they feel inspired, excited, or maybe reassured that they’ve come to the right place?
-We’ll work on creating the right vibe for your brand through colors, images, and the overall design. This isn’t just about looking good — it’s about creating an emotional connection with your audience. We’ll think about how to make your site visually engaging while staying true to your brand’s voice and identity.
-User experience is key. We’ll make sure everything feels easy and intuitive for your users, so they don’t get frustrated or lost. The goal is for them to enjoy their experience and keep exploring the site.
-
-          </p>
-         </div>
-
-         </section>
 
 
         <span id='top-border'

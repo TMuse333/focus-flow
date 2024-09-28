@@ -43,6 +43,7 @@ import infinity from '../../../public/media/infinity.webp'
 import FlashContent from "@/components/flashConent/flashContent";
 import Testimonials from "@/components/testimonials/testimonials";
 import Navbar from "@/components/navbar2/navbar";
+import Footer2 from "@/components/footer2/footer2";
 
 export const metadata: Metadata = {
   title: "Web Design Halifax | Focusflow Software",
@@ -76,10 +77,10 @@ const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
   loading: () => <p>Loading Aurora Hero...</p>, // Optional: a loading component
 });
 
-const Footer = dynamic(() => import('@/components/footer/footer'), {
-  ssr: false,
-  loading: () => <p>Loading Footer...</p>, // Optional: a loading component
-});
+// const Footer = dynamic(() => import('@/components/footer2/footer'), {
+//   ssr: false,
+//   loading: () => <p>Loading Footer...</p>, // Optional: a loading component
+// });
 
 
 
@@ -149,16 +150,16 @@ const { isMobile, selectedCarouselImageIndex} = useGeneralContext()
    
       <SelectedCarouselImage/>
       
-<BigNav
-excludedLink=""
-/>
+
 
 {/* <Navbar links={links}
 /> */}
-
+      <BigNav
+excludedLink="Home"
+/>
 
     <main className="text-center z-[30]
-    overflow-x-hidden  lg:mt-[8rem] "
+    overflow-x-hidden  lg:mt-[2rem]"
     style={{
       filter:selectedCarouselImageIndex !== null ? 'blur(8px)' : 'none',
       // Ensures full viewport height to avoid scrolling in the main content
@@ -171,7 +172,7 @@ excludedLink=""
 
   {/* <SlideScrollCarousel
   /> */}
-      
+
      
       <Herobanner
       sections={herobannerData}/>
@@ -228,6 +229,11 @@ description="Explore some of our showcased projects. Click on each for detailed 
 
 
 <AuroraHero/>
+
+<Footer2
+excludedLink='Home'
+/>
+
 
 {/* <Footer
 links={links}

@@ -33,10 +33,10 @@ const AppearingContent: React.FC<ContentProps> = ({
 
         // Animate each side of the border sequentially
         await animate(`#border-top-${id}`, { width: "100%" }, { duration: 0.5 });
-        await animate(`#border-left-${id}`, { height: "100%" }, { duration: 0.5 });
+        await animate(`#border-left-${id}`, { height: "50vh" }, { duration: 0.5 });
         await animate(`#border-bottom-${id}`, { width: "100%" }, { duration: 0.5 });
       
-        await animate(`#border-right-${id}`, { height: "100%" }, { duration: 0.5 });
+        await animate(`#border-right-${id}`, { height: "50vh" }, { duration: 0.5 });
 
 
         // Animate image opacity
@@ -117,7 +117,7 @@ id={`content-${id}`}
 
 controls
 className="w-full mx-auto object-contain opacity-0
-max-h-[500px]">
+max-h-[500px] h-[50vh]">
     <source src={src} type='video/mp4'/>
 
 </video>

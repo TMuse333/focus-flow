@@ -8,7 +8,7 @@ const Herobanner = () => {
 
 
     return (
-        <section className="bg-['radial-gradient(circle, #0080bf -50%, rgba(0, 128, 191, 0%) 60%)']
+        <section className=" mt-[4rem] bg-['radial-gradient(circle, #0080bf -50%, rgba(0, 128, 191, 0%) 60%)']
       "
         style={{
             background:'radial-gradient(circle, #0080bf -50%, rgba(0, 128, 191, 0%) 60%)'
@@ -32,7 +32,9 @@ const Herobanner = () => {
             Just like any great business, a successful website requires time, ongoing improvements, and strategic planning. With our Monthly Website Management and Success Plan, we ensure your site evolves and adapts to changing trends and user needs. 
             <br/>
             <br/>
-            Through continuous updates, SEO optimization, and performance monitoring, your website will steadily grow, bringing your business to new heights. Trust us to manage your digital presence, so you can focus on what matters most—running your business
+            Through continuous updates, SEO optimization, and performance monitoring, your website will steadily grow, bringing your business to new heights. Trust us to manage your digital presence, so you can focus on what matters most—running your business.
+            Here is what we offer with our monthly service to
+            ensure the website progresses month by month.
             </p>
 
         </section>

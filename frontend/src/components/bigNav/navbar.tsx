@@ -13,7 +13,8 @@ interface NavbarProps {
 interface DesktopSubMenuProps {
     src:string,
     alt:string,
-    secondaryLinks:{
+    destination?:string
+    secondaryLinks?:{
         name:string
         destination:string
     }[],
@@ -40,16 +41,10 @@ interface SubMenuProps {
   const bigLinks = [
     {
       name: 'Home',
-      secondaryLinks: [
-        {
-            name:'Home',
-            destination:'/'
-        },
-        {
-          name:'Home',
-          destination:'/'
-      }
-      ],
+      destination:'/',
+     
+      //  
+      
       listSubMenu: false,
     },
  
@@ -91,16 +86,8 @@ interface SubMenuProps {
     },
     {
       name: 'Contact',
-      secondaryLinks: [
-        {
-            name:'Contact',
-            destination:'/lets-work'
-        },
-        {
-          name:'Contact',
-          destination:'/lets-work'
-      },
-      ],
+     
+      destination:'/lets-work',
       listSubMenu: false,
     },
     // {
@@ -119,7 +106,7 @@ interface SubMenuProps {
 
   const DesktopSubMenu:React.FC<DesktopSubMenuProps> = ({
     src, alt, secondaryLinks,isClicked,description,
-    index,
+    index,destination,
     setIsClicked
   }) => {
 
@@ -136,8 +123,8 @@ interface SubMenuProps {
     return (
         <div className={`bg-[#036080] fixed top-[20px] w-screen
          left-0  transition-[height] overflow-hidden
-         pt-4
-        flex justify-evenly ${isClicked  ? 'h-[200px]' : 'h-[0px]'}`
+         pt-4 
+        flex justify-evenly ${isClicked  ? 'h-[200px] z-[10]' : 'h-[0px] z-[-1]'}`
         }
         onMouseEnter={()=>handleMouseEnter(index)}
         onMouseLeave={handleMouseLeave}
@@ -156,7 +143,7 @@ interface SubMenuProps {
             <p className="w-[70vw]">{description}</p>
 
 <ul className="flex mt-6">
-    {secondaryLinks.map((link, index) => (
+    {secondaryLinks?.map((link, index) => (
         <Link href={link.destination}
         key={index}
         >
@@ -233,7 +220,7 @@ interface SubMenuProps {
                                 mr-auto text-white
                                
                                  pl-2 pr-2 
-                                 hover:text-q-blue">{link.name}</li>
+                                 hover:text-[#00bfff]">{link.name}</li>
                            
                         ))}
                     </ul>
@@ -245,7 +232,7 @@ interface SubMenuProps {
 
                             <button className="bg-transparent
                             top-[5%] absolute right-[10%] !text-2xl
-                            hover:text-q-blue"
+                            hover:text-[#00bfff]"
                             onClick={exitFullMobileNav}>
                                 X
                             </button>
@@ -265,7 +252,7 @@ interface SubMenuProps {
                                     passHref
                                     >
                                         <li className="mb-2 text-white transition-colors
-                                         hover:text-q-blue md:xl">
+                                         hover:text-[#00bfff] md:xl">
                                             {link.name}
                                         </li>
                                     </Link>
@@ -294,20 +281,21 @@ const BigNav: React.FC<NavbarProps> = ({ excludedLink }) => {
     
   
   
-    const filteredLinks = bigLinks.map(link => {
+    const filteredLinks = bigLinks
+    .filter(link => link.name !== excludedLink) // Filter out links where link.name matches excludedLink
+    .map(link => {
       // Check if secondaryLinks exist before filtering
       const filteredSecondaryLinks = link.secondaryLinks
-        ? link.secondaryLinks.filter(
-            secondary => secondary.name !== excludedLink
-          )
+        ? link.secondaryLinks.filter(secondary => secondary.name !== excludedLink)
         : []; // If no secondaryLinks, return an empty array
-    
+  
       // Return the link with the filtered secondaryLinks
       return {
         ...link,
         secondaryLinks: filteredSecondaryLinks
       };
     });
+  
     
     
     
@@ -346,14 +334,14 @@ const BigNav: React.FC<NavbarProps> = ({ excludedLink }) => {
         setHoveredSubMenuIndex(null)
     }
 
-useEffect(()=>{
-  console.log('filtered links,',filteredLinks)
-  console.log(filteredLinks[0].secondaryLinks[0].destination)
-},[])
+// useEffect(()=>{
+//   console.log('filtered links,',filteredLinks)
+//   console.log(filteredLinks[0].secondaryLinks[0].destination)
+// },[])
 
 
     return (
-        <nav className="fixed top-0 z-50 w-screen left-0 bg-transparent h-[30px] flex justify-between items-center
+        <nav className="fixed top-[0] z-[301] w-screen left-0 bg-transparent h-[30px] flex justify-between items-center
         lg:bg-[#036080]
         ">
             <MobileSubMenu
@@ -362,7 +350,7 @@ useEffect(()=>{
             links={filteredLinks }
             />
                <div className="relative w-full h-full flex items-center justify-end 
-               lg:justify-around max-w-[1200px] ml-auto mr-auto
+               lg:justify-around max-w-[1200px] ml-auto mr-auto 
              ">
 
 {!isDesktop ? (
@@ -438,12 +426,14 @@ index={index}
                      </>
                     ) : (
                         <>
-                      {link.secondaryLinks.length > 0  && (
- <Link href={link.secondaryLinks[0].destination}>
- <p className=" my-auto text-sm  relative z-[4]
- ">{link.secondaryLinks[0].name}</p>
-</Link>
-                      )}  
+                    
+  <Link href={link.destination? link.destination : ''}>
+    <p className="my-auto text-sm relative z-[4] hover:text-[#00bfff]">
+      {link.name}
+    </p>
+  </Link>
+
+
            
                         </>
                     )}

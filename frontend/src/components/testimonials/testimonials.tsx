@@ -17,8 +17,7 @@ const testimonialsData = [
         title: 'CEO of Sainey Media',
         quote: 'Hard working, disciplined and fast.',
         author: 'Sainey Take',
-        effect: `Working with FocusFlow Software and more specifically their CEO, Thomas Musial, was nothing short of a seamless and amazing process while having my website designed through him!\n
-          Thomas made sure to keep me in the loop for every single detail put into the website and ensured that it was exactly how I envisioned it, his ability to create original designs that make my brand stand out alongside the price he offers makes him by far the best option on the market!  If you are on the fence about working with Thomas and FocusFlow Software, take this message as your sign to pull the trigger and invest in yourself or your business!` // Example effect
+        effect: `Working with Thomas Musial at FocusFlow Software to design my website was an incredible experience! Thomas kept me involved in every detail, ensuring the final result matched my vision. His ability to create unique designs that make my brand stand out, combined with his competitive pricing, makes him the best choice. If you're unsure about working with Thomas, consider this your sign to take the leap and invest in your business!` // Example effect
     },
     {
         title:'Senior Financial Advisor',
@@ -96,7 +95,7 @@ const Testimonials: React.FC<TestimonialProps> = ({ testimonials = testimonialsD
             
             <AnimatePresence  mode='wait'>
           <motion.p key={currentTestimonial} className="font-bold mb-4 pl-8 pr-8 mt-8
-          text-lg sm:text-xl md:text-2xl sm:pl-12 sm:pr-12 pt-8"
+          text-lg md:text-xl lg:text-2xl sm:pl-12 sm:pr-12 pt-8"
             initial={{ opacity: 0,x: -10 }}
             animate={{ opacity: 1, x:0 }}
              exit={{ opacity: 0 }}>

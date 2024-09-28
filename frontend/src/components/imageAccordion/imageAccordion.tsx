@@ -79,20 +79,21 @@ const ImageAccordion: React.FC<AccordionProps> = ({ title, description, items })
                             </span>
                         </button>
                         <div
-                            className={`transition-all duration-500 ease-in-out overflow-hidden
-                            ${expandedIndex === index ? 'h-[600px] lg:h-[300px] ' : 'h-[0px]'}`}
+                            className={`transition-all duration-500 ease-in-out overflow-x-hidden
+                            overflow-y-scroll
+                            ${expandedIndex === index ? 'h-[30vh] lg:h-[30vh] ' : 'h-[0px]'}`}
                             // style={{
                             //     height: expandedIndex === index ? "600px lg:300px" : "0px",
                             //     opacity: expandedIndex === index ? 1 : 0,
                             // }}
                         >
-                            <div className="p-4">
+                            <div className="p-4 overflow-y-scroll">
                                 <p className="text-gray-300 mb-3">{item.description}</p>
-                                <img src={item.src} alt={item.alt} className="
-                                w-[50%] mx-auto h-auto rounded-lg
+                                {/* <img src={item.src} alt={item.alt} className="
+                                w-[50%] mx-auto  rounded-lg h-[70%]
                                 max-w-[390px] max-h-[390px] object-contain
                                 lg:hidden
-                                " />
+                                " /> */}
                             </div>
                         </div>
                     </div>
@@ -110,7 +111,7 @@ const ImageAccordion: React.FC<AccordionProps> = ({ title, description, items })
   <motion.img 
    key={items[tempImage].src}
   className="w-[40vw] object-contain
- mx-auto max-w-[400px] max-h-[400px]
+ mx-auto max-w-[400px] h-[70%] max-h-[400px]
  my-auto rounded-2xl
 "
   src={items[tempImage].src}

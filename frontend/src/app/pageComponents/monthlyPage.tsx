@@ -38,7 +38,7 @@ const MonthlyPage = () => {
       <BigNav
       excludedLink="Your long term success"
       />
-        <main className="mt-4">
+        <main className="mt-6">
             <Herobanner/>
             <Accordion
             hasIntro={false}

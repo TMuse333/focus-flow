@@ -49,7 +49,9 @@ const Content: React.FC<ContentProps> = ({
     animate: {
       x: 0,
       opacity: 1,
-      transition: { delay }
+      transition: { delay,
+      ease:'easeIn' },
+      
     },
   });
 
@@ -123,7 +125,7 @@ const Content: React.FC<ContentProps> = ({
                     variants={baseVariants(reverse ? -30 : 30, 1.2)}
                     initial={hasAnimation ? 'initial' : ''}
                     animate={shouldAnimate ? 'animate' : ''}
-                    className="mt-6 bg-[#00bfff] p-3 rounded-xl hover:bg-white hover:text-[#00bfff] transition-all"
+                    className="mt-6 bg-[#00bfff] p-3 rounded-xl hover:bg-white hover:text-[#00bfff] "
                   >
                     {buttonText}
                   </motion.button>

@@ -648,9 +648,7 @@ export const designCloser = {
     image:twoHands.src,
     title:'Focusflow',
     description:` Now that you've seen firsthand why FocusFlow stands above the rest, it's time to take the next step. Your website is more than just an online presence — it's a crucial part of your business's success. It deserves to be built and managed by a team with the technical expertise and creative vision to set you apart from the competition.
-   
       Don't settle for average when you can have a website that truly reflects the heart of your brand and drives results. We’re ready to design a site that not only captures your audience's attention but also elevates your business to new heights.
-   
        Start your project with us today and let's bring your vision to life. Click below to get started — we're excited to work with you and create something extraordinary.`,
        buttonText:'Get Started with Focusflow',
        destination:'/contact'
@@ -732,9 +730,7 @@ export const processSlideShow = [
 export const designPageCloser = {
     title:'Time to elevate your digital presence',
     description:`Now that you've seen firsthand why FocusFlow stands above the rest, it's time to take the next step. Your website is more than just an online presence — it's a crucial part of your business's success. It deserves to be built and managed by a team with the technical expertise and creative vision to set you apart from the competition.
-    \n
     Don't settle for average when you can have a website that truly reflects the heart of your brand and drives results. We’re ready to design a site that not only captures your audience's attention but also elevates your business to new heights.
-    \n
     Start your project with us today and let's bring your vision to life. Click below to get started — we're excited to work with you and create something extraordinary.`,
     buttonDestination:'/lets-work',
     buttonText:'Get started with FocusFlow'
@@ -742,10 +738,10 @@ export const designPageCloser = {
 
 export const processPageCloser = {
     title: 'The Journey to Your Ideal Website Starts Here',
-    description: `Now that you've learned about our process, it's time to put it into action. Building a website is more than just creating pages — it's about crafting an online experience that represents your brand and connects with your audience.
-    \n
-    At FocusFlow, we don’t just build websites; we create digital ecosystems designed to elevate your online presence and make an impact. From the initial concept to the final product, our process ensures every element is fine-tuned to meet your needs and exceed expectations.
-    \n
+    description: `Now that you've learned about our process, this is the approach that has allowed us to deliver results for our clients quickly and effectively. Building a website isn't just about creating pages — it's about crafting an online experience that represents your brand and connects with your audience.
+
+    We create platforms designed to fully showcase your business to the world, helping you reach new heights. From the initial concept to the final product, every part of our process is tailored to your needs, ensuring your online presence stands out and drives impact.
+    
     Ready to start building a site that works for your business? Click below to begin your journey with us — we're excited to collaborate and bring your project to life.`,
     buttonDestination: '/lets-work',
     buttonText: 'Start Your Project with FocusFlow'
