@@ -2,8 +2,15 @@ import Image from "next/image";
 import React from "react";
 import brain from '../../../public/media/focusFlow-brain-nobg.webp'
 
+interface props {
+    title:string,
+    description:string
+}
 
-const Herobanner = () => {
+
+const Herobanner:React.FC<props> = ({
+    title,description
+}) => {
 
 
 
@@ -18,7 +25,7 @@ const Herobanner = () => {
     px-4"
     style={{
         backgroundImage: "linear-gradient(to right, #00e0ff, #00a2e4, #00e0ff)",
-    }}>Monthly Website Management for Long-Term Success</h1>
+    }}>{title}</h1>
     <Image
     src={brain}
     className='w-[60vw] mx-auto object-contain 
@@ -28,13 +35,9 @@ const Herobanner = () => {
     width={600}
     height={1300}
     />
-            <p className="px-6  max-w-[1200px] mx-auto">
-            Just like any great business, a successful website requires time, ongoing improvements, and strategic planning. With our Monthly Website Management and Success Plan, we ensure your site evolves and adapts to changing trends and user needs. 
-            <br/>
-            <br/>
-            Through continuous updates, SEO optimization, and performance monitoring, your website will steadily grow, bringing your business to new heights. Trust us to manage your digital presence, so you can focus on what matters most—running your business.
-            Here is what we offer with our monthly service to
-            ensure the website progresses month by month.
+            <p className="px-6  max-w-[1200px] mx-auto
+            whitespace-pre-line sm:text-lg ">
+           {description}
             </p>
 
         </section>

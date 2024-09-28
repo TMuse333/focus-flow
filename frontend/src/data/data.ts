@@ -763,4 +763,28 @@ export const monthlyPageOutro = {
     buttonText: 'Start Your Monthly Plan',
     buttonDestination: '/contact',
   };
+
+
+  export const monthlyOpener = {
+    title:'Monthly Website Management for Long-Term Success',
+    description:`Just like any great business, a successful website requires time, ongoing improvements, and strategic planning. With our Monthly Website Management and Success Plan, we ensure your site evolves and adapts to changing trends and user needs. 
+           
+    Through continuous updates, SEO optimization, and performance monitoring, your website will steadily grow, bringing your business to new heights. Trust us to manage your digital presence, so you can focus on what matters most—running your business.
+    Here is what we offer with our monthly service to
+    ensure the website progresses month by month.`
+  }
+
+  export const ContactOpener = {
+    title: 'Taking the next step towards elevating your digital presence',
+    description: `Congratulations, you have made an excellent choice and are on the path to greatness! We’re excited to learn more about your vision and turn it into reality. 
+     
+    You can directly contact us via the information below or fill out the following form. By sharing a few details about your project, we can better understand your needs and provide tailored solutions.
+    
+    Rest assured, we prioritize every project with the same dedication to speed and quality. From initial concept to final execution, we're here to support you every step of the way.
+    
+    Whether you’re looking to boost your online presence, streamline business operations, or create a captivating digital experience, our team will reach out promptly to discuss your goals and make them a reality. 
+    
+    Let’s build something amazing together — we can’t wait to hear from you!`
+  }
+  
   

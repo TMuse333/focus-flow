@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react";
-import { monthlyAccordion, monthlyPageOutro } from "@/data/data";
+import { monthlyAccordion, monthlyOpener, monthlyPageOutro } from "@/data/data";
 import Accordion from "@/components/accordion/accordion";
 import Herobanner from "@/components/herobanner2/herobanner2";
 import AppearingSquare from "@/components/appearingSquare/appearingSquare";
@@ -39,7 +39,11 @@ const MonthlyPage = () => {
       excludedLink="Your long term success"
       />
         <main className="mt-6">
-            <Herobanner/>
+            <Herobanner
+            {
+                ...monthlyOpener
+            }
+            />
             <Accordion
             hasIntro={false}
            text={monthlyAccordion}

@@ -103,13 +103,7 @@ const Contact = () => {
                     max-w-[445px]'
                 />
                 <section className='w-[90%] sm:w-auto mt-5 mr-auto'>
-                    <p>
-                        Congratulations, you have made an excellent choice and are on the path of greatness.
-                    </p>
-                    <br />
-                    <p>
-                        Fill out the following form so we can get an idea of your project and we'll reach back soon so we can get the project going quickly while maintaining high quality.
-                    </p>
+                    
                 </section>
                 <form onSubmit={handleSubmit} className='w-[90vw] mt-5 ml-auto mr-auto flex flex-col justify-center items-center'>
                     <label className='mb-2 w-[90vw]'>
