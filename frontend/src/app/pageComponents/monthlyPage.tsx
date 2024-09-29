@@ -8,9 +8,10 @@ const BigNav = dynamic(() => import("@/components/bigNav/navbar"), { ssr: false 
 import Herobanner from "@/components/herobanner2/herobanner2";
 const Accordion = dynamic(() => import("@/components/accordion/accordion"), { ssr: false });
 const AppearingSquare = dynamic(() => import("@/components/appearingSquare/appearingSquare"), { ssr: false });
-const Footer = dynamic(() => import("@/components/footer2/footer2"), { ssr: false });
+const Footer2 = dynamic(() => import("@/components/footer2/footer2"), { ssr: false });
 
 import { monthlyAccordion, monthlyOpener, monthlyPageOutro } from "@/data/data";
+
 
 const MonthlyPage = () => {
     return (
@@ -30,7 +31,7 @@ const MonthlyPage = () => {
 
                 <AppearingSquare {...monthlyPageOutro} />
 
-                <Footer excludedLink="Your long term success" />
+                <Footer2 excludedLink="Your long term success" />
             </main>
         </>
     );

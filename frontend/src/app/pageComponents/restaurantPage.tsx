@@ -7,12 +7,13 @@ const ImageAccordion = React.lazy(() => import("@/components/imageAccordion/imag
 const Navbar = React.lazy(() => import("@/components/bigNav/navbar"));
 const TextParallaxContentExample = React.lazy(() => import("@/components/parallaxText/parallaxText").then(module => ({ default: module.TextParallaxContentExample })));
 const PriceBoxes = React.lazy(() => import("@/components/priceBoxes/priceBoxes"));
-const Footer = React.lazy(() => import("@/components/footer2/footer2"));
+const Footer2 = React.lazy(() => import("@/components/footer2/footer2"));
 
 const Closer = React.lazy(()=> import("@/components/appearingSquare/appearingSquare"))
 
 import {  customParallax, restaurantFaq, ownershipParallax, priceBoxesData, restaurantParallax, restaurantCloser,
 restaurantPageCloser } from "@/data/data";
+
 
 
 
@@ -56,7 +57,7 @@ const RestaurantPage = () => {
                     />
                 </Suspense>
                 <Suspense fallback={<div>Loading...</div>}>
-                    <Footer excludedLink="Restaurant Software" />
+                    <Footer2 excludedLink="Restaurant Software" />
                 </Suspense>
             </main>
         </>

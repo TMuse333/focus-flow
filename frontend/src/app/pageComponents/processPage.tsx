@@ -9,9 +9,10 @@ import Curtain from "@/components/curtains/curtains";
 const PageCreation = dynamic(() => import("@/components/pageCreation/pageCreation"), { ssr: false });
 const SlideShowCarousel = dynamic(() => import("@/components/slideShowCarousel/slideShowCarousel"), { ssr: false });
 const AppearingSquare = dynamic(() => import("@/components/appearingSquare/appearingSquare"), { ssr: false });
-const Footer = dynamic(() => import("@/components/footer2/footer2"), { ssr: false });
+const Footer2 = dynamic(() => import("@/components/footer2/footer2"), { ssr: false });
 
 import { processPageCloser, processPageContent, processSlideShow } from "@/data/data";
+
 
 const ProcessPage = () => {
     return (
@@ -26,7 +27,7 @@ const ProcessPage = () => {
 
                 <AppearingSquare {...processPageCloser} />
 
-                <Footer excludedLink="Our Process" />
+                <Footer2 excludedLink="Our Process" />
             </main>
         </>
     );
