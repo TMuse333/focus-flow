@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     url: "https://www.focusflowsoftware.com",
     images: [
       {
-        url: "https://www.focusflowsoftware.com/media/gemeni-two-hand-stick.png",
+        url: "https://www.focusflowsoftware.com/media/focusFlow-logo.png",
         width: 1200,
         height: 630,
         alt: "Focus Flow Software - Creative and Fast Web Design"

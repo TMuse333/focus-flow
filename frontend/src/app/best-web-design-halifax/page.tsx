@@ -13,10 +13,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Focus Flow Software | Best Web Design in Halifax",
     description: "Experience the finest web design Halifax solutions with Focusflow Software, blending creativity with cutting-edge technology.",
-    url: "https://www.focusflowsoftware.com/design",
+    url: "https://www.focusflowsoftware.com/best-web-design-halifax",
     images: [
       {
-        url: "https://www.focusflowsoftware.com/media/gemeni-two-hand-stick.png",
+        url: "https://www.focusflowsoftware.com/media/focusFlow-logo.png",
         width: 1200,
         height: 630,
         alt: "Focus Flow Software - Best Web Design in Halifax"
