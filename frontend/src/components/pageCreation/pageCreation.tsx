@@ -158,10 +158,14 @@ const PageCreation:React.FC<PageData> = ({
            max-w-[1000px] mx-auto">
            After we gather enough information about
            the ideal user experience and industry trends, we formulate
-           the ideal pages to elevate your online presence
+           the ideal pages to elevate your online presence.
+           <br/>
+           <br/>
+           Below is an example of the pages we could put for
+           your website.
            </p>
 
-            <section className="w-full mt-2 relative h-[25vh]">
+            {/* <section className="w-full mt-2 relative h-[25vh]">
                 <p id='ux-button'
                 className="absolute top-0 opacity-0 bg-[#00bfff] p-2 rounded-xl">
                     user experience</p>
@@ -175,7 +179,7 @@ const PageCreation:React.FC<PageData> = ({
                     opacity-0">
                         Your plan to greatness
                     </p>
-            </section>
+            </section> */}
 
 
             <section className="flex flex-col sm:grid sm:grid-cols-2 mx-auto mt-5 

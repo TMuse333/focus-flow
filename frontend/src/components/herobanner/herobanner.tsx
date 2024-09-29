@@ -53,15 +53,16 @@ const Model: React.FC<{ url: string }> = ({ url }) => {
       ref.current.rotation.z += (targetRotation[2] - ref.current.rotation.z) * lerpFactor;
 
       // Ensure the model ends up in its correct Y position
-      ref.current.position.y = 5 + floatY;
+   
     }
   });
 
   return (
     <primitive
+    
       ref={ref}
       object={gltf.scene}
-      position={[0, -50, 20]} // Initial position
+      position={[0, 2, 0]} // Initial position
       rotation={[0, 0, 0]} // Start rotation at 0, 0, 0
     />
   );
@@ -150,7 +151,7 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
           FocusFlow Software
         </h2>
         <p className="text-left px-3 text-sm relative z-[3]
-        sm:text-md md:text-lg">
+  text-lg sm:text-xl">
          FocusFlow Software specializes in web design based out of Halifax, Nova Scotia, <span className="font-bold">offering custom web design services that are both innovative
           </span> and tailored to your business.
            We are dedicated constantly improving our craft and delivering web page designs that capture your brand and engage your audience, positioning us as <span className='font-bold'>your go-to web designer in Halifax.
@@ -183,10 +184,10 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
         gl={{ antialias: false }} // Disable or reduce antialiasing
         
          className="w-full  flex items-start
-        mt-[2rem]
+        mt-[2rem] w-[80vw]
         sm:mt-auto z-[4] relative
         md:bg-transparent rounded-xl
-        pb-[6rem]
+        pb-[6rem] 
         sm:pb-[10rem] h-[40vh]
         min-h-[300px] max-h-[750px] "
         style={{
@@ -195,7 +196,8 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
           <ambientLight intensity={1.5} />
           <directionalLight position={[5, 5, 5]} intensity={1} />
           <CameraControls /> 
-          <Model url={coloredLaptop} />
+          <Model
+          url={coloredLaptop} />
           <OrbitControls enablePan={false} enableZoom={false} />
         </Canvas>
      
