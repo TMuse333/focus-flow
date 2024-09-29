@@ -1,7 +1,6 @@
 import React from "react";
 import twoHand from '../../../public/media/gemeni-two-hand-stick.webp'
-import brain from '../../../public/media/focusFlow-brain-nobg.webp';
-import { filter } from "lodash";
+
 import Link from "next/link";
 
 

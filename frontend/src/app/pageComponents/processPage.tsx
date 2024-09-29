@@ -1,68 +1,35 @@
-"use client"
+"use client";
 
-import BigNav from "@/components/bigNav/navbar";
-import Curtain from "@/components/curtains/curtains";
-import PageCreation from "@/components/pageCreation/pageCreation";
 import React from "react";
-import { designPageCloser, processPageCloser, processPageContent, processSlideShow } from "@/data/data";
-import SlideShowCarousel from "@/components/slideShowCarousel/slideShowCarousel";
-import AppearingSquare from "@/components/appearingSquare/appearingSquare";
-import Footer from "@/components/footer2/footer2";
+import dynamic from 'next/dynamic';
 
+// Lazy load components
+const BigNav = dynamic(() => import("@/components/bigNav/navbar"), { ssr: false });
+const Curtain = dynamic(() => import("@/components/curtains/curtains"), { ssr: false });
+const PageCreation = dynamic(() => import("@/components/pageCreation/pageCreation"), { ssr: false });
+const SlideShowCarousel = dynamic(() => import("@/components/slideShowCarousel/slideShowCarousel"), { ssr: false });
+const AppearingSquare = dynamic(() => import("@/components/appearingSquare/appearingSquare"), { ssr: false });
+const Footer = dynamic(() => import("@/components/footer2/footer2"), { ssr: false });
+
+import { processPageCloser, processPageContent, processSlideShow } from "@/data/data";
 
 const ProcessPage = () => {
-
-    const links = [
-        {
-            name:'home',
-            destination:'/'
-        },
-        {
-            name:'Our design',
-            destination:'best-web-design-halifax'
-          },
-       
-        {
-          name:'Restaurant Software',
-          destination:'online-food-ordering-system'
-        },
-        {
-            name:'Lets work!',
-            destination:'lets-work'
-          },
-      
-      ]
-
     return (
         <>
-        <BigNav
-        excludedLink="Our Process"
-        />
-        <main className="mt-[3rem] relative z-[4]
-        overflow-x-hidden
-        
-        ">
-            <Curtain/>
-           
-            <PageCreation
-            pageContent={processPageContent}/>
-          
+            <BigNav excludedLink="Our Process" />
+            <main className="mt-[3rem] relative z-[4] overflow-x-hidden">
+                <Curtain />
 
-            <SlideShowCarousel
-            images={processSlideShow}
-            />
+                <PageCreation pageContent={processPageContent} />
 
-            <AppearingSquare
-            {...processPageCloser}/>
+                <SlideShowCarousel images={processSlideShow} />
 
-            <Footer
-            excludedLink="Our Process"
-            />
+                <AppearingSquare {...processPageCloser} />
 
-
+                <Footer excludedLink="Our Process" />
             </main>
-            </>
-    )
-}
+        </>
+    );
+};
 
-export default ProcessPage
+export default ProcessPage;

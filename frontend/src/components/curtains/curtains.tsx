@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion, useAnimate, useScroll, useTransform,
-animate, useMotionTemplate, useMotionValue } from 'framer-motion';
+ useMotionTemplate, useMotionValue } from 'framer-motion';
 import brain from '../../../public/media/focusFlow-brain-nobg.webp'
 import Image from 'next/image'
 

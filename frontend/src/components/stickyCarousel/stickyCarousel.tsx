@@ -112,13 +112,7 @@ const StickyCarousel: React.FC<Props> = ({ title, description, images }) => {
             className="w-[95vw]  max-h-[600px] md:w-[45vw] max-h-[700px] relative flex-shrink-0 
             mx-auto my-auto" 
           >
-            {/* <Image
-              src={image.src}
-              alt={image.alt}
-              className="object-contain h-[85vw] max-h-[500px] rounded-lg transition-transform"
-              width={1000}
-              height={55}
-            /> */}
+           
             <CarouselElement
             {...image}/>
           </div>

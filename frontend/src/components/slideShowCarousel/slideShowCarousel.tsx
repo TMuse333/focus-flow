@@ -4,7 +4,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaPause, FaPlay, FaRedo } from 'react-icons/fa';
 import {useIntersectionObserver} from '../intersectionObserver/intersectionObserver'
-import {motion, AnimatePresence} from 'framer-motion'
+
 import { useGeneralContext } from '@/context/context';
 import Image from 'next/image';
 

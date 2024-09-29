@@ -1,18 +1,11 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, useAnimate, useInView } from "framer-motion";
-import { useIntersectionObserver } from "../intersectionObserver/intersectionObserver";
+
 import { useGeneralContext } from "@/context/context";
 
 const AppearingGradient = ({ text, subText, description }: { text: string; subText: string,
 description?:boolean }) => {
-    // const options = {
-    //     root: null,
-    //     rootMargin: '0px',
-    //     threshold: 0.5,
-    // };
 
-
-    // const componentRef = useIntersectionObserver(setInView, options);
     const [scope, animate] = useAnimate();
 
     const {isMobile} = useGeneralContext()

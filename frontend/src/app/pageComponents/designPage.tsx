@@ -1,89 +1,39 @@
-"use client"
+"use client";
 
 import React from "react";
-import BigNav from "@/components/bigNav/navbar";
-import MultiLayerParallax from "@/components/mountainParallax/mountainParallax";
-import SlideScrollCarousel from "@/components/slideScrollCarousel/slideScrollCarousel";
-import { scrollableImages, stickyScrollables, designCloser,
-genericAccordion,  
-designPageCloser} from "@/data/data";
-import StickyCarousel from "@/components/stickyCarousel/stickyCarousel";
-import PortalContent from "@/components/portalContent/portalContent";
-import infinity from '../../../public/media/atom-gif.gif'
-import { CircleInfoGraphic } from "@/components/circleInfographic/circleInfoGraphic";
-import AppearingSquare from "@/components/appearingSquare/appearingSquare";
-import Closer from "@/components/closer/closer";
-import Footer from "@/components/footer/footer";
-import Accordion from "@/components/accordion/accordion";
-import Footer2 from "@/components/footer2/footer2";
+import dynamic from 'next/dynamic';
+
+// Lazy load components
+const BigNav = dynamic(() => import("@/components/bigNav/navbar"), { ssr: false });
+const MultiLayerParallax = dynamic(() => import("@/components/mountainParallax/mountainParallax"), { ssr: false });
+const StickyCarousel = dynamic(() => import("@/components/stickyCarousel/stickyCarousel"), { ssr: false });
+const PortalContent = dynamic(() => import("@/components/portalContent/portalContent"), { ssr: false });
+const CircleInfoGraphic = dynamic(() => import("@/components/circleInfographic/circleInfoGraphic"), { ssr: false });
+const AppearingSquare = dynamic(() => import("@/components/appearingSquare/appearingSquare"), { ssr: false });
+const Footer2 = dynamic(() => import("@/components/footer2/footer2"), { ssr: false });
+
+import { stickyScrollables, designPageCloser } from "@/data/data";
+import infinity from '../../../public/media/atom-gif.gif';
+
 const DesignPage = () => {
-
-  const links = [
-    {
-      name:'Home',
-      destination:'/best-web-design-halifax'
-    },
-    {
-      name:'Why us',
-      destination:'/why-us'
-    },
-    {
-      name:'Lets work!',
-      destination:'/lets-work'
-    },
-    {
-      name:'Restaurant Software',
-      destination:'/online-food-ordering-system'
-    },
-   
-  ]
-
     return (
         <>
-        <BigNav
-        excludedLink="Top tier custom web design"
-        />
-       <main className="mt-[3rem] relative z-[4]
-   ">
-        <MultiLayerParallax/>
-        
-      <StickyCarousel
-      images={stickyScrollables}
-   
-      />
+            <BigNav excludedLink="Top tier custom web design" />
+            <main className="mt-[3rem] relative z-[4]">
+                <MultiLayerParallax />
 
-    
-    
-      <PortalContent
-      image={infinity.src}/>
+                <StickyCarousel images={stickyScrollables} />
 
+                <PortalContent image={infinity.src} />
 
+                <CircleInfoGraphic />
 
-      <CircleInfoGraphic
-      />
+                <AppearingSquare {...designPageCloser} />
 
-      {/* <section className="h-[50vh]"
-      /> */}
-
-      <AppearingSquare
-      {...designPageCloser}/>
-
-      <Footer2
-      excludedLink='Top tier custom web design'
-      />
-
-
-  
-  {/* <Closer
-  {...designCloser}
-  /> */}
-
-
-
-       
-       </main>
+                <Footer2 excludedLink="Top tier custom web design" />
+            </main>
         </>
-    )
-}
+    );
+};
 
-export default DesignPage
+export default DesignPage;

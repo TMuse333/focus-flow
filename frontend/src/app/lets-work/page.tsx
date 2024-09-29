@@ -1,13 +1,14 @@
 
 
-import Contact from "@/components/contactPage/contactPage";
-import Footer from "@/components/footer/footer";
-import Navbar from "@/components/bigNav/navbar";
+
 import React from "react";
-import Head from "next/head";
+
 import { Metadata } from "next";
-import { useGeneralContext } from "@/context/context";
-import WorkPage from "../pageComponents/workPage";
+
+import dynamic from 'next/dynamic'
+
+const WorkPage = dynamic(()=>import("../pageComponents/workPage"), {ssr:false})
+
 export const metadata: Metadata = {
     title: "Let's Work Together | Halifax Web Design by Focus Flow Software",
     description: "Ready to elevate your online presence? Let's work together to create a fast, creative, and responsive website that meets your business needs.",
@@ -48,23 +49,9 @@ export const metadata: Metadata = {
 
 const Work = () => {
 
-    //rgb(13,102,179)
+   
 
-    const links = [
-        {
-            name:'Home',
-            destination:'/'
-        },
-        {
-            name:'why-us',
-            destination:'/why-us'
-        },
-        {
-            name:'Restaurant Software',
-            destination:'/online-food-ordering-system'
-          }
-        
-    ]
+
 
 
 

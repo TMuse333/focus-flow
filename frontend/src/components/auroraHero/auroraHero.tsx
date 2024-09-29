@@ -10,7 +10,7 @@ import {
   animate,
 } from "framer-motion";
 import Link from "next/link";
-import ParticlesComponent from "../particles/particles";
+
 
 const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
  const AuroraHero = () => {

@@ -3,9 +3,9 @@
 import { useRef } from "react";
 import bottom from '../../../public/media/mountain-bg-bottom.webp';
 import full from '../../../public/media/mountain-bg-full.webp';
-import q3 from '../../../public/media/q3-words.webp';
+
 import { motion, useScroll, useTransform } from 'framer-motion';
-import Image from "next/image";
+
 import Link from "next/link";
 import { useGeneralContext } from "@/context/context";
 

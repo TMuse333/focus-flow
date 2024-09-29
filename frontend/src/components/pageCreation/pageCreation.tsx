@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useAnimate,useInView } from "framer-motion";
 import { useGeneralContext } from "@/context/context";
-import AppearingGradient from "../appearingGradient/appearingGradient";
+
 
 interface PageProps {
     title:string,

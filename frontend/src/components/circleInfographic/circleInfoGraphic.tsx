@@ -1,13 +1,13 @@
 "use client"
 
 import React, {useState} from "react";
-import ball from '../../media/futuristic-money-ball-removebg-preview.png'
-import { motion,Variants} from 'framer-motion'
+
+import { motion} from 'framer-motion'
 import {useIntersectionObserver} from "../intersectionObserver/intersectionObserver";
 import {workTenets} from '../../data/data'
 import {StaticImageData} from 'next/image'
 import Image from 'next/image'
-import stair from '../../media/quantum-staircase.jpg'
+
 import { useGeneralContext } from "@/context/context";
 
 // import functional from '../../media/gemeni-functional.jpg'
@@ -188,7 +188,7 @@ interface Props {
     
 }
 
-export const CircleInfoGraphic:React.FC<Props> = ({
+ const CircleInfoGraphic:React.FC<Props> = ({
     title, description
 }) => {
 
@@ -303,12 +303,9 @@ export const CircleInfoGraphic:React.FC<Props> = ({
             
         </section>
         </section>
-        {/* <div className="mt-5
-        w-[90vw] h-[5px]
-         bg-gradient-to-r from-[#003647] via-[#3e7384] to-[#003647]
-        ml-auto mr-auto rounded-[200rem] mb-8">
-           
-       </div> */}
+      
        </>
     )
 }
+
+export default CircleInfoGraphic
