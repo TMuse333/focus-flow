@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { Metadata } from "next";
 
 // Lazy load DesignPage
-const DesignPage = dynamic(() => import("../pageComponents/designPage"), { ssr: false });
+import DesignPage from "../pageComponents/designPage";
 
 // Metadata for the Design page
 export const metadata: Metadata = {

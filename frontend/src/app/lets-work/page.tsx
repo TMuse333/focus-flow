@@ -7,7 +7,7 @@ import { Metadata } from "next";
 
 import dynamic from 'next/dynamic'
 
-const WorkPage = dynamic(()=>import("../pageComponents/workPage"), {ssr:false})
+import WorkPage from "../pageComponents/workPage";
 
 export const metadata: Metadata = {
     title: "Let's Work Together | Halifax Web Design by Focus Flow Software",

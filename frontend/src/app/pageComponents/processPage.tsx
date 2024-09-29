@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 
 // Lazy load components
 const BigNav = dynamic(() => import("@/components/bigNav/navbar"), { ssr: false });
-const Curtain = dynamic(() => import("@/components/curtains/curtains"), { ssr: false });
+import Curtain from "@/components/curtains/curtains";
 const PageCreation = dynamic(() => import("@/components/pageCreation/pageCreation"), { ssr: false });
 const SlideShowCarousel = dynamic(() => import("@/components/slideShowCarousel/slideShowCarousel"), { ssr: false });
 const AppearingSquare = dynamic(() => import("@/components/appearingSquare/appearingSquare"), { ssr: false });

@@ -39,13 +39,13 @@ export const metadata: Metadata = {
 
 // Dynamic imports (lazy-loaded components)
 
-const ScrollableCarousel = dynamic(() => import('@/components/scrollableCarousel/scrollableCarousel'));
+const ScrollableCarousel = dynamic(() => import('@/components/scrollableCarousel/scrollableCarousel'),{ssr:true});
 const Content = dynamic(() => import('@/components/content/content'));
-const FlashContent = dynamic(() => import('@/components/flashConent/flashContent'));
-const ContentBox = dynamic(() => import('@/components/contentBox/contentBox'));
-const AppearingContent = dynamic(() => import('@/components/appearingContent/appearingContent'));
-const Testimonials = dynamic(() => import('@/components/testimonials/testimonials'));
-const Footer2 = dynamic(() => import('@/components/footer2/footer2'));
+const FlashContent = dynamic(() => import('@/components/flashConent/flashContent'),{ssr:true});
+const ContentBox = dynamic(() => import('@/components/contentBox/contentBox'),{ssr:true});
+const AppearingContent = dynamic(() => import('@/components/appearingContent/appearingContent'),{ssr:true});
+const Testimonials = dynamic(() => import('@/components/testimonials/testimonials'),{ssr:true});
+const Footer2 = dynamic(() => import('@/components/footer2/footer2'),{ssr:true});
 const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
   ssr: false, // Client-side rendering only
   loading: () => <p>Loading Aurora Hero...</p>,

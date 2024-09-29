@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 
 // Lazy load components
 const BigNav = dynamic(() => import("@/components/bigNav/navbar"), { ssr: false });
-const MultiLayerParallax = dynamic(() => import("@/components/mountainParallax/mountainParallax"), { ssr: false });
+import MultiLayerParallax from "@/components/mountainParallax/mountainParallax";
 const StickyCarousel = dynamic(() => import("@/components/stickyCarousel/stickyCarousel"), { ssr: false });
 const PortalContent = dynamic(() => import("@/components/portalContent/portalContent"), { ssr: false });
 const CircleInfoGraphic = dynamic(() => import("@/components/circleInfographic/circleInfoGraphic"), { ssr: false });

@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { Metadata } from "next";
 
 // Lazy load MonthlyPage
-const MonthlyPage = dynamic(() => import("../pageComponents/monthlyPage"), { ssr: false });
+import MonthlyPage from "../pageComponents/monthlyPage";
 
 // Metadata for the Long Term Success page
 export const metadata: Metadata = {

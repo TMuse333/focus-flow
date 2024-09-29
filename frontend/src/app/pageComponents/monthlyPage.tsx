@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 
 // Lazy load components
 const BigNav = dynamic(() => import("@/components/bigNav/navbar"), { ssr: false });
-const Herobanner = dynamic(() => import("@/components/herobanner2/herobanner2"), { ssr: false });
+import Herobanner from "@/components/herobanner2/herobanner2";
 const Accordion = dynamic(() => import("@/components/accordion/accordion"), { ssr: false });
 const AppearingSquare = dynamic(() => import("@/components/appearingSquare/appearingSquare"), { ssr: false });
 const Footer = dynamic(() => import("@/components/footer2/footer2"), { ssr: false });

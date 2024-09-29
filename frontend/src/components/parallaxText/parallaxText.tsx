@@ -1,10 +1,10 @@
 "use client"
 
 import  { ReactNode, useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform, motionValue, MotionValue} from "framer-motion";
+import { motion, useScroll, useTransform, motionValue} from "framer-motion";
 // import { FiArrowUpRight } from "react-icons/fi";
 // import laptop from '../../media/laptop.jpg'
-import {  useGeneralContext } from "@/context/context";
+
 import { useVideoIntersectionObserver} from "../intersectionObserver/intersectionObserver";
 
 

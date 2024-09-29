@@ -7,7 +7,7 @@ import { ContactOpener } from "@/data/data";
 
 // Lazy load components
 const Navbar = dynamic(() => import("@/components/bigNav/navbar"), { ssr: false });
-const Herobanner = dynamic(() => import("@/components/herobanner2/herobanner2"), { ssr: false });
+import Herobanner from "@/components/herobanner2/herobanner2";
 const Contact = dynamic(() => import("@/components/contactPage/contactPage"), { ssr: false });
 const Footer2 = dynamic(() => import("@/components/footer2/footer2"), { ssr: false });
 
