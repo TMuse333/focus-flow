@@ -299,11 +299,11 @@ const Curtain = () => {
      
    >
      <h2 className='my-auto px-6 bg-[#00bfff]
-     rounded-2xl py-4 w-[80%] mx-auto'>Planning to create a great project is 
+     rounded-2xl py-4 w-[80%] mx-auto sm:text-4xl font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-3xl'>Planning to create a great project is 
      <span className='font-bold'>
        &nbsp; essential&nbsp;</span>
-       as it give a clear goal and steps to acheive that
-       goal effieceint and get you the 
+       as it give a clear goal and steps to achieve that
+       goal efficient and get you the 
        best results</h2>
    </motion.div>
         <motion.div
@@ -339,7 +339,7 @@ const Curtain = () => {
       
       >
          <h3 className='text-center text-2xl mt-8 sm:text-3xl
-         mb-4'>Initial plan: User experience</h3>
+         mb-4  sm:text-4xl font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-3xl'>Initial plan: User experience</h3>
          <p className='px-8 w-[80%] mx-auto'>When we start the journey of elevating
           your digital presence, we first take into
           account the ideal user experience by asking these three

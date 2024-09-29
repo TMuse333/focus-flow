@@ -19,7 +19,8 @@ const WorkPage = () => {
                 <Herobanner {...ContactOpener} />
                 
                 <section className="w-full py-6 flex justify-center items-center relative flex-col mx-auto my-10 bg-[#00bfff] bg-opacity-[0.2]">
-                    <h3 className="text-3xl mb-4">
+                    <h3 className="text-3xl mb-4 sm:text-4xl font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-3xl
+                    text-center">
                         Here are our direct contacts
                     </h3>
                     <section className="flex w-full justify-center mx-auto flex-col items-center ">

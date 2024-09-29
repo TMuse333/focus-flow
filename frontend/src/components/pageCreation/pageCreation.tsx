@@ -151,7 +151,8 @@ const PageCreation:React.FC<PageData> = ({
            description={true}
            /> */}
            <h3 className="text-center mb-4
-           text-3xl sm:text-4xl md:text-5xl">
+           text-3xl sm:text-4xl md:text-5xl
+           sm:text-4xl font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-3xl">
             Creation of Pages
            </h3>
            <p className="px-4 sm:text-lg md:text-xl

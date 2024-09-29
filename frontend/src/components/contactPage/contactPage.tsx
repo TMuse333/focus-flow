@@ -59,10 +59,15 @@ const Contact = () => {
                     src={logo}
                     alt="Q3 logo"
                     className='w-[40vw] mt-[-10rem] ml-auto mr-auto
-                    max-h-[540px] max-w-[411px] object-cover'
+                    max-h-[540px] max-w-[411px] object-contain
+                    translate-y-[2rem]
+                    '
                     priority
                 />
+                
                 <ul className='text-center'>
+                <h3 className='sm:text-4xl font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-3xl
+                mb-4'>FocusFlow Software</h3>
                     {tenets.map((tenet, index) => (
                         <motion.li
                             key={index}
@@ -77,7 +82,8 @@ const Contact = () => {
                                     delay: index * 0.4,
                                 },
                             }}
-                            className='text-white mb-1'
+                            className='text-white mb-2
+                            text-xl'
                         >
                             {tenet}
                         </motion.li>
@@ -88,7 +94,7 @@ const Contact = () => {
                             opacity: 1,
                             transition: { delay: tenets.length * 0.4 },
                         }}
-                        className='text-2xl text-[#00bfff]'
+                        className='text-3xl text-[#00bfff]'
                     >
                         We will get it done
                     </motion.li>
@@ -105,6 +111,13 @@ const Contact = () => {
                 <section className='w-[90%] sm:w-auto mt-5 mr-auto'>
                     
                 </section>
+                <p className='pr-10 w-full'>
+                    You also can fill out this form with the details of your
+                    project and we will respond quickly to discuss elevating your online
+                    presence and taking your business <span className='font-semibold'>
+                        to the next level.
+                    </span>
+                </p>
                 <form onSubmit={handleSubmit} className='w-[90vw] mt-5 ml-auto mr-auto flex flex-col justify-center items-center'>
                     <label className='mb-2 w-[90vw]'>
                         <input
