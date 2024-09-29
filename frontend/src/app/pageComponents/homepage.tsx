@@ -1,49 +1,16 @@
 "use client"
 
-// import AlternatingText from "@/components/alternatingText/alternatingText";
-import Content from "@/components/content/content";
-// import MultiLayerParallax from "@/components/mountainParallax/mountainParallax";
-
-import {  RestaurantContentBoxData } from "@/data/data";
-
-
-
-import { CircleInfoGraphic } from "@/components/circleInfographic/circleInfoGraphic";
-
-
-import {ScrollableCarousel, SelectedCarouselImage} from "@/components/scrollableCarousel/scrollableCarousel";
-import { useGeneralContext } from "@/context/context";
-
-
-import { motion } from "framer-motion";
-import moneyLaptop from '../../../public/media/nobg-more-money-laptop.png'
-import Accordion from "@/components/accordion/accordion";
-import { accordion1Text ,herobannerData, planningContent
-,monthlyContent} from "@/data/data";
-
-import ParticlesComponent from "@/components/particles/particles";
-import {useIntersectionObserver} from "@/components/intersectionObserver/intersectionObserver";
-import { useState } from "react";
-
-
-import { scrollableImages } from "@/data/data";
-import ContentBox from "@/components/contentBox/contentBox";
-import Herobanner from "@/components/herobanner/herobanner";
-
-import AppearingContent from "@/components/appearingContent/appearingContent";
-
 import dynamic from "next/dynamic";
-import BigNav from "@/components/bigNav/navbar";
-
-
-import { focusFlowPromo } from "@/data/data";
-
+import { useState } from "react";
 import { Metadata } from "next";
-import infinity from '../../../public/media/infinity.webp'
-import FlashContent from "@/components/flashConent/flashContent";
-import Testimonials from "@/components/testimonials/testimonials";
-import Navbar from "@/components/navbar2/navbar";
-import Footer2 from "@/components/footer2/footer2";
+
+import { useGeneralContext } from "@/context/context";
+import { herobannerData, RestaurantContentBoxData, planningContent, monthlyContent, scrollableImages, focusFlowPromo } from "@/data/data";
+
+import BigNav from "@/components/bigNav/navbar";  // Load navbar immediately
+import Herobanner from "@/components/herobanner/herobanner"; // Load hero banner immediately
+import { SelectedCarouselImage } from "@/components/scrollableCarousel/scrollableCarousel";
+import ParticlesComponent from "@/components/particles/particles"; // Particles are essential, load without lazy
 
 export const metadata: Metadata = {
   title: "Web Design Halifax | Focusflow Software",
@@ -68,179 +35,74 @@ export const metadata: Metadata = {
   icons: {
     icon: ["/favicon.ico?v=4"]
   },
-  // manifest:'/site.webmanifest'
-}
+};
 
+// Dynamic imports (lazy-loaded components)
 
+const ScrollableCarousel = dynamic(() => import('@/components/scrollableCarousel/scrollableCarousel'));
+const Content = dynamic(() => import('@/components/content/content'));
+const FlashContent = dynamic(() => import('@/components/flashConent/flashContent'));
+const ContentBox = dynamic(() => import('@/components/contentBox/contentBox'));
+const AppearingContent = dynamic(() => import('@/components/appearingContent/appearingContent'));
+const Testimonials = dynamic(() => import('@/components/testimonials/testimonials'));
+const Footer2 = dynamic(() => import('@/components/footer2/footer2'));
 const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
-  ssr: false,
-  loading: () => <p>Loading Aurora Hero...</p>, // Optional: a loading component
+  ssr: false, // Client-side rendering only
+  loading: () => <p>Loading Aurora Hero...</p>,
 });
 
-// const Footer = dynamic(() => import('@/components/footer2/footer'), {
-//   ssr: false,
-//   loading: () => <p>Loading Footer...</p>, // Optional: a loading component
-// });
-
-
-
+import infinity from '../../../public/media/infinity.webp';
 
 const Homepage = () => {
-
-
-
-
-  
-
-
-const links = [
-  
- 
-  {
-    name:'Restaurant Software',
-    destination:'/online-food-ordering-system'
-  },
-  {
-    name:'Our design',
-    destination:'/best-web-design-halifax'
-  },
-  {
-    name:'Lets work!',
-    destination:'/lets-work'
-  },
-  {
-    name:'Your long term success',
-    destination:'/long-term-success'
-  },
-
-]
-
-const { isMobile, selectedCarouselImageIndex} = useGeneralContext()
-
-          const options = {
-            root: null,
-            rootMargin: !isMobile ? '-120px' : '0px',
-            threshold:!isMobile ?  0.6 : 0.1,
-        };
-
-      //   const options2 = {
-      //     root: null,
-      //     rootMargin: !isMobile ? '-120px' : '-90px',
-      //     threshold:!isMobile ?  0.6 : 0.5,
-      // };
-
-
-        const [contentInView, setContentInView] = useState(false)
-
-        const contentRef = useIntersectionObserver(setContentInView,options,false)  
-        
-        const [contentInView2, setContentInView2] = useState(false)
-
-        // const contentRef2 = useIntersectionObserver(setContentInView2,options,false)  
-//
-
+  const { selectedCarouselImageIndex } = useGeneralContext();
 
   return (
     <>
+      <ParticlesComponent />
+      <SelectedCarouselImage />
 
+      <BigNav excludedLink="Home" />
 
+      <main className="text-center z-[30] overflow-x-hidden lg:mt-[2rem]"
+        style={{
+          filter: selectedCarouselImageIndex !== null ? 'blur(8px)' : 'none',
+          overflowY: selectedCarouselImageIndex !== null ? 'hidden' : 'auto',
+        }}
+      >
+        <Herobanner sections={herobannerData} />
 
+        <AppearingContent
+          sliderText="Creative Web Page Design to Elevate Your Online Presence"
+          src={focusFlowPromo}
+          id='appearing-video'
+          isVideo={true}
+        />
 
-<ParticlesComponent/>
-   
-      <SelectedCarouselImage/>
-      
+        <div className="h-[30vh]" />
 
+        <FlashContent
+          src={infinity.src}
+          alt="An infinity logo symbolizing limitless possibilities and custom web design services using advanced technologies like React.js to show FocusFlow Software has the most Creative web design in Halifax"
+        />
 
-{/* <Navbar links={links}
-/> */}
-      <BigNav
-excludedLink="Home"
-/>
+        <Content {...planningContent} />
+        <Content {...monthlyContent} />
+        <ContentBox {...RestaurantContentBoxData} />
 
-    <main className="text-center z-[30]
-    overflow-x-hidden  lg:mt-[2rem]"
-    style={{
-      filter:selectedCarouselImageIndex !== null ? 'blur(8px)' : 'none',
-      // Ensures full viewport height to avoid scrolling in the main content
-      overflowY:selectedCarouselImageIndex !== null ? 'hidden' : 'auto',
-    }}
-      
-   >
-  
-  
+        <ScrollableCarousel
+          images={scrollableImages}
+          title="Creating Digital Excellence"
+          description="Explore some of our showcased projects. Click on each for detailed insights and excellence in digital creation."
+        />
 
-  {/* <SlideScrollCarousel
-  /> */}
+        <Testimonials />
 
-     
-      <Herobanner
-      sections={herobannerData}/>
+        <AuroraHero />
 
-
-     
-    
-    
-    <AppearingContent
-    sliderText="Creative Web Page Design to Elevate Your Online Presence"
-    src={focusFlowPromo}
-    id='appearing-video'
-    isVideo={true}
-    />
- <div className="h-[30vh]"
-     />
-   
-< FlashContent
-    src={infinity.src}
-    alt={`An infinity logo symbolizing limitless possibilities and custom web design services using advanced technologies like React.js to show FocusFlow Software has the most Creative web design in Halifax `}
-    />
-
-    <Content
-    {...planningContent}
-    />
-
-    <Content
-    {...monthlyContent}
-    />
-
-    
-     
-
-   
-
-
-
-  
-  
-
-            <ContentBox
-      {...RestaurantContentBoxData}
-      />
-
-  
-<ScrollableCarousel
-images={scrollableImages}
-title='Creating Digital Excellence'
-description="Explore some of our showcased projects. Click on each for detailed insights and excellence in digital creation."
-/>
-
-<Testimonials/>
-
-
-
-<AuroraHero/>
-
-<Footer2
-excludedLink='Home'
-/>
-
-
-{/* <Footer
-links={links}
-/> */}
-    </main>
+        <Footer2 excludedLink='Home' />
+      </main>
     </>
   );
 }
 
-export default Homepage
+export default Homepage;

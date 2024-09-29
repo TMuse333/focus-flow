@@ -110,20 +110,25 @@ const Footer2:React.FC<props> = ({
     return (
         <footer className="w-screen relative flex flex-col
         items-center justify-center mx-auto  my-12">
-            <h6 className="text-3xl sm:text-4xl font-semibold">Site map</h6>
+            <h6 className="text-3xl sm:text-4xl font-semibold
+            mb-8">Site map</h6>
             
 <ul className="flex flex-col mx-auto
             md:flex-row w-full mt-6
-            max-w-[1000px]  w-full
+              w-full
             justify-center items-center
-            md:justify-around md:items-start " >
+            md:justify-center md:items-start " >
 
 
 {filteredLinks.map((link, index) => (
   <React.Fragment key={index}>
-    <ul className="flex flex-col mx-auto">
+    <ul className="flex flex-col mx-auto 
+    items-center justify-center">
    
-    <p className="text-xl sm:text-2xl md:text-3xl mb-4 font-semibold">{link.name}</p>
+    <p className="text-lg sm:text-xl md:text-2xl
+     mb-4 font-semibold
+     mx-auto">
+      {link.name}</p>
     {link.secondaryLinks && link.secondaryLinks.map((link2, innerIndex) => (
       <Link href={link2.destination}>
 

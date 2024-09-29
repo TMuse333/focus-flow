@@ -38,7 +38,7 @@ interface props {
 
 
 
- export const ScrollableCarousel:React.FC<props> = 
+ const ScrollableCarousel:React.FC<props> = 
 ({title, description, images}) => {
 
 
@@ -408,6 +408,8 @@ function handleImageClick(index: number) {
             </AnimatePresence>
         )
     }
+
+    export default ScrollableCarousel
 
 
 

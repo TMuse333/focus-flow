@@ -407,7 +407,7 @@ const BigNav: React.FC<NavbarProps> = ({ excludedLink }) => {
                       <h3 
                        onMouseEnter={()=>handleSubMenuHover(index)}
                        onMouseLeave={handleSubMenuLeave}
-                      className="mt-auto relative z-[4]   text-sm">{link.name}</h3>
+                      className="mt-auto relative z-[4]   text-sm sm:text-md">{link.name}</h3>
                                  {link.subMenuSrc && link.subMenuAlt &&
                                  link.desktopDescription && (
 
@@ -428,7 +428,8 @@ index={index}
                         <>
                     
   <Link href={link.destination? link.destination : ''}>
-    <p className="my-auto text-sm relative z-[4] hover:text-[#00bfff]">
+    <p className="my-auto text-sm relative z-[4] hover:text-[#00bfff]
+    sm:text-md">
       {link.name}
     </p>
   </Link>

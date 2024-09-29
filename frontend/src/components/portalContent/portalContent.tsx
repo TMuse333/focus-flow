@@ -117,15 +117,13 @@ const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
      
     <div className=" relative z-[4] w-screen 
     mx-auto   flex flex-col items-center justify-center
-    mt-[8rem]
+   
     
    ">
     
   
 
-<div className={`w-screen  bg-black relative top-[0%] transition-all
-       z-[5] h-[30vh] md:h-[10vh]`}
-       />
+
        
       <section ref={ref}
       className='mx-auto 

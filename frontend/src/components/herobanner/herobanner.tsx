@@ -3,12 +3,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useGLTF, OrbitControls } from "@react-three/drei";
-import { laptop3d, coloredLaptop } from '@/data/data';
+import { coloredLaptop } from '@/data/data';
 import { useGeneralContext } from "@/context/context";
-import brain from '../../../public/media/focusFlow-brain-nobg.webp';
-import { motion, AnimatePresence, useMotionTemplate, useMotionValue, animate } from "framer-motion";
-import { lerp } from 'three/src/math/MathUtils';
-import {Vector3} from 'three'
+
+import { motion, useMotionTemplate, useMotionValue, animate } from "framer-motion";
+
 import Link from "next/link";
 
 
@@ -21,7 +20,7 @@ interface HerobannerProps {
 }
 
 const Model: React.FC<{ url: string }> = ({ url }) => {
-  const gltf: any = useGLTF(url);
+  const gltf: any = useGLTF(url,true);
   const ref = useRef<any>();
   const { isMobile } = useGeneralContext();
 
@@ -91,7 +90,7 @@ const CameraControls = () => {
 
 const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
 
-  const { isMobile } = useGeneralContext();
+
 
   const COLORS = [
     "#00bfff", 
@@ -139,6 +138,7 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
       <section className=" sm:block w-full flex justify-center items-center flex-col  mb-8
       ">
         <h1 className="text-sm px-4 sm:text-md mb-4 mt-3
+        sm:text-md md:text-lg
        
           font-semibold text-center mb-4 animate-gradient">
           Creative and Custom Web Design in Halifax
@@ -179,13 +179,16 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
            Elevate Your Digital Presence
           </motion.button>
           </Link>
-        <Canvas className="w-full  flex items-start
+        <Canvas
+        gl={{ antialias: false }} // Disable or reduce antialiasing
+        
+         className="w-full  flex items-start
         mt-[2rem]
         sm:mt-auto z-[4] relative
         md:bg-transparent rounded-xl
         pb-[6rem]
         sm:pb-[10rem] h-[40vh]
-        min-h-[300px] max-h-[600px] "
+        min-h-[300px] max-h-[750px] "
         style={{
           background: 'radial-gradient(circle, #00bfff -150%, rgba(0, 191, 255, 0%) 80%)'
         }}>
