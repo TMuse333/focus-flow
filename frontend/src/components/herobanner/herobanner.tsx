@@ -25,7 +25,7 @@ const Model: React.FC<{ url: string }> = ({ url }) => {
   const { isMobile } = useGeneralContext();
 
   // State for floating effect
-  const [floatY, setFloatY] = useState(0); // State to control Y position for floating
+  const [floatY, setFloatY] = useState(2); // State to control Y position for floating
   const [scale, setScale] = useState(0.1); // Initialize scale at 0.1
   const targetScale = isMobile ? 1.2 : 1.3; // The target scale you want to reach
   const lerpFactor = 0.05; // Factor for lerping both scale and rotation
@@ -53,6 +53,7 @@ const Model: React.FC<{ url: string }> = ({ url }) => {
       ref.current.rotation.z += (targetRotation[2] - ref.current.rotation.z) * lerpFactor;
 
       // Ensure the model ends up in its correct Y position
+      ref.current.position.y += 5
    
     }
   });
@@ -62,7 +63,7 @@ const Model: React.FC<{ url: string }> = ({ url }) => {
     
       ref={ref}
       object={gltf.scene}
-      position={[0, 2, 0]} // Initial position
+      position={[0, 0, 0]} // Initial position
       rotation={[0, 0, 0]} // Start rotation at 0, 0, 0
     />
   );
