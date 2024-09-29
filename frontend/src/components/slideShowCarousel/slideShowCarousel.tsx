@@ -268,7 +268,7 @@ useEffect(() => {
   return (
       <section 
           id={`carousel-element-${index}`}
-          className={`w-[90vw] pt-8  relative md:max-h-[800px]  h-[90vh]
+          className={`w-[95vw] pt-8  relative md:max-h-[800px]  h-[90vh]
              flex-shrink-0 overflow-y-hidden
      `}
           style={{
@@ -394,7 +394,7 @@ const SlideShowCarousel: React.FC<CarouselProps> = ({ images, title, description
     useEffect(()=>{
       setCurrentElement(0)
       const element = document.getElementById('carousel-element-0');
-      if (element) {
+      if (element && inView) {
           element.scrollIntoView({ behavior: 'smooth', inline: 'center' });
       }
      
@@ -448,7 +448,8 @@ const SlideShowCarousel: React.FC<CarouselProps> = ({ images, title, description
                 h-[90vh] 
                 md:max-h-[800px]
                 overflow-y-scroll
-                px-[4rem]
+                px-[0rem]
+                sm:px-[4rem]
 
                
                  "

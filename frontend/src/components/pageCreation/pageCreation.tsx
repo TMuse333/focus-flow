@@ -26,7 +26,7 @@ const PageElement:React.FC<PageProps> = ({
 
     return (
         <div id={id}
-        className="w-[45vw]    mx-auto  bg-gradient-to-br from-blue-500 via-blue-400 to-blue-300
+        className="w-[90vw] sm:w-[45vw]    mx-auto  bg-gradient-to-br from-blue-500 via-blue-400 to-blue-300
         rounded-md pb-0 mb-8 max-w-[470px] opacity-1 overflow-hidden  ">
             <h4 className="text-center mt-2">Page&nbsp;{number}:&nbsp;{title}</h4>
             <ul className="px-2 text-center">
@@ -178,7 +178,7 @@ const PageCreation:React.FC<PageData> = ({
             </section>
 
 
-            <section className="grid grid-cols-2 mx-auto mt-5 
+            <section className="flex flex-col sm:grid sm:grid-cols-2 mx-auto mt-5 
             max-w-[1000px]
             ">
                 {pageContent.map((page,index) => (

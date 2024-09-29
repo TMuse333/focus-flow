@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import twoHand from '../../../public/media/gemeni-two-hand-stick.webp'
 import brain from '../../../public/media/focusFlow-brain-nobg.webp';
+import { link } from "fs";
 interface NavbarProps {
     excludedLink:string
 }
@@ -30,7 +31,7 @@ interface SubMenuProps {
     setSubMenuClicked: React.Dispatch<React.SetStateAction<boolean>>;
     links: {
         name: string,
-        // destination: string
+        destination?: string
         secondaryLinks:{
             name:string
             destination:string
@@ -213,14 +214,36 @@ interface SubMenuProps {
                           flex flex-col items-start justify-center 
                             `}>
                         {links.map((link, index) => (
-                           
-                                <li key={index}
-                                onClick={()=>handleSecondarySubClick(index)}
-                                className="text-md sm:text-xl mb-4
+
+                          <>
+
+                          {link.destination ? (
+                            <Link
+                            key={index}
+                            href={link.destination}>
+                              <li  className="text-md sm:text-xl mb-4
                                 mr-auto text-white
                                
                                  pl-2 pr-2 
-                                 hover:text-[#00bfff]">{link.name}</li>
+                                 hover:text-[#00bfff]">
+                                  {link.name}
+
+                              </li>
+
+                            </Link>
+                          ) : (
+                            <li key={index}
+                            onClick={()=>handleSecondarySubClick(index)}
+                            className="text-md sm:text-xl mb-4
+                            mr-auto text-white
+                           
+                             pl-2 pr-2 
+                             hover:text-[#00bfff]">{link.name}</li>
+                          )}
+                           
+                              
+                                 
+                                 </>
                            
                         ))}
                     </ul>
@@ -245,6 +268,7 @@ interface SubMenuProps {
                             
                                 <ul className="absolute top-[25%] text-left left-[10%]
                                 ">
+                                  
                                 {links[secondaryLinksIndex].secondaryLinks.map((link,index)=> (
                                     <Link
                                     key={index}
@@ -257,7 +281,7 @@ interface SubMenuProps {
                                         </li>
                                     </Link>
                                 ))}
-                             </ul>
+                                                             </ul>
                                
                             
                         

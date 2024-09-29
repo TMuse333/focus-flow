@@ -5,6 +5,7 @@ import { motion, useAnimate, useScroll, useTransform,
  useMotionTemplate, useMotionValue } from 'framer-motion';
 import brain from '../../../public/media/focusFlow-brain-nobg.webp'
 import Image from 'next/image'
+import { useGeneralContext } from '@/context/context';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,6 +24,12 @@ const Curtain = () => {
   const [heightReached, setHeightReached] = useState(false);
   const [arrowColor, setArrowColor] = useState('#00bfff'); // To dynamically control the arrow color
   const [finalHeight, setFinalHeight] = useState(0)
+
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
+
+  const {isMobile} = useGeneralContext()
 
   useEffect(() => {
     const unsubscribe = height.onChange((latestHeight) => {
@@ -156,7 +163,7 @@ const Curtain = () => {
     const leftCurtain = leftCurtainRef.current;
     const rightCurtain = rightCurtainRef.current;
   
-    if (container && leftCurtain && rightCurtain) {
+    if (container && leftCurtain && rightCurtain && !isMobile) {
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: container,
@@ -164,7 +171,7 @@ const Curtain = () => {
           end: () => `+=${container.clientHeight}`,
           pin: true,
           scrub: true,
-          markers: true,
+          // markers: true,
           onUpdate: (self) => {
             // Set curtainsOpen to true when progress reaches 70%
             if (self.progress > 0.8) {
@@ -194,7 +201,7 @@ const Curtain = () => {
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, []);
+  }, [isMobile]);
 
   const COLORS = [
     "#004080",  // Darker blue
@@ -247,19 +254,21 @@ const Curtain = () => {
         className="relative w-screen h-[90vh] mb-8 z-[3]
        
         "
-       
+       style={{
+        background: isMobile ? 'radial-gradient(circle, #00bfff -150%, rgba(0, 191, 255, 0%) 80%)' : ''
+       }}
       >
         <h1
-          className="font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent relative text-2xl sm:text-3xl md:text-4xl top-[20%] z-[4] text-center
-          px-12 mx-auto"
+          className="font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent relative text-4xl sm:text-5xl md:text-6xl top-[20%] z-[4] text-center
+          px-4 md:px-12 mx-auto"
         >
           Planning for your success: Our website process
         </h1>
 
         <h2
           id="process-subheader"
-          className="relative top-[25%] z-[2] text-center opacity-0 px-4
-          sm:text-lg md:text-xl "
+          className={`relative top-[25%] z-[2] text-center ${!isMobile ? 'opacity-0' : ''}px-4
+         text-lg sm:text-xl md:text-2xl `}
         >
           Your Growth is Our Mission — Every Step We Take is Tailored for Your Success
         </h2>
@@ -267,45 +276,36 @@ const Curtain = () => {
         id='process-brain'
         src={brain}
         alt='The focusflow brain, here to describe why we have great planning for your website'
-        className='w-[40vw]   relative object-contain mx-auto opacity-0 z-[2]
-        top-[35%] sm:top-[35%] md:top-[25%]'
+        className={`w-[70vw] md:w-[40vw] relative object-contain mx-auto  z-[2]
+        top-[20%] max-h-[560px] max-w-[560px]
+        ${isMobile ? 'opacity-1' : 'opacity-0'}`}
         />
-        {/* <motion.div
-          id="process-arrow"
-          className={`bg-[#00bfff] opacity-0 w-[10px] top-0 absolute mx-auto  z-[1] top-[60%] left-1/2 -translate-x-1/2 
-           `}
-          style={{
-            height:height,
-          }}
-        >
-  <motion.div
-  id="process-arrow"
-  className={`absolute mx-auto z-[15] top-[100%] left-1/2 -translate-x-1/2 transition-all duration-300
-    ${heightValue >= 1 ? 'opacity-1' : 'opacity-1'}
-    border-l-[15px] h-0 w-0 border-l-transparent border-r-[15px] border-r-transparent border-t-[30px] border-t-[#00bfff]`}
-
-/>
+       
 
 
-        </motion.div> */}
-        <motion.div
-          ref={leftCurtainRef}
-          className="absolute top-0 left-0 bg-[#00bfff] w-[50.5vw] h-full z-[2]
-          border-4 border-white border-r-0 flex justify-center
-          items-center"
-          style={{
-            backgroundImage
-          }}
-          
-        >
-          <h2 className='my-auto px-6 bg-[#00bfff]
-          rounded-2xl py-4 w-[80%] mx-auto'>Planning to create a great project is 
-          <span className='font-bold'>
-            &nbsp; essential&nbsp;</span>
-            as it give a clear goal and steps to acheive that
-            goal effieceint and get you the 
-            best results</h2>
-        </motion.div>
+   
+
+ 
+{!isMobile && (
+  <>
+     <motion.div
+     ref={leftCurtainRef}
+     className="absolute top-0 left-0 bg-[#00bfff] w-[50.5vw] h-full z-[2]
+     border-4 border-white border-r-0 flex justify-center
+     items-center"
+     style={{
+       backgroundImage
+     }}
+     
+   >
+     <h2 className='my-auto px-6 bg-[#00bfff]
+     rounded-2xl py-4 w-[80%] mx-auto'>Planning to create a great project is 
+     <span className='font-bold'>
+       &nbsp; essential&nbsp;</span>
+       as it give a clear goal and steps to acheive that
+       goal effieceint and get you the 
+       best results</h2>
+   </motion.div>
         <motion.div
         style={{
           backgroundImage
@@ -319,6 +319,15 @@ const Curtain = () => {
          <h3 className='my-auto px-6 bg-[#00bfff]
           rounded-2xl py-4 w-[80%] mx-auto'>Scroll down to open the curtains and discover how we plan for your success</h3>
         </motion.div>
+
+        </>
+
+)}
+      
+     
+   
+     
+       
       </section>
 
 {/* the section above is the first section, the section below is the second */}
