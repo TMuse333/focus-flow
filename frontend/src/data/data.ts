@@ -529,7 +529,7 @@ export const genericContent = {
     `,'By carefully planning the user experience—what your visitors will see, feel, and do—we create websites that engage your audience and drive real results. Let’s work together to build a website that truly elevates your business.'],
     image:plan,
     hasAnimation:true,
-    buttonLink:'/plan',
+    buttonLink:'/process',
     buttonText:'Learn our process',
     alt:'An image of a planning board that signifies the process of making websites to prove FocusFlow Software has the best creative web design in halifax'
   }
