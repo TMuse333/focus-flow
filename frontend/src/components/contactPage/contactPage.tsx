@@ -3,7 +3,7 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import logo from '../../../public/media/focusflow-brain-nobg.webp';
+import logo from '../../../public/media/focusFlow-brain-nobg.webp';
 import axios from 'axios';
 const Contact = () => {
     const [formData, setFormData] = useState({
