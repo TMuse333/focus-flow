@@ -149,8 +149,9 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
         sm:text-5xl md:text-6xl">
           FocusFlow Software
         </h2>
-        <p className="text-left px-3 text-sm relative z-[3]">
-        At FocusFlow Software, we specialize in web design in Halifax, Nova Scotia, <span className="font-bold">offering custom web design services that are both innovative
+        <p className="text-left px-3 text-sm relative z-[3]
+        sm:text-md md:text-lg">
+         FocusFlow Software specializes in web design based out of Halifax, Nova Scotia, <span className="font-bold">offering custom web design services that are both innovative
           </span> and tailored to your business.
            We are dedicated constantly improving our craft and delivering web page designs that capture your brand and engage your audience, positioning us as <span className='font-bold'>your go-to web designer in Halifax.
           </span>
