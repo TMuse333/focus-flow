@@ -53,6 +53,7 @@ const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
 
 import infinity from '../../../public/media/infinity.webp';
 
+
 const Homepage = () => {
   const { selectedCarouselImageIndex } = useGeneralContext();
 
@@ -98,6 +99,8 @@ const Homepage = () => {
         <Testimonials />
 
         <AuroraHero />
+
+       
 
         <Footer2 excludedLink='Home' />
       </main>
