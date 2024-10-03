@@ -3,17 +3,19 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image, { StaticImageData } from 'next/image'; // Assuming you're using Next.js for image optimization
 import AppearingGradient from '../appearingGradient/appearingGradient';
-import brain from '../../../public/media/focusFlow-brain-nobg.webp'
+
 
 interface ElementProps {
   title:string,
   description:string,
+  src:string|StaticImageData,
+  alt:string
 
 }
 
 
 const CarouselElement:React.FC<ElementProps> = ({
-  title, description, 
+  title, description, src, alt
 }) =>
 {
 
@@ -24,15 +26,18 @@ const CarouselElement:React.FC<ElementProps> = ({
     mx-auto h-[87vh] max-h-[600px] pb-5 rounded-b-2xl
 border border-white
       relative z-[5] w-[90vw] md:w-[40vw]'>
-        <Image
-        src={brain}
-        alt='The focusflow brain'
-        className='w-[150px] object-contain
-        relative  rounded-xl mx-auto'
-        />
+       
         <h3 className='text-2xl text-center font-semibold
         py-6'>{title}</h3>
         <p className='text-left px-4'>{description}</p>
+        <Image
+        src={src}
+        alt={alt}
+        width={600}
+        height={1300}
+        className='w-[60%] mt-5 object-contain
+        relative  rounded-xl mx-auto'
+        />
       </section>
       </>
     )
@@ -66,7 +71,7 @@ const StickyCarousel: React.FC<Props> = ({ title, description, images }) => {
           end: () => `+=${carousel.scrollWidth}`, // Scroll distance
           pin: true,
           scrub: true,
-          markers: true, // Remove markers in production
+          markers: false, // Remove markers in production
           onLeave: () => {
             ScrollTrigger.refresh(); // Refresh ScrollTrigger when the carousel ends
           },

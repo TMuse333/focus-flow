@@ -20,6 +20,16 @@ import dolceVita2 from '../../public/media/custom-web-design-halifax-dolce-vita2
 import cards23 from '../../public/media/custom-web-design-halifax-cards2.webp'
 import sainey2 from '../../public/media/sainey2.webp'
 import focusFlow from '../../public/media/focusFlow-brain-nobg.webp'
+import iphones from '../../public/media/iphone-menu.webp'
+import iPhoneOrder from '../../public/media/iphone-order.webp'
+import viewOrders from '../../public/media/view-orders.webp'
+
+
+
+export const orderStatus = '/videos/change-order-status.mp4'
+export const orderingFood = '/videos/ordering-food.mp4'
+export const submitOrder = '/videos/submitting-order.mp4'
+
 export const contentData1 = {
     mainTitle:'Your Digital Presence is Important',
     description:[
@@ -786,5 +796,112 @@ export const monthlyPageOutro = {
     
     Let’s build something amazing together — we can’t wait to hear from you!`
   }
+
+
+  export const RestaurantFeatures = [
+    {
+      src: "/media/chevrons-right.svg", 
+      alt: "A person setting up software on their laptop in minutes", 
+      title: "Quick Setup", 
+      description: "Get your restaurant software up and running in minutes without any hassle, so you can focus on serving customers.",
+      bigBox:true
+    },
+    {
+      src: "/media/check-square.svg", 
+      alt: "A beautiful, customizable restaurant menu", 
+      title: "100% Customizable Design", 
+      description: "Create a professional and tailored online presence that matches your restaurant’s brand, attracting more customers.",
+      bigBox:true
+    },
+    {
+      src: "/media/bar-chart.svg", 
+      alt: "Restaurant sales increasing through easy online payments", 
+      title: "Boost Sales", 
+      description: "Increase revenue by offering online ordering with a beautiful, user-friendly interface that’s accessible on any device.",
+      bigBox:false
+    },
+    {
+      src: "/media/user.svg", 
+      alt: "A restaurant manager tracking orders and sales history", 
+      title: "Real-time Order Tracking", 
+      description: "Keep customers updated on their order status instantly, building trust and reducing wait-time anxieties.",
+      bigBox:false
+    },
+    {
+      src: "/media/dollar-sign.svg", 
+      alt: "A simple pricing comparison showing 2.9% vs 15%", 
+      title: "Lower Transaction Fees",
+      description: "Save money by only paying 2.9% on online orders compared to third-party services like UberEats, which charge up to 15%.",
+      bigBox:false
+    },
+    {
+        src: "/media/clock.svg",
+        alt: "A clock symbolizing quick and efficient customer service",
+        title: "Faster Service",
+        description: "Enhance customer satisfaction by streamlining your ordering process, reducing wait times, and increasing overall service efficiency.",
+        bigBox: false
+      }
+      
+  ];
+
+  export const restaurantCarousel = [
+    {
+        url: orderingFood,
+        title: 'Effortless Ordering Experience',
+        description: 'Customers seamlessly browse the menu and select their desired dishes with ease and precision.',
+        isVideo: true
+    },
+    {
+        url: submitOrder,
+        title: 'Streamlined Checkout Process',
+        description: 'With a few simple steps, customers enter their details, choose their payment method, and receive immediate confirmation.',
+        isVideo: true
+    },
+    {
+        url: orderStatus,
+        title: 'Real-Time Order Management',
+        description: 'Effortlessly track, manage, and update orders. Notify customers instantly as their order progresses, enhancing the experience with automatic status updates.',
+        isVideo: true
+    },
+    {
+        url: '/media/order-ready.webp',
+        title: 'Instant Order Completion',
+        description: 'Customers receive notifications when their order is ready for pickup or delivery, ensuring seamless communication and timely service.',
+        isVideo: false
+    }
+];
+
+export const restaurantPackageDetails = [
+    {
+      src: iphones,
+      alt: 'iPhone displaying a custom restaurant website',
+      title: "Custom Restaurant Website",
+      description: "Showcase your menu with a custom-designed website."
+    },
+    {
+      src: iPhoneOrder.src,
+      alt: 'iPhone showing restaurant ordering system',
+      title: "Effortless Ordering System",
+      description: "Streamlined ordering with instant notifications."
+    },
+    {
+      src: viewOrders.src,
+      alt: 'Dashboard displaying real-time restaurant orders',
+      title: "Real-Time Order Dashboard",
+      description: "Track and manage orders in real-time."
+    },
+    {
+      src: focusFlow.src,
+      alt: 'Restaurant sales dashboard with insights',
+      title: "Owner Insights Dashboard",
+      description: "View sales trends and key metrics for growth."
+    }
+  ];
+  
+  
+
+
+  
+  
   
   

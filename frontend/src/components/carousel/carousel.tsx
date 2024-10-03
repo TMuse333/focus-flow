@@ -8,12 +8,15 @@ interface CarouselProps {
     url: string;
     title: string;
     description: string;
-    link: string;
+    link?: string;
+    isVideo?:boolean
   }[];
   hasDescription?: boolean;
+  style?:string
 }
 
-const Carousel: React.FC<CarouselProps> = ({ images, hasDescription }) => {
+const Carousel: React.FC<CarouselProps> = ({ images, hasDescription,
+style }) => {
   const [shift, setShift] = useState<number>(0);
   const [currentImage, setCurrentImage] = useState<number>(0);
   const [leftClicked, setLeftClicked] = useState<boolean>(false);
@@ -127,38 +130,47 @@ const Carousel: React.FC<CarouselProps> = ({ images, hasDescription }) => {
 
   return (
     <>
+    
       <section
         aria-label="Image carousel"
         className={`w-screen  
           flex flex-col   ml-auto mr-auto
           justify-center items-center md:flex-row 
-          mb-5 ${!carouselClicked ? 'max-w-[1300px]  relative' : 'bg-black h-screen fixed top-0 left-0 z-[95]'}`}
+          rounded-2xl
+          mb-5 ${!carouselClicked || hasDescription ? 'max-w-[1300px]  relative' : 'bg-black h-screen fixed top-0 left-0 z-[95]'}`}
+          style={{
+            background:style
+          }}
       >
         <div
-          className={`mt-10 ml-auto mr-auto flex relative ${hasDescription && !carouselClicked ? '' : 'w-[100%]'} `}
+          className={`mt-10 ml-auto mr-auto rounded-xl flex relative ${hasDescription || !carouselClicked ? '' : 'w-[100%]'} `}
           role="region"
           aria-labelledby="carousel-heading"
         >
+          
           <div
             className={`flex relative justify-center items-center ml-auto mr-auto 
-            ${!carouselClicked ? `
+            ${!carouselClicked || hasDescription ? `
               w-[90vw]
               max-h-[804px]
-              h-[95vw]
+              h-[95vw] rounded-2xl
               max-w-[900px] 
               max-h-[420px]
               md:w-[50vw]
+              
               md:max-w-[600px]
             ` : 'w-screen  h-[80vh]'}
             overflow-hidden `}
           >
+            
             {images.map((image, index) => (
               <div
                 key={index}
                 onClick={handleCarouselClick}
                 className={` z-[33]
-                ml-auto mr-auto mb-auto absolute top-0
-                ${!carouselClicked ? `
+                ml-auto mr-auto  absolute top-0
+                rounded-2xl px-4 flex flex-col
+                ${!carouselClicked || hasDescription ? `
                   w-[100vw] h-[80vw]
                   max-h-[400px] 
                   md:max-w-[800px]
@@ -173,24 +185,80 @@ const Carousel: React.FC<CarouselProps> = ({ images, hasDescription }) => {
                       (shift * 100) + (100 * index)}%)`,
                 }}
               >
-                <Image
-                  alt={image.title}
-                  src={image.url}
-                  className={`
-                    ${!carouselClicked ? ` w-[100%] 
-                      max-w-[805px]
-                      max-h-[624px]
-                      md:max-w-[700px]
-                      h-[100%]`
-                      : `w-[100vw] 
-                      max-w-[1400px] ml-auto mr-auto max-h-[900px]
-                    `}
-                    object-cover object-right z-[25]
-                    ml-auto mr-auto`}
-                />
+                 {hasDescription && (
+
+<AnimatePresence mode='wait'>
+
+  
+
+  <motion.h4 
+  key={currentImage}
+  
+
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  exit={{ opacity: 0 }}
+  transition={{ duration: 0.7 }}
+  className='md:hidden  text-center text-xl 
+  font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent
+  mb-3 
+  '>{images[currentImage].title}
+  </motion.h4>
+
+  </AnimatePresence>
+
+                )}
+               
+               {image.isVideo ? (
+  <video
+    className={`
+      ${!carouselClicked || hasDescription ? `w-[80%] 
+        max-w-[805px]
+        max-h-[624px]
+        md:max-w-[700px]
+ bg-gray-700 
+ border border-[#045db5]
+        h-[100%]`
+        : `w-[100vw] 
+        max-w-[1400px] ml-auto mr-auto max-h-[900px]
+
+      `}
+      object-contain  z-[65]
+      ml-auto mr-auto `}
+     // Add controls for video playback
+    width={600}
+    height={1300}
+    autoPlay
+    loop
+    muted
+    controls
+  >
+    <source src={image.url} type="video/mp4" /> {/* Change the type as necessary */}
+    Your browser does not support the video tag.
+  </video>
+) : (
+  <Image
+    alt={image.title}
+    src={image.url}
+    width={600}
+    height={1300}
+    className={`
+      ${!carouselClicked || hasDescription ? `w-[100%] 
+        max-w-[805px]
+        max-h-[624px]
+        md:max-w-[700px]
+        h-[100%]`
+        : `w-[100vw] 
+        max-w-[1400px] ml-auto mr-auto max-h-[900px]
+      `}
+      object-contain  z-[25]
+      ml-auto mr-auto`}
+  />
+)}
+
               </div>
             ))}
-            <div className={`${!carouselClicked ? `
+            <div className={`${!carouselClicked || hasDescription ? `
               w-[100%] absolute top-0 h-[100%]
               max-h-[550px]
               max-w-[900px] ` : ' w-screen max-w-[1575px] h-screen relative'}
@@ -204,6 +272,7 @@ const Carousel: React.FC<CarouselProps> = ({ images, hasDescription }) => {
               </button>
             </div>
           </div>
+        
         </div>
         {hasDescription  && (
           <AnimatePresence mode='wait'>
@@ -215,14 +284,16 @@ const Carousel: React.FC<CarouselProps> = ({ images, hasDescription }) => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <h1 className='  text-center text-5xl '>{images[currentImage].title}</h1>
-              <p className="text-white text-center md:text-left mt-[3rem] md:pl-8 text-lg sm:text-xl">
+              <h4 className='hidden md:block  text-center text-5xl 
+              font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent'>{images[currentImage].title}</h4>
+              <p className="text-white text-center md:text-left md:mt-[3rem]  px-3 md:pl-8 text-lg sm:text-xl">
                 {images[currentImage].description}
               </p>
             </motion.div>
           </AnimatePresence>
         )}
-        {carouselClicked && (
+       
+        {carouselClicked && !hasDescription && (
           <button
             className='fixed bottom-[2%] left-[50%] -translate-x-[50%] z-[100] bg-gray-200 p-2 rounded-xl text-black'
             onClick={handleCarouselClick}

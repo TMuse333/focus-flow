@@ -12,7 +12,17 @@ const Footer2 = React.lazy(() => import("@/components/footer2/footer2"));
 const Closer = React.lazy(()=> import("@/components/appearingSquare/appearingSquare"))
 
 import {  customParallax, restaurantFaq, ownershipParallax, priceBoxesData, restaurantParallax, restaurantCloser,
-restaurantPageCloser } from "@/data/data";
+restaurantPageCloser, RestaurantFeatures, genericSlideShow,
+restaurantCarousel, 
+restaurantPackageDetails} from "@/data/data";
+import Herobanner from "@/components/herobanner3/herobanner";
+import FeatureBox from "@/components/featureBoxes/featureBoxes";
+import SlideShowCarousel from "@/components/slideShowCarousel/slideShowCarousel";
+import Carousel from "@/components/carousel/carousel";
+import AppearingGradient from "@/components/appearingGradient/appearingGradient";
+import StickyCarousel from "@/components/stickyCarousel/stickyCarousel";
+import ScrollCarousel from "@/components/scrollCarousel/scrollCarousel";
+import AppearingSquare from "@/components/appearingSquare/appearingSquare";
 
 
 
@@ -26,40 +36,40 @@ const RestaurantPage = () => {
 
     return (
         <>
- 
-            <Suspense fallback={<div>Loading...</div>}>
-                <Navbar 
-                excludedLink="Pre built Software" />
-            </Suspense>
-            <main className="mt-[4rem]">
-                <Suspense fallback={<div>Loading...</div>}>
-                    <TextParallaxContentExample {...restaurantParallax} />
-                </Suspense>
-                <Suspense fallback={<div>Loading...</div>}>
-                    <TextParallaxContentExample {...customParallax} />
-                </Suspense>
-                <Suspense fallback={<div>Loading...</div>}>
-                    <TextParallaxContentExample {...ownershipParallax} />
-                </Suspense>
-                <Suspense fallback={<div>Loading...</div>}>
-                    <PriceBoxes boxes={priceBoxesData} />
-                </Suspense>
-                <Suspense fallback={<div>Loading...</div>}>
-                    <ImageAccordion
-                        title="Unleash Your Restaurant’s Potential: Key Insights About Our Software"
-                        description="Elevate your restaurant’s online presence and streamline your operations with our cutting-edge software. Designed for efficiency and ease of use, our solution goes beyond a simple digital menu—it’s a comprehensive tool that propels your business forward. Explore the following answers to some of the most common questions about our software, and discover how it enhances your operations, ensures security, and drives growth."
-                        items={restaurantFaq}
-                    />
-                </Suspense>
-                <Suspense fallback={<div>Loading...</div>}>
-                    <Closer
-                    {...restaurantPageCloser}
-                    />
-                </Suspense>
-                <Suspense fallback={<div>Loading...</div>}>
-                    <Footer2 excludedLink="Restaurant Software" />
-                </Suspense>
-            </main>
+    <main className="w-screen">
+        <Navbar
+        excludedLink="Restaurant software"
+        />
+        <Herobanner/>
+
+        <FeatureBox
+       boxData={RestaurantFeatures}
+       />
+     
+        <AppearingGradient
+        text="Effortless Ordering, From Start to Finish"
+        subText="Guide your customers from their first click to pickup with ease and real-time updates."
+        description={true}
+        />
+
+       <Carousel
+       images={restaurantCarousel}
+       hasDescription={true}
+       style= "repeating-linear-gradient(45deg, #001F3F, #001F3F 10%, black 20%, black 30%)"
+       />
+
+       <ScrollCarousel
+       images={restaurantPackageDetails}
+       />
+
+       <AppearingSquare
+       {...restaurantPageCloser}
+       />
+
+       <Footer2
+       excludedLink="Pre built Software"/>
+    </main>
+           
         </>
     );
 };

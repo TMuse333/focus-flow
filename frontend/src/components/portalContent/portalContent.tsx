@@ -71,7 +71,9 @@ const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
     }
 
     // Animate the portal image if it exists
+    
     if (portalImageElement) {
+      await animate(portalImageElement, {opacity:1})
         await animate(portalImageElement, { y: 0, scale: 1 }, { delay: 1 });
     }
 
@@ -123,7 +125,8 @@ const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
     
   
 
-
+    {/* <div className="bg-red-200 h-[60px] w-screen mx-auto 2 
+z-[20] top-[-5%]"/> */}
        
       <section ref={ref}
       className='mx-auto 
@@ -134,7 +137,10 @@ const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
       my-auto z-[4]
      '>
        
-     
+
+<div className="bg-black h-[30px] sm:h-[60px] md:h-[80px] w-screen
+relative z-[4]"
+/>
     
       <div id="portal"
       className={`relative mx-auto bg-gradient-to-br from-[#80d4ff] to-[#00bfff] 
@@ -148,6 +154,7 @@ const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
           >
  
 </div>
+
 <h3 id='portal-header'
 
 className={`opacity-0  mx-auto
@@ -159,6 +166,8 @@ ${animationComplete ? 'text-glow' : ''}`}
 //   transition:'opacity 0.2s 0s ease-in'
 // }}
 >More than a website: A piece of art</h3>
+
+
 <section className={`flex transition-none w-screen
 justify-evenly items-end ${isDesktop ? 'flex-row' : 'flex-col'} `}>
 
@@ -191,6 +200,7 @@ src={image}
 alt='alt'
 className={`w-[40vw] object-contain 
 mx-auto relative z-[-1] flex-shrink-0 max-w-[437px]
+opacity-0
 
 
 ${!isDesktop ? 'order-0' : 'order-1'}`}
@@ -198,7 +208,7 @@ ${!isDesktop ? 'order-0' : 'order-1'}`}
 width={300}
 height={1300}
 style={{
-    transform:`translateY(${isDesktop ? '-23rem' : '-23rem'}) scale(0.2)`,
+    transform:`translateY(${isDesktop ? '-23rem' : '-15rem'}) scale(0.2)`,
     transition: 'transform 1s 1s ease-in',
 }} 
  />

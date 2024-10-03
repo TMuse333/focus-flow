@@ -92,23 +92,6 @@ function handleImageClick(index: number) {
   const componentRef = useIntersectionObserver(setInView, options);
 
 
-  const imageVariants = (index: number): Variants => {
-    return {
-      initial: {
-        opacity: 0,
-        y: -100,
-        x: 0
-      },
-      animate: {
-        opacity: 1,
-        y: 0,
-        x: 0,
-        transition: {
-          delay: index * 0.5
-        }
-      }
-    };
-  };
 
   const [hoveredImage, setHoveredImage] = useState<number | null>(null)
 
@@ -279,13 +262,7 @@ function handleImageClick(index: number) {
 }
 
 
-// interface SelectedCarouselImageProps {
-//     mainImage:string,
-//     secondaryImage:string,
-//     title:string,
-//     description:string[]
-//     link:string
-// }
+
 
 
 
@@ -353,7 +330,7 @@ function handleImageClick(index: number) {
                 transition:`height 0.3s ease-in, ${!imageSelected ? 'z-index 1s ease-in' : ''}  `,
                 transitionDelay: imageSelected ? '0.1s' : '0'
             }}>
-                    <h1 className="text-center mt-5 mb-5 text-xl md:text-2xl">{selectedCarouselImageTitle}</h1>
+                    <h5 className="text-center mt-5 mb-5 text-xl md:text-2xl">{selectedCarouselImageTitle}</h5>
                     <article className="lg:flex bg-gray-400 lg:w-[90vw] ml-auto mr-auto
                     max-w-[1200px] sm:w-[75vw] rounded-xl pb-5">
 

@@ -11,9 +11,11 @@ import Image from 'next/image';
 
 interface CarouselProps {
     images: {
+
         src: string,
         alt: string,
         description: string
+        isVideo?:boolean
     }[]
     title?: string,
     description?: string
@@ -27,7 +29,8 @@ interface SliderProps {
     carouselLength:number,
     currentElement:number,
     shift:number,
-    title?:string
+    title?:string,
+    isVideo?:boolean
 }
 
 interface ControllerProps {
@@ -228,7 +231,8 @@ const CarouselElement: React.FC<SliderProps> = ({
   carouselLength,
   currentElement,
   shift,
-  title
+  title,
+  isVideo
 }) => {
   const [scrollMarginTop, setScrollMarginTop] = useState(0);
   const isCurrentSlide = currentElement === index;
@@ -288,17 +292,35 @@ h-[90vh] bg-red-200 md:max-h-[800px] overflow-y-visible py-4'>
        <p className='mt-6 px-4 sm:text-lg
        md:text-xl px-8 '>{description}</p>
          
-          <Image
-              src={src}
-              alt={alt}
-              className={`w-full mt-8 ml-auto mr-auto object-contain
-              h-[70vh] overflow-y-visible
-              md:max-h-[600px]  
-              rounded-2xl`}
-              style={{ filter: 'brightness(0.6)', objectPosition: '50% 50%' }}
-              width={1000} // Base width as a percentage
-              height={55} // Base height as a percentage
-          />
+         {isVideo ? (
+  <video
+    src={src}
+    autoPlay
+    loop
+    muted
+    className={`w-full mt-8 ml-auto mr-auto object-contain
+                h-[70vh] overflow-y-visible
+                md:max-h-[600px]
+                rounded-2xl`}
+    style={{ filter: 'brightness(0.6)', objectPosition: '50% 50%' }}
+     // Add controls to allow play/pause
+    width={1000} // Base width as a percentage
+    height={55} // Base height as a percentage
+  />
+) : (
+  <Image
+    src={src}
+    alt={alt}
+    className={`w-full mt-8 ml-auto mr-auto object-contain
+                h-[70vh] overflow-y-visible
+                md:max-h-[600px]
+                rounded-2xl`}
+    style={{ filter: 'brightness(0.6)', objectPosition: '50% 50%' }}
+    width={1000} // Base width as a percentage
+    height={55} // Base height as a percentage
+  />
+)}
+
           </div>
       </section>
   );

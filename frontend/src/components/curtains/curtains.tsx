@@ -171,7 +171,7 @@ const Curtain = () => {
           end: () => `+=${container.clientHeight}`,
           pin: true,
           scrub: true,
-          // markers: true,
+          markers: false,
           onUpdate: (self) => {
             // Set curtainsOpen to true when progress reaches 70%
             if (self.progress > 0.8) {
