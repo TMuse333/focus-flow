@@ -192,7 +192,7 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
         
          className="w-full  md:w-full  flex items-start
          justify-center
-
+bg-gray-800
         mt-[2rem] 
         sm:mt-auto z-[4] relative
         md:bg-transparent rounded-full
