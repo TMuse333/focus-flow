@@ -108,6 +108,8 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
 
   const backgroundImage = useMotionTemplate`linear-gradient(45deg,${color1}, ${color2})`
 
+  const {isMobile} = useGeneralContext()
+
   useEffect(() => {
     // Animate the colors for the gradient
    
@@ -133,13 +135,16 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
     <section className="w-[95%] 
      mx-auto flex flex-col flex-col relative  sm:flex-row sm:flex-row-reverse rounded-lg relative
      z-[3] "
+     style={{
+      background: 'radial-gradient(circle, #00bfff -150%, rgba(0, 191, 255, 0%) 80%)',
+     }}
      >
       {/* <section className="relative w-full h-full sm:w-[50vw] mt-auto sm:block pl-6">
       
       </section> */}
       <section className=" sm:block w-full flex justify-center items-center flex-col  mb-8
       ">
-        <h1 className="text-sm px-4 sm:text-md mb-4 mt-3
+        <h1 className="text-sm px-4 sm:text-md mb-4 mt-8
         sm:text-md md:text-lg
        
           font-semibold text-center mb-4 animate-gradient">
@@ -181,19 +186,26 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
            Elevate Your Digital Presence
           </motion.button>
           </Link>
-        <Canvas
+       
+          <Canvas
         gl={{ antialias: false }} // Disable or reduce antialiasing
         
-         className="w-full  flex items-start
-        mt-[2rem] w-[80vw]
+         className="w-full  md:w-full  flex items-start
+         justify-center
+
+        mt-[2rem] 
         sm:mt-auto z-[4] relative
-        md:bg-transparent rounded-xl
+        md:bg-transparent rounded-full
         pb-[6rem] 
         sm:pb-[10rem] h-[40vh]
-        min-h-[300px] max-h-[750px] "
+        min-h-[350px] max-h-[750px]
+        
+        mx-auto "
         style={{
-          background: 'radial-gradient(circle, #00bfff -150%, rgba(0, 191, 255, 0%) 80%)'
-        }}>
+          // background: 'radial-gradient(circle, #00bfff -150%, rgba(0, 191, 255, 0%) 80%)',
+          // width:isMobile?'75vw' : undefined
+        }}
+        >
           <ambientLight intensity={1.5} />
           <directionalLight position={[5, 5, 5]} intensity={1} />
           <CameraControls /> 
@@ -201,8 +213,8 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
           url={coloredLaptop} />
           <OrbitControls enablePan={false} enableZoom={false} />
         </Canvas>
-     
       </section>
+     
     </section>
   );
   
