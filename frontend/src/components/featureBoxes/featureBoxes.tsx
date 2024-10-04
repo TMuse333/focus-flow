@@ -53,10 +53,13 @@ const FeatureBoxes:React.FC<Data> = ({
 
     return (
         <section className="md:h-screen">
-            <AppearingGradient
-            text="features here"
-            subText="we will propell you to greatness"
-            />
+        <AppearingGradient
+  text="Elevate Your Restaurant"
+  subText="Reimagine service. Delight every customer."
+  
+
+/>
+
 
         <section className="flex flex-col mx-auto
         justify-center items-center
