@@ -6,6 +6,7 @@ import { motion, useAnimate, useScroll, useTransform,
 import brain from '../../../public/media/focusFlow-brain-nobg.webp'
 import Image from 'next/image'
 import { useGeneralContext } from '@/context/context';
+import Head from 'next/head'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -245,6 +246,9 @@ const Curtain = () => {
 
   return (
     <>
+     <Head>
+        <link rel="canonical" href="https://www.focusflowsoftware.com/long-term-success" />
+      </Head>
     <section 
       ref={scope}>
 

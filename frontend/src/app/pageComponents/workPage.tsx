@@ -11,9 +11,13 @@ import Herobanner from "@/components/herobanner2/herobanner2";
 const Contact = dynamic(() => import("@/components/contactPage/contactPage"), { ssr: false });
 const Footer2 = dynamic(() => import("@/components/footer2/footer2"), { ssr: false });
 
+
 const WorkPage = () => {
     return (
         <>
+        <Head>
+        <link rel="canonical" href="https://www.focusflowsoftware.com/lets-work" />
+      </Head>
             <Navbar excludedLink="Contact" />
             <main className="w-screen mt-[6rem]">
                 <Herobanner {...ContactOpener} />

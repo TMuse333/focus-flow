@@ -29,7 +29,9 @@ export const metadata: Metadata = {
   icons: {
     icon: ["/favicon.ico?v=4"]
   },
+ 
 };
+
 
 const Design = () => {
   return (

@@ -8,6 +8,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 import Link from "next/link";
 import { useGeneralContext } from "@/context/context";
+import Head from "next/head";
 
 export default function MultiLayerParallax() {
   const ref = useRef(null);
@@ -22,6 +23,10 @@ export default function MultiLayerParallax() {
   const textY2 = useTransform(scrollYProgress, [0, 1], ["-180%", "200%"])
 
   return (
+    <>
+      <Head>
+        <link rel="canonical" href="https://www.focusflowsoftware.com/best-web-design-halifax" />
+      </Head>
     <div
       ref={ref}
       className="w-full h-screen overflow-hidden relative grid place-items-center"
@@ -76,5 +81,6 @@ export default function MultiLayerParallax() {
         }}
       />
     </div>
+    </>
   );
 }

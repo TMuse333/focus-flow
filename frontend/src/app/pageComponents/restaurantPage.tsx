@@ -23,7 +23,7 @@ import AppearingGradient from "@/components/appearingGradient/appearingGradient"
 import StickyCarousel from "@/components/stickyCarousel/stickyCarousel";
 import ScrollCarousel from "@/components/scrollCarousel/scrollCarousel";
 import AppearingSquare from "@/components/appearingSquare/appearingSquare";
-
+import Head from "next/head";
 
 
 
@@ -36,6 +36,9 @@ const RestaurantPage = () => {
 
     return (
         <>
+         <Head>
+        <link rel="canonical" href="https://www.focusflowsoftware.com/online-food-ordering-system" />
+      </Head>
     <main className="w-screen">
         <Navbar
         excludedLink="Restaurant software"

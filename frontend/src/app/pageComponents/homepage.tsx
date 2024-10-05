@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     icon: ["/favicon.ico?v=4"]
   },
 };
-
+import Head from "next/head";
 // Dynamic imports (lazy-loaded components)
 
 const ScrollableCarousel = dynamic(() => import('@/components/scrollableCarousel/scrollableCarousel'),{ssr:true});
@@ -59,6 +59,9 @@ const Homepage = () => {
 
   return (
     <>
+    <Head>
+        <link rel="canonical" href="https://www.focusflowsoftware.com" />
+      </Head>
       <ParticlesComponent />
       <SelectedCarouselImage />
 
