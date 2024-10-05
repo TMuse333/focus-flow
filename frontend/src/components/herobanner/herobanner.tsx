@@ -5,11 +5,11 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useGLTF, OrbitControls } from "@react-three/drei";
 import { coloredLaptop } from '@/data/data';
 import { useGeneralContext } from "@/context/context";
-
+import Image from 'next/image'
 import { motion, useMotionTemplate, useMotionValue, animate } from "framer-motion";
 
 import Link from "next/link";
-
+import brain from '../../../public/media/focusFlow-brain-nobg.webp'
 
 interface HerobannerProps {
   sections: {
@@ -186,33 +186,44 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
            Elevate Your Digital Presence
           </motion.button>
           </Link>
+
+          {isMobile ? (
+            <Image src={brain}
+            alt='An image of a brain to represent creative web design in halifax'
+            width={600}
+            height={1300}
+            className='mx-auto w-[90vw] object-contain'
+            />
+          ) : (
+            <Canvas
+            gl={{ antialias: false }} // Disable or reduce antialiasing
+            
+             className="w-full  md:w-full  flex items-start
+             justify-center
+            rounded-2xl
+            mt-[2rem] 
+            sm:mt-auto z-[4] relative
+            md:bg-transparent 
+            pb-[6rem] 
+            sm:pb-[10rem] h-[40vh]
+            min-h-[250px] max-h-[750px]
+            
+            mx-auto "
+            style={{
+              // background: 'radial-gradient(circle, #00bfff -150%, rgba(0, 191, 255, 0%) 80%)',
+              // width:isMobile?'75vw' : undefined
+            }}
+            >
+              <ambientLight intensity={1.5} />
+              <directionalLight position={[5, 5, 5]} intensity={1} />
+              <CameraControls /> 
+              <Model
+              url={coloredLaptop} />
+              <OrbitControls enablePan={false} enableZoom={false} />
+            </Canvas>
+          )}
        
-          <Canvas
-        gl={{ antialias: false }} // Disable or reduce antialiasing
-        
-         className="w-full  md:w-full  flex items-start
-         justify-center
-bg-gray-800
-        mt-[2rem] 
-        sm:mt-auto z-[4] relative
-        md:bg-transparent rounded-full
-        pb-[6rem] 
-        sm:pb-[10rem] h-[40vh]
-        min-h-[350px] max-h-[750px]
-        
-        mx-auto "
-        style={{
-          // background: 'radial-gradient(circle, #00bfff -150%, rgba(0, 191, 255, 0%) 80%)',
-          // width:isMobile?'75vw' : undefined
-        }}
-        >
-          <ambientLight intensity={1.5} />
-          <directionalLight position={[5, 5, 5]} intensity={1} />
-          <CameraControls /> 
-          <Model
-          url={coloredLaptop} />
-          <OrbitControls enablePan={false} enableZoom={false} />
-        </Canvas>
+
       </section>
      
     </section>
