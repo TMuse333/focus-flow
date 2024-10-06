@@ -92,6 +92,13 @@ interface SubMenuProps {
       listSubMenu: false,
     },
     // {
+    //   name: 'Studio',
+     
+    //   destination:'/studio/',
+    //   listSubMenu: false,
+    // },
+    
+    // {
     //   name: 'Canvas',
     //   secondaryLinks: [
     //     {
