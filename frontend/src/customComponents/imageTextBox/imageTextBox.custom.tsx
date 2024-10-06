@@ -1,11 +1,23 @@
 "use client"
 
-import React, {useState, useRef} from "react";
-import {motion, useInView} from 'framer-motion'
-import Image from 'next/image'
+import React, { useEffect, useRef, useState } from "react";
+import { motion, useInView } from 'framer-motion';
+import Image from 'next/image';
 import Link from "next/link";
+import ImageDrop from "../utils/imageDrop";
+import ImageUploader from "../utils/imageDrop";
 
-const ImageTextBoxUI = () => {
+interface Props {
+    src: string;
+    alt: string;
+    title: string;
+    description: string;
+    buttonText?: string;
+    destination?: string;
+    reverse?: boolean;
+}
+
+const ImageTextBoxUI: React.FC<Props> = () => {
     const [src, setSrc] = useState("");
     const [alt, setAlt] = useState("");
     const [title, setTitle] = useState("");
@@ -20,20 +32,24 @@ const ImageTextBoxUI = () => {
         amount: 0.8
     });
 
-    const textSlide = (delay: number) => ({
-        initial: {
-            x: reverse ? -40 : 40,
-            opacity: 0
-        },
-        animate: {
-            x: 0,
-            opacity: 1,
-            transition: {
-                delay: delay,
-                duration: 0.4
+    
+
+    const textSlide = (delay: number) => {
+        return {
+            initial: {
+                x: reverse ? -40 : 40,
+                opacity: 0
+            },
+            animate: {
+                x: 0,
+                opacity: 1,
+                transition: {
+                    delay: delay,
+                    duration: 0.4
+                }
             }
         }
-    });
+    };
 
     const imageSlide = {
         initial: {
@@ -51,63 +67,57 @@ const ImageTextBoxUI = () => {
 
     return (
         <>
-            {/* Input fields for user to enter content */}
-            <section className="flex flex-col items-center mb-8">
-                <input 
-                    className="mb-2 p-2 border"
-                    type="text" 
-                    placeholder="Image Source URL" 
-                    value={src} 
-                    onChange={(e) => setSrc(e.target.value)} 
+            {/* Section for user inputs */}
+            <section className="flex flex-col items-center mb-8 w-[90vw] max-w-[1200px] mx-auto
+            text-black">
+              
+                <input
+                    className="mb-4 p-2 border w-full rounded-2xl"
+                    type="text"
+                    placeholder="Image Alt Text"
+                    value={alt}
+                    onChange={(e) => setAlt(e.target.value)}
                 />
-                <input 
-                    className="mb-2 p-2 border"
-                    type="text" 
-                    placeholder="Image Alt Text" 
-                    value={alt} 
-                    onChange={(e) => setAlt(e.target.value)} 
+                <input
+                    className="mb-4 p-2 border w-full rounded-2xl"
+                    type="text"
+                    placeholder="Title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                 />
-                <input 
-                    className="mb-2 p-2 border"
-                    type="text" 
-                    placeholder="Title" 
-                    value={title} 
-                    onChange={(e) => setTitle(e.target.value)} 
+                <textarea
+                    className="mb-4 p-2 border w-full rounded-2xl"
+                    placeholder="Description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
                 />
-                <textarea 
-                    className="mb-2 p-2 border"
-                    placeholder="Description" 
-                    value={description} 
-                    onChange={(e) => setDescription(e.target.value)} 
+                <input
+                    className="mb-4 p-2 border w-full rounded-2xl"
+                    type="text"
+                    placeholder="Button Text"
+                    value={buttonText}
+                    onChange={(e) => setButtonText(e.target.value)}
                 />
-                <input 
-                    className="mb-2 p-2 border"
-                    type="text" 
-                    placeholder="Button Text" 
-                    value={buttonText} 
-                    onChange={(e) => setButtonText(e.target.value)} 
+                <input
+                    className="mb-4 p-2 border w-full rounded-2xl"
+                    type="text"
+                    placeholder="Button Destination URL"
+                    value={destination}
+                    onChange={(e) => setDestination(e.target.value)}
                 />
-                <input 
-                    className="mb-2 p-2 border"
-                    type="text" 
-                    placeholder="Button Destination URL" 
-                    value={destination} 
-                    onChange={(e) => setDestination(e.target.value)} 
-                />
-                <label className="mb-2 p-2 flex items-center">
-                    <input 
-                        type="checkbox" 
-                        checked={reverse} 
-                        onChange={(e) => setReverse(e.target.checked)} 
-                    /> 
-                    Reverse Layout
-                </label>
+               <button className="hidden md:block text-red-200
+               bg-[#00bfff] p-3 rounded-2xl"
+               onClick={()=>setReverse(!reverse)}>
+                    
+                    
+                  Reverse Layout
+                </button>
             </section>
 
-            {/* The dynamic content section */}
+            {/* Original content section */}
             <section
                 ref={ref}
-                className='flex flex-col w-screen items-center justify-center text-white md:flex-row md:px-6 max-w-[1200px] mx-auto'
+                className={`flex flex-col w-screen items-center justify-center text-white md:px-6 max-w-[1200px] mx-auto ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}`}
             >
                 <motion.h3
                     variants={textSlide(0)}
@@ -118,21 +128,12 @@ const ImageTextBoxUI = () => {
                     {title}
                 </motion.h3>
 
-                <motion.div
-                    variants={imageSlide}
-                    initial='initial'
-                    animate={inView ? 'animate' : 'initial'}
-                    className="mx-auto object-contain w-[90vw] h-[55vw] max-h-[567px] max-w-[668px] md:w-[45vw]"
-                >
-                    {src && (
-                        <Image 
-                            width={600} 
-                            height={1300} 
-                            src={src} 
-                            alt={alt} 
-                        />
-                    )}
-                </motion.div>
+               <ImageUploader
+               animationVariants={imageSlide}
+               inView={inView}
+                className="mx-auto object-contain w-[90vw] h-[55vw] max-h-[567px] max-w-[668px] md:w-[45vw]
+                border"
+                />
 
                 <section className="w-full md:w-[50vw] mb-auto">
                     <motion.h3
@@ -169,7 +170,7 @@ const ImageTextBoxUI = () => {
                 </section>
             </section>
         </>
-    )
+    );
 }
 
 export default ImageTextBoxUI;

@@ -91,12 +91,12 @@ interface SubMenuProps {
       destination:'/lets-work',
       listSubMenu: false,
     },
-    // {
-    //   name: 'Studio',
+    {
+      name: 'Studio',
      
-    //   destination:'/studio/',
-    //   listSubMenu: false,
-    // },
+      destination:'/studio/',
+      listSubMenu: false,
+    },
     
     // {
     //   name: 'Canvas',
