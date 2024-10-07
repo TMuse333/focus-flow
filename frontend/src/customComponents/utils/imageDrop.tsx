@@ -58,12 +58,13 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ className, animationVaria
       ) : (
         <>
           <motion.div
-            className="drag-drop-area"
+            className={className}
             onDragOver={handleDragOver}
             onDrop={handleDrop}
             variants={animationVariants}
             initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
+            
           >
             <p className="text-gray-500">Drag and drop an image here or click to upload</p>
             <input
