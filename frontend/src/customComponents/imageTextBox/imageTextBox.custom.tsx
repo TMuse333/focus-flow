@@ -124,16 +124,7 @@ const ImageTextBoxUI: React.FC<Props> = () => {
 
     return (
         <>
-        <section className="px-4 mb-8 relative">
-            <h1>Customize your own image-text box</h1>
-            <p>Here is where you can customize your own image text box
-                with your own text, images and animations, get creative!
-            </p>
-            <p><br/>Below is the area where you can input the text, you want and Below
-                is where you can select what animations and scroll properties you would like
-            </p>
-
-        </section>
+       
             {/* Section for user inputs */}
             <section className="flex flex-col items-center mb-8 w-[90vw] max-w-[1200px] mx-auto
             text-black">
