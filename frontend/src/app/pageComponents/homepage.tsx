@@ -54,6 +54,10 @@ const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
 import infinity from '../../../public/media/infinity.webp';
 
 
+
+
+
+
 const Homepage = () => {
   const { selectedCarouselImageIndex } = useGeneralContext();
 
@@ -73,6 +77,7 @@ const Homepage = () => {
           overflowY: selectedCarouselImageIndex !== null ? 'hidden' : 'auto',
         }}
       >
+       
         <Herobanner sections={herobannerData} />
 
         <AppearingContent

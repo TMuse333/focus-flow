@@ -42,10 +42,11 @@ export default async function Post({ params }: PostProps) {
     }
   
     return (
-      <div className="prose lg:prose-xl mx-auto px-4 py-8">
+      <div className="prose lg:prose-xl mx-auto px-4 py-8
+       tex">
         <article>
           <h1 className="text-4xl font-bold mb-4">{postData.title}</h1>
-          <p className="text-gray-600">{new Date(postData.date).toDateString()}</p>
+          <p className="text-black">{new Date(postData.date).toDateString()}</p>
           <ReactMarkdown
           components={{
             img: (props: any) => <MyImage {...props} />, // Use a function to pass props to MyImage

@@ -10,7 +10,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ["latin"] });
 
-<meta name="google-site-verification" content="SVVgC1gEFw6eo2gimpl7oudHF2MFExUUlsdeB1Jg1dM" />
+{/* <meta name="google-site-verification" content="SVVgC1gEFw6eo2gimpl7oudHF2MFExUUlsdeB1Jg1dM" /> */}
 
 
 
