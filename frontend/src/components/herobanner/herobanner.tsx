@@ -133,8 +133,8 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
 
   return (
     <section className="w-[95%] 
-     mx-auto flex flex-col flex-col relative  sm:flex-row  rounded-lg relative
-     z-[3] max-w-[1200px]"
+     mx-auto flex flex-col flex-col relative  md:flex-row  rounded-lg relative
+     z-[3] max-w-[1200px] md:h-screen"
      style={{
       background: 'radial-gradient(circle, #00bfff -150%, rgba(0, 191, 255, 0%) 80%)',
      }}
@@ -157,6 +157,13 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
         sm:text-5xl md:text-6xl">
           FocusFlow Software
         </h2>
+        <Image src={brain}
+            alt='An image of a brain to represent creative web design in halifax'
+            width={600}
+            height={1300}
+            className='mx-auto w-[50vw] object-contain
+            max-w-[384px] max-h-[384px]'
+            />
         <p className="text-left px-3 text-sm relative z-[3]
   text-lg sm:text-xl">
          FocusFlow Software specializes in web design based out of Halifax, Nova Scotia, <span className="font-bold">offering custom web design services that are both innovative
@@ -194,13 +201,7 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
        
 
       </section>
-      <Image src={brain}
-            alt='An image of a brain to represent creative web design in halifax'
-            width={600}
-            height={1300}
-            className='mx-auto w-[90vw] object-contain
-            sm:w-[40vw] max-w-[520px]'
-            />
+     
      
     </section>
   );
