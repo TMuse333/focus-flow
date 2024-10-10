@@ -75,12 +75,12 @@ const Homepage = () => {
       >
         <Herobanner sections={herobannerData} />
 
-        <AppearingContent
+        {/* <AppearingContent
           sliderText="Creative Web Page Design to Elevate Your Online Presence"
           src={focusFlowPromo}
           id='appearing-video'
           isVideo={true}
-        />
+        /> */}
 
         <div className="h-[30vh]" />
 

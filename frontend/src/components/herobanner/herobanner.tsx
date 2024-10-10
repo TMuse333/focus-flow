@@ -133,8 +133,8 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
 
   return (
     <section className="w-[95%] 
-     mx-auto flex flex-col flex-col relative  sm:flex-row sm:flex-row-reverse rounded-lg relative
-     z-[3] "
+     mx-auto flex flex-col flex-col relative  sm:flex-row  rounded-lg relative
+     z-[3] max-w-[1200px]"
      style={{
       background: 'radial-gradient(circle, #00bfff -150%, rgba(0, 191, 255, 0%) 80%)',
      }}
@@ -143,6 +143,7 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
       
       </section> */}
       <section className=" sm:block w-full flex justify-center items-center flex-col  mb-8
+      max-w-[600px] mx-auto
       ">
         <h1 className="text-sm px-4 sm:text-md mb-4 mt-8
         sm:text-md md:text-lg
@@ -187,44 +188,19 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
           </motion.button>
           </Link>
 
-          {isMobile ? (
-            <Image src={brain}
-            alt='An image of a brain to represent creative web design in halifax'
-            width={600}
-            height={1300}
-            className='mx-auto w-[90vw] object-contain'
-            />
-          ) : (
-            <Canvas
-            gl={{ antialias: false }} // Disable or reduce antialiasing
-            
-             className="w-full  md:w-full  flex items-start
-             justify-center
-            rounded-2xl
-            mt-[2rem] 
-            sm:mt-auto z-[4] relative
-            md:bg-transparent 
-            pb-[6rem] 
-            sm:pb-[10rem] h-[40vh]
-            min-h-[250px] max-h-[750px]
-            
-            mx-auto "
-            style={{
-              // background: 'radial-gradient(circle, #00bfff -150%, rgba(0, 191, 255, 0%) 80%)',
-              // width:isMobile?'75vw' : undefined
-            }}
-            >
-              <ambientLight intensity={1.5} />
-              <directionalLight position={[5, 5, 5]} intensity={1} />
-              <CameraControls /> 
-              <Model
-              url={coloredLaptop} />
-              <OrbitControls enablePan={false} enableZoom={false} />
-            </Canvas>
-          )}
+         
+           
+       
        
 
       </section>
+      <Image src={brain}
+            alt='An image of a brain to represent creative web design in halifax'
+            width={600}
+            height={1300}
+            className='mx-auto w-[90vw] object-contain
+            sm:w-[40vw] max-w-[520px]'
+            />
      
     </section>
   );
