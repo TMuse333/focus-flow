@@ -70,11 +70,12 @@ const {isMobile} = useGeneralContext()
 
     return (
         <div 
-        className='mb-10 relative h-[50px]'>
+        className='mb-10 relative h-[100px]'>
             <section ref={scope}>
                 <div
                     id={`${text}-line`}
-                    className={`w-[0vw] mx-auto relative z-[3]
+                    className={`w-[0vw] mx-auto absolute z-[3]
+                    top-[-100%]
                     h-[0px] transition-all bg-gradient-to-b from-[#a6e9ff] to-[#00bfff]
                     shadow-lg shadow-[#00bfff]
                     rounded-b-full `}
