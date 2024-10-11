@@ -5,10 +5,8 @@ import { useGeneralContext } from "@/context/context";
 
 const AppearingGradient = ({ text, subText, description }: { text: string; subText: string,
 description?:boolean }) => {
-
     const [scope, animate] = useAnimate();
-
-    const {isMobile} = useGeneralContext()
+const {isMobile} = useGeneralContext()
 
     const [halfwayDone, setHalfwayDone] = useState(false)
     const [lineComplete, setLineComplete] = useState(false)
@@ -72,7 +70,7 @@ description?:boolean }) => {
 
     return (
         <div 
-        className='mb-10 relative'>
+        className='mb-10 relative h-[50px]'>
             <section ref={scope}>
                 <div
                     id={`${text}-line`}

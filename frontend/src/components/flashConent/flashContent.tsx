@@ -24,7 +24,7 @@ const FlashContent:React.FC<Props> = (
     return (
         <>
         <section className='mx-auto w-screen max-w-[1200px] relative
-        mb-8'>
+        mb-8 '>
 
   
         <AppearingGradient
@@ -36,6 +36,8 @@ const FlashContent:React.FC<Props> = (
         src={src}
         alt={alt}
         width={600}
+        priority={false}
+        layout='preserve-aspect'
         height={1300}
         className='w-[70vw] mx-auto my-5 
         md:w-[50vw] h-[205px] sm:h-[223px] md:h-[270px] object-contain 
