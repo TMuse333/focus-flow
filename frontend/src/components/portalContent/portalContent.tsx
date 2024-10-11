@@ -1,13 +1,15 @@
-import React, { useRef, useState, useEffect } from "react";
-import { animate, motion, useScroll, useTransform, useInView } from 'framer-motion';
+import React, { useRef, useState, useEffect, Suspense, lazy } from "react";
+import { animate, useScroll, useTransform, useInView } from 'framer-motion';
 import Image from "next/image";
-import { useGeneralContext } from "@/context/context";
+
 
 interface Props {
   image: string;
   alt?: string;
   description?: string;
 }
+
+
 
 const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
   const ref = useRef(null);
@@ -162,9 +164,6 @@ py-4 font-semibold px-3
 text-center text-2xl sm:text-3xl md:text-4xl 
 ${animationComplete ? 'text-glow' : ''}`}
 
-// style={{
-//   transition:'opacity 0.2s 0s ease-in'
-// }}
 >More than a website: A piece of art</h3>
 
 

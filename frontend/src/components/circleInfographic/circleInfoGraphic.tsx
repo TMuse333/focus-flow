@@ -18,6 +18,7 @@ import thinker from '../../../public/media/quantum-thinker.webp'
 import sprinter from '../../../public/media/gemeni-sprinter.webp'
 import communicator from '../../../public/media/gemeni-communicator.webp'
 import AppearingGradient from "../appearingGradient/appearingGradient";
+import SlidingText from "../slidingText/slidingText";
 
 interface CircleProps {
 
@@ -222,10 +223,17 @@ interface Props {
 <section className="mt-[10rem]">
 
 
-        <AppearingGradient
+        {/* <AppearingGradient
         text="Maximizing Business Impact Through Design"
         subText="Uncover the Benefits of Our Designs for Your Brand’s Growth"
-        />
+        /> */}
+
+        <SlidingText
+                text="Maximizing Business Impact Through Design"
+                subText="Uncover the Benefits of Our Designs for Your Brand’s Growth"
+                toggle={false}
+                />
+
 
 <div className="mt-5
         w-[90vw] h-[5px]

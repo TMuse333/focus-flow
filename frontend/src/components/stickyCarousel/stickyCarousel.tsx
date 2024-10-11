@@ -2,7 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image, { StaticImageData } from 'next/image'; // Assuming you're using Next.js for image optimization
-import AppearingGradient from '../appearingGradient/appearingGradient';
+import dynamic from 'next/dynamic'
+
+
+const AppearingGradient = dynamic(()=>import('../appearingGradient/appearingGradient'))
 
 
 interface ElementProps {
@@ -87,10 +90,14 @@ const StickyCarousel: React.FC<Props> = ({ title, description, images }) => {
 
   return (
     <>
+    <div className='mt-[12rem]'>
+
+   
     <AppearingGradient
     text='Custom and creative'
     subText='We have the technical expertiese and creativity'
     />
+     </div>
     <section
       ref={containerRef}
       className="relative w-screen  py-8

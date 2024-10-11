@@ -4,11 +4,17 @@ import { useRef } from "react";
 import bottom from '../../../public/media/mountain-bg-bottom.webp';
 import full from '../../../public/media/mountain-bg-full.webp';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import {useScroll, useTransform } from 'framer-motion';
 
 import Link from "next/link";
 import { useGeneralContext } from "@/context/context";
 import Head from "next/head";
+import dynamic from "next/dynamic";
+import { HTMLMotionProps } from 'framer-motion';
+
+// Dynamically import motion components from framer-motion
+const MotionH2 = dynamic(() => import('framer-motion').then(mod => mod.motion.h2), { ssr: false }) as React.ComponentType<HTMLMotionProps<'h2'>>;
+const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false }) as React.ComponentType<HTMLMotionProps<'div'>>;
 
 export default function MultiLayerParallax() {
   const ref = useRef(null);
@@ -20,7 +26,7 @@ export default function MultiLayerParallax() {
   });
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   const textY = useTransform(scrollYProgress, [0, 1], ["-30%", "200%"]);
-  const textY2 = useTransform(scrollYProgress, [0, 1], ["-180%", "200%"])
+
 
   return (
     <>
@@ -31,14 +37,14 @@ export default function MultiLayerParallax() {
       ref={ref}
       className="w-full h-screen overflow-hidden relative grid place-items-center"
     >
-      <motion.div
+      <MotionDiv
         style={{ y: !isMobile ?  textY : textY }}
         className="relative z-[20] "
       >
        <h1 className="text-4xl mx-auto
            sm:text-6xl md:text-5xl md:w-[80%] px-4 font-semibold text-center
            mb-4 animate-gradient">Creative Web Design in Halifax by FocusFlow Software</h1>
-        <motion.h2
+        <MotionH2
        
        className="text-white text-2xl mx-auto text-center
        h-min "
@@ -46,7 +52,7 @@ export default function MultiLayerParallax() {
        Scroll Down to see why we have the most creative web design in halifax
  
       
-     </motion.h2>
+     </MotionH2>
      <Link href='lets-work'>
 
      
@@ -57,12 +63,12 @@ export default function MultiLayerParallax() {
          Win today
        </motion.button> */}
        </Link>
-      </motion.div>
+      </MotionDiv>
 
 
      
 
-      <motion.div
+      <MotionDiv
         className="absolute inset-0 z-0"
         style={{
           backgroundImage: `url(${full.src})`,

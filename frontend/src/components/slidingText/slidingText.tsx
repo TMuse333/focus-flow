@@ -4,9 +4,12 @@ import { motion, useScroll, useTransform } from "framer-motion";
 interface TextProps {
     text: string;
     setSlideComplete?: React.Dispatch<React.SetStateAction<boolean>>;
+    subText?:string
+    toggle?:boolean
 }
 
-const SlidingText: React.FC<TextProps> = ({ text, setSlideComplete }) => {
+const SlidingText: React.FC<TextProps> = ({ text, setSlideComplete ,
+    subText,toggle}) => {
     // Reference to the target element to track scroll position
     const targetRef = useRef(null);
     
@@ -20,14 +23,15 @@ const SlidingText: React.FC<TextProps> = ({ text, setSlideComplete }) => {
     });
 
     // Transform scroll progress to x position, scale, and opacity
-    const x = useTransform(scrollYProgress, [0, 0.8], [350, 0]); // Adjust as needed
-    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.55], [0, 0.0, 1]);
+    const x = useTransform(scrollYProgress, [0, 0.8], [!slideComplete ? 350 : 0, 0]); // Adjust as needed
+    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.55],!slideComplete ? [0, 0.0, 1] : [1,1,1]);
 
     // Monitor changes in the `x` value and set `slideComplete` to true when x reaches 0
     useEffect(() => {
         const unsubscribe = x.on("change", (latestX) => {
             if (latestX === 0 && !slideComplete) {
                 setLocalSlideComplete(true);
+                console.warn('slide complete')
                 if (setSlideComplete) setSlideComplete(true);
             }
         });
@@ -41,7 +45,9 @@ const SlidingText: React.FC<TextProps> = ({ text, setSlideComplete }) => {
             <motion.h2
                 className=" bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent 
                 text-3xl sm:text-4xl font-semibold text-center relative transition-colors"
-                style={{ x, opacity }} // Apply the animated styles
+                style={
+                   !slideComplete ? { x, opacity }
+                : {}} // Apply the animated styles
                 // Apply the gradient flow when slideComplete is true
                 whileInView={
                     slideComplete
@@ -62,6 +68,16 @@ const SlidingText: React.FC<TextProps> = ({ text, setSlideComplete }) => {
             >
                 {text}
             </motion.h2>
+            {subText && (
+                <motion.h3
+                id={`subtext-${subText}`}
+                className={`${slideComplete ? 
+                'opacity-1' : 'opacity-0'}
+                mt-4 text-center transition-opacity
+                text-xl sm:text-2xl`}>
+                    {subText}
+                </motion.h3>
+            )}
         </div>
     );
 };

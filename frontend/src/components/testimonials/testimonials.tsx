@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import AppearingGradient from '../appearingGradient/appearingGradient';
+
 import dynamic from 'next/dynamic';
 import { HTMLMotionProps } from 'framer-motion';
+
+const SlidingText = dynamic(() => import('../slidingText/slidingText'))
 
 const MotionP = dynamic(() => import('framer-motion').then(mod => mod.motion.p), {
   ssr: false,
@@ -55,9 +57,13 @@ const Testimonials: React.FC<TestimonialProps> = ({ testimonials = testimonialsD
 
   return (
     <>
-      <AppearingGradient
+      {/* <AppearingGradient
         text='Client Success, Delivered'
         subText="Explore feedback from clients who've experienced the power of custom web design"
+      /> */}
+
+      <SlidingText
+      text='Client Success, Delivered'
       />
 
       <section className='bg-gradient-to-b from-[#00a2e4] via-[#00a2e4] to-[#00e0ff]
