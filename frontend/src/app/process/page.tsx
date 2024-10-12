@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { Metadata } from "next";
 
 // Lazy load ProcessPage
-import ProcessPage from "../pageComponents/processPage";
+const ProcessPage = dynamic(()=>import("../pageComponents/processPage"))
 
 // Metadata for the Process page
 export const metadata: Metadata = {

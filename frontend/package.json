@@ -22,8 +22,8 @@
     "framer-motion": "^11.2.9",
     "gray-matter": "^4.0.3",
     "gsap": "^3.12.5",
-    "heroicons": "^2.1.4",
-    "lodash": "^4.17.21",
+
+  
     "next": "14.2.3",
     "nodemailer": "^6.9.14",
     "react": "^18",
@@ -32,11 +32,12 @@
     "react-icons": "^5.2.1",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
-    "sharp": "^0.33.4",
+  
     "three": "^0.167.1",
     "typed.js": "^2.1.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^14.2.15",
     "@types/lodash": "^4.17.9",
     "@types/node": "^20",
     "@types/nodemailer": "^6.4.15",

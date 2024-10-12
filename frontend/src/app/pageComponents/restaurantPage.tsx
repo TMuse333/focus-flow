@@ -1,29 +1,29 @@
 "use client"
 import { Metadata } from "next";
-import React, { Suspense } from "react";
+import React, {  } from "react";
 
 // const Accordion = React.lazy(() => import("@/components/accordion/accordion"));
-const ImageAccordion = React.lazy(() => import("@/components/imageAccordion/imageAccordion"));
+
 const Navbar = React.lazy(() => import("@/components/bigNav/navbar"));
-const TextParallaxContentExample = React.lazy(() => import("@/components/parallaxText/parallaxText").then(module => ({ default: module.TextParallaxContentExample })));
-const PriceBoxes = React.lazy(() => import("@/components/priceBoxes/priceBoxes"));
+
 const Footer2 = React.lazy(() => import("@/components/footer2/footer2"));
 
-const Closer = React.lazy(()=> import("@/components/appearingSquare/appearingSquare"))
-
-import {  customParallax, restaurantFaq, ownershipParallax, priceBoxesData, restaurantParallax, restaurantCloser,
-restaurantPageCloser, RestaurantFeatures, genericSlideShow,
+import {  
+restaurantPageCloser, RestaurantFeatures,
 restaurantCarousel, 
 restaurantPackageDetails} from "@/data/data";
 import Herobanner from "@/components/herobanner3/herobanner";
 import FeatureBox from "@/components/featureBoxes/featureBoxes";
-import SlideShowCarousel from "@/components/slideShowCarousel/slideShowCarousel";
-import Carousel from "@/components/carousel/carousel";
-import AppearingGradient from "@/components/appearingGradient/appearingGradient";
-import StickyCarousel from "@/components/stickyCarousel/stickyCarousel";
-import ScrollCarousel from "@/components/scrollCarousel/scrollCarousel";
-import AppearingSquare from "@/components/appearingSquare/appearingSquare";
+
+const Carousel = dynamic(()=>import("@/components/carousel/carousel"))
+
+const ScrollCarousel = dynamic(()=>import('@/components/scrollCarousel/scrollCarousel'))
+
+const AppearingGradient = dynamic(()=>import('@/components/appearingGradient/appearingGradient'))
+const AppearingSquare = dynamic(()=>import("@/components/appearingSquare/appearingSquare"))
+
 import Head from "next/head";
+import dynamic from "next/dynamic";
 
 
 
@@ -38,6 +38,7 @@ const RestaurantPage = () => {
         <>
          <Head>
         <link rel="canonical" href="https://www.focusflowsoftware.com/online-food-ordering-system" />
+        
       </Head>
     <main className="w-screen">
         <Navbar

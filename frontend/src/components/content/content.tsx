@@ -116,6 +116,7 @@ const Content: React.FC<ContentProps> = ({
             animate={shouldAnimate ? 'animate' : ''}
             className="text-left pl-5 sm:pl-12 pt-5 sm:text-4xl font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-3xl
             pr-3"
+            
           >
             {mainTitle}
           </MotionH2>
