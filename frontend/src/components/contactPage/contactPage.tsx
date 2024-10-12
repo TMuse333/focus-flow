@@ -2,7 +2,8 @@
 "use client"
 import React, { useState, ChangeEvent } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { LazyMotion, domAnimation, m } from "framer-motion";
+
 import logo from '../../../public/media/focusFlow-brain-nobg.webp';
 import axios from 'axios';
 const Contact = () => {
@@ -65,40 +66,45 @@ const Contact = () => {
                     priority
                 />
                 
-                <ul className='text-center'>
-                <h3 className='sm:text-4xl font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-3xl
-                mb-4'>FocusFlow Software</h3>
-                    {tenets.map((tenet, index) => (
-                        <motion.li
-                            key={index}
-                            initial={{
-                                opacity: 0,
-                                x: index % 2 === 0 ? 100 : -100,
-                            }}
-                            animate={{
-                                opacity: 1,
-                                x: 0,
-                                transition: {
-                                    delay: index * 0.4,
-                                },
-                            }}
-                            className='text-white mb-2
-                            text-xl'
-                        >
-                            {tenet}
-                        </motion.li>
-                    ))}
-                    <motion.li
-                        initial={{ opacity: 0 }}
-                        animate={{
-                            opacity: 1,
-                            transition: { delay: tenets.length * 0.4 },
-                        }}
-                        className='text-3xl text-[#00bfff]'
-                    >
-                        We will get it done
-                    </motion.li>
-                </ul>
+                <LazyMotion features={domAnimation}>
+      <ul className='text-center'>
+        <h3 className='sm:text-4xl font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-3xl mb-4'>
+          FocusFlow Software
+        </h3>
+
+        {tenets.map((tenet, index) => (
+          <m.li
+            key={index}
+            initial={{
+              opacity: 0,
+              x: index % 2 === 0 ? 100 : -100,
+            }}
+            animate={{
+              opacity: 1,
+              x: 0,
+              transition: {
+                delay: index * 0.4,
+              },
+            }}
+            className="text-white mb-2 text-xl"
+          >
+            {tenet}
+          </m.li>
+        ))}
+
+        <m.li
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            transition: { delay: tenets.length * 0.4 },
+          }}
+          className="text-3xl text-[#00bfff]"
+        >
+          We will get it done
+        </m.li>
+      </ul>
+    </LazyMotion>
+  
             </div>
             <div className='w-[90vw] ml-auto mr-auto sm:w-[50vw]'>
                 <Image
