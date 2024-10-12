@@ -1,11 +1,17 @@
 // app/api/sendEmail/route.ts
 
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
-import dotenv from 'dotenv'
 
-dotenv.config();
 
+
+
+
+
+
+
+
+export async function POST(request: Request) {
+    const nodemailer =  (await import('nodemailer')).default;
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -24,7 +30,6 @@ transporter.verify((error) => {
     }
 });
 
-export async function POST(request: Request) {
     try {
         console.log(process.env.GMAIL_PASSWORD)
         console.log(process.env.EMAIL_USER)
