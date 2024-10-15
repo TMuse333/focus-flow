@@ -62,7 +62,7 @@ const FlashContent: React.FC<Props> = ({ src, alt }) => {
                     Our creative web page design delivers <span className='font-bold'>superior performance and full customization</span>, driving higher user engagement and <span className='font-bold'>elevating your brand's reputation.</span> As an experienced web designer in Halifax, we specialize in building unique, high-performing websites that take your business to the next level. Visit our design page to see how our expertise can help you stay ahead of the competition.
                     <br /><br />
                     <Link href='best-web-design-halifax'>
-                        <MotionButton className='bg-[#00bfff] rounded-xl p-3 text-gray-500'>
+                        <MotionButton className='bg-[#00bfff] rounded-xl p-3 text-white'>
                             See What Sets Us Apart
                         </MotionButton>
                     </Link>

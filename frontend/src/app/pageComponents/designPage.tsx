@@ -19,7 +19,7 @@ const DesignPage = () => {
     return (
         <>
             <BigNav excludedLink="Top tier custom web design" />
-            <main className="mt-[3rem] relative z-[4]">
+            <main className="mt-[3rem] relative z-[4] text-white">
                 <MultiLayerParallax />
 
                 <StickyCarousel images={stickyScrollables} />

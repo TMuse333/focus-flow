@@ -125,7 +125,7 @@ const Content: React.FC<ContentProps> = ({
             initial={hasAnimation ? 'initial' : ''}
             animate={shouldAnimate ? 'animate' : ''}
             className="mt-6 pl-5 text-left sm:pl-12 whitespace-pre-line
-            pr-4"
+            pr-4 text-white"
           >
             {description[0] || 'Default description text.'}
           </MotionP>

@@ -40,7 +40,7 @@ const RestaurantPage = () => {
         <link rel="canonical" href="https://www.focusflowsoftware.com/online-food-ordering-system" />
         
       </Head>
-    <main className="w-screen">
+    <main className="w-screen text-white">
         <Navbar
         excludedLink="Restaurant software"
         />

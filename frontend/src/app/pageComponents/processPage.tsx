@@ -21,7 +21,8 @@ const ProcessPage = () => {
         <link rel="canonical" href="https://www.focusflowsoftware.com/process" />
       </Head>
             <BigNav excludedLink="Our Process" />
-            <main className="mt-[3rem] relative z-[4] overflow-x-hidden">
+            <main className="mt-[3rem] relative z-[4] overflow-x-hidden
+            text-white">
                 <Curtain />
 
                 <PageCreation pageContent={processPageContent} />

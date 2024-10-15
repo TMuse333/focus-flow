@@ -67,7 +67,8 @@ const Homepage = () => {
 
       <BigNav excludedLink="Home" />
 
-      <main className="text-center z-[30] overflow-x-hidden lg:mt-[2rem]"
+      <main className="text-center z-[30] overflow-x-hidden lg:mt-[2rem]
+      text-white"
         style={{
           filter: selectedCarouselImageIndex !== null ? 'blur(8px)' : 'none',
           overflowY: selectedCarouselImageIndex !== null ? 'hidden' : 'auto',
