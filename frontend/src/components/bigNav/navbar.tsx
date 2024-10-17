@@ -152,15 +152,18 @@ interface SubMenuProps {
 
 <ul className="flex mt-6">
     {secondaryLinks?.map((link, index) => (
-        <Link href={link.destination}
-        key={index}
-        >
-            <li className="mb-2 mr-4
+      
+            <li  key={index}
+            className="mb-2 mr-4
             text-lg hover:text-gray-300
             bg-gray-700 p-3 rounded-xl">
+                <Link href={link.destination}
+       
+        >
                 {link.name}
+                </Link>
             </li>
-        </Link>
+        
     ))}
 </ul>
             </div>
@@ -214,46 +217,28 @@ interface SubMenuProps {
          >X
          </button>
       
-                    <ul
-                        className={`text-left absolute mt-8
-                        top-[25%]
-                          overflow-hidden transition-[height]
-                          flex flex-col items-start justify-center 
-                            `}>
-                        {links.map((link, index) => (
+         <ul
+  className={`text-left absolute mt-8
+  top-[25%]
+  overflow-hidden transition-[height]
+  flex flex-col items-start justify-center`}>
+  {links.map((link, index) => (
+    <li
+      key={index}
+      className="text-md sm:text-xl mb-4 mr-auto text-white pl-2 pr-2 hover:text-[#00bfff]">
+      {link.destination ? (
+        <Link href={link.destination}>
+          {link.name}
+        </Link>
+      ) : (
+        <span onClick={() => handleSecondarySubClick(index)}>
+          {link.name}
+        </span>
+      )}
+    </li>
+  ))}
+</ul>
 
-                          <>
-
-                          {link.destination ? (
-                            <Link
-                            key={index}
-                            href={link.destination}>
-                              <li  className="text-md sm:text-xl mb-4
-                                mr-auto text-white
-                               
-                                 pl-2 pr-2 
-                                 hover:text-[#00bfff]">
-                                  {link.name}
-
-                              </li>
-
-                            </Link>
-                          ) : (
-                            <li key={index}
-                            onClick={()=>handleSecondarySubClick(index)}
-                            className="text-md sm:text-xl mb-4
-                            mr-auto text-white
-                           
-                             pl-2 pr-2 
-                             hover:text-[#00bfff]">{link.name}</li>
-                          )}
-                           
-                              
-                                 
-                                 </>
-                           
-                        ))}
-                    </ul>
                     </>
                         )}
 
@@ -277,16 +262,20 @@ interface SubMenuProps {
                                 ">
                                   
                                 {links[secondaryLinksIndex].secondaryLinks.map((link,index)=> (
-                                    <Link
-                                    key={index}
-                                    href={link.destination}
-                                    passHref
-                                    >
+                                  
                                         <li className="mb-2 text-white transition-colors
-                                         hover:text-[#00bfff] md:xl">
-                                            {link.name}
+                                         hover:text-[#00bfff] md:xl"
+                                         key={index}>
+                                            <Link
+                                  
+                                  href={link.destination}
+                                  passHref
+                                  >
+                                    {link.name}
+
+                                          </Link>  
                                         </li>
-                                    </Link>
+                                   
                                 ))}
                                                              </ul>
                                
@@ -405,10 +394,7 @@ const BigNav: React.FC<NavbarProps> = ({ excludedLink }) => {
             <Link href='/'
             passHref>
              
-         {/* <h3 className="my-auto relative pb-3
-         translate-y-[1rem]" >
-            FocusFlow Software
-           </h3> */}
+     
            <Image src={brain}
            className='w-[50px] relative z-[2]'
            width={600}
@@ -435,10 +421,10 @@ const BigNav: React.FC<NavbarProps> = ({ excludedLink }) => {
                    
                     {link.listSubMenu ? (
                      <>
-                      <h3 
+                      <p
                        onMouseEnter={()=>handleSubMenuHover(index)}
                        onMouseLeave={handleSubMenuLeave}
-                      className="mt-auto relative z-[4]   text-sm sm:text-md">{link.name}</h3>
+                      className="mt-auto relative z-[4]   text-sm sm:text-md">{link.name}</p>
                                  {link.subMenuSrc && link.subMenuAlt &&
                                  link.desktopDescription && (
 

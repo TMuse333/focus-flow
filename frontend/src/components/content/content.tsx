@@ -1,11 +1,32 @@
-"use client"
+"use client"; // Enable client-side rendering for this component
 
 import React, { useState } from 'react';
-import { Variants, motion } from 'framer-motion';
+import dynamic from 'next/dynamic'; // Import dynamic from Next.js
+import { Variants } from 'framer-motion';
 import { useIntersectionObserver } from '../intersectionObserver/intersectionObserver';
 import { useGeneralContext } from '../../context/context';
-import Image, { StaticImageData } from 'next/image';
+import  { StaticImageData } from 'next/image';
 import Link from 'next/link';
+
+// Import HTMLMotionProps for type safety
+import { HTMLMotionProps } from 'framer-motion';
+
+// Dynamically import motion components from framer-motion
+const MotionImage = dynamic(() => import('framer-motion').then(mod => mod.motion.img), {
+  ssr: false,
+}) as React.ComponentType<HTMLMotionProps<'img'>>;
+
+const MotionH2 = dynamic(() => import('framer-motion').then(mod => mod.motion.h2), {
+  ssr: false,
+}) as React.ComponentType<HTMLMotionProps<'h2'>>;
+
+const MotionP = dynamic(() => import('framer-motion').then(mod => mod.motion.p), {
+  ssr: false,
+}) as React.ComponentType<HTMLMotionProps<'p'>>;
+
+const MotionButton = dynamic(() => import('framer-motion').then(mod => mod.motion.button), {
+  ssr: false,
+}) as React.ComponentType<HTMLMotionProps<'button'>>;
 
 interface ContentProps {
   image: StaticImageData;
@@ -17,7 +38,7 @@ interface ContentProps {
   hasAnimation?: boolean;
   buttonLink?: string;
   buttonText?: string;
-  alt?:string
+  alt?: string;
 }
 
 const Content: React.FC<ContentProps> = ({
@@ -42,16 +63,13 @@ const Content: React.FC<ContentProps> = ({
   };
 
   const componentRef = useIntersectionObserver(setInView, options);
-  const MotionImage = motion(Image);
 
   const baseVariants = (x: number, delay: number): Variants => ({
     initial: { x, opacity: 0 },
     animate: {
       x: 0,
       opacity: 1,
-      transition: { delay,
-      ease:'easeIn' },
-      
+      transition: { delay, ease: 'easeIn' },
     },
   });
 
@@ -92,46 +110,47 @@ const Content: React.FC<ContentProps> = ({
 
       {customText || (
         <div>
-          <motion.h2
+          <MotionH2
             variants={baseVariants(reverse ? -30 : 30, 0)}
             initial={hasAnimation ? 'initial' : ''}
             animate={shouldAnimate ? 'animate' : ''}
             className="text-left pl-5 sm:pl-12 pt-5 sm:text-4xl font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-3xl
             pr-3"
+            
           >
             {mainTitle}
-          </motion.h2>
-          <motion.p
+          </MotionH2>
+          <MotionP
             variants={baseVariants(reverse ? -30 : 30, 0.45)}
             initial={hasAnimation ? 'initial' : ''}
             animate={shouldAnimate ? 'animate' : ''}
             className="mt-6 pl-5 text-left sm:pl-12 whitespace-pre-line
-            pr-4"
+            pr-4 text-white"
           >
             {description[0] || 'Default description text.'}
-          </motion.p>
+          </MotionP>
           {description[1] && (
-            <motion.p
+            <MotionP
               variants={baseVariants(reverse ? -30 : 30, 0.65)}
               initial={hasAnimation ? 'initial' : ''}
               animate={shouldAnimate ? 'animate' : ''}
               className="mt-6 text-left pl-5 sm:pl-12 pr-4"
             >
               {description[1]}
-              <br/>
+              <br />
               {buttonLink && (
                 <Link href={buttonLink}>
-                  <motion.button
+                  <MotionButton
                     variants={baseVariants(reverse ? -30 : 30, 1.2)}
                     initial={hasAnimation ? 'initial' : ''}
                     animate={shouldAnimate ? 'animate' : ''}
                     className="mt-6 bg-[#00bfff] p-3 rounded-xl hover:bg-white hover:text-[#00bfff] "
                   >
                     {buttonText}
-                  </motion.button>
+                  </MotionButton>
                 </Link>
               )}
-            </motion.p>
+            </MotionP>
           )}
         </div>
       )}

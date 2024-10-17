@@ -771,7 +771,7 @@ export const monthlyPageOutro = {
   
     With our monthly website management service, you'll have a partner dedicated to driving ongoing improvements, keeping your site secure, and adapting to market trends. Together, we can take your website and business to new heights — all while saving you time and effort. Don’t let your online presence go stagnant. Let us handle the technical work so you can focus on growing your business.`,
     buttonText: 'Start Your Monthly Plan',
-    buttonDestination: '/contact',
+    buttonDestination: '/lets-work',
   };
 
 

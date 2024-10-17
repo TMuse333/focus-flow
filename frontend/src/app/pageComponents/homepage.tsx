@@ -43,7 +43,7 @@ const ScrollableCarousel = dynamic(() => import('@/components/scrollableCarousel
 const Content = dynamic(() => import('@/components/content/content'));
 const FlashContent = dynamic(() => import('@/components/flashConent/flashContent'),{ssr:true});
 const ContentBox = dynamic(() => import('@/components/contentBox/contentBox'),{ssr:true});
-const AppearingContent = dynamic(() => import('@/components/appearingContent/appearingContent'),{ssr:true});
+// const AppearingContent = dynamic(() => import('@/components/appearingContent/appearingContent'),{ssr:true});
 const Testimonials = dynamic(() => import('@/components/testimonials/testimonials'),{ssr:true});
 const Footer2 = dynamic(() => import('@/components/footer2/footer2'),{ssr:true});
 const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
@@ -71,7 +71,8 @@ const Homepage = () => {
 
       <BigNav excludedLink="Home" />
 
-      <main className="text-center z-[30] overflow-x-hidden lg:mt-[2rem]"
+      <main className="text-center z-[30] overflow-x-hidden lg:mt-[2rem]
+      text-white"
         style={{
           filter: selectedCarouselImageIndex !== null ? 'blur(8px)' : 'none',
           overflowY: selectedCarouselImageIndex !== null ? 'hidden' : 'auto',
@@ -80,13 +81,7 @@ const Homepage = () => {
        
         <Herobanner sections={herobannerData} />
 
-        <AppearingContent
-          sliderText="Creative Web Page Design to Elevate Your Online Presence"
-          src={focusFlowPromo}
-          id='appearing-video'
-          isVideo={true}
-        />
-
+   
         <div className="h-[30vh]" />
 
         <FlashContent

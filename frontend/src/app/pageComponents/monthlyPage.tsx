@@ -17,7 +17,7 @@ const MonthlyPage = () => {
     return (
         <>
             <BigNav excludedLink="Your long term success" />
-            <main className="mt-6">
+            <main className="mt-6 text-white">
                 <Herobanner {...monthlyOpener} />
                 
                 <Accordion

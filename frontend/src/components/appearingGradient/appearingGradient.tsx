@@ -5,10 +5,8 @@ import { useGeneralContext } from "@/context/context";
 
 const AppearingGradient = ({ text, subText, description }: { text: string; subText: string,
 description?:boolean }) => {
-
     const [scope, animate] = useAnimate();
-
-    const {isMobile} = useGeneralContext()
+const {isMobile} = useGeneralContext()
 
     const [halfwayDone, setHalfwayDone] = useState(false)
     const [lineComplete, setLineComplete] = useState(false)
@@ -71,14 +69,15 @@ description?:boolean }) => {
     }, [isInView,]); // Add text to dependencies to avoid stale closures
 
     return (
-        <div 
-        className='mb-10 relative'>
-            <section ref={scope}>
+       
+            <section ref={scope} className='
+            pt-12 relative mb-10' >
                 <div
                     id={`${text}-line`}
-                    className={`w-[0vw] mx-auto relative z-[3]
+                    className={`w-[0vw] mx-auto absolute z-[3]
+                    top-0
                     h-[0px] transition-all bg-gradient-to-b from-[#a6e9ff] to-[#00bfff]
-                    shadow-lg shadow-[#00bfff]
+                    shadow-lg shadow-[#00bfff] max-w-[1200px]
                     rounded-b-full `}
                     style={{
                         transition: `width 0.2s, height ${lineComplete ? '1s 1s' : '0.2s'}, border-bottom 1.1s ease-in`,
@@ -143,7 +142,7 @@ description?:boolean }) => {
                 </h3>
                 </div>
             </section>
-        </div>
+
     );
 };
 

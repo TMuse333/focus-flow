@@ -1,12 +1,14 @@
 "use client"
 
 import React, { useState, useEffect, useRef } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useGLTF, OrbitControls } from "@react-three/drei";
-import { coloredLaptop } from '@/data/data';
+// import { Canvas, useFrame, useThree } from "@react-three/fiber";
+// import { useGLTF, OrbitControls } from "@react-three/drei";
+// import { coloredLaptop } from '@/data/data';
 import { useGeneralContext } from "@/context/context";
 import Image from 'next/image'
 import { motion, useMotionTemplate, useMotionValue, animate } from "framer-motion";
+import bg from '../../../public/media/puddle-bg.jpg'
+
 
 import Link from "next/link";
 import brain from '../../../public/media/focusFlow-brain-nobg.webp'
@@ -19,55 +21,55 @@ interface HerobannerProps {
   }[];
 }
 
-const Model: React.FC<{ url: string }> = ({ url }) => {
-  const gltf: any = useGLTF(url,true);
-  const ref = useRef<any>();
-  const { isMobile } = useGeneralContext();
+// const Model: React.FC<{ url: string }> = ({ url }) => {
+//   const gltf: any = useGLTF(url,true);
+//   const ref = useRef<any>();
+//   const { isMobile } = useGeneralContext();
 
-  // State for floating effect
-  const [floatY, setFloatY] = useState(0); // State to control Y position for floating
-  const [scale, setScale] = useState(0.1); // Initialize scale at 0.1
-  const targetScale = isMobile ? 1.2 : 1.3; // The target scale you want to reach
-  const lerpFactor = 0.05; // Factor for lerping both scale and rotation
+//   // State for floating effect
+//   const [floatY, setFloatY] = useState(0); // State to control Y position for floating
+//   const [scale, setScale] = useState(0.1); // Initialize scale at 0.1
+//   const targetScale = isMobile ? 1.2 : 1.3; // The target scale you want to reach
+//   const lerpFactor = 0.05; // Factor for lerping both scale and rotation
 
-  const targetRotation = [
-    (14.5 + 7 ) , // Target rotation around the x-axis (converted to radians)
-    Math.PI , // Target rotation around the y-axis (180 degrees)
-    0, // No rotation on the z-axis
-  ];
+//   const targetRotation = [
+//     (14.5 + 7 ) , // Target rotation around the x-axis (converted to radians)
+//     Math.PI , // Target rotation around the y-axis (180 degrees)
+//     0, // No rotation on the z-axis
+//   ];
 
-  useFrame(({ clock }) => {
-    if (ref.current) {
-      // Floating effect
-      const newY = Math.sin(clock.getElapsedTime()) * 1.5;
-      setFloatY(newY);
+//   useFrame(({ clock }) => {
+//     if (ref.current) {
+//       // Floating effect
+//       const newY = Math.sin(clock.getElapsedTime()) * 1.5;
+//       setFloatY(newY);
 
-      // Smooth scaling from 0.1 to 1
-      const newScale = scale + (targetScale - scale) * lerpFactor;
-      setScale(newScale);
-      ref.current.scale.set(newScale, newScale, newScale);
+//       // Smooth scaling from 0.1 to 1
+//       const newScale = scale + (targetScale - scale) * lerpFactor;
+//       setScale(newScale);
+//       ref.current.scale.set(newScale, newScale, newScale);
 
-      // Smooth rotation towards the target rotation
-      ref.current.rotation.x += (targetRotation[0] - ref.current.rotation.x) * lerpFactor;
-      ref.current.rotation.y += (targetRotation[1] - ref.current.rotation.y) * lerpFactor;
-      ref.current.rotation.z += (targetRotation[2] - ref.current.rotation.z) * lerpFactor;
+//       // Smooth rotation towards the target rotation
+//       ref.current.rotation.x += (targetRotation[0] - ref.current.rotation.x) * lerpFactor;
+//       ref.current.rotation.y += (targetRotation[1] - ref.current.rotation.y) * lerpFactor;
+//       ref.current.rotation.z += (targetRotation[2] - ref.current.rotation.z) * lerpFactor;
 
-      // Ensure the model ends up in its correct Y position
-      // ref.current.position.y += floatY
+//       // Ensure the model ends up in its correct Y position
+//       // ref.current.position.y += floatY
    
-    }
-  });
+//     }
+//   });
 
-  return (
-    <primitive
+//   return (
+//     <primitive
     
-      ref={ref}
-      object={gltf.scene}
-      position={[0, 0, 0]} // Initial position
-      rotation={[0, 0, 0]} // Start rotation at 0, 0, 0
-    />
-  );
-};
+//       ref={ref}
+//       object={gltf.scene}
+//       position={[0, 0, 0]} // Initial position
+//       rotation={[0, 0, 0]} // Start rotation at 0, 0, 0
+//     />
+//   );
+// };
 
 
 
@@ -78,17 +80,17 @@ const Model: React.FC<{ url: string }> = ({ url }) => {
 
 
 
-const CameraControls = () => {
-  const { camera } = useThree();
-  const { isMobile } = useGeneralContext();
-  useEffect(() => {
-    // Set initial camera position and zoom
-    camera.position.set(0,-59, isMobile? 80 : 160); // Adjust as needed
-    camera.lookAt(0, 0, 0); // Ensure the camera looks at the model
-  }, [camera]);
+// const CameraControls = () => {
+//   const { camera } = useThree();
+//   const { isMobile } = useGeneralContext();
+//   useEffect(() => {
+//     // Set initial camera position and zoom
+//     camera.position.set(0,-59, isMobile? 80 : 160); // Adjust as needed
+//     camera.lookAt(0, 0, 0); // Ensure the camera looks at the model
+//   }, [camera]);
 
-  return null; // No visual representation needed
-};
+//   return null; // No visual representation needed
+// };
 
 const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
 
@@ -133,16 +135,19 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
 
   return (
     <section className="w-[95%] 
-     mx-auto flex flex-col flex-col relative  sm:flex-row sm:flex-row-reverse rounded-lg relative
-     z-[3] "
+     mx-auto flex flex-col flex-col relative  md:flex-row  rounded-lg relative
+     z-[3] max-w-[1200px] md:h-screen text-white"
      style={{
       background: 'radial-gradient(circle, #00bfff -150%, rgba(0, 191, 255, 0%) 80%)',
+     
+    
      }}
      >
       {/* <section className="relative w-full h-full sm:w-[50vw] mt-auto sm:block pl-6">
       
       </section> */}
       <section className=" sm:block w-full flex justify-center items-center flex-col  mb-8
+      max-w-[600px] mx-auto
       ">
         <h1 className="text-sm px-4 sm:text-md mb-4 mt-8
         sm:text-md md:text-lg
@@ -156,8 +161,15 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
         sm:text-5xl md:text-6xl">
           FocusFlow Software
         </h2>
+        <Image src={brain}
+            alt='An image of a brain to represent creative web design in halifax'
+            width={600}
+            height={1300}
+            className='mx-auto w-[50vw] object-contain
+            max-w-[384px] max-h-[384px]'
+            />
         <p className="text-left px-3 text-sm relative z-[3]
-  text-lg sm:text-xl">
+  text-lg sm:text-xl text-white">
          FocusFlow Software specializes in web design based out of Halifax, Nova Scotia, <span className="font-bold">offering custom web design services that are both innovative
           </span> and tailored to your business.
            We are dedicated constantly improving our craft and delivering web page designs that capture your brand and engage your audience, positioning us as <span className='font-bold'>your go-to web designer in Halifax.
@@ -187,44 +199,13 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
           </motion.button>
           </Link>
 
-          {isMobile ? (
-            <Image src={brain}
-            alt='An image of a brain to represent creative web design in halifax'
-            width={600}
-            height={1300}
-            className='mx-auto w-[90vw] object-contain'
-            />
-          ) : (
-            <Canvas
-            gl={{ antialias: false }} // Disable or reduce antialiasing
-            
-             className="w-full  md:w-full  flex items-start
-             justify-center
-            rounded-2xl
-            mt-[2rem] 
-            sm:mt-auto z-[4] relative
-            md:bg-transparent 
-            pb-[6rem] 
-            sm:pb-[10rem] h-[40vh]
-            min-h-[250px] max-h-[750px]
-            
-            mx-auto "
-            style={{
-              // background: 'radial-gradient(circle, #00bfff -150%, rgba(0, 191, 255, 0%) 80%)',
-              // width:isMobile?'75vw' : undefined
-            }}
-            >
-              <ambientLight intensity={1.5} />
-              <directionalLight position={[5, 5, 5]} intensity={1} />
-              <CameraControls /> 
-              <Model
-              url={coloredLaptop} />
-              <OrbitControls enablePan={false} enableZoom={false} />
-            </Canvas>
-          )}
+         
+           
+       
        
 
       </section>
+     
      
     </section>
   );

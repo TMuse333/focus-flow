@@ -19,7 +19,7 @@ const WorkPage = () => {
         <link rel="canonical" href="https://www.focusflowsoftware.com/lets-work" />
       </Head>
             <Navbar excludedLink="Contact" />
-            <main className="w-screen mt-[6rem]">
+            <main className="w-screen mt-[6rem] text-white">
                 <Herobanner {...ContactOpener} />
                 
                 <section className="w-full py-6 flex justify-center items-center relative flex-col mx-auto my-10 bg-[#00bfff] bg-opacity-[0.2]">
