@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { motion, Variants } from 'framer-motion';
+import logo from '../../../public/media/focusFlow-brain-nobg.webp'
 
 interface ImageUploaderProps {
   className: string;
-  animationVariants: Variants; // Framer Motion variants
-  inView: boolean; // Boolean to trigger animation
+  animationVariants?: Variants; // Framer Motion variants
+  inView?: boolean; // Boolean to trigger animation
 }
 
 const ImageUploader: React.FC<ImageUploaderProps> = ({ className, animationVariants, inView }) => {
@@ -58,14 +59,19 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ className, animationVaria
       ) : (
         <>
           <motion.div
+          
             className={className}
             onDragOver={handleDragOver}
             onDrop={handleDrop}
             variants={animationVariants}
             initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
+           
             
           >
+            
+          
+
             <p className="text-gray-500">Drag and drop an image here or click to upload</p>
             <input
               type="file"

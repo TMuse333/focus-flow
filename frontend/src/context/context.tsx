@@ -28,6 +28,8 @@ interface GeneralContextType {
   selectedCarouselImageAlt:string
   setSelectedCarouselImageAlt2:React.Dispatch<React.SetStateAction<string>>;
   selectedCarouselImageAlt2:string
+  isDesktop:boolean
+  setIsDesktop:React.Dispatch<React.SetStateAction<boolean>>;
   
 }
 
@@ -53,6 +55,8 @@ export const ContextProvider: React.FC<{ children: ReactNode }> = ({ children })
   const [selectedCarouselImageLink, setSelectedCarouselImageLink] = useState<string>('');
   const [selectedCarouselImageAlt, setSelectedCarouselImageAlt] = useState('')
   const [selectedCarouselImageAlt2, setSelectedCarouselImageAlt2] = useState('')  
+  const [ isDesktop,
+    setIsDesktop] = useState(false)
 
 
   const [selectedCarouselImageIndex, setSelectedCarouselImageIndex] = useState<number | null>(null)
@@ -88,6 +92,25 @@ export const ContextProvider: React.FC<{ children: ReactNode }> = ({ children })
     console.log('is mobile', isMobile);
   }, [isMobile]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (typeof window !== 'undefined') {
+        setIsDesktop(window.innerWidth >= 865);
+      }
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', handleScroll);
+      handleScroll(); // Initial check
+    }
+
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, []);
+
   const contextValue = {
 
     isMobile,
@@ -112,7 +135,9 @@ export const ContextProvider: React.FC<{ children: ReactNode }> = ({ children })
     selectedCarouselImageAlt,
     setSelectedCarouselImageAlt,
     selectedCarouselImageAlt2,
-    setSelectedCarouselImageAlt2
+    setSelectedCarouselImageAlt2,
+    isDesktop,
+    setIsDesktop
   };
 
   return <GeneralContext.Provider value={contextValue}>{children}</GeneralContext.Provider>;

@@ -1,17 +1,20 @@
 import React, { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
+import { useGeneralContext } from "@/context/context";
 
 interface TextProps {
     text: string;
     setSlideComplete?: React.Dispatch<React.SetStateAction<boolean>>;
-    subText?:string
-    toggle?:boolean
+    reverse?:boolean,
+    activated?:boolean
 }
 
-const SlidingText: React.FC<TextProps> = ({ text, setSlideComplete ,
-    subText,toggle}) => {
+const SlidingText: React.FC<TextProps> = ({ text, setSlideComplete,
+reverse,activated }) => {
     // Reference to the target element to track scroll position
     const targetRef = useRef(null);
+
+    const {isDesktop} = useGeneralContext()
     
     // State to track when slide is complete
     const [slideComplete, setLocalSlideComplete] = useState(false);
@@ -23,31 +26,36 @@ const SlidingText: React.FC<TextProps> = ({ text, setSlideComplete ,
     });
 
     // Transform scroll progress to x position, scale, and opacity
-    const x = useTransform(scrollYProgress, [0, 0.8], [!slideComplete ? 350 : 0, 0]); // Adjust as needed
-    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.55],!slideComplete ? [0, 0.0, 1] : [1,1,1]);
+    const x = useTransform(scrollYProgress, [0, isDesktop ? 0.8 : 0.6], [!reverse ? 350 : -350, 0]); // Adjust as needed
+    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.55], [0, 0.0, 1]);
 
     // Monitor changes in the `x` value and set `slideComplete` to true when x reaches 0
-    useEffect(() => {
-        const unsubscribe = x.on("change", (latestX) => {
-            if (latestX === 0 && !slideComplete) {
-                setLocalSlideComplete(true);
-                console.warn('slide complete')
-                if (setSlideComplete) setSlideComplete(true);
+    useMotionValueEvent(x,"change",(latest)=>{
+        if(latest === 0){
+            setLocalSlideComplete(true)
+            if(setSlideComplete){
+                console.warn('slide should initial')
+                setSlideComplete(true)
             }
-        });
-
-        // Cleanup subscription on unmount
-        return () => unsubscribe();
-    }, [x, slideComplete, setSlideComplete]);
+           
+        }
+        else {
+            setLocalSlideComplete(false)
+            if(setSlideComplete){
+                console.error('slide complete is set to false')
+                setSlideComplete(false)
+            }
+          
+        }
+    })
 
     return (
-        <div ref={targetRef}>
+       
             <motion.h2
-                className=" bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent 
-                text-3xl sm:text-4xl font-semibold text-center relative transition-colors"
-                style={
-                   !slideComplete ? { x, opacity }
-                : {}} // Apply the animated styles
+            ref={targetRef}
+                className="block font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-3xl md:text-5xl mb-8 md:pl-12 pb-4"
+                // style={!slideComplete ? { x, opacity } : {}} // Apply the animated styles
+                style={{ x, opacity }}
                 // Apply the gradient flow when slideComplete is true
                 whileInView={
                     slideComplete
@@ -63,22 +71,14 @@ const SlidingText: React.FC<TextProps> = ({ text, setSlideComplete ,
                                   duration: 3, // Control how fast the gradient oscillates
                               },
                           }
-                        : {}
+                        : {
+                            backgroundImage: 'linear-gradient(to bottom, #FFFFFF, #D1D5DB)'
+                        }
                 }
             >
                 {text}
             </motion.h2>
-            {subText && (
-                <motion.h3
-                id={`subtext-${subText}`}
-                className={`${slideComplete ? 
-                'opacity-1' : 'opacity-0'}
-                mt-4 text-center transition-opacity
-                text-xl sm:text-2xl`}>
-                    {subText}
-                </motion.h3>
-            )}
-        </div>
+       
     );
 };
 

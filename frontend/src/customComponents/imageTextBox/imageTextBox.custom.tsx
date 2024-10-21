@@ -1,11 +1,17 @@
 "use client"
 
 import React, { useEffect, useRef, useState } from "react";
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform,
+animate } from 'framer-motion';
 import Image from 'next/image';
 import Link from "next/link";
 import ImageDrop from "../utils/imageDrop";
 import ImageUploader from "../utils/imageDrop";
+import SlidingTextBox from '../../components/slidingText/slidingText'
+import logo from '../../../public/media/focusFlow-brain-nobg.webp'
+import { useGeneralContext } from "@/context/context";
+import { text } from "stream/consumers";
+import SlidingText from "../../components/slidingText/slidingText";
 
 interface Props {
   
@@ -13,17 +19,27 @@ interface Props {
 
 const ImageTextBoxUI: React.FC<Props> = () => {
     
-    const [alt, setAlt] = useState("");
+    // const [alt, setAlt] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [buttonText, setButtonText] = useState("");
-    const [destination, setDestination] = useState("");
+    // const [destination, setDestination] = useState("");
 
+    const {isDesktop} = useGeneralContext()
 
     const [reverse, setReverse] = useState(false);
     const [fadeIn, setFadeIn] = useState(true)
     const [hasTilt, setHasTilt] = useState(false)
     const [allSlide, setAllSlideIn] = useState(false)
+
+    const [slideComplete, setSlideComplete] = useState(false)
+
+    const [pTagInitialState,setPTagInitialState] = useState('')
+
+   
+
+
+    const [slidingHeader, setSlidingHeader] = useState(false)
 
     const ref = useRef(null);
     const inView = useInView(ref, {
@@ -44,13 +60,7 @@ const ImageTextBoxUI: React.FC<Props> = () => {
 
       const [selectedAnimation, setSelectedAnimation] = useState({});
 
-      const handleSelectTilt = () => {
-        setSelectedAnimation({
-          transform: `perspective(1000px) rotateX(${tilt.get()}deg)`
-        });
-        setFadeIn(false)
-        setHasTilt(true)
-      };
+      const MotionImage = motion(Image)
     
       const handleSelectSlide = () => {
         setSelectedAnimation({ x });
@@ -59,10 +69,13 @@ const ImageTextBoxUI: React.FC<Props> = () => {
         setHasTilt(false)
       };
 
+      const handleFadeIn = () => {
+        setFadeIn(true)
+        setSlidingHeader(false)
+      }
+
    
-      useEffect(()=>{
-        console.log('current animation',selectedAnimation)
-      },[selectedAnimation])
+ 
 
       useEffect(() => {
         
@@ -84,7 +97,59 @@ const ImageTextBoxUI: React.FC<Props> = () => {
       }, [tilt, ]);
       
       
+        const handleAnimation = async () => {
+            console.log('animation sequence starting')
+            const image = document.getElementById('image-text-box-img')
+            const p = document.getElementById('image-text-box-p')
+            const button = document.getElementById('image-text-box-button')
 
+            if(image && slidingHeader){
+                await animate(image,{x:0, opacity:1},
+                    {ease:'easeIn'})
+            }
+
+            if(p && slidingHeader){
+               
+                await animate(p,{y:0, opacity:1,},
+                    {ease:'easeIn'})
+            }
+
+          
+
+            if(button){
+                await animate(button,{opacity:1, x:0},
+                    {ease:'easeInOut'})
+            }
+
+            
+        }
+
+        const handleDeAnimation = async () => {
+            console.log('animation sequence starting')
+            const image = document.getElementById('image-text-box-img')
+            const p = document.getElementById('image-text-box-p')
+            const button = document.getElementById('image-text-box-button')
+
+            if(image && slidingHeader){
+                await animate(image,{x:-20, opacity:0},
+                    {ease:'easeIn'})
+            }
+
+            if(p && slidingHeader){
+               
+                await animate(p,{y:40, opacity:0,},
+                    {ease:'easeIn'})
+            }
+
+          
+
+            if(button){
+                await animate(button,{opacity:0, x:20, y:0},
+                    {ease:'easeInOut'})
+            }
+
+            
+        }
 
 
 
@@ -122,6 +187,31 @@ const ImageTextBoxUI: React.FC<Props> = () => {
         }
     };
 
+    const handleSlidingHeaderClick = () => {
+        setSlidingHeader(!slidingHeader)
+        setFadeIn(false)
+    }
+
+    useEffect(()=>{
+        if(slideComplete && slidingHeader){
+
+        
+        console.log('starting animations')
+        handleAnimation()
+        }
+
+        else{
+            handleDeAnimation()
+        }
+        
+    },[slideComplete])
+
+  
+
+ 
+
+    
+
     return (
         <>
        
@@ -129,19 +219,29 @@ const ImageTextBoxUI: React.FC<Props> = () => {
             <section className="flex flex-col items-center mb-8 w-[90vw] max-w-[1200px] mx-auto
             text-black">
               
-                <input
-                    className="mb-4 p-2 border w-full rounded-2xl"
-                    type="text"
-                    placeholder="Image Alt Text"
-                    value={alt}
-                    onChange={(e) => setAlt(e.target.value)}
-                />
+              <button
+                className="text-white bg-[#00bfff]
+                p-3 rounded-2xl mt-6"
+                onClick={handleSlidingHeaderClick}>
+                        Sliding header
+                </button>
+                
+                <button
+                className="text-white bg-[#00bfff]
+                p-3 rounded-2xl mt-6"
+                onClick={handleFadeIn}
+                    >
+                        Fade in
+                </button>
                 <input
                     className="mb-4 p-2 border w-full rounded-2xl"
                     type="text"
                     placeholder="Title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
+                />
+                <ImageDrop
+                className="mb-4 p-2 border w-full rounded-2xl"
                 />
                 <textarea
                     className="mb-4 p-2 border w-full rounded-2xl"
@@ -156,14 +256,8 @@ const ImageTextBoxUI: React.FC<Props> = () => {
                     value={buttonText}
                     onChange={(e) => setButtonText(e.target.value)}
                 />
-                <input
-                    className="mb-4 p-2 border w-full rounded-2xl"
-                    type="text"
-                    placeholder="Button Destination URL"
-                    value={destination}
-                    onChange={(e) => setDestination(e.target.value)}
-                />
-               <button className="hidden md:block text-red-200
+              
+               <button className="hidden md:block 
                bg-[#00bfff] p-3 rounded-2xl"
                onClick={()=>setReverse(!reverse)}>
                     
@@ -171,14 +265,15 @@ const ImageTextBoxUI: React.FC<Props> = () => {
                   Reverse Layout
                 </button>
                 <h3>Animations here</h3>
-                <button className="text-white bg-[#00bfff]
+                {/* <button className="text-white bg-[#00bfff]
                 p-3 rounded-2xl"
                 onClick={handleSelectTilt}
-                >Tilting feature</button>
+                >Tilting feature</button> */}
                   <button className="text-white bg-[#00bfff]
                 p-3 rounded-2xl"
                 onClick={handleSelectSlide}
                 >Slide-in feature</button>
+               
             </section>
 
             {/* Original content section */}
@@ -187,61 +282,108 @@ const ImageTextBoxUI: React.FC<Props> = () => {
                 ref={ref}
                 className={`relative flex flex-col w-screen border
                  items-center justify-center text-white md:px-6 max-w-[1200px]
+                 
                  mx-auto ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}`}
-                 style={ !hasTilt && allSlide ? {x} : hasTilt ? {
-                    transform:`perspective(1000px) rotateX(${tiltAngle}deg)`
-                 } : {} }
+                //  style={ !hasTilt && allSlide && !slidingHeader ? {x} 
+                //   : {} }
             >
-                <motion.h3
-                    variants={fadeIn ? textSlide(0) : {}}
-                    initial='initial'
-                    animate={inView ? 'animate' : 'initial'}
-                    className="font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-3xl mb-8 md:hidden"
-                >
-                     {title.trim() ? title : "Place title here"}
-                </motion.h3>
 
-               <ImageUploader
+                {!isDesktop && slidingHeader ? (
+                    <SlidingText
+                    text={title || "Place title here"}
+                    setSlideComplete={setSlideComplete}
+                    reverse={reverse}
+                    />                ) : (
+
+                        <motion.h3
+                        id='image-text-box-h3'
+                        variants={fadeIn && !slidingHeader ? textSlide(0) : {}}
+                        initial='initial'
+                        animate={inView ? 'animate' : 'initial'}
+                        className="font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-3xl mb-8 md:hidden"
+                    >
+                         {title.trim() ? title : "Place title here"}
+                    </motion.h3>
+                    )}
+               
+
+               {/* <ImageUploader
                animationVariants={!hasTilt ? imageSlide : {}}
                inView={inView}
                 className="mx-auto object-contain w-[90vw] h-[55vw] max-h-[567px] max-w-[668px] md:w-[45vw]
-                border"
+                border relative"
+                /> */}
+                <motion.img
+                id='image-text-box-img'
+                 variants={fadeIn && !slidingHeader ? imageSlide : {}}
+                 initial={fadeIn && !slidingHeader ? 'initial' : ''}
+                 animate={inView  && !slidingHeader? 'animate' : 'initial'}
+                src={logo.src}
+                alt='image'
+                className={`mx-auto object-contain w-[90vw] h-[55vw] max-h-[567px] max-w-[668px] md:w-[45vw]
+                ${slidingHeader && !slideComplete ? 'opacity-0' : 'opacity-1'}`}
+                width={600}
+                height={1300}
                 />
 
-                <section className="w-full md:w-[50vw] mb-auto">
-                    <motion.h3
-                        variants={fadeIn ? textSlide(0) : {}}
-                        initial='initial'
-                        animate={inView ? 'animate' : 'initial'}
-                        className="hidden md:block font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-5xl mb-8 pl-4 pb-4"
-                    >
-                       {title.trim() ? title : "Place title here"}
-                    </motion.h3>
+
+                <section className="w-full md:w-[50vw] mb-auto
+               
+                 ">
+                    {isDesktop && slidingHeader ? (
+                         <SlidingText
+                         text={title || "Place title here"}
+                         setSlideComplete={setSlideComplete}
+                         reverse={reverse}
+                         />   
+                    ) : (
+                        <motion.h3
+                        id='image-text-box-h3'
+                           variants={fadeIn ? textSlide(0) : {}}
+                           initial='initial'
+                           animate={inView ? 'animate' : 'initial'}
+                           className="hidden md:block font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-5xl mb-8 pl-4 pb-4"
+                       >
+                          {title.trim() ? title : "Place title here"}
+                       </motion.h3>
+                    )}
+                  
 
                     <motion.p
-                        variants={fadeIn ? textSlide(0.3) : {}}
-                        initial='initial'
-                        animate={inView ? 'animate' : 'initial'}
-                        className="px-4 mt-4 font-semibold sm:text-md md:text-lg"
+                     id='image-text-box-p'
+                     variants={fadeIn && !slidingHeader ? textSlide(0.4) : {}}
+                     initial={fadeIn && !slidingHeader ? 'initial' : ''}
+                     animate={inView && !slidingHeader? 'animate' :!slidingHeader ?  'initial' : ''}
+                        className={` px-4 md:pr-3 mt-4 font-semibold sm:text-md md:text-lg
+
+                        
+                       
+                        text-center md:text-left ml-0  `}
+                      
                     >
                         {description.trim() ? description : "Place description here"}
 
-                        { buttonText && (
+                       
                            <>
                                 <br />
                                 <motion.button
-                                    variants={fadeIn ? textSlide(0.8) : {}}
-                                    initial='initial'
+                                    id='image-text-box-button'
+                                    variants={fadeIn && !slidingHeader ? textSlide(0.8) : {}}
+                                    initial={fadeIn && !slidingHeader ?'initial' : ''}
                                     animate={inView ? 'animate' : 'initial'}
-                                    className="mt-4 p-3 rounded-2xl bg-[#00bfff] text-white hover:text-[#00bfff] hover:bg-white transition-colors"
+                                    className={`mt-4 p-2 rounded-2xl bg-[#00bfff] text-white hover:text-[#00bfff] hover:bg-white transition-colors
+                                    font-medium text-md
+                                    ${slidingHeader ? `translate-x-[${reverse ? '-4rem' : '4rem'}] opacity-0` : ''}`}
                                 >
                                    {buttonText.trim() ? buttonText : "Place buttonText here"}
                                 </motion.button>
                                 </>
-                        )}
+                        
                     </motion.p>
                 </section>
             </motion.section>
+            <div className="h-[40vh]"
+            />
         </>
     );
 }
