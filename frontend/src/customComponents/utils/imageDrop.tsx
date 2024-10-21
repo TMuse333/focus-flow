@@ -5,10 +5,13 @@ import logo from '../../../public/media/focusFlow-brain-nobg.webp'
 interface ImageUploaderProps {
   className: string;
   animationVariants?: Variants; // Framer Motion variants
-  inView?: boolean; // Boolean to trigger animation
+  inView?: boolean;
+  setSrc?:React.Dispatch<React.SetStateAction<string>> 
+  showImage?:boolean
 }
 
-const ImageUploader: React.FC<ImageUploaderProps> = ({ className, animationVariants, inView }) => {
+const ImageUploader: React.FC<ImageUploaderProps> = ({ className, animationVariants, inView,
+setSrc, showImage }) => {
   const [droppedImages, setDroppedImages] = useState<string[]>([]);
 
   // Prevent default behavior for dragover and drop events
@@ -19,33 +22,40 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ className, animationVaria
   // Handle the dropped image files
   const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
-
-    // Access the dropped files from the event
+  
     const files = event.dataTransfer.files;
     if (files.length === 1 && files[0].type.startsWith('image/')) {
       const reader = new FileReader();
       reader.onload = () => {
-        setDroppedImages([reader.result as string]); // Set only one image
+        const imageSrc = reader.result as string;
+        setDroppedImages([imageSrc]);
+        if (setSrc) {
+          setSrc(imageSrc); // Set the dropped image src to the provided setSrc function
+        }
       };
       reader.readAsDataURL(files[0]);
     }
   };
-
-  // Function to handle onChange event of the file input
+  
   const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files && files.length === 1 && files[0].type.startsWith('image/')) {
       const reader = new FileReader();
       reader.onload = () => {
-        setDroppedImages([reader.result as string]); // Set only one image
+        const imageSrc = reader.result as string;
+        setDroppedImages([imageSrc]);
+        if (setSrc) {
+          setSrc(imageSrc); // Set the selected image src to the provided setSrc function
+        }
       };
       reader.readAsDataURL(files[0]);
     }
   };
+  
 
   return (
     <>
-      {droppedImages.length > 0 ? (
+      {droppedImages.length > 0 && showImage ? (
         <motion.img
           src={droppedImages[0]}
           alt="Dropped Image"

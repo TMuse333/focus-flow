@@ -34,16 +34,16 @@ const ImageTextBoxUI: React.FC<Props> = () => {
 
     const [slideComplete, setSlideComplete] = useState(false)
 
-    const [pTagInitialState,setPTagInitialState] = useState('')
+    const [imageSrc,setImageSrc] = useState('')
 
-   
+   const [triggerOnce, setTriggerOnce] = useState(false)
 
 
     const [slidingHeader, setSlidingHeader] = useState(false)
 
     const ref = useRef(null);
     const inView = useInView(ref, {
-        once: false,
+        once: triggerOnce,
         amount: 0.8
     });
 
@@ -200,7 +200,7 @@ const ImageTextBoxUI: React.FC<Props> = () => {
         handleAnimation()
         }
 
-        else{
+        else if(!triggerOnce){
             handleDeAnimation()
         }
         
@@ -219,20 +219,7 @@ const ImageTextBoxUI: React.FC<Props> = () => {
             <section className="flex flex-col items-center mb-8 w-[90vw] max-w-[1200px] mx-auto
             text-black">
               
-              <button
-                className="text-white bg-[#00bfff]
-                p-3 rounded-2xl mt-6"
-                onClick={handleSlidingHeaderClick}>
-                        Sliding header
-                </button>
-                
-                <button
-                className="text-white bg-[#00bfff]
-                p-3 rounded-2xl mt-6"
-                onClick={handleFadeIn}
-                    >
-                        Fade in
-                </button>
+              
                 <input
                     className="mb-4 p-2 border w-full rounded-2xl"
                     type="text"
@@ -242,6 +229,7 @@ const ImageTextBoxUI: React.FC<Props> = () => {
                 />
                 <ImageDrop
                 className="mb-4 p-2 border w-full rounded-2xl"
+                setSrc={setImageSrc}
                 />
                 <textarea
                     className="mb-4 p-2 border w-full rounded-2xl"
@@ -256,23 +244,62 @@ const ImageTextBoxUI: React.FC<Props> = () => {
                     value={buttonText}
                     onChange={(e) => setButtonText(e.target.value)}
                 />
+
+
+<div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
+                justify-center items-center
+                px-4 mx-auto 
+                ">
+                
+  <button
+    className={`text-white 
+    p-3 rounded-2xl mt-6
+   mx-auto w-[200px] transition-colors
+   
+   `}
+   style={{
+    backgroundColor: slidingHeader === true ? '#4eaccc' : '#00bfff'
+   }}
+    onClick={handleSlidingHeaderClick}>
+      Sliding header
+  </button>
+                
+  <button
+    className="text-white  mx-auto bg-[#00bfff]
+    p-3 rounded-2xl mt-6  w-[200px]" 
+    onClick={handleFadeIn}
+    style={{
+        backgroundColor: fadeIn === true ? '#4eaccc' : '#00bfff'
+       }}
+       >
+      Fade in
+  </button>
+
+  <button
+    className="text-white  mx-auto bg-[#00bfff]
+    p-3 rounded-2xl mt-6  w-[200px]" 
+    onClick={() => setTriggerOnce(!triggerOnce)}>
+      Trigger once: {triggerOnce ? 'True' : 'False'}
+  </button>
               
-               <button className="hidden md:block 
-               bg-[#00bfff] p-3 rounded-2xl"
-               onClick={()=>setReverse(!reverse)}>
-                    
-                    
-                  Reverse Layout
-                </button>
+  <button
+    className="text-white  mx-auto bg-[#00bfff]
+    p-3 rounded-2xl mt-6  w-[200px]" 
+    onClick={handleSelectSlide}>
+      Slide-in feature
+  </button>
+
+  <button
+    className=" md:mr-2 bg-[#00bfff] text-white
+    p-3 rounded-2xl mt-6 mx-auto w-[200px]"  
+    onClick={() => setReverse(!reverse)}>
+      Reverse Layout: {reverse ? 'True' : 'False'}
+  </button>
+</div>
+
                 <h3>Animations here</h3>
-                {/* <button className="text-white bg-[#00bfff]
-                p-3 rounded-2xl"
-                onClick={handleSelectTilt}
-                >Tilting feature</button> */}
-                  <button className="text-white bg-[#00bfff]
-                p-3 rounded-2xl"
-                onClick={handleSelectSlide}
-                >Slide-in feature</button>
+               
+                
                
             </section>
 
@@ -318,7 +345,7 @@ const ImageTextBoxUI: React.FC<Props> = () => {
                  variants={fadeIn && !slidingHeader ? imageSlide : {}}
                  initial={fadeIn && !slidingHeader ? 'initial' : ''}
                  animate={inView  && !slidingHeader? 'animate' : 'initial'}
-                src={logo.src}
+                src={imageSrc !== '' ? imageSrc : logo.src}
                 alt='image'
                 className={`mx-auto object-contain w-[90vw] h-[55vw] max-h-[567px] max-w-[668px] md:w-[45vw]
                 ${slidingHeader && !slideComplete ? 'opacity-0' : 'opacity-1'}`}

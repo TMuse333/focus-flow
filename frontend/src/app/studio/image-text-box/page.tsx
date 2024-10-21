@@ -1,5 +1,6 @@
 "use client"
 
+import ImageTextBoxStudio from "@/app/studioPageComponents/imageTextBoxPage";
 import SlidingText from "@/components/slidingText/slidingText";
 import ImageTextBoxUI from "@/customComponents/imageTextBox/imageTextBox.custom";
 import React from "react";
@@ -11,10 +12,9 @@ return (
     <>
     <main className="w-screen">
 
-        <div className="h-[40vh]"
-        />
+      
      
-        <ImageTextBoxUI/>
+        <ImageTextBoxStudio/>
     </main>
     </>
 )
