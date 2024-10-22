@@ -217,8 +217,17 @@ const ImageTextBoxUI: React.FC<Props> = () => {
        
             {/* Section for user inputs */}
             <section className="flex flex-col items-center mb-8 w-[90vw] max-w-[1200px] mx-auto
-            text-black">
+            justify-center items-center
+            ">
               
+               <h3 className="font-semibold text-2xl
+            sm:text-3xl md:text-4xl text-white mb-2"
+            >
+                Content options
+            </h3>
+            <p className="mb-8">
+                You type what ever you want below in the inputs
+            </p>
               
                 <input
                     className="mb-4 p-2 border w-full rounded-2xl"
@@ -245,11 +254,26 @@ const ImageTextBoxUI: React.FC<Props> = () => {
                     onChange={(e) => setButtonText(e.target.value)}
                 />
 
+<section className="text-center mx-auto mt-4">
+
+        
+<h3 className="font-semibold text-2xl
+sm:text-3xl md:text-4xl text-white
+mb-2"
+>
+    Animation and layout options
+</h3>
+<p className="mb-8">
+    You type what ever you want below in the inputs,
+    scroll down to see your own image text box!
+</p>
+</section>
 
 <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
                 justify-center items-center
                 px-4 mx-auto 
                 ">
+           
                 
   <button
     className={`text-white 
@@ -297,7 +321,7 @@ const ImageTextBoxUI: React.FC<Props> = () => {
   </button>
 </div>
 
-                <h3>Animations here</h3>
+                
                
                 
                
@@ -307,10 +331,11 @@ const ImageTextBoxUI: React.FC<Props> = () => {
             <motion.section
                 
                 ref={ref}
-                className={`relative flex flex-col w-screen border
-                 items-center justify-center text-white md:px-6 max-w-[1200px]
+                className={`relative flex flex-col w-[90vw] 
+                 mx-auto items-center justify-center
+               text-white md:px-6 max-w-[1200px]
                  
-                 mx-auto ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}`}
+                ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}`}
                 //  style={ !hasTilt && allSlide && !slidingHeader ? {x} 
                 //   : {} }
             >
@@ -347,7 +372,7 @@ const ImageTextBoxUI: React.FC<Props> = () => {
                  animate={inView  && !slidingHeader? 'animate' : 'initial'}
                 src={imageSrc !== '' ? imageSrc : logo.src}
                 alt='image'
-                className={`mx-auto object-contain w-[90vw] h-[55vw] max-h-[567px] max-w-[668px] md:w-[45vw]
+                className={`mx-auto  object-contain w-[90vw] h-[55vw] max-h-[567px] max-w-[668px] md:w-[45vw]
                 ${slidingHeader && !slideComplete ? 'opacity-0' : 'opacity-1'}`}
                 width={600}
                 height={1300}
@@ -409,8 +434,7 @@ const ImageTextBoxUI: React.FC<Props> = () => {
                     </motion.p>
                 </section>
             </motion.section>
-            <div className="h-[40vh]"
-            />
+           
         </>
     );
 }

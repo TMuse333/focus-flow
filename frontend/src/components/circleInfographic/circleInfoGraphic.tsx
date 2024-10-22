@@ -230,8 +230,8 @@ interface Props {
 
         <SlidingText
                 text="Maximizing Business Impact Through Design"
-                subText="Uncover the Benefits of Our Designs for Your Brand’s Growth"
-                toggle={false}
+                // subText="Uncover the Benefits of Our Designs for Your Brand’s Growth"
+                // toggle={false}
                 />
 
 
