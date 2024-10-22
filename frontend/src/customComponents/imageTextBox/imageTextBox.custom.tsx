@@ -26,12 +26,10 @@ const ImageTextBoxUI: React.FC<Props> = () => {
     // const [destination, setDestination] = useState("");
 
     const {isDesktop} = useGeneralContext()
-
     const [reverse, setReverse] = useState(false);
     const [fadeIn, setFadeIn] = useState(true)
     const [hasTilt, setHasTilt] = useState(false)
     const [allSlide, setAllSlideIn] = useState(false)
-
     const [slideComplete, setSlideComplete] = useState(false)
 
     const [imageSrc,setImageSrc] = useState('')
@@ -153,25 +151,68 @@ const ImageTextBoxUI: React.FC<Props> = () => {
 
 
 
- 
+        // State for title animation
+const [titleVariants, setTitleVariants] = useState({
+    xOffset: reverse ? -40 : 40, // Can be dynamically adjusted
+    yOffset: 0,                  // Vertical offset
+    hasFade: true,                // Whether it fades in
+    duration: 0.4,                // Animation duration
+    delay: 0                      // Delay before the animation starts
+  });
+  
+  // State for description animation
+  const [descriptionVariants, setDescriptionVariants] = useState({
+    xOffset: reverse ? -40 : 40,  // Horizontal slide like the title
+    yOffset: 10,                  // Slight vertical offset for description
+    hasFade: true,                // Fades in
+    duration: 0.6,                // A bit longer duration for description
+    delay: 0.2                    // Slight delay before the animation starts
+  });
+  
+  // State for button animation
+  const [buttonVariants, setButtonVariants] = useState({
+    xOffset: reverse ? -60 : 60,  // More significant horizontal slide for button
+    yOffset: 0,                   // No vertical movement for button
+    hasFade: true,                // Fades in
+    duration: 0.5,                // Slightly longer animation for button
+    delay: 0.3                    // More delay to make the button appear last
+  });
+  
+
+       
+
     
 
-    const textSlide = (delay: number) => {
-        return {
-            initial: {
-                x: reverse ? -40 : 40,
-                opacity: 0
-            },
-            animate: {
-                x: 0,
-                opacity: 1,
-                transition: {
-                    delay: delay,
-                    duration: 0.4
-                }
-            }
+  const textSlide = ({
+    xOffset,
+    yOffset,
+    hasFade,
+    duration,
+    delay
+  }: {
+    xOffset: number;
+    yOffset: number;
+    hasFade: boolean;
+    duration: number;
+    delay: number;
+  }) => {
+    return {
+      initial: {
+        x: xOffset,
+        opacity: hasFade ? 0 : 1,
+        y: yOffset
+      },
+      animate: {
+        x: 0,
+        opacity: 1,
+        transition: {
+          delay: delay,
+          duration: duration
         }
+      }
     };
+  };
+  
 
     const imageSlide = {
         initial: {
@@ -216,9 +257,18 @@ const ImageTextBoxUI: React.FC<Props> = () => {
         <>
        
             {/* Section for user inputs */}
+           
+
+
+            
             <section className="flex flex-col items-center mb-8 w-[90vw] max-w-[1200px] mx-auto
             justify-center items-center
+           
             ">
+                 <div className="w-screen
+             bg-[#00bfff] bg-opacity-[0.2]
+             py-6 relative flex flex-col items-center
+             justify-center ">
               
                <h3 className="font-semibold text-2xl
             sm:text-3xl md:text-4xl text-white mb-2"
@@ -230,31 +280,37 @@ const ImageTextBoxUI: React.FC<Props> = () => {
             </p>
               
                 <input
-                    className="mb-4 p-2 border w-full rounded-2xl"
+                    className="mb-4 p-2 border w-full rounded-2xl
+                    max-w-[800px] mx-auto text-black"
                     type="text"
                     placeholder="Title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
                 <ImageDrop
-                className="mb-4 p-2 border w-full rounded-2xl"
+                className="mb-4 p-2 border w-full rounded-2xl
+                max-w-[800px] mx-auto"
                 setSrc={setImageSrc}
                 />
                 <textarea
-                    className="mb-4 p-2 border w-full rounded-2xl"
+                    className="mb-4 p-2 border w-full rounded-2xl
+                    max-w-[800px] mx-auto text-black"
                     placeholder="Description"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                 />
                 <input
-                    className="mb-4 p-2 border w-full rounded-2xl"
+                    className="mb-4 p-2 border w-full rounded-2xl
+                    max-w-[800px] mx-auto text-black"
                     type="text"
                     placeholder="Button Text"
                     value={buttonText}
                     onChange={(e) => setButtonText(e.target.value)}
                 />
-
-<section className="text-center mx-auto mt-4">
+                
+                </div>
+<section className="text-center mx-auto mt-4
+">
 
         
 <h3 className="font-semibold text-2xl
@@ -326,6 +382,7 @@ mb-2"
                 
                
             </section>
+            
 
             {/* Original content section */}
             <motion.section
@@ -349,7 +406,7 @@ mb-2"
 
                         <motion.h3
                         id='image-text-box-h3'
-                        variants={fadeIn && !slidingHeader ? textSlide(0) : {}}
+                        variants={fadeIn && !slidingHeader ? textSlide(titleVariants) : {}}
                         initial='initial'
                         animate={inView ? 'animate' : 'initial'}
                         className="font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-3xl mb-8 md:hidden"
@@ -391,7 +448,7 @@ mb-2"
                     ) : (
                         <motion.h3
                         id='image-text-box-h3'
-                           variants={fadeIn ? textSlide(0) : {}}
+                           variants={fadeIn ? textSlide({...titleVariants}) : {}}
                            initial='initial'
                            animate={inView ? 'animate' : 'initial'}
                            className="hidden md:block font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-5xl mb-8 pl-4 pb-4"
@@ -403,7 +460,7 @@ mb-2"
 
                     <motion.p
                      id='image-text-box-p'
-                     variants={fadeIn && !slidingHeader ? textSlide(0.4) : {}}
+                     variants={fadeIn && !slidingHeader ? textSlide({...descriptionVariants}) : {}}
                      initial={fadeIn && !slidingHeader ? 'initial' : ''}
                      animate={inView && !slidingHeader? 'animate' :!slidingHeader ?  'initial' : ''}
                         className={` px-4 md:pr-3 mt-4 font-semibold sm:text-md md:text-lg
@@ -420,7 +477,7 @@ mb-2"
                                 <br />
                                 <motion.button
                                     id='image-text-box-button'
-                                    variants={fadeIn && !slidingHeader ? textSlide(0.8) : {}}
+                                    variants={fadeIn && !slidingHeader ? textSlide({...buttonVariants}) : {}}
                                     initial={fadeIn && !slidingHeader ?'initial' : ''}
                                     animate={inView ? 'animate' : 'initial'}
                                     className={`mt-4 p-2 rounded-2xl bg-[#00bfff] text-white hover:text-[#00bfff] hover:bg-white transition-colors
@@ -434,6 +491,7 @@ mb-2"
                     </motion.p>
                 </section>
             </motion.section>
+        
            
         </>
     );

@@ -111,7 +111,13 @@ const Content: React.FC<ContentProps> = ({
           </MotionH2>
 
       {iframe ? (
-         iframe
+        <div className='relative rounded-xl w-[90vw] h-[55vw] md:w-[45vw] max-h-[367px] max-w-[568px]  mr-auto object-contain
+        ml-auto my-auto '
+        >
+
+       
+       {  iframe}
+         </div>
       ) : (
 <MotionImage
         className="rounded-xl w-[90vw] h-[55vw] max-h-[567px] max-w-[668px] ml-auto mr-auto object-contain

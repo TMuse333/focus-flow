@@ -6,11 +6,23 @@ import ImageTextBox from "@/components/imageTextBox/imageTextBox";
 import { useGeneralContext } from "@/context/context";
 import ImageTextBoxUI from "@/customComponents/imageTextBox/imageTextBox.custom";
 import React from "react";
+import logo from '../../../public/media/focusFlow-brain-nobg.webp'
 
 
 const ImageTextBoxStudio = () => {
 
 const {isMobile} = useGeneralContext()
+
+function scrollToId(id: string) {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth', // Smooth scroll
+        block: 'start',     // Aligns the element to the top
+      });
+    }
+  }
+  
 
     return (
         <>
@@ -34,12 +46,27 @@ const {isMobile} = useGeneralContext()
        <h1
        className="text-3xl mb-4 font-bold
        sm:text-4xl md:text-5xl">The image text box</h1>
-       <h2>One of the most fundamental ways you can 
+       <h2 className="sm:text-xl sm:text-2xl
+       max-w-[900px]">One of the most fundamental ways you can 
         display content on a website
        </h2>
+       <br/>
+        <button onClick={()=>scrollToId('image-text-box-interface')}
+        className="p-2 rounded-2xl
+       bg-[#00bfff] mt-4 hover:bg-white
+       hover:scale-[1.05]
+       hover:text-[#00bfff]
+       transition-all">
+        Customize your own
+       </button>
       
        </header>
-       <section className="pl-6">
+       <div className="w-screen bg-[#00bfff] bg-opacity-[0.2]
+       py-8">
+
+      
+       <section className="pl-6"
+>
 
    
 
@@ -51,11 +78,7 @@ const {isMobile} = useGeneralContext()
         and image side by side, or vertically stacked if on 
         mobile. It has lots of subtle variants in how the 
         text can be formatted and how the element can be animated.
-        <br/>
-        <button className="p-2 rounded-2xl
-       bg-[#00bfff] mt-4">
-        Customize your own
-       </button>
+       
        </p>
        <section className="rounded-md  bg-opacity-[0.4]
        p-3">
@@ -101,13 +124,12 @@ const {isMobile} = useGeneralContext()
        </ul>
        </section>
        </section>
+       </div>
        
        <section
        id="image-text-box-interface" 
        className="relative"
-        style={{
-            background: 'radial-gradient(circle, #00bfff -150%, rgba(0, 191, 255, 0%) 80%)'
-          }}>
+       >
         <h2 className="text-center text-3xl sm:text-4xl md:text-5xl 
         mb-4 font-semibold">How to use this</h2>
         <p className="mb-8">You can harnesse the power of creativity by making
@@ -124,23 +146,31 @@ const {isMobile} = useGeneralContext()
      
         <ImageTextBoxUI/>
 
-<section className="bg-gradient"
+<section className="pb-12"
 style={{
-    background: !isMobile ? 'linear-gradient(to bottom right, #00bfff, black)' : undefined,
+    background:  'linear-gradient(to bottom right, #00bfff, black)',
   }}>
 
 
         <Content
         mainTitle="Master the Image Text Box Component"
         description={['Learn how to create and customize image text boxes effortlessly with step-by-step guidance. Watch the tutorial to get started and create engaging layouts.']}
-        iframe={<iframe width="560" height="315" src="https://www.youtube.com/embed/ciN4fWPdKdo?si=v_LcitvY8eOliQma" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>}
-       
+        iframe={<iframe 
+            className="absolute h-full w-full
+        
+        "
+      
+            src="https://www.youtube.com/embed/ciN4fWPdKdo?si=v_LcitvY8eOliQma" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen
+           ></iframe>}
+      
         />
 
         <ImageTextBox
         title="Advanced Techniques "
         description={'Take your designs to the next level by exploring advanced features like animations and layout variations. Learn how to make your website more interactive and visually appealing.'}
-        iframe={<iframe width="560" height="315" src="https://www.youtube.com/embed/jG37sILjFIw?si=wDB3SyXe5uZ1aoco" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>}
+        iframe={<iframe 
+            className="absolute h-full w-full"
+             src="https://www.youtube.com/embed/jG37sILjFIw?si=wDB3SyXe5uZ1aoco" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>}
         
         reverse={true}
         />

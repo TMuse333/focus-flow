@@ -33,7 +33,7 @@ const ImageTextBox: React.FC<Props> = ({
   const ref = useRef(null);
   const inView = useInView(ref, { amount: 0.8, once: true });
   const [slideComplete, setSlideComplete] = useState(false);
-  const { isMobile } = useGeneralContext();
+  const { isDesktop } = useGeneralContext();
 
   const handleAnimation = async () => {
     const image = document.getElementById(`${title}-image`);
@@ -90,13 +90,11 @@ const ImageTextBox: React.FC<Props> = ({
   }
 
   return (
-    <section
-      ref={ref}
-      className={`w-screen flex flex-col md:flex-row items-center
-        justify-center text-white ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}
-        mb-14 max-w-[1200px] mx-auto`}
-    >
-      {isMobile &&  (
+
+<section className={`flex flex-col mb-[6rem]
+max-w-[1200px] mx-auto
+${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
+{!isDesktop &&  (
         <SlidingText
           text={title}
           setSlideComplete={setSlideComplete}
@@ -104,26 +102,25 @@ const ImageTextBox: React.FC<Props> = ({
         />
 
       )}
-
-        {src && alt ? (
+{src && alt ? (
 
 <MotionImage
         src={src}
         alt={alt}
         id={`${title}-image`}
-        className="mx-auto object-contain w-[90vw] h-[55vw] max-h-[567px] max-w-[668px] md:w-[45vw] opacity-0"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
+        className="mx-auto object-contain w-[90vw] h-[55vw] max-h-[467px] max-w-[568px] md:w-[45vw] opacity-0"
+       
       />
         ) : iframe ? (
-            iframe
+            <div  id={`${title}-image`}
+            className="relative rounded-xl w-[90vw] h-[55vw] md:w-[45vw] max-h-[367px] max-w-[568px]  mr-auto object-contain
+             ml-auto my-auto opacity-0">
+              {iframe}
+            </div>
         ) : null}
 
-      
-
-      <section className="w-full md:w-[50vw]">
-        {!isMobile && (
+<section className="w-full md:w-[50vw]">
+        {isDesktop && (
           <SlidingText
             text={title}
             setSlideComplete={setSlideComplete}
@@ -156,7 +153,10 @@ const ImageTextBox: React.FC<Props> = ({
           </Link>
         )}
       </section>
-    </section>
+      
+
+</section>
+
   );
 }
 
