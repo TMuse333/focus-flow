@@ -13,11 +13,245 @@ import { useGeneralContext } from "@/context/context";
 import { text } from "stream/consumers";
 import SlidingText from "../../components/slidingText/slidingText";
 
-interface Props {
-  
+
+
+
+// Define Props interface
+interface FadeInInterfaceProps {
+  titleVariants: AnimationVariants;
+  descriptionVariants: AnimationVariants;
+  buttonVariants: AnimationVariants;
+  setTitleVariants:React.Dispatch<React.SetStateAction<AnimationVariants>>;
+  setDescriptionVariants:React.Dispatch<React.SetStateAction<AnimationVariants>>;
+  setButtonVariants:React.Dispatch<React.SetStateAction<AnimationVariants>>;
 }
 
-const ImageTextBoxUI: React.FC<Props> = () => {
+interface AnimationVariants {
+  xOffset: number;
+  yOffset: number;
+  hasFade: boolean;
+  duration: number;
+  delay: number;
+
+}
+
+interface ElementOption {
+    name: string;
+    variants: AnimationVariants;
+    setVariants: React.Dispatch<React.SetStateAction<AnimationVariants>>;
+  }
+
+  const FadeInInterface: React.FC<FadeInInterfaceProps> = ({
+    titleVariants,
+    setTitleVariants,
+    descriptionVariants,
+    setDescriptionVariants,
+    buttonVariants,
+    setButtonVariants,
+  }) => {
+    const [selectedElementIndex, setSelectedElementIndex] = useState(0);
+  
+    const elementOptions: ElementOption[] = [
+      {
+        name: "Title",
+        variants: titleVariants, // Variants for title
+        setVariants: setTitleVariants, // Setter for title
+      },
+      {
+        name: "Description",
+        variants: descriptionVariants, // Variants for description
+        setVariants: setDescriptionVariants, // Setter for description
+      },
+      {
+        name: "Button",
+        variants: buttonVariants, // Variants for button
+        setVariants: setButtonVariants, // Setter for button
+      },
+    ];
+  
+    const [selectedElement, setSelectedElement] = useState<ElementOption>(
+      elementOptions[0]
+    );
+  
+    // Handle next/previous selection
+    const handleNext = () => {
+      setSelectedElementIndex((prev) => (prev + 1) % elementOptions.length);
+    };
+  
+    const handlePrevious = () => {
+      setSelectedElementIndex((prev) =>
+        prev === 0 ? elementOptions.length - 1 : prev - 1
+      );
+    };
+  
+    useEffect(() => {
+      const newSelectedElement = elementOptions[selectedElementIndex];
+      setSelectedElement(newSelectedElement);
+    }, [selectedElementIndex]);
+  
+    // Update functions using the correct setter
+    const updateXOffset = (delta: number) => {
+      selectedElement.setVariants((prev) => ({
+        ...prev,
+        xOffset: prev.xOffset + delta,
+      }));
+    };
+  
+    const updateYOffset = (delta: number) => {
+      selectedElement.setVariants((prev) => ({
+        ...prev,
+        yOffset: prev.yOffset + delta,
+      }));
+    };
+  
+    const toggleHasFade = () => {
+      selectedElement.setVariants((prev) => ({
+        ...prev,
+        hasFade: !prev.hasFade,
+      }));
+    };
+  
+    const updateDuration = (delta: number) => {
+      selectedElement.setVariants((prev) => ({
+        ...prev,
+        duration: Math.max(0, +(prev.duration + delta).toFixed(1)), // Ensure duration stays non-negative
+      }));
+    };
+  
+    const updateDelay = (delta: number) => {
+        selectedElement.setVariants((prev) => ({
+          ...prev,
+          delay: Math.max(0, +(prev.delay + delta).toFixed(1)), // Ensure delay stays non-negative and to 1 decimal place
+        }));
+      };
+      
+
+    useEffect(() => {
+        // Force re-render when selectedElement's variants are updated
+      console.log('use effect activated, variants changed')
+      console.log(selectedElement.variants)
+      }, [selectedElement.variants,]);
+  
+    return (
+      <section className="mx-auto relative w-[90vw] bg-[#00bfff] bg-opacity-[0.2] mt-4">
+        <section className="relative w-full text-center pt-4"> 
+          {/* Display current selection */}
+          <h3 className="font-semibold">Current element: {selectedElement.name}</h3>
+          {/* Toggle buttons */}
+          <div className="flex justify-center gap-4 mt-4">
+            <button
+              className="bg-[#00bfff] text-white px-4 py-2 rounded"
+              onClick={handlePrevious}
+            >
+              Previous
+            </button>
+            <button
+              className="bg-[#00bfff] text-white px-4 py-2 rounded"
+              onClick={handleNext}
+            >
+              Next
+            </button>
+          </div>
+
+         
+  
+          {/* Display current animation options with span controls */}
+          <ul className="mt-4 relative">
+  <li className="mb-2 pl-2 relative w-[75vw] flex justify-around">
+    <span className="mr-auto">X offset: {elementOptions[selectedElementIndex].variants.xOffset}</span>
+    <div>
+      <button
+        className="p-2 rounded-2xl text-white bg-blue-500"
+        onClick={() => updateXOffset(-10)}
+      >
+        -
+      </button>
+      <button
+        className="p-2 rounded-2xl text-white bg-blue-500 ml-2"
+        onClick={() => updateXOffset(10)}
+      >
+        +
+      </button>
+    </div>
+  </li>
+
+  <li className="mb-2 pl-2 relative w-[75vw] flex justify-around">
+    <span className="mr-auto">Y offset: {elementOptions[selectedElementIndex].variants.yOffset}</span>
+    <div>
+      <button
+        className="p-2 rounded-2xl text-white bg-blue-500"
+        onClick={() => updateYOffset(-10)}
+      >
+        -
+      </button>
+      <button
+        className="p-2 rounded-2xl text-white bg-blue-500 ml-2"
+        onClick={() => updateYOffset(10)}
+      >
+        +
+      </button>
+    </div>
+  </li>
+
+  <li className="mb-2 pl-2 relative w-[75vw] flex justify-around">
+    <span className="mr-auto">Has Fade? {elementOptions[selectedElementIndex].variants.hasFade ? "Yes" : "No"}</span>
+    <button
+      className="p-2 rounded-2xl text-white bg-blue-500"
+      onClick={toggleHasFade}
+    >
+      Toggle
+    </button>
+  </li>
+
+  <li className="mb-2 pl-2 relative w-[75vw] flex justify-around">
+    <span className="mr-auto">Duration: {elementOptions[selectedElementIndex].variants.duration}s</span>
+    <div>
+      <button
+        className="p-2 rounded-2xl text-white bg-blue-500"
+        onClick={() => updateDuration(-0.1)}
+      >
+        -
+      </button>
+      <button
+        className="p-2 rounded-2xl text-white bg-blue-500 ml-2"
+        onClick={() => updateDuration(0.1)}
+      >
+        +
+      </button>
+    </div>
+  </li>
+
+  <li className="mb-2 pl-2 relative w-[75vw] flex justify-around">
+    <span className="mr-auto">Delay: {elementOptions[selectedElementIndex].variants.delay}s</span>
+    <div>
+      <button
+        className="p-2 rounded-2xl text-white bg-blue-500"
+        onClick={() => updateDelay(-0.1)}
+      >
+        -
+      </button>
+      <button
+        className="p-2 rounded-2xl text-white bg-blue-500 ml-2"
+        onClick={() => updateDelay(0.1)}
+      >
+        +
+      </button>
+    </div>
+  </li>
+</ul>
+
+        </section>
+      </section>
+    );
+  };
+  
+  
+
+
+
+
+
+const ImageTextBoxUI = () => {
     
     // const [alt, setAlt] = useState("");
     const [title, setTitle] = useState("");
@@ -38,6 +272,9 @@ const ImageTextBoxUI: React.FC<Props> = () => {
 
 
     const [slidingHeader, setSlidingHeader] = useState(false)
+
+
+    const [currentOptionTitle, setCurrentOptionTitle] = useState('Fade in animation')
 
     const ref = useRef(null);
     const inView = useInView(ref, {
@@ -205,6 +442,7 @@ const [titleVariants, setTitleVariants] = useState({
       animate: {
         x: 0,
         opacity: 1,
+        y:0,
         transition: {
           delay: delay,
           duration: duration
@@ -249,6 +487,9 @@ const [titleVariants, setTitleVariants] = useState({
 
   
 
+    useEffect(()=>{
+        console.log('title variants',titleVariants)
+    },[titleVariants])
  
 
     
@@ -376,6 +617,15 @@ mb-2"
       Reverse Layout: {reverse ? 'True' : 'False'}
   </button>
 </div>
+
+<FadeInInterface
+titleVariants={titleVariants}
+setTitleVariants={setTitleVariants}
+descriptionVariants={descriptionVariants}
+setDescriptionVariants={setDescriptionVariants}
+buttonVariants={buttonVariants}
+setButtonVariants={setButtonVariants}
+/>
 
                 
                
