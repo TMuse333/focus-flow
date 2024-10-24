@@ -1,3 +1,5 @@
+"use client"
+
 import BigNav from "@/components/bigNav/navbar";
 import ComponentHero from "@/components/componentHero/componentHero";
 import Content from "@/components/content/content";
