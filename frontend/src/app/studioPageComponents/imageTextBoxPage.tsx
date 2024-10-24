@@ -30,6 +30,7 @@ function scrollToId(id: string) {
         excludedLink="Studio"/>
         <main className="mx-auto max-w-[1200px]
 w-screen flex flex-col justify-center
+overflow-x-hidden
         "
         >
 
