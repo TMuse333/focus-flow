@@ -785,7 +785,7 @@ slidingHeader={slidingHeader}
                  animate={inView  && !slidingHeader? 'animate' : 'initial'}
                 src={imageSrc !== '' ? imageSrc : logo.src}
                 alt='image'
-                className={`mx-auto  object-contain w-[90vw] h-[55vw] max-h-[567px] max-w-[668px] md:w-[45vw]
+                className={`mx-auto mb-auto object-contain w-[90vw] h-[80vh] max-h-[567px] max-w-[668px] md:w-[45vw]
                 ${slidingHeader && !slideComplete ? `opacity-0 translate-y-[${imageVariants.yOffset}px]
                 translate-x-[${imageVariants.xOffset}px]' `: 'opacity-1'}`}
                 width={600}
