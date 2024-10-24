@@ -53,7 +53,7 @@ reverse,activated }) => {
        
             <motion.h2
             ref={targetRef}
-                className="block font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-3xl md:text-5xl mb-8 md:pl-12 pb-4"
+                className="block text-center font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-3xl md:text-5xl mb-8 md:pl-12 pb-4"
                 // style={!slideComplete ? { x, opacity } : {}} // Apply the animated styles
                 style={{ x, opacity }}
                 // Apply the gradient flow when slideComplete is true

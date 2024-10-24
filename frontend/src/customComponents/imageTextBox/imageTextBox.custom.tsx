@@ -21,9 +21,11 @@ interface FadeInInterfaceProps {
   titleVariants: AnimationVariants;
   descriptionVariants: AnimationVariants;
   buttonVariants: AnimationVariants;
+  imageVariants: AnimationVariants
   setTitleVariants:React.Dispatch<React.SetStateAction<AnimationVariants>>;
   setDescriptionVariants:React.Dispatch<React.SetStateAction<AnimationVariants>>;
   setButtonVariants:React.Dispatch<React.SetStateAction<AnimationVariants>>;
+  setImageVariants:React.Dispatch<React.SetStateAction<AnimationVariants>>;
 }
 
 interface AnimationVariants {
@@ -45,9 +47,11 @@ interface ElementOption {
     titleVariants,
     setTitleVariants,
     descriptionVariants,
+    imageVariants,
     setDescriptionVariants,
     buttonVariants,
     setButtonVariants,
+    setImageVariants
   }) => {
     const [selectedElementIndex, setSelectedElementIndex] = useState(0);
   
@@ -67,6 +71,11 @@ interface ElementOption {
         variants: buttonVariants, // Variants for button
         setVariants: setButtonVariants, // Setter for button
       },
+      {
+        name:'Image',
+        variants: imageVariants,
+        setVariants:setImageVariants
+      }
     ];
   
     const [selectedElement, setSelectedElement] = useState<ElementOption>(
@@ -131,10 +140,42 @@ interface ElementOption {
       console.log('use effect activated, variants changed')
       console.log(selectedElement.variants)
       }, [selectedElement.variants,]);
+
+      const [instructionsClicked, setInstructionsClicked] = useState(false)
+
+
   
     return (
-      <section className="mx-auto relative w-[90vw] bg-[#00bfff] bg-opacity-[0.2] mt-4">
-        <section className="relative w-full text-center pt-4"> 
+      <section className="  relative w-[90vw] bg-[#00bfff] bg-opacity-[0.4] mt-4
+  
+      ">
+        <section className="flex mx-auto flex-col
+        justify-center">
+
+        
+     <h2 className="font-semibold text-2xl text-center">Fade in animations</h2>
+     <button 
+     onClick={()=>setInstructionsClicked(!instructionsClicked)}
+     className="mx-auto text-center">
+        Instructions
+     </button>
+     </section>
+     <ul className={`px-4 mt-4 absolute bg-[#00bfff] transition-opacity
+     ${instructionsClicked ? 'opacity-1 z-[4]' : 'opacity-0 z-0'}
+     `}>
+        <li className="mb-4">X offset = how far the element starts in x direction from the center</li>
+        <li className="mb-4">Y offset = how far the element starts in Y direction from the center</li>
+        <li className="mb-4">Has fade = A yes or no option signifying wether you want the element to start invisible
+        and gradually increase opacity</li>
+        <li className="mb-4">Duration: Controls the speed of the animation</li>
+        <li className="mb-4">Delay: Controls the delay of when the animation 
+        starts</li>
+        <li><button
+        onClick={()=>setInstructionsClicked(!instructionsClicked)}>
+            Hide instructions
+            </button></li>
+     </ul>
+        <section className={`relative w-full text-center pt-4`}> 
           {/* Display current selection */}
           <h3 className="font-semibold">Current element: {selectedElement.name}</h3>
           {/* Toggle buttons */}
@@ -245,7 +286,22 @@ interface ElementOption {
     );
   };
   
-  
+  const animationDescriptions = [
+    {
+        title:'SlidingHeader',
+        description:'This is the sliding header, it slides in place to activate the animations'
+    },
+    {
+        title:'Trigger once option',
+        description:'When this is set to true, the animations will only trigger once, other wise the eements will toggle on and off when they are out of the screens view'
+    },
+    {
+        title:'Reverse Layout',
+        description:'Applicable for the direction of the sliding header and the horizontal layout on the desktop version, when selected to true the '+
+         'sliding header will slide in from the left side of the screen '+
+         'and the image will be on the right side of the screen and vice versa if false'
+    }
+  ]
 
 
 
@@ -270,11 +326,13 @@ const ImageTextBoxUI = () => {
 
    const [triggerOnce, setTriggerOnce] = useState(false)
 
+   const [animationDescriptionIndex, setAnimationDescriptionIndex]
+   = useState<number | null>(null)
 
     const [slidingHeader, setSlidingHeader] = useState(false)
 
 
-    const [currentOptionTitle, setCurrentOptionTitle] = useState('Fade in animation')
+   
 
     const ref = useRef(null);
     const inView = useInView(ref, {
@@ -295,18 +353,12 @@ const ImageTextBoxUI = () => {
 
       const [selectedAnimation, setSelectedAnimation] = useState({});
 
-      const MotionImage = motion(Image)
-    
-      const handleSelectSlide = () => {
-        setSelectedAnimation({ x });
-        setFadeIn(false)
-        setAllSlideIn(true)
-        setHasTilt(false)
-      };
+     
 
       const handleFadeIn = () => {
         setFadeIn(true)
         setSlidingHeader(false)
+        setAnimationDescriptionIndex(null)
       }
 
    
@@ -414,6 +466,14 @@ const [titleVariants, setTitleVariants] = useState({
     duration: 0.5,                // Slightly longer animation for button
     delay: 0.3                    // More delay to make the button appear last
   });
+
+  const [imageVariants, setImageVariants] = useState({
+    xOffset: reverse ? 40 : -40,
+    yOffset:0,
+    hasFade:true,
+    duration:0.4,
+    delay:0
+  })
   
 
        
@@ -452,23 +512,11 @@ const [titleVariants, setTitleVariants] = useState({
   };
   
 
-    const imageSlide = {
-        initial: {
-            opacity: 0,
-            x: reverse ? 40 : -40
-        },
-        animate: {
-            opacity: 1,
-            x: 0,
-            transition: {
-                duration: 0.4
-            }
-        }
-    };
 
     const handleSlidingHeaderClick = () => {
         setSlidingHeader(!slidingHeader)
         setFadeIn(false)
+        setAnimationDescriptionIndex(0)
     }
 
     useEffect(()=>{
@@ -487,9 +535,7 @@ const [titleVariants, setTitleVariants] = useState({
 
   
 
-    useEffect(()=>{
-        console.log('title variants',titleVariants)
-    },[titleVariants])
+ 
  
 
     
@@ -516,12 +562,12 @@ const [titleVariants, setTitleVariants] = useState({
             >
                 Content options
             </h3>
-            <p className="mb-8">
+            <p className="mb-8 text-center">
                 You type what ever you want below in the inputs
             </p>
               
                 <input
-                    className="mb-4 p-2 border w-full rounded-2xl
+                    className="mb-4 p-2 border w-[90%] rounded-2xl
                     max-w-[800px] mx-auto text-black"
                     type="text"
                     placeholder="Title"
@@ -529,19 +575,20 @@ const [titleVariants, setTitleVariants] = useState({
                     onChange={(e) => setTitle(e.target.value)}
                 />
                 <ImageDrop
-                className="mb-4 p-2 border w-full rounded-2xl
+                className="mb-4 p-2 border w-[90%]
+                text-white rounded-2xl
                 max-w-[800px] mx-auto"
                 setSrc={setImageSrc}
                 />
                 <textarea
-                    className="mb-4 p-2 border w-full rounded-2xl
+                    className="mb-4 p-2 border w-[90%] rounded-2xl
                     max-w-[800px] mx-auto text-black"
                     placeholder="Description"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                 />
                 <input
-                    className="mb-4 p-2 border w-full rounded-2xl
+                    className="mb-4 p-2 border w-[90%] rounded-2xl
                     max-w-[800px] mx-auto text-black"
                     type="text"
                     placeholder="Button Text"
@@ -575,49 +622,74 @@ mb-2"
   <button
     className={`text-white 
     p-3 rounded-2xl mt-6
+   
    mx-auto w-[200px] transition-colors
+   bg-[#00bfff]
+   hover:bg-white hover:text-[#00bfff]
    
    `}
-   style={{
-    backgroundColor: slidingHeader === true ? '#4eaccc' : '#00bfff'
-   }}
+//    style={{
+//     backgroundColor: slidingHeader === true ? '#4eaccc' : '#00bfff'
+//    }}
     onClick={handleSlidingHeaderClick}>
       Sliding header
   </button>
                 
   <button
     className="text-white  mx-auto bg-[#00bfff]
+    hover:bg-white hover:text-[#00bfff]
     p-3 rounded-2xl mt-6  w-[200px]" 
     onClick={handleFadeIn}
-    style={{
-        backgroundColor: fadeIn === true ? '#4eaccc' : '#00bfff'
-       }}
+    // style={{
+    //     backgroundColor: fadeIn === true ? '#4eaccc' : '#00bfff'
+    //    }}
        >
       Fade in
   </button>
 
   <button
     className="text-white  mx-auto bg-[#00bfff]
+    hover:bg-white hover:text-[#00bfff]
     p-3 rounded-2xl mt-6  w-[200px]" 
-    onClick={() => setTriggerOnce(!triggerOnce)}>
+    onClick={() => {
+        setTriggerOnce(!triggerOnce)
+    setAnimationDescriptionIndex(1)}
+    }>
       Trigger once: {triggerOnce ? 'True' : 'False'}
   </button>
               
-  <button
+  {/* <button
     className="text-white  mx-auto bg-[#00bfff]
     p-3 rounded-2xl mt-6  w-[200px]" 
     onClick={handleSelectSlide}>
       Slide-in feature
-  </button>
+  </button> */}
 
   <button
-    className=" md:mr-2 bg-[#00bfff] text-white
-    p-3 rounded-2xl mt-6 mx-auto w-[200px]"  
-    onClick={() => setReverse(!reverse)}>
+    className=" md:mr-2 
+    bg-[#00bfff]
+   hover:bg-white hover:text-[#00bfff] text-white
+    p-3 rounded-2xl mt-6 mx-auto w-[200px]
+    "  
+    onClick={() => {setAnimationDescriptionIndex(2)
+        setReverse(!reverse)}}>
       Reverse Layout: {reverse ? 'True' : 'False'}
   </button>
 </div>
 
+
+
+
+{animationDescriptionIndex !== null ? (
+    <>
+     <section className="w-[90vw] bg-[#00bfff] mt-3 pb-4
+     bg-opacity-[0.4]">
+         <h3 className="font-semibold
+         text-center text-2xl my-5">{animationDescriptions[animationDescriptionIndex].title}</h3>
+         <p className="px-2" >{animationDescriptions[animationDescriptionIndex].description}</p>
+         </section>
+         </>
+) : (
 <FadeInInterface
 titleVariants={titleVariants}
 setTitleVariants={setTitleVariants}
@@ -625,7 +697,17 @@ descriptionVariants={descriptionVariants}
 setDescriptionVariants={setDescriptionVariants}
 buttonVariants={buttonVariants}
 setButtonVariants={setButtonVariants}
+setImageVariants={setImageVariants}
+imageVariants={imageVariants}
 />
+)}
+
+
+
+
+   
+
+
 
                 
                
@@ -641,6 +723,7 @@ setButtonVariants={setButtonVariants}
                 className={`relative flex flex-col w-[90vw] 
                  mx-auto items-center justify-center
                text-white md:px-6 max-w-[1200px]
+               mb-12
                  
                 ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}`}
                 //  style={ !hasTilt && allSlide && !slidingHeader ? {x} 
@@ -674,7 +757,7 @@ setButtonVariants={setButtonVariants}
                 /> */}
                 <motion.img
                 id='image-text-box-img'
-                 variants={fadeIn && !slidingHeader ? imageSlide : {}}
+                 variants={fadeIn && !slidingHeader ? textSlide({...imageVariants}) : {}}
                  initial={fadeIn && !slidingHeader ? 'initial' : ''}
                  animate={inView  && !slidingHeader? 'animate' : 'initial'}
                 src={imageSrc !== '' ? imageSrc : logo.src}

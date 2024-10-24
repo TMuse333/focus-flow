@@ -28,12 +28,12 @@ function scrollToId(id: string) {
         <>
         <BigNav
         excludedLink="/"/>
-        <main className="absolute
-        top-[10%] left-0 px-4 w-screen overflow-x-hidden
+        <main className="mx-auto max-w-[1200px]
+w-screen flex flex-col justify-center
         "
         >
 
-<section className="mx-auto max-w-[1200px]"
+<section className=""
 // style={{
 //     background:`radial-gradient(10% 30% at 50% 20%, #00bfff 0%, black)`
 // }}
@@ -132,7 +132,7 @@ function scrollToId(id: string) {
        >
         <h2 className="text-center text-3xl sm:text-4xl md:text-5xl 
         mb-4 font-semibold">How to use this</h2>
-        <p className="mb-8">You can harnesse the power of creativity by making
+        <p className="mb-8 px-6">You can harnesse the power of creativity by making
             customizing the text, image and animations of the image text box
             ! Simply type in what you want your content to
             be about an you can optionally add a picture if you'd
@@ -146,7 +146,7 @@ function scrollToId(id: string) {
      
         <ImageTextBoxUI/>
 
-<section className="pb-12"
+<section className="pb-12 w-screen "
 style={{
     background:  'linear-gradient(to bottom right, #00bfff, black)',
   }}>
