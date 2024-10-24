@@ -616,6 +616,7 @@ const [titleVariants, setTitleVariants] = useState({
                 text-white rounded-2xl
                 max-w-[800px] mx-auto"
                 setSrc={setImageSrc}
+                src={imageSrc}
                 />
                 <textarea
                     className="mb-4 p-2 border w-[90%] rounded-2xl

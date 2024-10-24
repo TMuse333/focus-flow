@@ -7,11 +7,12 @@ interface ImageUploaderProps {
   animationVariants?: Variants; // Framer Motion variants
   inView?: boolean;
   setSrc?:React.Dispatch<React.SetStateAction<string>> 
-  showImage?:boolean
+  showImage?:boolean,
+  src:string
 }
 
 const ImageUploader: React.FC<ImageUploaderProps> = ({ className, animationVariants, inView,
-setSrc, showImage }) => {
+setSrc, showImage, src }) => {
   const [droppedImages, setDroppedImages] = useState<string[]>([]);
 
   // Prevent default behavior for dragover and drop events
@@ -66,34 +67,45 @@ setSrc, showImage }) => {
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
         />
-      ) : (
-        <>
+      ) : droppedImages.length > 0 && !showImage ? (
+        <div className={className} onDragOver={handleDragOver} onDrop={handleDrop}>
           <motion.div
-          
-            className={className}
-            onDragOver={handleDragOver}
-            onDrop={handleDrop}
+            className="flex items-center space-x-2"
             variants={animationVariants}
             initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
-           
-            
           >
-            
-          
-
-            <p className="text-white">Drag and drop an image here or click to upload</p>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleFileInputChange}
-              className="mt-2 p-1"
+            {/* Small image preview */}
+            <img
+              src={droppedImages[0]}
+              alt="Dropped Image Preview"
+              className="w-[20px] h-[20px] object-cover"
             />
+            {/* Display the file name */}
+            <p className="text-white">{droppedImages[0].split('/').pop()}</p>
           </motion.div>
-        </>
+        </div>
+      ) : (
+        <motion.div
+          className={className}
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+          variants={animationVariants}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+        >
+          <p className="text-white">Drag and drop an image here or click to upload</p>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileInputChange}
+            className="mt-2 p-1"
+          />
+        </motion.div>
       )}
     </>
   );
+  
 };
 
 export default ImageUploader;
