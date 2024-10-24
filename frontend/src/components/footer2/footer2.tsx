@@ -46,7 +46,7 @@ const Footer2:React.FC<props> = ({
     },
    
     {
-      name: 'Bulding Your Success',
+      name: 'Building Your Success',
       secondaryLinks: [
         {
             name:'Top tier custom web design',
@@ -78,6 +78,16 @@ const Footer2:React.FC<props> = ({
         },
       ],
     },
+    {
+      name:"Get creative & learn",
+      listSubMenu:false,
+      secondaryLinks: [
+        {
+          name:'The Image-Text Box',
+          destination:'/studio/image-text-box'
+        }
+      ]
+    }
     // {
     //   name: 'Canvas',
     //   secondaryLinks: [
@@ -113,6 +123,8 @@ const Footer2:React.FC<props> = ({
             mb-8">Site map</h6>
             
 <ul className="flex flex-col mx-auto
+sm:grid sm:grid-cols-2
+md:grid-cols-3 lg:grid-cols-4
             md:flex-row w-full mt-6
               w-full
             justify-center items-center
@@ -126,7 +138,7 @@ const Footer2:React.FC<props> = ({
    
     <p className="text-lg sm:text-xl md:text-2xl
      mb-4 font-semibold
-     mx-auto">
+     mx-auto text-center">
       {link.name}</p>
     {link.secondaryLinks && link.secondaryLinks.map((link2, innerIndex) => (
       <Link href={link2.destination}>

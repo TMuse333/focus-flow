@@ -3,15 +3,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView, useScroll, useTransform,
 animate } from 'framer-motion';
-import Image from 'next/image';
-import Link from "next/link";
+
 import ImageDrop from "../utils/imageDrop";
-import ImageUploader from "../utils/imageDrop";
-import SlidingTextBox from '../../components/slidingText/slidingText'
+
 import logo from '../../../public/media/focusFlow-brain-nobg.webp'
 import { useGeneralContext } from "@/context/context";
-import { text } from "stream/consumers";
+
 import SlidingText from "../../components/slidingText/slidingText";
+
 
 
 
@@ -26,6 +25,8 @@ interface FadeInInterfaceProps {
   setDescriptionVariants:React.Dispatch<React.SetStateAction<AnimationVariants>>;
   setButtonVariants:React.Dispatch<React.SetStateAction<AnimationVariants>>;
   setImageVariants:React.Dispatch<React.SetStateAction<AnimationVariants>>;
+  slidingHeader:boolean,
+
 }
 
 interface AnimationVariants {
@@ -51,7 +52,9 @@ interface ElementOption {
     setDescriptionVariants,
     buttonVariants,
     setButtonVariants,
-    setImageVariants
+    setImageVariants,
+    slidingHeader,
+    
   }) => {
     const [selectedElementIndex, setSelectedElementIndex] = useState(0);
   
@@ -79,19 +82,32 @@ interface ElementOption {
     ];
   
     const [selectedElement, setSelectedElement] = useState<ElementOption>(
-      elementOptions[0]
+      elementOptions[3]
     );
   
     // Handle next/previous selection
     const handleNext = () => {
-      setSelectedElementIndex((prev) => (prev + 1) % elementOptions.length);
-    };
-  
-    const handlePrevious = () => {
-      setSelectedElementIndex((prev) =>
-        prev === 0 ? elementOptions.length - 1 : prev - 1
-      );
-    };
+        setSelectedElementIndex((prev) => {
+          const newIndex = (prev + 1) % elementOptions.length;
+          // If slidingHeader is true, skip over index 0
+          if (slidingHeader && newIndex === 0) {
+            return 1; // Skip index 0
+          }
+          return newIndex;
+        });
+      };
+      
+      const handlePrevious = () => {
+        setSelectedElementIndex((prev) => {
+          const newIndex = prev === 0 ? elementOptions.length - 1 : prev - 1;
+          // If slidingHeader is true, skip over index 0
+          if (slidingHeader && newIndex === 0) {
+            return elementOptions.length - 1; // Skip index 0
+          }
+          return newIndex;
+        });
+      };
+      
   
     useEffect(() => {
       const newSelectedElement = elementOptions[selectedElementIndex];
@@ -112,13 +128,9 @@ interface ElementOption {
         yOffset: prev.yOffset + delta,
       }));
     };
+
+   
   
-    const toggleHasFade = () => {
-      selectedElement.setVariants((prev) => ({
-        ...prev,
-        hasFade: !prev.hasFade,
-      }));
-    };
   
     const updateDuration = (delta: number) => {
       selectedElement.setVariants((prev) => ({
@@ -146,9 +158,14 @@ interface ElementOption {
 
   
     return (
-      <section className="  relative w-[90vw] bg-[#00bfff] bg-opacity-[0.4] mt-4
-  
-      ">
+      <section className="  relative w-[90vw]
+     
+       mt-4
+      rounded-2xl z-10
+      "
+      style={{
+        background: `linear-gradient(to bottom, #015d87, #0070aa)`,
+      }}>
         <section className="flex mx-auto flex-col
         justify-center">
 
@@ -163,7 +180,7 @@ interface ElementOption {
      <ul className={`px-4 mt-4 absolute bg-[#00bfff] transition-opacity
      ${instructionsClicked ? 'opacity-1 z-[4]' : 'opacity-0 z-0'}
      `}>
-        <li className="mb-4">X offset = how far the element starts in x direction from the center</li>
+        <li className="mb-4 ">X offset = how far the element starts in x direction from the center</li>
         <li className="mb-4">Y offset = how far the element starts in Y direction from the center</li>
         <li className="mb-4">Has fade = A yes or no option signifying wether you want the element to start invisible
         and gradually increase opacity</li>
@@ -175,7 +192,8 @@ interface ElementOption {
             Hide instructions
             </button></li>
      </ul>
-        <section className={`relative w-full text-center pt-4`}> 
+        <section className={`relative w-full text-center pt-4
+        rounded-2xl`}> 
           {/* Display current selection */}
           <h3 className="font-semibold">Current element: {selectedElement.name}</h3>
           {/* Toggle buttons */}
@@ -197,8 +215,9 @@ interface ElementOption {
          
   
           {/* Display current animation options with span controls */}
-          <ul className="mt-4 relative">
-  <li className="mb-2 pl-2 relative w-[75vw] flex justify-around">
+          <ul className="mt-4 relative w-[75vw]
+          max-w-[400px] mx-auto ">
+  <li className="mb-2 pl-2 relative  flex justify-around">
     <span className="mr-auto">X offset: {elementOptions[selectedElementIndex].variants.xOffset}</span>
     <div>
       <button
@@ -216,7 +235,7 @@ interface ElementOption {
     </div>
   </li>
 
-  <li className="mb-2 pl-2 relative w-[75vw] flex justify-around">
+  <li className="mb-2 pl-2 relative flex justify-around">
     <span className="mr-auto">Y offset: {elementOptions[selectedElementIndex].variants.yOffset}</span>
     <div>
       <button
@@ -234,17 +253,9 @@ interface ElementOption {
     </div>
   </li>
 
-  <li className="mb-2 pl-2 relative w-[75vw] flex justify-around">
-    <span className="mr-auto">Has Fade? {elementOptions[selectedElementIndex].variants.hasFade ? "Yes" : "No"}</span>
-    <button
-      className="p-2 rounded-2xl text-white bg-blue-500"
-      onClick={toggleHasFade}
-    >
-      Toggle
-    </button>
-  </li>
 
-  <li className="mb-2 pl-2 relative w-[75vw] flex justify-around">
+
+  <li className="mb-2 pl-2 relative flex justify-around">
     <span className="mr-auto">Duration: {elementOptions[selectedElementIndex].variants.duration}s</span>
     <div>
       <button
@@ -262,7 +273,7 @@ interface ElementOption {
     </div>
   </li>
 
-  <li className="mb-2 pl-2 relative w-[75vw] flex justify-around">
+  <li className="mb-2 pl-2 relative  flex justify-around">
     <span className="mr-auto">Delay: {elementOptions[selectedElementIndex].variants.delay}s</span>
     <div>
       <button
@@ -286,22 +297,7 @@ interface ElementOption {
     );
   };
   
-  const animationDescriptions = [
-    {
-        title:'SlidingHeader',
-        description:'This is the sliding header, it slides in place to activate the animations'
-    },
-    {
-        title:'Trigger once option',
-        description:'When this is set to true, the animations will only trigger once, other wise the eements will toggle on and off when they are out of the screens view'
-    },
-    {
-        title:'Reverse Layout',
-        description:'Applicable for the direction of the sliding header and the horizontal layout on the desktop version, when selected to true the '+
-         'sliding header will slide in from the left side of the screen '+
-         'and the image will be on the right side of the screen and vice versa if false'
-    }
-  ]
+
 
 
 
@@ -391,21 +387,28 @@ const ImageTextBoxUI = () => {
             const button = document.getElementById('image-text-box-button')
 
             if(image && slidingHeader){
-                await animate(image,{x:0, opacity:1},
-                    {ease:'easeIn'})
+                await animate(image,{x:0,y:0, opacity:1},
+                    {ease:'easeIn',
+                duration:imageVariants.duration,
+            delay:imageVariants.delay},)
             }
 
             if(p && slidingHeader){
                
-                await animate(p,{y:0, opacity:1,},
-                    {ease:'easeIn'})
+                await animate(p,{y:0, x:0, opacity:1,},
+                    {ease:'easeIn',
+                    duration:descriptionVariants.duration,
+                    delay:descriptionVariants.delay})
             }
 
           
 
             if(button){
-                await animate(button,{opacity:1, x:0},
-                    {ease:'easeInOut'})
+                await animate(button,{opacity:1, x:0,
+                y:0},
+                    {ease:'easeInOut',
+                    duration:buttonVariants.duration,
+                    delay:buttonVariants.delay})
             }
 
             
@@ -417,23 +420,54 @@ const ImageTextBoxUI = () => {
             const p = document.getElementById('image-text-box-p')
             const button = document.getElementById('image-text-box-button')
 
-            if(image && slidingHeader){
-                await animate(image,{x:-20, opacity:0},
-                    {ease:'easeIn'})
-            }
-
-            if(p && slidingHeader){
-               
-                await animate(p,{y:40, opacity:0,},
-                    {ease:'easeIn'})
-            }
-
-          
-
-            if(button){
-                await animate(button,{opacity:0, x:20, y:0},
-                    {ease:'easeInOut'})
-            }
+            if (image && slidingHeader) {
+                await animate(
+                  image,
+                  { 
+                    x: imageVariants.xOffset,
+                    y: imageVariants.yOffset, 
+                    opacity: 0 
+                  },
+                  {
+                    ease: 'easeIn',
+                    delay: imageVariants.delay,
+                    duration: imageVariants.duration,
+                  }
+                );
+              }
+              
+              if (p && slidingHeader) {
+                await animate(
+                  p,
+                  { 
+                    x: descriptionVariants.xOffset,
+                    y: descriptionVariants.yOffset, 
+                    opacity: 0 
+                  },
+                  {
+                    ease: 'easeIn',
+                    delay: descriptionVariants.delay,
+                    duration: descriptionVariants.duration,
+                  }
+                );
+              }
+              
+              if (button) {
+                await animate(
+                  button,
+                  { 
+                    x: buttonVariants.xOffset, 
+                    y: buttonVariants.yOffset, 
+                    opacity: 0 
+                  },
+                  {
+                    ease: 'easeInOut',
+                    delay: buttonVariants.delay,
+                    duration: buttonVariants.duration,
+                  }
+                );
+              }
+              
 
             
         }
@@ -553,9 +587,12 @@ const [titleVariants, setTitleVariants] = useState({
            
             ">
                  <div className="w-screen
-             bg-[#00bfff] bg-opacity-[0.2]
+            
              py-6 relative flex flex-col items-center
-             justify-center ">
+             justify-center "
+             style={{
+                background: `linear-gradient(to bottom, #015d87, #0070aa)`,
+              }}>
               
                <h3 className="font-semibold text-2xl
             sm:text-3xl md:text-4xl text-white mb-2"
@@ -614,82 +651,78 @@ mb-2"
 </section>
 
 <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
-                justify-center items-center
-                px-4 mx-auto 
-                ">
-           
-                
-  <button
-    className={`text-white 
-    p-3 rounded-2xl mt-6
-   
-   mx-auto w-[200px] transition-colors
-   bg-[#00bfff]
-   hover:bg-white hover:text-[#00bfff]
-   
-   `}
-//    style={{
-//     backgroundColor: slidingHeader === true ? '#4eaccc' : '#00bfff'
-//    }}
-    onClick={handleSlidingHeaderClick}>
-      Sliding header
-  </button>
-                
-  <button
-    className="text-white  mx-auto bg-[#00bfff]
-    hover:bg-white hover:text-[#00bfff]
-    p-3 rounded-2xl mt-6  w-[200px]" 
-    onClick={handleFadeIn}
-    // style={{
-    //     backgroundColor: fadeIn === true ? '#4eaccc' : '#00bfff'
-    //    }}
-       >
-      Fade in
-  </button>
+  justify-center items-center px-4 mx-auto">
+  
+  {/* Sliding Header Button with Description */}
+  <span className="flex flex-col">
+    <button
+      className="text-white mx-auto bg-[#00bfff] 
+      hover:bg-white hover:text-[#00bfff] 
+      p-3 rounded-2xl mt-6 w-[200px]"
+      onClick={handleSlidingHeaderClick}>
+        Sliding Header
+    </button>
+    <p className="mt-4 max-w-[400px]  mx-auto">
+      This button triggers animations based on the sliding header.
+      The sliding header animation will be activated when the header enters the viewport.
+    </p>
+  </span>
 
-  <button
-    className="text-white  mx-auto bg-[#00bfff]
-    hover:bg-white hover:text-[#00bfff]
-    p-3 rounded-2xl mt-6  w-[200px]" 
-    onClick={() => {
-        setTriggerOnce(!triggerOnce)
-    setAnimationDescriptionIndex(1)}
-    }>
-      Trigger once: {triggerOnce ? 'True' : 'False'}
-  </button>
-              
-  {/* <button
-    className="text-white  mx-auto bg-[#00bfff]
-    p-3 rounded-2xl mt-6  w-[200px]" 
-    onClick={handleSelectSlide}>
-      Slide-in feature
-  </button> */}
+  {/* Fade In Button with Description */}
+  <span className="flex flex-col">
+    <button
+      className="text-white mx-auto bg-[#00bfff] 
+      hover:bg-white hover:text-[#00bfff] 
+      p-3 rounded-2xl mt-6 w-[200px]"
+      onClick={handleFadeIn}>
+        Fade In
+    </button>
+    <p className="mt-4 max-w-[400px] mx-auto">
+      This button makes the elements fade in when they come into the viewport.
+      The animation will smoothly increase the opacity of the element.
+    </p>
+  </span>
 
-  <button
-    className=" md:mr-2 
-    bg-[#00bfff]
-   hover:bg-white hover:text-[#00bfff] text-white
-    p-3 rounded-2xl mt-6 mx-auto w-[200px]
-    "  
-    onClick={() => {setAnimationDescriptionIndex(2)
-        setReverse(!reverse)}}>
-      Reverse Layout: {reverse ? 'True' : 'False'}
-  </button>
+  {/* Trigger Once Button with Description */}
+  <span className="flex flex-col">
+    <button
+      className="text-white mx-auto bg-[#00bfff]
+      hover:bg-white hover:text-[#00bfff]
+      p-3 rounded-2xl mt-6 w-[200px]" 
+      onClick={() => {
+        setTriggerOnce(!triggerOnce);
+        setAnimationDescriptionIndex(1);
+      }}>
+        Trigger Once: {triggerOnce ? 'True' : 'False'}
+    </button>
+    <p className="mt-4 md:pr-8">
+      If true, the animations will only trigger once. 
+      Otherwise, they will toggle on and off as the container moves off the screen.
+    </p>
+  </span>
+
+  {/* Reverse Layout Button with Description */}
+  <span className="flex flex-col">
+    <button
+      className="md:mr-2 bg-[#00bfff]
+      hover:bg-white hover:text-[#00bfff] text-white
+      p-3 rounded-2xl mt-6 mx-auto w-[200px]"  
+      onClick={() => {
+        setAnimationDescriptionIndex(2);
+        setReverse(!reverse);
+      }}>
+        Reverse Layout: {reverse ? 'True' : 'False'}
+    </button>
+    <p className="mt-5 md:pl-8">
+      If true, the sliding header will slide in from the left side 
+      and the image will be on the right side on desktop versions.
+    </p>
+  </span>
+  
 </div>
 
 
 
-
-{animationDescriptionIndex !== null ? (
-    <>
-     <section className="w-[90vw] bg-[#00bfff] mt-3 pb-4
-     bg-opacity-[0.4]">
-         <h3 className="font-semibold
-         text-center text-2xl my-5">{animationDescriptions[animationDescriptionIndex].title}</h3>
-         <p className="px-2" >{animationDescriptions[animationDescriptionIndex].description}</p>
-         </section>
-         </>
-) : (
 <FadeInInterface
 titleVariants={titleVariants}
 setTitleVariants={setTitleVariants}
@@ -699,20 +732,10 @@ buttonVariants={buttonVariants}
 setButtonVariants={setButtonVariants}
 setImageVariants={setImageVariants}
 imageVariants={imageVariants}
+slidingHeader={slidingHeader}
 />
-)}
-
-
-
 
    
-
-
-
-                
-               
-                
-               
             </section>
             
 
@@ -763,7 +786,8 @@ imageVariants={imageVariants}
                 src={imageSrc !== '' ? imageSrc : logo.src}
                 alt='image'
                 className={`mx-auto  object-contain w-[90vw] h-[55vw] max-h-[567px] max-w-[668px] md:w-[45vw]
-                ${slidingHeader && !slideComplete ? 'opacity-0' : 'opacity-1'}`}
+                ${slidingHeader && !slideComplete ? `opacity-0 translate-y-[${imageVariants.yOffset}px]
+                translate-x-[${imageVariants.xOffset}px]' `: 'opacity-1'}`}
                 width={600}
                 height={1300}
                 />
@@ -796,11 +820,10 @@ imageVariants={imageVariants}
                      variants={fadeIn && !slidingHeader ? textSlide({...descriptionVariants}) : {}}
                      initial={fadeIn && !slidingHeader ? 'initial' : ''}
                      animate={inView && !slidingHeader? 'animate' :!slidingHeader ?  'initial' : ''}
-                        className={` px-4 md:pr-3 mt-4 font-semibold sm:text-md md:text-lg
-
-                        
-                       
-                        text-center md:text-left ml-0  `}
+                        className={` px-4  mt-4 font-semibold sm:text-md md:text-lg
+                        text-center md:text-left ${slidingHeader ? 'pl-8' : ''}
+                        ${slidingHeader && !slideComplete ? `translate-y-[${descriptionVariants.yOffset}px]
+                        translate-x-[${descriptionVariants.xOffset}px]` : ''} `}
                       
                     >
                         {description.trim() ? description : "Place description here"}
@@ -815,7 +838,8 @@ imageVariants={imageVariants}
                                     animate={inView ? 'animate' : 'initial'}
                                     className={`mt-4 p-2 rounded-2xl bg-[#00bfff] text-white hover:text-[#00bfff] hover:bg-white transition-colors
                                     font-medium text-md
-                                    ${slidingHeader ? `translate-x-[${reverse ? '-4rem' : '4rem'}] opacity-0` : ''}`}
+                                    ${slidingHeader ? `translate-x-[${buttonVariants.xOffset}px] opacity-0
+                                    translate-y-[${buttonVariants.yOffset}px]` : ''}`}
                                 >
                                    {buttonText.trim() ? buttonText : "Place buttonText here"}
                                 </motion.button>

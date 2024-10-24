@@ -27,7 +27,7 @@ function scrollToId(id: string) {
     return (
         <>
         <BigNav
-        excludedLink="/"/>
+        excludedLink="Studio"/>
         <main className="mx-auto max-w-[1200px]
 w-screen flex flex-col justify-center
         "
@@ -42,7 +42,7 @@ w-screen flex flex-col justify-center
 
 <header className="my-12 text-left pl-6 ">
 
-
+<p className="text-sm sm:text-md mb-2">FocusFlow Software presents</p>
        <h1
        className="text-3xl mb-4 font-bold
        sm:text-4xl md:text-5xl">The image text box</h1>
@@ -61,8 +61,13 @@ w-screen flex flex-col justify-center
        </button>
       
        </header>
-       <div className="w-screen bg-[#00bfff] bg-opacity-[0.2]
-       py-8">
+       <div className="w-screen 
+       py-8 "
+       style={{
+        background: `linear-gradient(to bottom, #015d87, #0070aa)`,
+    
+      }}
+      >
 
       
        <section className="pl-6"
@@ -80,7 +85,9 @@ w-screen flex flex-col justify-center
         text can be formatted and how the element can be animated.
        
        </p>
-       <section className="rounded-md  bg-opacity-[0.4]
+       <section 
+       
+       className="rounded-md  
        p-3">
 
    
@@ -178,7 +185,7 @@ style={{
         
 
             <Footer2
-            excludedLink="/"
+            excludedLink={`Get creative & learn`}
             />
        
            </main>

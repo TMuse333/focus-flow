@@ -82,7 +82,7 @@ setSrc, showImage }) => {
             
           
 
-            <p className="text-gray-500">Drag and drop an image here or click to upload</p>
+            <p className="text-white">Drag and drop an image here or click to upload</p>
             <input
               type="file"
               accept="image/*"

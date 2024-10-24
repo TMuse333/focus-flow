@@ -94,7 +94,7 @@ interface SubMenuProps {
     {
       name: 'Studio',
      
-      destination:'/studio/',
+      destination:'/studio/image-text-box',
       listSubMenu: false,
     },
     
