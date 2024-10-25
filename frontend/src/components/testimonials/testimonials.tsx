@@ -5,7 +5,7 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import dynamic from 'next/dynamic';
 import { HTMLMotionProps } from 'framer-motion';
 
-const SlidingText = dynamic(() => import('../slidingText/slidingText'))
+const SlidingText = dynamic(() => import('../slidingText/slidingText.prod'))
 
 const MotionP = dynamic(() => import('framer-motion').then(mod => mod.motion.p), {
   ssr: false,

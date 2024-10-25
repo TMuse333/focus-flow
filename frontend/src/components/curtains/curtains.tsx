@@ -302,8 +302,8 @@ const Curtain = () => {
      }}
      
    >
-     <h2 className='my-auto px-6 bg-[#00bfff]
-     rounded-2xl py-4 w-[80%] mx-auto sm:text-4xl font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-3xl'>Planning to create a great project is 
+     <h2 className='my-auto px-6 bg-[#00bfff] pt-[8rem]
+     rounded-2xl py-4 w-[80%] mx-auto sm:text-3xl font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-3xl'>Planning to create a great project is 
      <span className='font-bold'>
        &nbsp; essential&nbsp;</span>
        as it give a clear goal and steps to achieve that

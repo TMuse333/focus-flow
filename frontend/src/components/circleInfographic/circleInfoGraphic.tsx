@@ -17,8 +17,8 @@ import coder from '../../../public/media/focused-coder.webp'
 import thinker from '../../../public/media/quantum-thinker.webp'
 import sprinter from '../../../public/media/gemeni-sprinter.webp'
 import communicator from '../../../public/media/gemeni-communicator.webp'
-import AppearingGradient from "../appearingGradient/appearingGradient";
-import SlidingText from "../slidingText/slidingText";
+
+import SlidingText from "../slidingText/slidingText.prod";
 
 interface CircleProps {
 
@@ -230,7 +230,7 @@ interface Props {
 
         <SlidingText
                 text="Maximizing Business Impact Through Design"
-                // subText="Uncover the Benefits of Our Designs for Your Brand’s Growth"
+                subText="Uncover the Benefits of Our Designs for Your Brand’s Growth"
                 // toggle={false}
                 />
 
