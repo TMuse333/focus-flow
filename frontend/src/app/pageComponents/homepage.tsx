@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Metadata } from "next";
 
 import { useGeneralContext } from "@/context/context";
-import { herobannerData, RestaurantContentBoxData, planningContent, monthlyContent, scrollableImages, focusFlowPromo } from "@/data/data";
+import { herobannerData, RestaurantContentBoxData, planningContent, monthlyContent, scrollableImages } from "@/data/data";
 
 import BigNav from "@/components/bigNav/navbar";  // Load navbar immediately
 import Herobanner from "@/components/herobanner/herobanner"; // Load hero banner immediately

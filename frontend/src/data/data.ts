@@ -897,6 +897,75 @@ export const restaurantPackageDetails = [
       description: "View sales trends and key metrics for growth."
     }
   ];
+
+
+  export const artCarousel = [
+    {
+        url:'/media/art/aboubacar-5-fire.webp',
+        title:'Aboubacar 5'
+    },
+    {
+        url:'/media/art/quantum-striker-pose.webp',
+        title:'The Quantum Striker'
+    },
+    {   
+        url:'/media/art/aboubacar-6.webp',
+        title:'Aboubacar 6'
+    },
+    {
+        url:'/media/q3-visuals-logo-2.webp',
+        title:'The Quantum Meditator'
+    },
+    {
+        url:'/media/art/aboubacar4.webp',
+        title:'Aboubacar 4'
+    },
+    {
+        url:'/media/art/goku-vegeta-and-broly.webp',
+        title:'Legendary super saiyans'
+    },
+    {
+        url:'/media/art/itachi-susanoo.webp',
+        title:'Itachi susanoo'
+    },
+    {
+        url:'/media/art/majin-vegeta.webp',
+        title:'Majin Vegeta'
+    },
+    {
+        url:'/media/art/kakashi-susanoo.webp',
+        title:'Kashi and a susanoo'
+    },
+    {
+        url:'/media/art/tobi.webp',
+        title:'Tobi'
+    },
+    {
+        url:'/media/art/sasuke.webp',
+        title:'Sasuke'
+    },
+    {
+        url:'/media/art/obito-10TJ.webp',
+        title:'Obito as ten tails'
+    },
+    {
+        url:'/media/art/vegeta-battle.webp',
+        title:'Vegeta in battle'
+    },
+    {
+        url:'/media/art/goku-vs-jiren.webp',
+        title:'Goku vs jiren'
+    },
+    {
+        url:'/media/art/k20-goku-vegeta.webp',
+        title:'Goku and Vegeta'
+    },
+    {
+        url:'/media/art/majin-buu.webp',
+        title:'majin buu'
+    }
+];
+
   
   
 

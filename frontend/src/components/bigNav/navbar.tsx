@@ -97,6 +97,28 @@ interface SubMenuProps {
       destination:'/studio/image-text-box',
       listSubMenu: false,
     },
+    {
+      name: 'Extras',
+      secondaryLinks: [
+        {
+            name:'Artwork',
+            destination:'/art'
+        },
+        // {
+        //   name: 'Your long term success',
+        //   destination: '/long-term-success',
+        // },
+        // {
+        //   name: 'Our Process',
+        //   destination: '/process',
+        // },
+      ],
+      listSubMenu: true,
+      subMenuSrc:twoHand.src,
+      subMenuAlt:'Two hands',
+      desktopDescription:'Learn here why we give you the highest probability of success with our professional services'
+    },
+
     
     // {
     //   name: 'Canvas',
