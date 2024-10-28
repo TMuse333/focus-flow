@@ -5,6 +5,7 @@ import GridCarousel from "@/components/gridCarousel/gridCarousel"
 import React from "react"
 import { artCarousel } from "@/data/data"
 import ThreeJSWave from "@/components/threeJsWave/threejsWave"
+import Footer2 from "@/components/footer2/footer2"
 
 
 const ArtPage = () => {
@@ -13,7 +14,7 @@ const ArtPage = () => {
     return (
         <>
         <BigNav
-        excludedLink="Art"
+        excludedLink="Extras"
         />
         <main className="mt-4 md:mt-[4rem]">
 
@@ -22,6 +23,10 @@ const ArtPage = () => {
         <GridCarousel
         isGrid={true}
         images={artCarousel}
+        />
+
+        <Footer2
+        excludedLink="Extras"
         />
 
         </main>

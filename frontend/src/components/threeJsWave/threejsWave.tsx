@@ -42,11 +42,12 @@ const ThreeJSWave: React.FC = () => {
     };
 
     const waves = [
-      createWaveMesh(1, 0.03, 0x00bfff, 200, 5), // Sky Blue
+      createWaveMesh(1.5, 0.03, 0x00bfff, 200, 500), // Sky Blue
       createWaveMesh(0.8, 0.06, 0x4b0082, 200, 5), // Indigo
       createWaveMesh(0.6, 0.09, 0x8a2be2, 200, 5), // Blue Violet
-      createWaveMesh(0.9, 0.045, 0x483d8b, 200, 5), // Dark Slate Blue
-      createWaveMesh(0.75, 0.07, 0x0000ff, 200, 5), // Blue
+      createWaveMesh(0.9, 0.145, 0x483d8b, 200, 5), // Dark Slate Blue
+      createWaveMesh(0.75, 0.07, 0x0000ff, 200, 5),
+      createWaveMesh(0.55, 0.07, 0x000fff, 200, 5), // Blue
     ];
 
     waves.forEach(wave => scene.add(wave.line));
@@ -111,11 +112,18 @@ whileInView={{
         duration: 3, // Control how fast the gradient oscillates
     },
 }}
-className='text-3xl font-semibold
+className='text-3xl sm:text-4xl
+md:text-5xl font-semibold
 bg-clip-text text-transparent
 bg-gradient-to-b from-white to-gray-300 pl-4'>Artist at heart</motion.h1>
-<p className='px-4 mt-4'>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem molestias obcaecati animi tenetur dicta. Vel tempore explicabo odio unde ducimus!
+<p className='px-4 mt-4 sm:text-lg'>
+   Long before websites, we have always been into animation
+   and creating digital content.
+   <br/><br/> This skill was honed through
+   many digital drawings of anime characters and has greatly
+   helped with our design process and delivering
+   high quality websites that stand out. Scroll down to checkout
+   some of our art work!
 </p>
 </div>
 <Image
@@ -124,7 +132,7 @@ alt='THe focusFlow logo'
 width={600}
 height={1300}
 className='w-[40vw] object-contain relative 
-z-[3] max-w-[445px] max-h-[445px]'
+z-[3] max-w-[445px] max-h-[445px] hidden md:block'
 
 />
 </section>

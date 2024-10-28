@@ -102,7 +102,7 @@ interface SubMenuProps {
       secondaryLinks: [
         {
             name:'Artwork',
-            destination:'/art'
+            destination:'/artist'
         },
         // {
         //   name: 'Your long term success',

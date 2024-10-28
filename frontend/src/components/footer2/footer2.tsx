@@ -87,17 +87,17 @@ const Footer2:React.FC<props> = ({
           destination:'/studio/image-text-box'
         }
       ]
-    }
-    // {
-    //   name: 'Canvas',
-    //   secondaryLinks: [
-    //     {
-    //         name:'Canvas',
-    //         destination:'/canvas'
-    //     }
-    //   ],
-    //   listSubMenu: false,
-    // },
+    },
+    {
+      name: 'Extras',
+      secondaryLinks: [
+        {
+            name:'Artwork',
+            destination:'/artist'
+        }
+      ],
+      listSubMenu: false,
+    },
   ];
 
       const filteredLinks = bigLinks
