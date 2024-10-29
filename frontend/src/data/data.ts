@@ -966,6 +966,22 @@ export const restaurantPackageDetails = [
     }
 ];
 
+// frontend/public/media/focusFlow-brain-nobg.webp
+export const electricContainerData = [
+    {
+        src:'/media/focusFlow-brain-nobg.webp',
+        alt:'Image of the FocusFlow brain',
+        title:'Real one',
+        description:'Hustlers dont stop they keep going'
+
+    },
+    {
+        src:'/media/focusFlow-brain-nobg.webp',
+        alt:'Image of the FocusFlow brain',
+        title:'Become dangerous',
+        description:'Dangerous but pure'
+    }
+]
   
   
 

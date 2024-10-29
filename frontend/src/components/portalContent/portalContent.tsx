@@ -48,6 +48,8 @@ const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
     }
   },[inView, animationComplete])
 
+  const initialTranslate = isDesktop ? '-23rem' : '15rem'
+
   
 
 
@@ -93,24 +95,21 @@ const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
 
   if(headerElement){
     await animate(headerElement, {opacity:1})
+  }
 
- 
+  if (portalElement) {
+    await animate(portalElement, { width: '0px' },
+    {delay:1.5});
 
   
-  }
+
+}
 
     // Animate the articles sequentially
    
 
     // Animate the portal to zero width after a delay
-    setTimeout(async () => {
-        if (portalElement) {
-            await animate(portalElement, { width: '0px' });
-
-          
-
-        }
-    }, 1500);
+   
 
     setAnimationComplete(true);
 };
@@ -206,10 +205,11 @@ ${!isDesktop ? 'order-0' : 'order-1'}`}
         
 width={300}
 height={1300}
-style={{
-    transform:`translateY(${isDesktop ? '-23rem' : '-15rem'}) scale(0.2)`,
+style={
+  !animationComplete ? {
+    transform:`translateY(${initialTranslate}) scale(0.2)`,
     transition: 'transform 1s 1s ease-in',
-}} 
+} : {}} 
  />
 
 

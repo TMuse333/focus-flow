@@ -121,7 +121,7 @@ const Content: React.FC<ContentProps> = ({
       ) : (
 <MotionImage
         className="rounded-xl w-[90vw] h-[55vw] max-h-[567px] max-w-[668px] ml-auto mr-auto object-contain
-        my-auto"
+        my-auto md:w-[48vw]"
         variants={hasAnimation ? imageVariants : {}}
         initial={hasAnimation ? 'initial' : ''}
         animate={shouldAnimate ? 'animate' : ''}
