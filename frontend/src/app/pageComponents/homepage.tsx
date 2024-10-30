@@ -5,8 +5,7 @@ import { useState } from "react";
 import { Metadata } from "next";
 
 import { useGeneralContext } from "@/context/context";
-import { herobannerData, RestaurantContentBoxData, planningContent, monthlyContent, scrollableImages,
-electricContainerData } from "@/data/data";
+import { herobannerData, RestaurantContentBoxData, planningContent, monthlyContent, scrollableImages, } from "@/data/data";
 
 import BigNav from "@/components/bigNav/navbar";  // Load navbar immediately
 import Herobanner from "@/components/herobanner/herobanner"; // Load hero banner immediately
@@ -53,7 +52,7 @@ const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
 });
 
 import infinity from '../../../public/media/infinity.webp';
-import ElectricContainer from "@/canvasComponents/electricContainer/electricContainer";
+// import ElectricContainer from "@/canvasComponents/electricContainer/electricContainer";
 
 
 
