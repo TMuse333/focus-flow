@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import twoHand from '../../../public/media/gemeni-two-hand-stick.webp'
 import brain from '../../../public/media/focusFlow-brain-nobg.webp';
-import { link } from "fs";
+
 interface NavbarProps {
     excludedLink:string
 }
@@ -116,7 +116,7 @@ interface SubMenuProps {
       listSubMenu: true,
       subMenuSrc:twoHand.src,
       subMenuAlt:'Two hands',
-      desktopDescription:'Learn here why we give you the highest probability of success with our professional services'
+      desktopDescription:'Some extra content that you will find interesting'
     },
 
     

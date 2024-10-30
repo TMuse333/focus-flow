@@ -925,7 +925,7 @@ export const restaurantPackageDetails = [
         title:'Legendary super saiyans'
     },
     {
-        url:'/media/art/itachi-susanoo.webp',
+        url:'/media/art/itachi-Susanoo.webp',
         title:'Itachi susanoo'
     },
     {
