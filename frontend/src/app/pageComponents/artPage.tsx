@@ -20,6 +20,8 @@ const ArtPage = () => {
 
             <ThreeJSWave/>
 
+            
+
         <GridCarousel
         isGrid={true}
         images={artCarousel}

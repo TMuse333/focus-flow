@@ -48,7 +48,7 @@ const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
     }
   },[inView, animationComplete])
 
-  const initialTranslate = isDesktop ? '-23rem' : '15rem'
+  const initialTranslate = isDesktop ? '-23rem' : '-15rem'
 
   
 
