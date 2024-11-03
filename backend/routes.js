@@ -1,6 +1,6 @@
 // routes/analytics.js
 import express from 'express';
-import { savePageTimeAnalytics } from '../controllers/analyticsController.js';
+
 
 const router = express.Router();
 

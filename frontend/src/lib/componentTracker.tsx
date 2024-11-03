@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios'
+import { useRouter } from 'next/router';
 
 // Define the ComponentTime interface
 interface ComponentTime {
@@ -22,6 +23,9 @@ interface UseComponentTimeTrackerReturn {
   totalTimeInView: number;
   entryTime: number | null;
 }
+
+
+
 
 // The custom hook for tracking component time
 export const useComponentTimeTracker = ({
@@ -66,7 +70,7 @@ export const useComponentTimeTracker = ({
 
 
       console.log(`Time spent in ${id}:`, timeSpent, "ms");
- 
+
      
 
 
@@ -78,36 +82,9 @@ export const useComponentTimeTracker = ({
 
   const [hasMounted, setHasMounted] = useState(false);
 
-  // const handleBeforeUnload = async (event: BeforeUnloadEvent) => {
-  //   // Call your backend logic here
-  //   await sendDataToBackend();
 
-  //   // Prevent default behavior to show confirmation dialog
-  //   event.preventDefault();
-  //   event.returnValue = '';
-  // };
 
-  // const sendDataToBackend = async () => {
-  //   try {
-  //     // Example API call to send data
-  //     await axios.post('/api/send-data', {
-  //       // Include any data you need to send
-  //       message: 'User is leaving the page',
-  //     });
-  //   } catch (error) {
-  //     console.error('Failed to send data:', error);
-  //   }
-  // };
 
-  // useEffect(() => {
-  //   // Add the beforeunload event listener
-  //   window.addEventListener('beforeunload', handleBeforeUnload);
-
-  //   // Clean up the event listener
-  //   return () => {
-  //     window.removeEventListener('beforeunload', handleBeforeUnload);
-  //   };
-  // }, []);
 
   return { totalTimeInView, entryTime };
 };

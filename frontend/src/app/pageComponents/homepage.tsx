@@ -13,6 +13,8 @@ import Herobanner from "@/components/herobanner/herobanner"; // Load hero banner
 import { SelectedCarouselImage } from "@/components/scrollableCarousel/scrollableCarousel";
 import ParticlesComponent from "@/components/particles/particles"; // Particles are essential, load without lazy
 
+
+
 export const metadata: Metadata = {
   title: "Web Design Halifax | Focusflow Software",
   description: "Focusflow Software offers top-tier web design Halifax services, combining cutting-edge technology and creativity to deliver custom websites quickly.",
@@ -53,13 +55,11 @@ const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
 });
 
 import infinity from '../../../public/media/infinity.webp';
-<<<<<<< Updated upstream
-import ElectricContainer from "@/canvasComponents/electricContainer/electricContainer";
-=======
 import { useInView } from "framer-motion";
 import { useComponentTimeTracker } from "@/lib/componentTracker";
+import { useRouterContext } from "@/lib/useRouterContext";
+import { useRouter } from "next/router";
 // import ElectricContainer from "@/canvasComponents/electricContainer/electricContainer";
->>>>>>> Stashed changes
 
 
 
@@ -67,6 +67,7 @@ import { useComponentTimeTracker } from "@/lib/componentTracker";
 
 
 const Homepage = () => {
+
 
   const { selectedCarouselImageIndex } = useGeneralContext();
 
@@ -77,6 +78,9 @@ const Homepage = () => {
   })
 
   const {totalHomePageTime, setTotalHomePageTime} = useGeneralContext()
+
+
+useRouterContext({totalPageTime:totalHomePageTime})
 
   const {totalTimeInView} = useComponentTimeTracker({
     inView,
@@ -89,9 +93,13 @@ const Homepage = () => {
   
     )
 
-    useEffect(()=>{
-      console.log('page time',totalHomePageTime)
-    },[totalHomePageTime])
+    // useEffect(()=>{
+    //   console.log('page time',totalHomePageTime)
+    //   localStorage.setItem('totalHomePageTime', JSON.stringify(totalHomePageTime));
+    // },[totalHomePageTime])
+
+
+
   
 
   return (

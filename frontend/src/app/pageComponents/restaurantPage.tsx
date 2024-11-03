@@ -24,6 +24,8 @@ const AppearingSquare = dynamic(()=>import("@/components/appearingSquare/appeari
 
 import Head from "next/head";
 import dynamic from "next/dynamic";
+import { useRouterContext } from "@/lib/useRouterContext";
+import { useGeneralContext } from "@/context/context";
 
 
 
@@ -32,7 +34,10 @@ import dynamic from "next/dynamic";
 
 
 const RestaurantPage = () => {
+
+    const {totalRestaurantTime} = useGeneralContext()
   
+    useRouterContext({totalPageTime:totalRestaurantTime})
 
     return (
         <>

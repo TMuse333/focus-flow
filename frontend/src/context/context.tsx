@@ -37,6 +37,8 @@ interface GeneralContextType {
   setIsDesktop:React.Dispatch<React.SetStateAction<boolean>>;
   totalHomePageTime:ComponentTime[],
   setTotalHomePageTime:React.Dispatch<React.SetStateAction<ComponentTime[]>>
+  totalRestaurantTime:ComponentTime[],
+  setTotalRestaurantTime:React.Dispatch<React.SetStateAction<ComponentTime[]>>
 
 
 }
@@ -123,6 +125,9 @@ export const ContextProvider: React.FC<{ children: ReactNode }> = ({ children })
 
   const [totalHomePageTime, setTotalHomePageTime] = useState<ComponentTime[]>([]);
 
+const [  totalRestaurantTime,
+  setTotalRestaurantTime] = useState<ComponentTime[]>([]);
+
 
 
   const contextValue = {
@@ -153,7 +158,10 @@ export const ContextProvider: React.FC<{ children: ReactNode }> = ({ children })
     isDesktop,
     setIsDesktop,
     totalHomePageTime, 
-    setTotalHomePageTime
+    setTotalHomePageTime,
+    totalRestaurantTime,
+    setTotalRestaurantTime
+    
     
   };
 
