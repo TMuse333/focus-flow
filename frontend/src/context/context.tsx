@@ -2,6 +2,11 @@
 
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 
+
+interface ComponentTime {
+  name: string;
+  time: number; // Time in milliseconds
+}
 // Define the type for the context value
 interface GeneralContextType {
 
@@ -30,7 +35,10 @@ interface GeneralContextType {
   selectedCarouselImageAlt2:string
   isDesktop:boolean
   setIsDesktop:React.Dispatch<React.SetStateAction<boolean>>;
-  
+  totalHomePageTime:ComponentTime[],
+  setTotalHomePageTime:React.Dispatch<React.SetStateAction<ComponentTime[]>>
+
+
 }
 
 // Create the context
@@ -57,6 +65,8 @@ export const ContextProvider: React.FC<{ children: ReactNode }> = ({ children })
   const [selectedCarouselImageAlt2, setSelectedCarouselImageAlt2] = useState('')  
   const [ isDesktop,
     setIsDesktop] = useState(false)
+
+    
 
 
   const [selectedCarouselImageIndex, setSelectedCarouselImageIndex] = useState<number | null>(null)
@@ -111,6 +121,10 @@ export const ContextProvider: React.FC<{ children: ReactNode }> = ({ children })
     };
   }, []);
 
+  const [totalHomePageTime, setTotalHomePageTime] = useState<ComponentTime[]>([]);
+
+
+
   const contextValue = {
 
     isMobile,
@@ -137,7 +151,10 @@ export const ContextProvider: React.FC<{ children: ReactNode }> = ({ children })
     selectedCarouselImageAlt2,
     setSelectedCarouselImageAlt2,
     isDesktop,
-    setIsDesktop
+    setIsDesktop,
+    totalHomePageTime, 
+    setTotalHomePageTime
+    
   };
 
   return <GeneralContext.Provider value={contextValue}>{children}</GeneralContext.Provider>;

@@ -1,8 +1,8 @@
 "use client"; // Enable client-side rendering for this component
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic'; // Import dynamic from Next.js
-import { Variants } from 'framer-motion';
+import { useInView, Variants } from 'framer-motion';
 import { useIntersectionObserver } from '../intersectionObserver/intersectionObserver';
 import { useGeneralContext } from '../../context/context';
 import  { StaticImageData } from 'next/image';
@@ -10,6 +10,7 @@ import Link from 'next/link';
 
 // Import HTMLMotionProps for type safety
 import { HTMLMotionProps } from 'framer-motion';
+import { useComponentTimeTracker } from '@/lib/componentTracker';
 
 // Dynamically import motion components from framer-motion
 const MotionImage = dynamic(() => import('framer-motion').then(mod => mod.motion.img), {
@@ -39,7 +40,10 @@ interface ContentProps {
   buttonLink?: string;
   buttonText?: string;
   alt?: string;
-  iframe?: React.ReactNode
+  iframe?: React.ReactNode,
+  id?:string
+  setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
+    time:number}[]>>
 }
 
 
@@ -54,18 +58,11 @@ const Content: React.FC<ContentProps> = ({
   buttonLink,
   buttonText = 'button',
   alt,
-  iframe
+  iframe,
+  id,
+  setTotalPageTime
 }) => {
-  const [inView, setInView] = useState(false);
-  const { isMobile } = useGeneralContext();
 
-  const options = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.7,
-  };
-
-  const componentRef = useIntersectionObserver(setInView, options);
 
   const baseVariants = (x: number, delay: number): Variants => ({
     initial: { x, opacity: 0 },
@@ -88,11 +85,27 @@ const Content: React.FC<ContentProps> = ({
     },
   };
 
+const ref = useRef(null)
+
+  const inView = useInView(ref,{
+    once:false
+  })
+
   const shouldAnimate = hasAnimation && inView;
 
+  const {totalTimeInView} = useComponentTimeTracker({inView,id:id?id:'content',
+setTotalPageTime:setTotalPageTime})
+
+  useEffect(()=>{
+    if(totalTimeInView > 0)
+    console.log(`time spent in ${id} ${totalTimeInView} ms`)
+},[totalTimeInView])
+
   return (
+
     <article
-      ref={componentRef}
+      id={id}
+      ref={ref}
       className={`flex flex-col justify-center items-center pt-8 pb-8
         relative mr-auto ml-auto 
         md:w-screen md:max-w-[1200px] sm:max-w-[668px] z-1

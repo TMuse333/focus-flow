@@ -13,7 +13,9 @@ const app = express();
 app.use(cors());
 dotenv.config();
 
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI,{
+    dbName:'focusFlow'
+})
     .then(() => {
         console.log('MongoDB connected');
     })

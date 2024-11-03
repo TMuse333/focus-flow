@@ -1,13 +1,14 @@
 'use client';
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import dynamic from 'next/dynamic';
 import Image, { StaticImageData } from 'next/image';
 import Link from "next/link";
 
 import { useIntersectionObserver } from "../intersectionObserver/intersectionObserver";
 import { lionSpeech } from '@/data/data';
-import { HTMLMotionProps } from 'framer-motion';
+import { HTMLMotionProps, useInView } from 'framer-motion';
+import { useComponentTimeTracker } from "@/lib/componentTracker";
 
 // Dynamically import motion components from framer-motion
 const MotionP = dynamic(() => import('framer-motion').then(mod => mod.motion.p), { ssr: false }) as React.ComponentType<HTMLMotionProps<'p'>>;
@@ -22,6 +23,9 @@ interface ContentBoxProps {
     alt: string;
     destination: string;
     buttonText: string;
+    id?:string,
+    setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
+        time:number}[]>>
 }
 
 const ContentBox: React.FC<ContentBoxProps> = ({
@@ -32,19 +36,24 @@ const ContentBox: React.FC<ContentBoxProps> = ({
     alt,
     destination,
     buttonText,
+    id,
+    setTotalPageTime
 }) => {
-    const [inView, setInView] = useState(false);
+   
+    const componentRef = useRef(null)
 
-    const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.2,
-    };
+    const inView = useInView(componentRef,
+        {
+            once:false
+        })
 
-    const componentRef = useIntersectionObserver(setInView, options);
+    const {totalTimeInView} = useComponentTimeTracker({inView,id:id?id:'content',
+    setTotalPageTime:setTotalPageTime})
 
     return (
-        <section ref={componentRef}
+        <section 
+        id={id}
+        ref={componentRef}
             className="w-screen text-white relative mb-8 bg-[#00bfff] bg-opacity-[0.2] py-8">
              
             <MotionP

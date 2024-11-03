@@ -1,7 +1,7 @@
 "use client"
 
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Metadata } from "next";
 
 import { useGeneralContext } from "@/context/context";
@@ -53,7 +53,13 @@ const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
 });
 
 import infinity from '../../../public/media/infinity.webp';
+<<<<<<< Updated upstream
 import ElectricContainer from "@/canvasComponents/electricContainer/electricContainer";
+=======
+import { useInView } from "framer-motion";
+import { useComponentTimeTracker } from "@/lib/componentTracker";
+// import ElectricContainer from "@/canvasComponents/electricContainer/electricContainer";
+>>>>>>> Stashed changes
 
 
 
@@ -61,7 +67,32 @@ import ElectricContainer from "@/canvasComponents/electricContainer/electricCont
 
 
 const Homepage = () => {
+
   const { selectedCarouselImageIndex } = useGeneralContext();
+
+  const ref = useRef(null)
+
+  const inView = useInView(ref,{
+    once:false
+  })
+
+  const {totalHomePageTime, setTotalHomePageTime} = useGeneralContext()
+
+  const {totalTimeInView} = useComponentTimeTracker({
+    inView,
+    id:'homepage',
+    setTotalPageTime:setTotalHomePageTime,
+  totalPageTime:totalHomePageTime,
+  pageTracker:true
+
+  }
+  
+    )
+
+    useEffect(()=>{
+      console.log('page time',totalHomePageTime)
+    },[totalHomePageTime])
+  
 
   return (
     <>
@@ -73,7 +104,10 @@ const Homepage = () => {
 
       <BigNav excludedLink="Home" />
 
-      <main className="text-center z-[30] overflow-x-hidden lg:mt-[2rem]
+      <main 
+      ref={ref}
+      id='homepage'
+      className="text-center z-[30] overflow-x-hidden lg:mt-[2rem]
       text-white"
         style={{
           filter: selectedCarouselImageIndex !== null ? 'blur(8px)' : 'none',
@@ -81,12 +115,17 @@ const Homepage = () => {
         }}
       >
        
-        <Herobanner sections={herobannerData} />
+        <Herobanner
+          setTotalPageTime={setTotalHomePageTime}
+          
+         sections={herobannerData} />
 
    
         <div className="h-[30vh]" />
 
         <FlashContent
+        setTotalPageTime={setTotalHomePageTime}
+        id='homepage-flash-content'
           src={infinity.src}
           alt="An infinity logo symbolizing limitless possibilities and custom web design services using advanced technologies like React.js to show FocusFlow Software has the most Creative web design in Halifax"
         />
@@ -95,23 +134,46 @@ const Homepage = () => {
         data={electricContainerData}
         /> */}
 
-        <Content {...planningContent} />
-        <Content {...monthlyContent} />
-        <ContentBox {...RestaurantContentBoxData} />
+        <Content 
+        id='homepage-content-1'
+        {...planningContent}
+        setTotalPageTime={setTotalHomePageTime}
+         />
+        <Content
+        id='homepage-content-2'
+         {...monthlyContent}
+         setTotalPageTime={setTotalHomePageTime}
+          />
+        <ContentBox 
+        id='homepage-content-box'
+        {...RestaurantContentBoxData}
+        setTotalPageTime={setTotalHomePageTime}
+         />
 
         <ScrollableCarousel
+        id='homepage-scrollable-carousel'
           images={scrollableImages}
           title="Creating Digital Excellence"
           description="Explore some of our showcased projects. Click on each for detailed insights and excellence in digital creation."
+          setTotalPageTime={setTotalHomePageTime}
         />
 
-        <Testimonials />
+        <Testimonials
+        setTotalPageTime={setTotalHomePageTime}
+       
+         />
 
-        <AuroraHero />
+        <AuroraHero
+        setTotalPageTime={setTotalHomePageTime}
+      
+         />
 
        
 
-        <Footer2 excludedLink='Home' />
+        <Footer2 
+       
+        id="homepage-footer"
+        excludedLink='Home' />
       </main>
     </>
   );
