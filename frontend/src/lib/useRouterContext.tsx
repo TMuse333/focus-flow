@@ -16,7 +16,18 @@ export const useRouterContext = () => {
     const pathName = usePathname();
     const [pageData, setPageData] = useState<{ name: string; time: number; }[] | null>(null);
     
-    const { totalPageTime } = useGeneralContext();
+    const { totalPageTime, setTotalPageTime } = useGeneralContext();
+
+    // useEffect(() => {
+
+    //     console.warn('checking if local storage exists...')
+    //     // Check if 'currentPageTime' exists in localStorage
+    //     if (localStorage.getItem('currentPageTime')) {
+    //         // Clear 'currentPageTime' from localStorage
+    //         localStorage.removeItem('currentPageTime');
+    //         console.log('currentPageTime cleared on component mount');
+    //     }
+    // }, []); 
 
     // Store the current page time in localStorage whenever it changes
     useEffect(() => {
@@ -44,6 +55,9 @@ export const useRouterContext = () => {
                         // Send the parsed data to the backend
                         await axios.post('http://localhost:9000/track-page-time', { componentsTime: parsedData });
                         console.log('Total time sent to backend:', parsedData);
+                        localStorage.removeItem('currentPageTime');
+                        setTotalPageTime([]);
+                        console.warn('currentPageTime cleared after data sent');
                     } catch (error) {
                         console.error('Error sending time to backend:', error);
                     }
