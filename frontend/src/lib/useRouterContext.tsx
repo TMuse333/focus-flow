@@ -11,18 +11,18 @@ interface Props {
     }[];
 }
 
-export const useRouterContext = ({ totalPageTime }: Props) => {
+export const useRouterContext = () => {
     const router = useRouter();
     const pathName = usePathname();
     const [pageData, setPageData] = useState<{ name: string; time: number; }[] | null>(null);
     
-    const { totalHomePageTime } = useGeneralContext();
+    const { totalPageTime } = useGeneralContext();
 
     // Store the current page time in localStorage whenever it changes
     useEffect(() => {
-        console.log('page time', totalHomePageTime);
-        localStorage.setItem('currentPageTime', JSON.stringify(totalHomePageTime));
-    }, [totalHomePageTime]);
+        console.log('page time', totalPageTime);
+        localStorage.setItem('currentPageTime', JSON.stringify(totalPageTime));
+    }, [totalPageTime]);
 
     // Store the previous pathName to detect changes
     const prevPathNameRef = useRef<string | null>(null);
@@ -60,7 +60,7 @@ export const useRouterContext = ({ totalPageTime }: Props) => {
 
         // Update the previous pathName to the current pathName
         prevPathNameRef.current = pathName;
-    }, [pathName, totalHomePageTime]); // Added totalHomePageTime to dependencies
+    }, [pathName, totalPageTime]); // Added totalHomePageTime to dependencies
 
     return { router };
 };

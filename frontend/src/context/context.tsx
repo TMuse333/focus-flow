@@ -35,8 +35,8 @@ interface GeneralContextType {
   selectedCarouselImageAlt2:string
   isDesktop:boolean
   setIsDesktop:React.Dispatch<React.SetStateAction<boolean>>;
-  totalHomePageTime:ComponentTime[],
-  setTotalHomePageTime:React.Dispatch<React.SetStateAction<ComponentTime[]>>
+  totalPageTime:ComponentTime[],
+  setTotalPageTime:React.Dispatch<React.SetStateAction<ComponentTime[]>>
   totalRestaurantTime:ComponentTime[],
   setTotalRestaurantTime:React.Dispatch<React.SetStateAction<ComponentTime[]>>
 
@@ -123,7 +123,7 @@ export const ContextProvider: React.FC<{ children: ReactNode }> = ({ children })
     };
   }, []);
 
-  const [totalHomePageTime, setTotalHomePageTime] = useState<ComponentTime[]>([]);
+  const [totalPageTime, setTotalPageTime] = useState<ComponentTime[]>([]);
 
 const [  totalRestaurantTime,
   setTotalRestaurantTime] = useState<ComponentTime[]>([]);
@@ -157,8 +157,8 @@ const [  totalRestaurantTime,
     setSelectedCarouselImageAlt2,
     isDesktop,
     setIsDesktop,
-    totalHomePageTime, 
-    setTotalHomePageTime,
+    totalPageTime, 
+    setTotalPageTime,
     totalRestaurantTime,
     setTotalRestaurantTime
     

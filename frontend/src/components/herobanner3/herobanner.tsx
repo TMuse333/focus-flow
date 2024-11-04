@@ -1,12 +1,34 @@
 import Link from "next/link";
-import React from "react";
+import React, {useRef} from "react";
+import {useInView} from 'framer-motion'
+import { useComponentTimeTracker } from "@/lib/componentTracker";
+
+interface Props {
+  setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
+    time:number}[]>>
+}
+
+const Herobanner:React.FC<Props> = ({
+  setTotalPageTime
+}) => {
+
+  const ref = useRef(null)
 
 
 
-const Herobanner = () => {
+const inView = useInView(ref,{
+  once:false
+})
+const {totalTimeInView} = useComponentTimeTracker({inView,id:'restaurant-herobanner',
+setTotalPageTime:setTotalPageTime,
+pageTracker:false})
+
+
 
     return (
-        <section className="w-screen md:h-screen bg-black flex justify-center items-center flex-col"
+        <section
+        ref={ref}
+         className="w-screen md:h-screen bg-black flex justify-center items-center flex-col"
         style={{
             background: "radial-gradient(circle, #001F3F 40%, black 100%)"
         }}>

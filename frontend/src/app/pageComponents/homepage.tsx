@@ -77,18 +77,18 @@ const Homepage = () => {
     once:false
   })
 
-  const {totalHomePageTime, setTotalHomePageTime} = useGeneralContext()
+  const { setTotalPageTime} = useGeneralContext()
 
 
-useRouterContext({totalPageTime:totalHomePageTime})
+useRouterContext()
 
-  const {totalTimeInView} = useComponentTimeTracker({
-    inView,
-    id:'homepage',
-    setTotalPageTime:setTotalHomePageTime,
-    totalPageTime:totalHomePageTime,
-    pageTracker:true
-    })
+  // const {totalTimeInView} = useComponentTimeTracker({
+  //   inView,
+  //   id:'homepage',
+  //   setTotalPageTime:setTotalHomePageTime,
+  //   totalPageTime:totalHomePageTime,
+  //   pageTracker:true
+  //   })
 
   
 
@@ -117,7 +117,7 @@ useRouterContext({totalPageTime:totalHomePageTime})
       >
        
         <Herobanner
-          setTotalPageTime={setTotalHomePageTime}
+          setTotalPageTime={setTotalPageTime}
           
          sections={herobannerData} />
 
@@ -125,7 +125,7 @@ useRouterContext({totalPageTime:totalHomePageTime})
         <div className="h-[30vh]" />
 
         <FlashContent
-        setTotalPageTime={setTotalHomePageTime}
+        setTotalPageTime={setTotalPageTime}
         id='homepage-flash-content'
           src={infinity.src}
           alt="An infinity logo symbolizing limitless possibilities and custom web design services using advanced technologies like React.js to show FocusFlow Software has the most Creative web design in Halifax"
@@ -138,17 +138,17 @@ useRouterContext({totalPageTime:totalHomePageTime})
         <Content 
         id='homepage-content-1'
         {...planningContent}
-        setTotalPageTime={setTotalHomePageTime}
+        setTotalPageTime={setTotalPageTime}
          />
         <Content
         id='homepage-content-2'
          {...monthlyContent}
-         setTotalPageTime={setTotalHomePageTime}
+         setTotalPageTime={setTotalPageTime}
           />
         <ContentBox 
         id='homepage-content-box'
         {...RestaurantContentBoxData}
-        setTotalPageTime={setTotalHomePageTime}
+        setTotalPageTime={setTotalPageTime}
          />
 
         <ScrollableCarousel
@@ -156,16 +156,16 @@ useRouterContext({totalPageTime:totalHomePageTime})
           images={scrollableImages}
           title="Creating Digital Excellence"
           description="Explore some of our showcased projects. Click on each for detailed insights and excellence in digital creation."
-          setTotalPageTime={setTotalHomePageTime}
+          setTotalPageTime={setTotalPageTime}
         />
 
         <Testimonials
-        setTotalPageTime={setTotalHomePageTime}
+        setTotalPageTime={setTotalPageTime}
        
          />
 
         <AuroraHero
-        setTotalPageTime={setTotalHomePageTime}
+        setTotalPageTime={setTotalPageTime}
       
          />
 

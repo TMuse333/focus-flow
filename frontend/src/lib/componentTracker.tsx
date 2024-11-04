@@ -69,7 +69,7 @@ export const useComponentTimeTracker = ({
     
 
      
-      // console.log(`Time spent in ${id}:`, timeSpent, "ms");
+      console.log(`Time spent in ${id}:`, timeSpent, "ms");
 
      
 
