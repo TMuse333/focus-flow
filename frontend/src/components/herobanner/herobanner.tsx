@@ -109,8 +109,9 @@ useEffect(() => {
         sm:text-md md:text-lg
        
           font-semibold text-center mb-4 animate-gradient">
-          Creative and Custom Web Design in Halifax
+          Creative and Custom Web Design in Halifax 
         </h1>
+      
         <h2 className="
         animate-gradient  font-semibold
         text-4xl mb-4

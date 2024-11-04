@@ -86,18 +86,11 @@ useRouterContext({totalPageTime:totalHomePageTime})
     inView,
     id:'homepage',
     setTotalPageTime:setTotalHomePageTime,
-  totalPageTime:totalHomePageTime,
-  pageTracker:true
+    totalPageTime:totalHomePageTime,
+    pageTracker:true
+    })
 
-  }
   
-    )
-
-    // useEffect(()=>{
-    //   console.log('page time',totalHomePageTime)
-    //   localStorage.setItem('totalHomePageTime', JSON.stringify(totalHomePageTime));
-    // },[totalHomePageTime])
-
 
 
   

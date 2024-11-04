@@ -68,8 +68,8 @@ export const useComponentTimeTracker = ({
       // Update the overall total time in the parent state
     
 
-
-      console.log(`Time spent in ${id}:`, timeSpent, "ms");
+     
+      // console.log(`Time spent in ${id}:`, timeSpent, "ms");
 
      
 

@@ -1,7 +1,7 @@
 // controllers/analyticsController.js
 import Analytics from '../models/Analytics';
 
-const saveAnalytics = async (analyticsData) => {
+export const saveAnalytics = async (analyticsData) => {
   try {
     const newAnalytics = new Analytics(analyticsData);
     await newAnalytics.save();
@@ -11,4 +11,4 @@ const saveAnalytics = async (analyticsData) => {
   }
 };
 
-export default saveAnalytics;
+
