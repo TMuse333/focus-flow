@@ -138,11 +138,13 @@ useRouterContext()
         <Content 
         id='homepage-content-1'
         {...planningContent}
+        image={planningContent.image.src}
         setTotalPageTime={setTotalPageTime}
          />
         <Content
         id='homepage-content-2'
          {...monthlyContent}
+         image={monthlyContent.image.src}
          setTotalPageTime={setTotalPageTime}
           />
         <ContentBox 

@@ -21,6 +21,7 @@ const ArtPage = () => {
             <ThreeJSWave/>
 
         <GridCarousel
+        id='artist-grid-carousel'
         isGrid={true}
         images={artCarousel}
         />

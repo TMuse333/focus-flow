@@ -75,14 +75,18 @@ const RestaurantPage = () => {
        images={restaurantCarousel}
        hasDescription={true}
        style= "repeating-linear-gradient(45deg, #001F3F, #001F3F 10%, black 20%, black 30%)"
+       setTotalPageTime={setTotalPageTime}
        />
 
        <ScrollCarousel
        images={restaurantPackageDetails}
+       setTotalPageTime={setTotalPageTime}
        />
 
        <AppearingSquare
        {...restaurantPageCloser}
+       setTotalPageTime={setTotalPageTime}
+       id='restaurant closer'
        />
 
        <Footer2

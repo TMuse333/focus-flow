@@ -1,8 +1,8 @@
 "use client"
 
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 
-import { motion} from 'framer-motion'
+import { motion, useInView} from 'framer-motion'
 import {useIntersectionObserver} from "../intersectionObserver/intersectionObserver";
 import {workTenets} from '../../data/data'
 import {StaticImageData} from 'next/image'
@@ -19,6 +19,7 @@ import sprinter from '../../../public/media/gemeni-sprinter.webp'
 import communicator from '../../../public/media/gemeni-communicator.webp'
 
 import SlidingText from "../slidingText/slidingText.prod";
+import { useComponentTimeTracker } from "@/lib/componentTracker";
 
 interface CircleProps {
 
@@ -27,29 +28,33 @@ interface CircleProps {
     description:string,
     index:number,
     titleInView:boolean
+
    
 }
 
 const CircleElement: React.FC<CircleProps> = ({image,
-title, description, index,titleInView}) => {
+title, description, index,titleInView,
 
-    const [inView, setInView] = useState<boolean>(false)
+}) => {
+
+   
 
     const {isMobile} = useGeneralContext()
 
+    const ref = useRef(null)
 
-    //-120px
-    const options = {
-        root: null,
-        rootMargin: !isMobile ? '-120px' : '-120px',
-        threshold:!isMobile ?  0.5 : 0.2,
-    };
+    const inView = useInView(ref,{
+        once:false
+       })
+       
+ 
+
 
 
     const MotionImage = motion(Image);
 
 
-    const componentRef = useIntersectionObserver(setInView, options,false);
+
 
     const containerVariants = {
         initial:{
@@ -96,7 +101,7 @@ title, description, index,titleInView}) => {
     return (
         
         <motion.div
-        ref={componentRef}
+        ref={ref}
         id={`infographic-container-${index}`}
         variants={containerVariants}
         initial='initial'
@@ -186,25 +191,31 @@ title, description, index,titleInView}) => {
 interface Props {
     title?:string,
     description?:string,
+    setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
+        time:number}[]>>
+        id:string
     
 }
 
  const CircleInfoGraphic:React.FC<Props> = ({
-    title, description
+    title, description, id,
+    setTotalPageTime
 }) => {
 
+    const ref = useRef(null)
 
-    const [inView, setInView] = useState(false)
+    const inView = useInView(ref,{
+        once:false
+       })
+       
+       
+       const {totalTimeInView} = useComponentTimeTracker({inView,id:id,
+       setTotalPageTime:setTotalPageTime,
+       pageTracker:false})
 
     const {isMobile} = useGeneralContext()
 
-    const options = {
-        root: null,
-        rootMargin: !isMobile ? '500px' : '80px',
-        threshold:!isMobile ?  0.6 : 0.1,
-    };
 
-    const contentRef = useIntersectionObserver(setInView, options, false)
 
     const images = [
         coder,
@@ -253,7 +264,7 @@ interface Props {
        </div> */}
 
        <div className="w-screen"
-       ref={contentRef}>
+       ref={ref}>
        {title && (
             <>
              <motion.h1
@@ -287,7 +298,7 @@ interface Props {
        </div>
 
 
-        <section ref={contentRef}
+        <section ref={ref}
          className={`flex relative
          justify-center flex-col items-center
           sm:grid sm:grid-cols-2 xl:grid-cols-3

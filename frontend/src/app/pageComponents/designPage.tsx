@@ -14,21 +14,43 @@ const Footer2 = dynamic(() => import("@/components/footer2/footer2"), { ssr: fal
 
 import { stickyScrollables, designPageCloser } from "@/data/data";
 import infinity from '../../../public/media/atom-gif.gif';
+import { useRouterContext } from "@/lib/useRouterContext";
+import { useGeneralContext } from "@/context/context";
 
 const DesignPage = () => {
+
+    useRouterContext()
+
+    const {setTotalPageTime} = useGeneralContext()
+
     return (
         <>
             <BigNav excludedLink="Top tier custom web design" />
             <main className="mt-[3rem] relative z-[4] text-white">
-                <MultiLayerParallax />
+                <MultiLayerParallax
+                 setTotalPageTime={setTotalPageTime}
+                 />
 
-                <StickyCarousel images={stickyScrollables} />
+                <StickyCarousel 
+                 setTotalPageTime={setTotalPageTime}
+                images={stickyScrollables}
+                id='design-sticky-carousel'
+                 />
 
-                <PortalContent image={infinity.src} />
+                <PortalContent 
+                id='design-portal-content'
+                 setTotalPageTime={setTotalPageTime}
+                image={infinity.src} />
 
-                <CircleInfoGraphic />
+                <CircleInfoGraphic
+                id='design-circle-infographic'
+                 setTotalPageTime={setTotalPageTime}
+                 />
 
-                <AppearingSquare {...designPageCloser} />
+                <AppearingSquare {...designPageCloser}
+                setTotalPageTime={setTotalPageTime}
+                id='design-closer'
+                />
 
                 <Footer2 excludedLink="Top tier custom web design" />
             </main>

@@ -30,7 +30,7 @@ const MotionButton = dynamic(() => import('framer-motion').then(mod => mod.motio
 }) as React.ComponentType<HTMLMotionProps<'button'>>;
 
 interface ContentProps {
-  image?: StaticImageData | null;
+  image?: string ;
   customText?: React.ReactNode;
   description?: string[];
   reverse?: boolean;
@@ -138,7 +138,7 @@ setTotalPageTime:setTotalPageTime})
         variants={hasAnimation ? imageVariants : {}}
         initial={hasAnimation ? 'initial' : ''}
         animate={shouldAnimate ? 'animate' : ''}
-        src={image?.src}
+        src={image ? image : ''}
         alt={alt ? alt : 'creative web design halifax'}
         width={1300}
         height={600}

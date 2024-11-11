@@ -140,8 +140,8 @@ md:grid-cols-3 lg:grid-cols-4
     <ul className="flex flex-col mx-auto 
     items-center justify-center">
    
-    <p className="text-lg sm:text-xl md:text-2xl
-     mb-4 font-semibold
+    <p className="text-xl sm:text-2xl md:text-3xl
+     mb-4 font-bold
      mx-auto text-center">
       {link.name}</p>
     {link.secondaryLinks && link.secondaryLinks.map((link2, innerIndex) => (

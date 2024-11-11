@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'react-feather';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import Image from 'next/image';
+import { useComponentTimeTracker } from '@/lib/componentTracker';
+import { useGeneralContext } from '@/context/context';
 
 interface CarouselProps {
   images: {
@@ -12,11 +14,13 @@ interface CarouselProps {
     isVideo?:boolean
   }[];
   hasDescription?: boolean;
-  style?:string
+  style?:string,
+  setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
+    time:number}[]>>
 }
 
 const Carousel: React.FC<CarouselProps> = ({ images, hasDescription,
-style }) => {
+style, setTotalPageTime }) => {
   const [shift, setShift] = useState<number>(0);
   const [currentImage, setCurrentImage] = useState<number>(0);
   const [leftClicked, setLeftClicked] = useState<boolean>(false);
@@ -128,10 +132,20 @@ style }) => {
     );
   };
 
+  const ref = useRef(null)
+
+  const inView = useInView(ref,{
+    once:false
+  })
+  const {totalTimeInView} = useComponentTimeTracker({inView,id:'restaurant-carousel',
+  setTotalPageTime:setTotalPageTime,
+  pageTracker:false})
+
   return (
     <>
     
       <section
+      ref={ref}
         aria-label="Image carousel"
         className={`w-screen  
           flex flex-col   ml-auto mr-auto

@@ -2,15 +2,23 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion, useAnimate, useScroll, useTransform,
- useMotionTemplate, useMotionValue } from 'framer-motion';
+ useMotionTemplate, useMotionValue, useInView } from 'framer-motion';
 import brain from '../../../public/media/focusFlow-brain-nobg.webp'
 import Image from 'next/image'
 import { useGeneralContext } from '@/context/context';
 import Head from 'next/head'
+import { useComponentTimeTracker } from '@/lib/componentTracker';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Curtain = () => {
+interface Props {
+  setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
+    time:number}[]>>
+}
+
+const Curtain:React.FC<Props> = ({
+  setTotalPageTime
+}) => {
   const leftCurtainRef = useRef<HTMLDivElement | null>(null);
   const rightCurtainRef = useRef<HTMLDivElement | null>(null);
   const newSectionRef = useRef<HTMLDivElement | null>(null); // Reference for the new section
@@ -242,6 +250,15 @@ const Curtain = () => {
 
   
 }, []);
+
+const inView = useInView(scope,{
+  once:false
+ })
+ 
+ 
+ const {totalTimeInView} = useComponentTimeTracker({inView,id:'process-curtains',
+ setTotalPageTime:setTotalPageTime,
+ pageTracker:false})
   
 
   return (

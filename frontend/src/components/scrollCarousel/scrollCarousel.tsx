@@ -1,9 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, Variants } from "framer-motion";
+import React, { useRef, useState } from "react";
+import { motion, useInView, Variants } from "framer-motion";
 import { useIntersectionObserver } from '../intersectionObserver/intersectionObserver';
 import Image, { StaticImageData } from "next/image";
+import { useComponentTimeTracker } from "@/lib/componentTracker";
+import Link from 'next/link'
 
 // Define the props interface with title, description, and images array
 interface Props {
@@ -13,23 +15,26 @@ interface Props {
         src: string| StaticImageData;
         alt: string;
         title:string,
-        description:string
+        description:string,
+        link?:string
        
     }[];
+    setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
+        time:number}[]>>
 }
 
 // ScrollableCarousel component without onClick features
-const ScrollCarousel: React.FC<Props> = ({ title, description, images }) => {
-    const [inView, setInView] = useState(false);
+const ScrollCarousel: React.FC<Props> = ({ title, description, images,
+setTotalPageTime, }) => {
 
-    const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.2,
-    };
+    const ref = useRef(null)
 
-    // Use the custom hook to get a ref and observe intersection
-    const componentRef = useIntersectionObserver(setInView, options);
+    const inView = useInView(ref,{
+        once:false
+      })
+      const {totalTimeInView} = useComponentTimeTracker({inView,id:'restaurant-feature-boxes',
+      setTotalPageTime:setTotalPageTime,
+      pageTracker:false})
 
     // Variants for the animation of images
     const imageVariants = (index: number): Variants => {
@@ -61,7 +66,7 @@ const ScrollCarousel: React.FC<Props> = ({ title, description, images }) => {
     return (
         <>
             <section
-                ref={componentRef}
+                ref={ref}
                 className={`relative w-screen ml-auto mb-[5rem] mt-[5rem] overflow-x-hidden
                 bg-[#00bfff] bg-opacity-[0.2] py-8`}
             >
@@ -107,6 +112,15 @@ const ScrollCarousel: React.FC<Props> = ({ title, description, images }) => {
                             {/* <h5 className="text-white my-4  relative font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-xl">{image.title}</h5> */}
                             <p className="mt-4 text-center
                             sm:text-lg md:text-2xl">{image.description}</p>
+
+                            {image.link && (
+                                <button>
+                                    Read
+                                    <Link href={image.link}
+                                    />
+                                    </button>
+
+                            )}
                         </div>
                     ))}
                 </div>
