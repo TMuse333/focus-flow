@@ -1,11 +1,9 @@
 "use client"; // Enable client-side rendering for this component
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic'; // Import dynamic from Next.js
 import { useInView, Variants } from 'framer-motion';
-import { useIntersectionObserver } from '../intersectionObserver/intersectionObserver';
-import { useGeneralContext } from '../../context/context';
-import  { StaticImageData } from 'next/image';
+
 import Link from 'next/link';
 
 // Import HTMLMotionProps for type safety
@@ -44,6 +42,7 @@ interface ContentProps {
   id?:string
   setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
     time:number}[]>>
+    bgColor?:boolean
 }
 
 
@@ -60,7 +59,8 @@ const Content: React.FC<ContentProps> = ({
   alt,
   iframe,
   id,
-  setTotalPageTime
+  setTotalPageTime,
+  bgColor
 }) => {
 
 
@@ -107,10 +107,13 @@ setTotalPageTime:setTotalPageTime})
       id={id}
       ref={ref}
       className={`flex flex-col justify-center items-center pt-8 pb-8
-        relative mr-auto ml-auto 
-        md:w-screen md:max-w-[1200px] sm:max-w-[668px] z-1
-        md:justify-around
-        ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}`}
+        relative mr-auto ml-auto
+        max-w-[1200px] z-1
+       
+        ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}
+        ${bgColor ? `bg-[#00bfff] bg-opacity-[0.2] ` : ''}`
+        
+     }
     >
       <MotionH2
             variants={baseVariants(reverse ? -30 : 30, 0)}
@@ -147,8 +150,8 @@ setTotalPageTime:setTotalPageTime})
       
 
       {customText || (
-        <div className='w-screen md:w-[50vw]
-        pr-4'>
+        <div className='w-screen md:w-[45vw]
+        pr-4 md:pr-0'>
           <MotionH2
             variants={baseVariants(reverse ? -30 : 30, 0)}
             initial={hasAnimation ? 'initial' : ''}

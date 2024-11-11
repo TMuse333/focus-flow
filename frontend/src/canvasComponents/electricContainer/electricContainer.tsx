@@ -1,18 +1,18 @@
+"use client"
+
 import React, { useRef, useState, useEffect } from "react";
 import {motion, AnimatePresence} from 'framer-motion'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import logo from '../../../public/media/focusFlow-brain-nobg.webp'
+import Image from 'next/image'
 
 interface Props {
-    data:{
-        src:string,
-        alt:string,
-        title:string,
-        description:string
-    }[]
+ title:string,
+ description:string
 }
 
 const ElectricContainer:React.FC<Props> = ({
-    data
+    title,description
 }) => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -107,63 +107,47 @@ const ElectricContainer:React.FC<Props> = ({
     
     const [selectedIndex, setSelectedIndex] = useState(0)
 
-    const increaseIndex = () => {
-        setSelectedIndex((prevIndex) => (prevIndex + 1) % data.length);
-    };
-
-    // Function to decrease the index
-    const decreaseIndex = () => {
-        setSelectedIndex((prevIndex) => 
-            (prevIndex - 1 + data.length) % data.length
-        );
-    };
+   
 
 
     return (
-        <section className="relative  text-gray-200 bg-gradient-to-b from-[#00bfff] to-[#679aab] w-[95vw] mx-auto max-w-[900px]
+        <section className="relative  text-white bg-gradient-to-b from-[#00bfff] to-[#679aab] w-[95vw] mx-auto max-w-[900px]
          rounded-2xl overflow-hidden h-[90vh] max-h-[500px]">
                     
-              <AnimatePresence mode="wait">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl pt-4">title here</h2>
-                <motion.img
-                    key={selectedIndex}  // Triggers AnimatePresence animation on change
-                    src={data[selectedIndex].src}
-                    alt="brain"
-                    className="w-[50%] mx-auto object-contain my-auto"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.5 }}
-                />
-            </AnimatePresence>
-            
-            <motion.p 
-             key={selectedIndex}  // Triggers AnimatePresence animation on change
-           
-           
-             initial={{ opacity: 0, scale: 0.9 }}
-             animate={{ opacity: 1, scale: 1 }}
-             exit={{ opacity: 0, scale: 0.9 }}
-             transition={{ duration: 0.5,
-            delay:1 }}
-            className="pb-8 ">{data[selectedIndex].description}</motion.p>
-          
-            <section className="absolute top-1/2 left-0 z-[3] w-full 
-            flex justify-evenly items-end text-black">
-                  <button className=" 
-             mr-auto "
-             onClick={decreaseIndex}>
-            <IoIosArrowBack
-            size={48}
-            />
-            </button>
-            <button className=" 
-             ml-auto"
-             onClick={increaseIndex}>
-            <IoIosArrowForward
-            size={48}/>
-            </button>
-            </section>
+                    <section
+    className='mx-auto max-w-[1200px]'
+    style={{
+      background: 'radial-gradient(circle, #00bfff -150%, rgba(0, 191, 255, 0%) 80%)'
+    }}
+    >
+
+  
+
+    <section className='flex flex-col w-screen w-full 
+    px-4 justify-center items-center mx-auto '>
+    <h1 className="text-4xl font-bold mb-4">{title}</h1>
+        <p className="text-white">
+        , &nbsp; written by Thomas Musial, owner of
+        FocusFlow Software</p>
+    </section>
+      
+        <Image
+        src={logo}
+        alt='The FocusFlow logo for web design in halifax'
+        width={600}
+        height={1300}
+        className='w-[40vw] mx-auto object-contain max-w-[460px] max-h-[460px]'
+        />
+
+        <section className='p-4'>
+          <h2 className='text-2xl sm:text-3xl md:text-4xl font-semibold mb-2'>
+           {title}</h2>
+          <p>
+           {description}
+          </p>
+        </section>
+
+        </section>
 
             {/* Canvas overlay for electric effect */}
             <canvas

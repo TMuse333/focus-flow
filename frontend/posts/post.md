@@ -5,8 +5,9 @@ header1: "Unlock the Power of Creative Web Design in Halifax"
 description1: "In today's digital age, having a professional and creative website is crucial for your business's success. A well-designed website not only enhances your brand’s reputation but also serves as an essential tool for engaging clients. Whether it’s providing essential information about your services, offering a seamless booking experience, or enabling e-commerce, a great website makes your business more accessible, efficient, and credible. At our Halifax-based web design agency, we specialize in creating stunning, user-friendly websites tailored to your needs, helping you stand out and grow online. Here are three reasons
 why FocusFlow Software is a fantastic option to help you out."
 
-header2: "This is the main title"
-description2: "A brief description or intro for the post"
+header2: "Your Partner in Creative Web Design for Halifax Businesses"
+description2: "In an ever-evolving digital landscape, having a website that’s both visually engaging and functionally robust is essential for growth. At FocusFlow Software, our expertise in web design for Halifax businesses ensures your online presence not only meets industry standards but sets you apart from the competition. We’re committed to delivering custom, scalable solutions designed to grow with your business. Ready to elevate your brand and drive more success online? Reach out to discover how we can transform your vision into a powerful, creative web design."
+
 
 contentBox1:
   image: "/media/infinity.webp"
@@ -30,6 +31,7 @@ contentBox2:
   mainTitle: "Scaleable for your growth"
   reverse: true
   alt: "An infinity image for the second box"
+  bgColor: true
 
 
 contentBox3:
@@ -47,4 +49,4 @@ contentBox3:
   alt: "An infinity image for the third box"
 ---
 
-Welcome to my first blog post! This content will be displayed in the blog post page.
+

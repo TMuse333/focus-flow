@@ -11,6 +11,8 @@ interface ContentBoxProps {
   mainTitle: string;
   reverse: boolean;
   alt: string;
+  bgColor?:boolean
+
 }
 
 // Define an interface for the post data
