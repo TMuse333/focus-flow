@@ -1,20 +1,29 @@
 import React, { useRef, useState, useEffect, Suspense, lazy } from "react";
 import { animate, useScroll, useTransform, useInView } from 'framer-motion';
 import Image from "next/image";
+import { useComponentTimeTracker } from "@/lib/componentTracker";
 
 
 interface Props {
   image: string;
   alt?: string;
   description?: string;
+  setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
+    time:number}[]>>
+    id:string
 }
 
 
 
-const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
+const PortalContent: React.FC<Props> = ({ image, alt, description,
+id, setTotalPageTime }) => {
   const ref = useRef(null);
 
  const [isDesktop, setIsDesktop] = useState(false)
+
+ 
+ 
+
 
  useEffect(()=>{
     const handleResize = () => {
@@ -39,7 +48,13 @@ const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
   const height = useTransform(scrollYProgress, [0, 0.15], ["120px", "330px"]);
   const [animationComplete, setAnimationComplete] = useState(false);
 
-  const inView = useInView(ref,{amount: isDesktop ? 0.75 : 0.35})
+  const inView = useInView(ref,{
+    amount: isDesktop ? 0.75 : 0.35,
+  once:false})
+
+  const {totalTimeInView} = useComponentTimeTracker({inView,id:id,
+    setTotalPageTime:setTotalPageTime,
+    pageTracker:false})
 
 
   useEffect(()=>{

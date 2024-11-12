@@ -12,9 +12,13 @@ const AppearingSquare = dynamic(() => import("@/components/appearingSquare/appea
 const Footer2 = dynamic(() => import("@/components/footer2/footer2"), { ssr: false });
 import Head from "next/head";
 import { processPageCloser, processPageContent, processSlideShow } from "@/data/data";
+import { useGeneralContext } from "@/context/context";
 
 
 const ProcessPage = () => {
+
+const {setTotalPageTime} = useGeneralContext()
+
     return (
         <>
         <Head>
@@ -23,13 +27,23 @@ const ProcessPage = () => {
             <BigNav excludedLink="Our Process" />
             <main className="mt-[3rem] relative z-[4] overflow-x-hidden
             text-white">
-                <Curtain />
+                <Curtain 
+                  setTotalPageTime={setTotalPageTime}
+                  />
 
-                <PageCreation pageContent={processPageContent} />
+                <PageCreation pageContent={processPageContent}
+                  setTotalPageTime={setTotalPageTime}
+                />
 
-                <SlideShowCarousel images={processSlideShow} />
+                <SlideShowCarousel images={processSlideShow}
+                  setTotalPageTime={setTotalPageTime}
+                  id={'process-slideshow-carousel'}
+                 />
 
-                <AppearingSquare {...processPageCloser} />
+                <AppearingSquare {...processPageCloser}
+                  setTotalPageTime={setTotalPageTime}
+                  id='process-closer'
+                 />
 
                 <Footer2 excludedLink="Our Process" />
             </main>

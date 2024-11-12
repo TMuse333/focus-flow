@@ -1,9 +1,10 @@
 "use client"
 
-import React, {useState} from 'react'
-import {motion, Variants} from 'framer-motion'
+import React, {useRef, useState} from 'react'
+import {motion, useInView, Variants} from 'framer-motion'
 import {useIntersectionObserver} from '../intersectionObserver/intersectionObserver'
 import Link  from 'next/link'
+import { useComponentTimeTracker } from '@/lib/componentTracker'
 
 interface Props {
     text: {
@@ -14,25 +15,25 @@ interface Props {
     intro?: string | null,
     description?: string | null,
     link?: string | null
+    id:string,
+    setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
+      time:number}[]>>
 
 }
 
 const Accordion: React.FC<Props> = ({text,
-hasIntro,intro,description, link}) => {
+hasIntro,intro,description, link,
+id, setTotalPageTime}) => {
 
-    const [inView, setInView] = useState(false);
+const ref = useRef(null)
 
-//  const {isMobile} = useGeneralContext()
+const inView = useInView(ref,{
+  once:false
+})
 
-  // Configure intersection observer options
-  const options = {
-    root: null,
-    rootMargin: '0px',
-    threshold:  0.7,
-  };
-
-  // Use the custom hook to get a ref and observe intersection
-  const componentRef = useIntersectionObserver(setInView, options);
+const {totalTimeInView} = useComponentTimeTracker({inView,id:id,
+setTotalPageTime:setTotalPageTime,
+pageTracker:false})
 
     const [expandedIndices, setExpandedIndices] =
     useState<number[]>([])
@@ -67,7 +68,9 @@ hasIntro,intro,description, link}) => {
 
     return (
         <>
-        <article className='flex flex-col justify-start items-center
+        <article 
+       
+        className='flex flex-col justify-start items-center
         mb-12 overflow-visible '>
 
        
@@ -84,7 +87,7 @@ hasIntro,intro,description, link}) => {
         )}
         <section className='mt-[3rem] border-4 border-black rounded-xl
         text-white bg-opacity-75'
-        ref={componentRef}>
+        ref={ref}>
             {text.map((text,index:number) => (
                 <div key={index}
               

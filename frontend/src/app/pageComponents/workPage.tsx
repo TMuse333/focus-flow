@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import { ContactOpener } from "@/data/data";
@@ -8,11 +8,31 @@ import { ContactOpener } from "@/data/data";
 // Lazy load components
 const Navbar = dynamic(() => import("@/components/bigNav/navbar"), { ssr: false });
 import Herobanner from "@/components/herobanner2/herobanner2";
+import { useInView } from "framer-motion";
+import { useComponentTimeTracker } from "@/lib/componentTracker";
+import { useGeneralContext } from "@/context/context";
+import { useRouterContext } from "@/lib/useRouterContext";
 const Contact = dynamic(() => import("@/components/contactPage/contactPage"), { ssr: false });
 const Footer2 = dynamic(() => import("@/components/footer2/footer2"), { ssr: false });
 
 
 const WorkPage = () => {
+
+    const ref = useRef(null)
+
+const inView = useInView(ref,{
+    once:false
+    
+})
+
+const {setTotalPageTime} = useGeneralContext()
+
+useRouterContext()
+
+const {totalTimeInView} = useComponentTimeTracker({inView,id:'contact-page',
+    setTotalPageTime:setTotalPageTime,
+    pageTracker:false})
+
     return (
         <>
         <Head>
@@ -20,7 +40,9 @@ const WorkPage = () => {
       </Head>
             <Navbar excludedLink="Contact" />
             <main className="w-screen mt-[6rem] text-white">
-                <Herobanner {...ContactOpener} />
+                <Herobanner {...ContactOpener}
+                id='contact-herobanner'
+                 />
                 
                 <section className="w-full py-6 flex justify-center items-center relative flex-col mx-auto my-10 bg-[#00bfff] bg-opacity-[0.2]">
                     <h3 className="text-3xl mb-4 sm:text-4xl font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-3xl

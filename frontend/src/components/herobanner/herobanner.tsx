@@ -6,9 +6,10 @@ import React, { useState, useEffect, useRef } from "react";
 // import { coloredLaptop } from '@/data/data';
 import { useGeneralContext } from "@/context/context";
 import Image from 'next/image'
-import { motion, useMotionTemplate, useMotionValue, animate } from "framer-motion";
+import { motion, useMotionTemplate, useMotionValue, animate,
+useInView } from "framer-motion";
 import bg from '../../../public/media/puddle-bg.jpg'
-
+import { useComponentTimeTracker } from "@/lib/componentTracker";
 
 import Link from "next/link";
 import brain from '../../../public/media/focusFlow-brain-nobg.webp'
@@ -19,80 +20,14 @@ interface HerobannerProps {
     alt: string;
     heading: string;
   }[];
+  setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
+    time:number}[]>>
+  
 }
 
-// const Model: React.FC<{ url: string }> = ({ url }) => {
-//   const gltf: any = useGLTF(url,true);
-//   const ref = useRef<any>();
-//   const { isMobile } = useGeneralContext();
 
-//   // State for floating effect
-//   const [floatY, setFloatY] = useState(0); // State to control Y position for floating
-//   const [scale, setScale] = useState(0.1); // Initialize scale at 0.1
-//   const targetScale = isMobile ? 1.2 : 1.3; // The target scale you want to reach
-//   const lerpFactor = 0.05; // Factor for lerping both scale and rotation
-
-//   const targetRotation = [
-//     (14.5 + 7 ) , // Target rotation around the x-axis (converted to radians)
-//     Math.PI , // Target rotation around the y-axis (180 degrees)
-//     0, // No rotation on the z-axis
-//   ];
-
-//   useFrame(({ clock }) => {
-//     if (ref.current) {
-//       // Floating effect
-//       const newY = Math.sin(clock.getElapsedTime()) * 1.5;
-//       setFloatY(newY);
-
-//       // Smooth scaling from 0.1 to 1
-//       const newScale = scale + (targetScale - scale) * lerpFactor;
-//       setScale(newScale);
-//       ref.current.scale.set(newScale, newScale, newScale);
-
-//       // Smooth rotation towards the target rotation
-//       ref.current.rotation.x += (targetRotation[0] - ref.current.rotation.x) * lerpFactor;
-//       ref.current.rotation.y += (targetRotation[1] - ref.current.rotation.y) * lerpFactor;
-//       ref.current.rotation.z += (targetRotation[2] - ref.current.rotation.z) * lerpFactor;
-
-//       // Ensure the model ends up in its correct Y position
-//       // ref.current.position.y += floatY
-   
-//     }
-//   });
-
-//   return (
-//     <primitive
-    
-//       ref={ref}
-//       object={gltf.scene}
-//       position={[0, 0, 0]} // Initial position
-//       rotation={[0, 0, 0]} // Start rotation at 0, 0, 0
-//     />
-//   );
-// };
-
-
-
-
-
-
-
-
-
-
-// const CameraControls = () => {
-//   const { camera } = useThree();
-//   const { isMobile } = useGeneralContext();
-//   useEffect(() => {
-//     // Set initial camera position and zoom
-//     camera.position.set(0,-59, isMobile? 80 : 160); // Adjust as needed
-//     camera.lookAt(0, 0, 0); // Ensure the camera looks at the model
-//   }, [camera]);
-
-//   return null; // No visual representation needed
-// };
-
-const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
+const Herobanner: React.FC<HerobannerProps> = ({ sections,
+  setTotalPageTime }) => {
 
 
 
@@ -133,8 +68,29 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
   
 }, []);
 
+const ref = useRef(null)
+
+
+const inView = useInView(ref,{
+  once:false
+})
+
+const {totalTimeInView} = useComponentTimeTracker({inView,id:'homepage-herobanner',
+setTotalPageTime:setTotalPageTime,
+pageTracker:false})
+
+useEffect(() => {
+  
+    console.log(`Total time spent in Herobanner: ${totalTimeInView} ms`);
+  
+}, [totalTimeInView]);
+
   return (
-    <section className="w-[95%] 
+    <section 
+    ref={ref}
+    id='homepage-herobanner'
+    className="w-[95%] 
+    
      mx-auto flex flex-col flex-col relative  md:flex-row  rounded-lg relative
      z-[3] max-w-[1200px] md:h-screen text-white"
      style={{
@@ -153,8 +109,9 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
         sm:text-md md:text-lg
        
           font-semibold text-center mb-4 animate-gradient">
-          Creative and Custom Web Design in Halifax
+          Creative and Custom Web Design in Halifax 
         </h1>
+      
         <h2 className="
         animate-gradient  font-semibold
         text-4xl mb-4

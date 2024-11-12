@@ -1,6 +1,8 @@
-// "use client"
 
+
+import { useRouterContext } from "@/lib/useRouterContext";
 import { Metadata } from "next";
+import { useRouter } from "next/router";
 import Homepage from "./pageComponents/homepage";
 
 export const metadata: Metadata = {
@@ -37,6 +39,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
 
+ 
   return (
     <>
 

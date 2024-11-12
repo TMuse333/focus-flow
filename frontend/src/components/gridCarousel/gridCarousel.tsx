@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'react-feather';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { useGeneralContext } from '../../context/context';
 import Image from 'next/image';
+import { useComponentTimeTracker } from '@/lib/componentTracker';
 
 interface CarouselProps {
   images: {
@@ -14,9 +15,14 @@ interface CarouselProps {
   hasDescription?: boolean;
 
   isGrid?:boolean
+  setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
+    time:number}[]>>
+    id:string
+
 }
 
 const GridCarousel: React.FC<CarouselProps> = ({ images, hasDescription,
+  id, setTotalPageTime
  }) => {
   const [shift, setShift] = useState<number>(0);
   const [currentImage, setCurrentImage] = useState<number>(0);
@@ -27,6 +33,16 @@ const GridCarousel: React.FC<CarouselProps> = ({ images, hasDescription,
   const [rightEdgeShift, setRightEdgeShift] = useState<number>(0);
   const [carouselClicked, setCarouselClicked] = useState(false);
   const [isCoolDown, setIsCoolDown] = useState(false);
+
+  const ref = useRef(null)
+
+  const inView = useInView(ref,{
+    once:false
+  })
+
+  const {totalTimeInView} = useComponentTimeTracker({inView,id:id,
+    setTotalPageTime:setTotalPageTime,
+    pageTracker:false})
 
   const {isMobile} = useGeneralContext()
     const [gridClicked, setGridClicked] = useState(false)

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import dynamic from 'next/dynamic'; // Import dynamic
 
 import Link from 'next/link';
-import { HTMLMotionProps } from 'framer-motion';
+import { HTMLMotionProps, useInView } from 'framer-motion';
+import { useComponentTimeTracker } from '@/lib/componentTracker';
 
 // Dynamically import motion components from framer-motion
 const MotionImg = dynamic(() => import('framer-motion').then(mod => mod.motion.img), {
@@ -28,12 +29,38 @@ const AppearingGradient = dynamic(() => import('../appearingGradient/appearingGr
 interface Props {
     src: string;
     alt: string;
+    id?:string,
+    setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
+        time:number}[]>>
 }
 
-const FlashContent: React.FC<Props> = ({ src, alt }) => {
+
+
+const FlashContent: React.FC<Props> = ({ src, alt,
+id, setTotalPageTime }) => {
+
+
+    const ref = useRef(null)
+
+    const inView = useInView(ref,{
+        once:false
+    })
+
+
+
+    const {totalTimeInView} = useComponentTimeTracker({inView, id:id?id:'flash-content',
+setTotalPageTime:setTotalPageTime})
+
+    useEffect(()=>{
+        if(totalTimeInView > 0)
+        console.log(`time spent in ${id} ${totalTimeInView} ms`)
+    },[totalTimeInView])
+
     return (
         <>
-            <section className='mx-auto w-screen max-w-[1200px] relative mb-8'>
+            <section id={id}
+            ref={ref}
+            className='mx-auto w-screen max-w-[1200px] relative mb-8'>
                 <AppearingGradient
                     text='True Custom Web Design'
                     subText='We really are built different'

@@ -13,7 +13,9 @@ const app = express();
 app.use(cors());
 dotenv.config();
 
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI,{
+    dbName:'focusFlow'
+})
     .then(() => {
         console.log('MongoDB connected');
     })
@@ -29,6 +31,6 @@ mongoose.connect(process.env.MONGODB_URI)
 
   
 
-app.listen(process.env.PORT, () => {
+app.listen(9000, () => {
     console.log('Server is running on port 9000');
 });

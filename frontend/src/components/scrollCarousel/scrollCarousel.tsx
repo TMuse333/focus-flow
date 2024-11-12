@@ -1,35 +1,43 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, Variants } from "framer-motion";
+import React, { useRef, useState } from "react";
+import { motion, useInView, Variants } from "framer-motion";
 import { useIntersectionObserver } from '../intersectionObserver/intersectionObserver';
 import Image, { StaticImageData } from "next/image";
+import { useComponentTimeTracker } from "@/lib/componentTracker";
+import Link from 'next/link'
 
 // Define the props interface with title, description, and images array
 interface Props {
     title?: string;
     description?: string;
+    bgImage?:boolean
     images: {
         src: string| StaticImageData;
         alt: string;
         title:string,
-        description:string
+        description:string,
+        link?:string,
+        date?:string
        
     }[];
+    setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
+        time:number}[]>>
 }
 
 // ScrollableCarousel component without onClick features
-const ScrollCarousel: React.FC<Props> = ({ title, description, images }) => {
-    const [inView, setInView] = useState(false);
+const ScrollCarousel: React.FC<Props> = ({ title, description, images,
+    bgImage, 
+setTotalPageTime, }) => {
 
-    const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.2,
-    };
+    const ref = useRef(null)
 
-    // Use the custom hook to get a ref and observe intersection
-    const componentRef = useIntersectionObserver(setInView, options);
+    const inView = useInView(ref,{
+        once:false
+      })
+      const {totalTimeInView} = useComponentTimeTracker({inView,id:'restaurant-feature-boxes',
+      setTotalPageTime:setTotalPageTime,
+      pageTracker:false})
 
     // Variants for the animation of images
     const imageVariants = (index: number): Variants => {
@@ -61,7 +69,7 @@ const ScrollCarousel: React.FC<Props> = ({ title, description, images }) => {
     return (
         <>
             <section
-                ref={componentRef}
+                ref={ref}
                 className={`relative w-screen ml-auto mb-[5rem] mt-[5rem] overflow-x-hidden
                 bg-[#00bfff] bg-opacity-[0.2] py-8`}
             >
@@ -73,40 +81,61 @@ const ScrollCarousel: React.FC<Props> = ({ title, description, images }) => {
                 >
                     {images.map((image, index) => (
                         <div
-                            className="w-[50vw] border border-white rounded-2xl max-h-[800px] relative flex-shrink-0   mr-10
-                            pb-6 max-w-[500px]"
+                            className={`w-[80vw] border border-white rounded-2xl max-h-[800px] relative flex-shrink-0   mr-10
+                            pb-6 max-w-[500px] z-[2]
+                            ${bgImage ? 'bg-[#00bfff] bg-opacity-[0.3]' : ''}`}
                             key={index}
                             onMouseEnter={() => handleMouseEnter(index)}
                             onMouseLeave={handleMouseLeave}
+                           
                         >
-             <h5 className="text-white my-4 text-center  relative font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-xl
+             <h5 className="text-white my-4 text-center px-2 relative font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-xl
              sm:text-2xl md:text-3xl">{image.title}</h5>
 
-                            <Image
-                                src={image.src}
-                                alt={image.alt}
-                                className="relative ml-auto mr-auto mt-auto 
-                                z-[5] object-contain  transition-all   rounded-lg
-                                h-[90%]
-                                max-h-[500px]"
-                                width={1000}
-                                height={55}
-                                style={{
-                                    transform: `translateY(${inView ? '0' : '-12rem'}) ${
-                                        hoveredImage === index ? 'scale(1.05)' : ''
-                                    }`,
-                                    transitionDelay: `${(images.length - 1 - index) * 0.2}s, ${
-                                        0.2 + (images.length - 1 - index) * 0.2
-                                    }s`,
-                                    opacity: inView ? 1 : 0,
-                                    transitionProperty: 'transform, opacity',
-                                    transitionDuration: '0.5s',
-                                    transitionTimingFunction: 'ease-in-out',
-                                }}
-                            />
+             {image.date && (
+                <span className="text-white px-2">
+                    {image.date}
+                </span>
+             )}
+
+
+ <Image
+ src={image.src}
+ alt={image.alt}
+ className={`relative ml-auto mr-auto mt-auto 
+ z-[5] object-contain  transition-all   rounded-lg
+ 
+ max-h-[500px]
+ ${bgImage ? 'h-[40%]' : 'h-[90%]'}`}
+ width={1000}
+ height={55}
+ style={{
+     transform: `translateY(${inView ? '0' : '-12rem'}) ${
+         hoveredImage === index ? 'scale(1.05)' : ''
+     }`,
+     transitionDelay: `${(images.length - 1 - index) * 0.2}s, ${
+         0.2 + (images.length - 1 - index) * 0.2
+     }s`,
+     opacity: inView ? 1 : 0,
+     transitionProperty: 'transform, opacity',
+     transitionDuration: '0.5s',
+     transitionTimingFunction: 'ease-in-out',
+ }}
+/>
+
+                           
                             {/* <h5 className="text-white my-4  relative font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-xl">{image.title}</h5> */}
-                            <p className="mt-4 text-center
+                            <p className="mt-4 text-center px-4
                             sm:text-lg md:text-2xl">{image.description}</p>
+
+                            {image.link && (
+                                <button className="mt-4 bg-[#00bfff] py-3 px-6 rounded-2xl">
+                                    Read
+                                    <Link href={image.link}
+                                    />
+                                    </button>
+
+                            )}
                         </div>
                     ))}
                 </div>

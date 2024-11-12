@@ -1,15 +1,14 @@
 "use client"; // Enable client-side rendering for this component
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic'; // Import dynamic from Next.js
-import { Variants } from 'framer-motion';
-import { useIntersectionObserver } from '../intersectionObserver/intersectionObserver';
-import { useGeneralContext } from '../../context/context';
-import  { StaticImageData } from 'next/image';
+import { useInView, Variants } from 'framer-motion';
+
 import Link from 'next/link';
 
 // Import HTMLMotionProps for type safety
 import { HTMLMotionProps } from 'framer-motion';
+import { useComponentTimeTracker } from '@/lib/componentTracker';
 
 // Dynamically import motion components from framer-motion
 const MotionImage = dynamic(() => import('framer-motion').then(mod => mod.motion.img), {
@@ -29,7 +28,7 @@ const MotionButton = dynamic(() => import('framer-motion').then(mod => mod.motio
 }) as React.ComponentType<HTMLMotionProps<'button'>>;
 
 interface ContentProps {
-  image?: StaticImageData | null;
+  image?: string ;
   customText?: React.ReactNode;
   description?: string[];
   reverse?: boolean;
@@ -39,7 +38,11 @@ interface ContentProps {
   buttonLink?: string;
   buttonText?: string;
   alt?: string;
-  iframe?: React.ReactNode
+  iframe?: React.ReactNode,
+  id?:string
+  setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
+    time:number}[]>>
+    bgColor?:boolean
 }
 
 
@@ -54,18 +57,12 @@ const Content: React.FC<ContentProps> = ({
   buttonLink,
   buttonText = 'button',
   alt,
-  iframe
+  iframe,
+  id,
+  setTotalPageTime,
+  bgColor
 }) => {
-  const [inView, setInView] = useState(false);
-  const { isMobile } = useGeneralContext();
 
-  const options = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.7,
-  };
-
-  const componentRef = useIntersectionObserver(setInView, options);
 
   const baseVariants = (x: number, delay: number): Variants => ({
     initial: { x, opacity: 0 },
@@ -88,16 +85,35 @@ const Content: React.FC<ContentProps> = ({
     },
   };
 
+const ref = useRef(null)
+
+  const inView = useInView(ref,{
+    once:false
+  })
+
   const shouldAnimate = hasAnimation && inView;
 
+  const {totalTimeInView} = useComponentTimeTracker({inView,id:id?id:'content',
+setTotalPageTime:setTotalPageTime})
+
+  useEffect(()=>{
+    if(totalTimeInView > 0)
+    console.log(`time spent in ${id} ${totalTimeInView} ms`)
+},[totalTimeInView])
+
   return (
+
     <article
-      ref={componentRef}
+      id={id}
+      ref={ref}
       className={`flex flex-col justify-center items-center pt-8 pb-8
-        relative mr-auto ml-auto 
-        md:w-screen md:max-w-[1200px] sm:max-w-[668px] z-1
-        md:justify-around
-        ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}`}
+        relative mr-auto ml-auto
+        max-w-[1200px] z-1
+       
+        ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}
+        ${bgColor ? `bg-[#00bfff] bg-opacity-[0.2] ` : ''}`
+        
+     }
     >
       <MotionH2
             variants={baseVariants(reverse ? -30 : 30, 0)}
@@ -126,7 +142,7 @@ const Content: React.FC<ContentProps> = ({
         variants={hasAnimation ? imageVariants : {}}
         initial={hasAnimation ? 'initial' : ''}
         animate={shouldAnimate ? 'animate' : ''}
-        src={image?.src}
+        src={image ? image : ''}
         alt={alt ? alt : 'creative web design halifax'}
         width={1300}
         height={600}
@@ -135,8 +151,8 @@ const Content: React.FC<ContentProps> = ({
       
 
       {customText || (
-        <div className='w-screen md:w-[50vw]
-        pr-4'>
+        <div className='w-screen md:w-[45vw]
+        pr-4 md:pr-0'>
           <MotionH2
             variants={baseVariants(reverse ? -30 : 30, 0)}
             initial={hasAnimation ? 'initial' : ''}

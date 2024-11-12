@@ -23,6 +23,7 @@ const ArtPage = () => {
             
 
         <GridCarousel
+        id='artist-grid-carousel'
         isGrid={true}
         images={artCarousel}
         />

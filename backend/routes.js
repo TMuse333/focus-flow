@@ -1,31 +1,23 @@
-// textImage.routes.js
-
 import express from 'express';
-import TextImage from './models/textImage.model.js';
+import PageTimeAnalytics from './models/analytics.model.js'; // Adjust this path based on your file structure
 
 const router = express.Router();
 
-// Route to add new text and image URLs
-router.post('/text-image', async (req, res) => {
-  const { texts, imageUrls } = req.body;
-
+router.post('/track-page-time', async (req, res) => {
   try {
-    const newEntry = new TextImage({ texts, imageUrls });
-    await newEntry.save();
+    const analyticsData = req.body;
+    console.log('tha analytics to be sent',analyticsData)
+    // Create a new instance of the Analytics model with the received data
+    const newAnalytics = new PageTimeAnalytics(analyticsData);
     
-    res.json({ success: true, message: 'Texts and image URLs submitted successfully' });
+    // Save the analytics data to the database
+    await newAnalytics.save();
+    
+    console.log('Analytics saved successfully');
+    res.status(201).json({ message: 'Page time analytics data saved successfully' });
   } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
-
-// Route to get all text and image URLs
-router.get('/text-image', async (req, res) => {
-  try {
-    const data = await TextImage.find();
-    res.json({ success: true, data });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+    console.error('Error saving page time analytics data:', error);
+    res.status(500).json({ error: 'Error saving page time analytics data' });
   }
 });
 

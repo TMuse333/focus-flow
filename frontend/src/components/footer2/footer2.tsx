@@ -5,13 +5,15 @@ import Link from "next/link";
 
 
 interface props  {
-    excludedLink:string
+    excludedLink:string,
+    id?:string
 }
 
 
 
 const Footer2:React.FC<props> = ({
-    excludedLink
+    excludedLink,
+    id
 }) => {
 
   const bigLinks = [
@@ -117,7 +119,9 @@ const Footer2:React.FC<props> = ({
 
 
     return (
-        <footer className="w-screen relative flex flex-col
+        <footer
+        id={id}
+         className="w-screen relative flex flex-col
         items-center justify-center mx-auto  my-12">
             <h6 className="text-3xl sm:text-4xl font-semibold
             mb-8">Site map</h6>
@@ -136,12 +140,13 @@ md:grid-cols-3 lg:grid-cols-4
     <ul className="flex flex-col mx-auto 
     items-center justify-center">
    
-    <p className="text-lg sm:text-xl md:text-2xl
-     mb-4 font-semibold
+    <p className="text-xl sm:text-2xl md:text-3xl
+     mb-4 font-bold
      mx-auto text-center">
       {link.name}</p>
     {link.secondaryLinks && link.secondaryLinks.map((link2, innerIndex) => (
-      <Link href={link2.destination}>
+      <Link key={innerIndex}
+      href={link2.destination}>
 
 
       <li className="mb-2 text-center hover:text-[#00bfff]"

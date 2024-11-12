@@ -1,13 +1,14 @@
 "use client"
 
 import { useGeneralContext } from "../../context/context";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import dynamic from 'next/dynamic';
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, useInView } from "framer-motion";
 import { useIntersectionObserver } from '../intersectionObserver/intersectionObserver';
 import Link from "next/link";
 import Image from "next/image";
 import { HTMLMotionProps } from 'framer-motion';
+import { useComponentTimeTracker } from "@/lib/componentTracker";
 // Dynamically import motion components from framer-motion
 const MotionH2 = dynamic(() => import('framer-motion').then(mod => mod.motion.h2), {
   ssr: false,
@@ -41,9 +42,14 @@ interface Props {
             link: string
         }
     }[],
+    id?:string
+    setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
+        time:number}[]>>
 }
 
-const ScrollableCarousel: React.FC<Props> = ({ title, description, images }) => {
+const ScrollableCarousel: React.FC<Props> = ({ title, description, images,
+id, setTotalPageTime
+ }) => {
     const {
         setSelectedCarouselImageMainImage,
         setSelectedCarouselImageSecondaryImage,
@@ -66,14 +72,17 @@ const ScrollableCarousel: React.FC<Props> = ({ title, description, images }) => 
         setSelectedCarouselImageAlt2(images[index].details.alt2);
     }
 
-    const [inView, setInView] = useState(false);
-    const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.2,
-    };
+    const componentRef = useRef(null)
 
-    const componentRef = useIntersectionObserver(setInView, options);
+    const inView = useInView(componentRef,
+        {
+            once:false
+        })
+
+    const {totalTimeInView} = useComponentTimeTracker({inView,id:id?id:'content',
+    setTotalPageTime:setTotalPageTime})
+
+
     const [hoveredImage, setHoveredImage] = useState<number | null>(null);
 
     const handleMouseEnter = (index: number) => {

@@ -1,16 +1,19 @@
 "use client"
 
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import {  useRef, } from "react";
 import { Metadata } from "next";
 
 import { useGeneralContext } from "@/context/context";
-import { herobannerData, RestaurantContentBoxData, planningContent, monthlyContent, scrollableImages, } from "@/data/data";
+import { herobannerData, RestaurantContentBoxData, planningContent, monthlyContent, scrollableImages,
+blogCarouselData } from "@/data/data";
 
 import BigNav from "@/components/bigNav/navbar";  // Load navbar immediately
 import Herobanner from "@/components/herobanner/herobanner"; // Load hero banner immediately
 import { SelectedCarouselImage } from "@/components/scrollableCarousel/scrollableCarousel";
 import ParticlesComponent from "@/components/particles/particles"; // Particles are essential, load without lazy
+
+import ScrollCarousel from "@/components/scrollCarousel/scrollCarousel";
 
 export const metadata: Metadata = {
   title: "Web Design Halifax | Focusflow Software",
@@ -60,7 +63,24 @@ import infinity from '../../../public/media/infinity.webp';
 
 
 const Homepage = () => {
+
+
   const { selectedCarouselImageIndex } = useGeneralContext();
+
+  const ref = useRef(null)
+
+
+
+  const { setTotalPageTime} = useGeneralContext()
+
+
+
+
+
+  
+
+
+  
 
   return (
     <>
@@ -72,7 +92,10 @@ const Homepage = () => {
 
       <BigNav excludedLink="Home" />
 
-      <main className="text-center z-[30] overflow-x-hidden lg:mt-[2rem]
+      <main 
+      ref={ref}
+      id='homepage'
+      className="text-center z-[30] overflow-x-hidden lg:mt-[2rem]
       text-white"
         style={{
           filter: selectedCarouselImageIndex !== null ? 'blur(8px)' : 'none',
@@ -80,12 +103,17 @@ const Homepage = () => {
         }}
       >
        
-        <Herobanner sections={herobannerData} />
+        <Herobanner
+          setTotalPageTime={setTotalPageTime}
+          
+         sections={herobannerData} />
 
    
         <div className="h-[30vh]" />
 
         <FlashContent
+        setTotalPageTime={setTotalPageTime}
+        id='homepage-flash-content'
           src={infinity.src}
           alt="An infinity logo symbolizing limitless possibilities and custom web design services using advanced technologies like React.js to show FocusFlow Software has the most Creative web design in Halifax"
         />
@@ -94,23 +122,67 @@ const Homepage = () => {
         data={electricContainerData}
         /> */}
 
-        <Content {...planningContent} />
-        <Content {...monthlyContent} />
-        <ContentBox {...RestaurantContentBoxData} />
+        <Content 
+        id='homepage-content-1'
+        {...planningContent}
+        image={planningContent.image.src}
+        setTotalPageTime={setTotalPageTime}
+         />
+        <Content
+        id='homepage-content-2'
+         {...monthlyContent}
+         image={monthlyContent.image.src}
+         setTotalPageTime={setTotalPageTime}
+          />
+        <ContentBox 
+        id='homepage-content-box'
+        {...RestaurantContentBoxData}
+        setTotalPageTime={setTotalPageTime}
+         />
 
         <ScrollableCarousel
+        id='homepage-scrollable-carousel'
           images={scrollableImages}
           title="Creating Digital Excellence"
           description="Explore some of our showcased projects. Click on each for detailed insights and excellence in digital creation."
+          setTotalPageTime={setTotalPageTime}
         />
 
-        <Testimonials />
+        <Testimonials
+        setTotalPageTime={setTotalPageTime}
+       
+         />
 
-        <AuroraHero />
+<section className="relative mx-auto">
+<h2>
+          The FocusFlow Blog
+         </h2>
+
+         <p>Learn about website trends and anything
+          websites in general with the FocusFlow Blog
+         </p>
+
+  </section>
+        
+
+         <ScrollCarousel
+         title="The FocusFlow Blog"
+         images={blogCarouselData}
+         bgImage={true}
+         />
+
+
+        <AuroraHero
+        setTotalPageTime={setTotalPageTime}
+      
+         />
 
        
 
-        <Footer2 excludedLink='Home' />
+        <Footer2 
+       
+        id="homepage-footer"
+        excludedLink='Home' />
       </main>
     </>
   );

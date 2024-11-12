@@ -1,6 +1,6 @@
 "use client"
 import { Metadata } from "next";
-import React, {  } from "react";
+import React, { useEffect, useRef } from "react";
 
 // const Accordion = React.lazy(() => import("@/components/accordion/accordion"));
 
@@ -24,6 +24,10 @@ const AppearingSquare = dynamic(()=>import("@/components/appearingSquare/appeari
 
 import Head from "next/head";
 import dynamic from "next/dynamic";
+import { useRouterContext } from "@/lib/useRouterContext";
+import { useGeneralContext } from "@/context/context";
+import { useComponentTimeTracker } from "@/lib/componentTracker";
+import { useInView } from "framer-motion";
 
 
 
@@ -32,7 +36,15 @@ import dynamic from "next/dynamic";
 
 
 const RestaurantPage = () => {
+
   
+  
+
+    const {setTotalPageTime} = useGeneralContext()
+  
+    useRouterContext()
+
+
 
     return (
         <>
@@ -44,9 +56,12 @@ const RestaurantPage = () => {
         <Navbar
         excludedLink="Restaurant software"
         />
-        <Herobanner/>
+        <Herobanner
+        setTotalPageTime={setTotalPageTime}
+        />
 
         <FeatureBox
+         setTotalPageTime={setTotalPageTime}
        boxData={RestaurantFeatures}
        />
      
@@ -60,14 +75,18 @@ const RestaurantPage = () => {
        images={restaurantCarousel}
        hasDescription={true}
        style= "repeating-linear-gradient(45deg, #001F3F, #001F3F 10%, black 20%, black 30%)"
+       setTotalPageTime={setTotalPageTime}
        />
 
        <ScrollCarousel
        images={restaurantPackageDetails}
+       setTotalPageTime={setTotalPageTime}
        />
 
        <AppearingSquare
        {...restaurantPageCloser}
+       setTotalPageTime={setTotalPageTime}
+       id='restaurant closer'
        />
 
        <Footer2
