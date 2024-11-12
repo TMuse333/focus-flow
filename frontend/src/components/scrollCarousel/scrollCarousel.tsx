@@ -129,11 +129,23 @@ setTotalPageTime, }) => {
                             sm:text-lg md:text-2xl">{image.description}</p>
 
                             {image.link && (
-                                <button className="mt-4 bg-[#00bfff] py-3 px-6 rounded-2xl">
-                                    Read
+                                <>
+                               
+                                   
                                     <Link href={image.link}
-                                    />
-                                    </button>
+                                   
+                                    >
+                                        <button
+                                         className='mt-8 bg-[#00bfff] py-3 px-6 rounded-2xl
+                                         relative z-[4] hover:bg-white hover:text-[#00bfff]'>
+Read
+                                        </button>
+                                        
+
+
+                                    </Link>
+                                    </>
+                                    
 
                             )}
                         </div>
