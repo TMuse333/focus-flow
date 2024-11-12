@@ -1,4 +1,18 @@
 ---
+
+metaTitle: "Why Focusflow Offers the Best Web Design in Halifax"
+metaDescription: "Discover why Focusflow Software offers the best web design services in Halifax, combining creativity and technology for custom solutions."
+metaKeywords: "creative web design halifax, web design halifax"
+metaOpenGraph:
+  title: "Focus Flow Software | Best Web Design in Halifax"
+  description: "Experience the finest web design Halifax solutions with Focusflow Software, blending creativity with cutting-edge technology."
+  url: "https://www.focusflowsoftware.com/best-web-design-halifax"
+  images:
+    - url: "/media/focusFlow-logo.png"
+      width: 1200
+      height: 630
+      alt: "Focus Flow Software - Best Web Design in Halifax"
+
 title: "Why web design in halifax is crucial for online business"
 date: "2024-11-11"
 header1: "Unlock the Power of Creative Web Design in Halifax"

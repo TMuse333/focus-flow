@@ -982,6 +982,31 @@ export const electricContainerData = [
         description:'Dangerous but pure'
     }
 ]
+
+// interface Props {
+//     title?: string;
+//     description?: string;
+//     images: {
+//         src: string| StaticImageData;
+//         alt: string;
+//         title:string,
+//         description:string,
+//         link?:string
+       
+//     }[];
+//     setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
+//         time:number}[]>>
+
+export const blogCarouselData = [
+    {
+         src:'/media/focusFlow-brain-nobg.webp',
+         alt:'The focusflow software brain to represent creative web design in halifax',
+         title:'Why web design in halifax is crucial for online business',
+         description:'Learn why FocusFLow software is the best equipped team to quickly deliver web design in halifax',
+         link:'http://focusflowsoftware.com/blog/why-us',
+         date:'November 12th 2024'
+    }
+]
   
   
 

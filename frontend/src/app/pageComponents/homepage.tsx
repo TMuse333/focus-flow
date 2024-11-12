@@ -1,12 +1,12 @@
 "use client"
 
 import dynamic from "next/dynamic";
-import { useContext, useEffect, useRef, useState } from "react";
+import {  useRef, } from "react";
 import { Metadata } from "next";
 
 import { useGeneralContext } from "@/context/context";
 import { herobannerData, RestaurantContentBoxData, planningContent, monthlyContent, scrollableImages,
-electricContainerData } from "@/data/data";
+ blogCarouselData } from "@/data/data";
 
 import BigNav from "@/components/bigNav/navbar";  // Load navbar immediately
 import Herobanner from "@/components/herobanner/herobanner"; // Load hero banner immediately
@@ -56,9 +56,10 @@ const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
 
 import infinity from '../../../public/media/infinity.webp';
 import { useInView } from "framer-motion";
-import { useComponentTimeTracker } from "@/lib/componentTracker";
+
 import { useRouterContext } from "@/lib/useRouterContext";
-import { useRouter } from "next/router";
+
+import ScrollCarousel from "@/components/scrollCarousel/scrollCarousel";
 // import ElectricContainer from "@/canvasComponents/electricContainer/electricContainer";
 
 
@@ -82,13 +83,7 @@ const Homepage = () => {
 
 useRouterContext()
 
-  // const {totalTimeInView} = useComponentTimeTracker({
-  //   inView,
-  //   id:'homepage',
-  //   setTotalPageTime:setTotalHomePageTime,
-  //   totalPageTime:totalHomePageTime,
-  //   pageTracker:true
-  //   })
+
 
   
 
@@ -165,6 +160,25 @@ useRouterContext()
         setTotalPageTime={setTotalPageTime}
        
          />
+
+<section className="relative mx-auto">
+<h2>
+          The FocusFlow Blog
+         </h2>
+
+         <p>Learn about website trends and anything
+          websites in general with the FocusFlow Blog
+         </p>
+
+  </section>
+        
+
+         <ScrollCarousel
+         title="The FocusFlow Blog"
+         images={blogCarouselData}
+         bgImage={true}
+         />
+
 
         <AuroraHero
         setTotalPageTime={setTotalPageTime}
