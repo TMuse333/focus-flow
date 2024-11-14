@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'; // Import dynamic
 import Link from 'next/link';
 import { HTMLMotionProps, useInView } from 'framer-motion';
 import { useComponentTimeTracker } from '@/lib/componentTracker';
+import Image from 'next/image';
 
 // Dynamically import motion components from framer-motion
 const MotionImg = dynamic(() => import('framer-motion').then(mod => mod.motion.img), {
@@ -65,12 +66,12 @@ setTotalPageTime:setTotalPageTime})
                     text='True Custom Web Design'
                     subText='We really are built different'
                 />
-                <MotionImg
+                <Image
                     src={src}
                     alt={alt}
                     width={600}
                    
-                    layout='preserve-aspect'
+                   
                     height={1300}
                     className='w-[70vw] mx-auto my-5 md:w-[50vw] h-[205px] sm:h-[223px] md:h-[270px] object-contain'
                    
