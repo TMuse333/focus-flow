@@ -73,14 +73,7 @@ setTotalPageTime:setTotalPageTime})
                     layout='preserve-aspect'
                     height={1300}
                     className='w-[70vw] mx-auto my-5 md:w-[50vw] h-[205px] sm:h-[223px] md:h-[270px] object-contain'
-                    animate={{
-                        y: [0, -4, 0], // Oscillate up and down
-                    }}
-                    transition={{
-                        duration: 1.5, // Duration of the oscillation
-                        repeat: Infinity, // Infinite loop
-                        ease: 'easeInOut', // Smooth transition
-                    }}
+                   
                 />
                 <MotionP className='px-4 mx-auto md:w-[80%] md:text-lg rounded-2xl text-white text-left sm:text-center'>
                     In today's web design market, many websites rely on basic drag-and-drop, low-code frameworks. However, we've taken a more <span className='font-bold'>advanced</span> approach by offering custom web design services through <span className='font-bold'>100% custom-coded applications</span> using React.js—the same technology powering platforms like Facebook, Instagram, and Netflix. This ensures that your website stands out from the crowd, providing limitless creativity and control that basic templates can't match.
