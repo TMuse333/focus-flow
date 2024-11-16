@@ -46,6 +46,10 @@ interface PostData {
   contentBox1: ContentBoxProps;
   contentBox2: ContentBoxProps;
   contentBox3: ContentBoxProps;
+  hasButtons?:boolean
+  buttonText?:string
+  buttonDestination?:string,
+
 }
 
 
@@ -94,6 +98,9 @@ export async function getPostData(id: string): Promise<PostData> {
     contentBox1: matterResult.data.contentBox1,
     contentBox2: matterResult.data.contentBox2,
     contentBox3: matterResult.data.contentBox3,
+    hasButtons: matterResult.data.hasButtons,
+    buttonText: matterResult.data.buttonText,
+    buttonDestination: matterResult.data.buttonDestination
   };
 }
 

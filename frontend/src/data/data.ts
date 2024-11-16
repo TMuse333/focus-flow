@@ -1004,8 +1004,19 @@ export const blogCarouselData = [
          title:'Why web design in halifax is crucial for online business',
          description:'Learn why FocusFLow software is the best equipped team to quickly deliver web design in halifax',
          link:'http://focusflowsoftware.com/blog/why-us',
-         date:'November 12th 2024'
-    }
+         date:'November 12th 2024',
+
+    },
+    {
+        src:'/media/focusFlow-brain-nobg.webp',
+        alt:'The focusflow software brain to represent creative web design in halifax',
+        title:'How to ensure monumental success is the only possible outcome',
+        description:`Learn more about the efficient process of creating a website
+        to ensure the only outcome possible is having your digital presence
+        elevated.`,
+        link:'http://focusflowsoftware.com/blog/planning-a-website',
+        date:'November 15th 2024'
+   }
 ]
   
   

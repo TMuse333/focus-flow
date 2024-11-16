@@ -14,7 +14,7 @@ metaOpenGraph:
       alt: "Focus Flow Software - Best Web Design in Halifax"
 
 title: "Why web design in halifax is crucial for online business"
-date: "2024-11-11"
+date: "November 9th, 2024"
 header1: "Unlock the Power of Creative Web Design in Halifax"
 description1: "In today's digital age, having a professional and creative website is crucial for your business's success. A well-designed website not only enhances your brand’s reputation but also serves as an essential tool for engaging clients. Whether it’s providing essential information about your services, offering a seamless booking experience, or enabling e-commerce, a great website makes your business more accessible, efficient, and credible. At our Halifax-based web design agency, we specialize in creating stunning, user-friendly websites tailored to your needs, helping you stand out and grow online. Here are three reasons
 why FocusFlow Software is a fantastic option to help you out."

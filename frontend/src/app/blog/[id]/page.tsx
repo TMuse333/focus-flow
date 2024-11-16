@@ -7,6 +7,8 @@ import Footer2 from '@/components/footer2/footer2';
 import Image from 'next/image';
 import logo from '../../../../public/media/focusFlow-brain-nobg.webp';
 import { Metadata } from 'next';
+import Head from 'next/head'
+import Link from 'next/link';
 
 type PostProps = {
   params: { id: string };
@@ -19,6 +21,8 @@ export async function generateMetadata({ params }: PostProps): Promise<Metadata>
   if (!postData) {
     return notFound();
   }
+
+
 
   return {
     title: postData.title ,
@@ -37,6 +41,7 @@ export async function generateMetadata({ params }: PostProps): Promise<Metadata>
       ],
       type: "article",
     },
+    
   };
 }
 
@@ -48,8 +53,47 @@ export default async function Post({ params }: PostProps) {
     return notFound();
   }
 
+  // const structuredData = {
+  //   "@context": "https://schema.org",
+  //   "@type": "Article",
+  //   "headline": "How FocusFlow Software plans websites to offer fast and effective web design in Halifax",
+  //   "description": "Learn more about how FocusFlow software plans how to create effective websites...",
+  //   "author": {
+  //     "@type": "Person",
+  //     "name": "John Doe",
+  //   },
+  //   "datePublished": "2024-11-15",
+  //   "mainEntityOfPage": {
+  //     "@type": "WebPage",
+  //     "@id": `https://www.focusflowsoftware.com/posts/${params.id}`,
+  //   },
+  //   "image": {
+  //     "@type": "ImageObject",
+  //     "url": "https://www.focusflowsoftware.com/media/focusFlow-logo.png",
+  //     "width": 1200,
+  //     "height": 630,
+  //   },
+  //   "publisher": {
+  //     "@type": "Organization",
+  //     "name": "FocusFlow Software",
+  //     "logo": {
+  //       "@type": "ImageObject",
+  //       "url": "https://www.focusflowsoftware.com/media/focusFlow-logo.png",
+  //       "width": 1200,
+  //       "height": 630,
+  //     },
+  //   },
+  // };
+
   return (
     <>
+    {/* <Head>
+      
+    <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+    </Head> */}
       <BigNav excludedLink='' />
       <main className="w-screen overflow-x-hidden flex flex-col items-center justify-center mt-12"
         style={{
@@ -66,7 +110,7 @@ export default async function Post({ params }: PostProps) {
          >
             <h1 className="text-4xl font-bold mb-4">{postData.title}</h1>
             <p className="text-white">
-              {new Date(postData.date).toDateString()}, &nbsp; written by Thomas Musial, owner of FocusFlow Software
+              {postData.date}, &nbsp; written by Thomas Musial, owner of FocusFlow Software
             </p>
           </section>
 
@@ -82,10 +126,11 @@ export default async function Post({ params }: PostProps) {
           
 
           <section className="p-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-2
+            ">
               {postData.header1}
             </h2>
-            <p>{postData.description1}</p>
+            <p className='whitespace-pre-line'>{postData.description1}</p>
           </section>
           </section>
 
@@ -140,11 +185,40 @@ export default async function Post({ params }: PostProps) {
         my-14'
         />
 
-<section className="p-4">
+<section className="p-4 bg-[#00bfff] bg-opacity-[0.2]
+py-6">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-2">
               {postData.header2}
             </h2>
-            <p>{postData.description2}</p>
+            <p 
+            className='whitespace-pre-line mb-6'>{postData.description2}</p>
+            {postData.hasButtons  && (
+              <>
+              <button className='mt-2 p-3
+              bg-[#00bfff] hover:text-[#00bfff]
+              hover:bg-white transition-all rounded-2xl mr-2'>
+                <Link href='/lets-work'>
+                Book a meeting today
+                </Link>
+                </button>
+                {postData.buttonDestination &&
+                postData.buttonText && (
+                  <button className='mt-2 p-3
+                  hover:bg-[#00bfff] hover:text-white
+                  text-[#00bfff] bg-white
+                  transition-all rounded-2xl'>
+                    <Link href={postData.buttonDestination}>
+                  {postData.buttonText}
+                    </Link>
+                    </button>
+                )}
+               
+              </>
+            )}
+          
+
+           
+          
           </section>
 
           <ReactMarkdown>{postData.contentHtml}</ReactMarkdown>
