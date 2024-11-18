@@ -1019,7 +1019,7 @@ export const blogCarouselData = [
    }
 ]
   
-  
+  export const cards = '/videos/card-gameplay.mp4'
 
 
   

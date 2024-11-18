@@ -6,7 +6,7 @@ import { Metadata } from "next";
 
 import { useGeneralContext } from "@/context/context";
 import { herobannerData, RestaurantContentBoxData, planningContent, monthlyContent, scrollableImages,
-blogCarouselData } from "@/data/data";
+blogCarouselData,cards } from "@/data/data";
 
 import BigNav from "@/components/bigNav/navbar";  // Load navbar immediately
 import Herobanner from "@/components/herobanner/herobanner"; // Load hero banner immediately
@@ -55,6 +55,7 @@ const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
 });
 
 import infinity from '../../../public/media/infinity.webp';
+import { TextParallaxContentExample } from "@/components/parallaxText/parallaxText";
 // import ElectricContainer from "@/canvasComponents/electricContainer/electricContainer";
 
 
@@ -95,21 +96,43 @@ const Homepage = () => {
       <main 
       ref={ref}
       id='homepage'
-      className="text-center z-[30] overflow-x-hidden lg:mt-[2rem]
+      className="text-center z-[30]  lg:mt-[2rem]
       text-white"
-        style={{
-          filter: selectedCarouselImageIndex !== null ? 'blur(8px)' : 'none',
-          overflowY: selectedCarouselImageIndex !== null ? 'hidden' : 'auto',
-        }}
+        // style={{
+        //   filter: selectedCarouselImageIndex !== null ? 'blur(8px)' : 'none',
+        //   overflowY: selectedCarouselImageIndex !== null ? 'hidden' : 'auto',
+        // }}
       >
+
+
        
         <Herobanner
           setTotalPageTime={setTotalPageTime}
           
          sections={herobannerData} />
 
+
+
    
         <div className="h-[30vh]" />
+
+        <TextParallaxContentExample
+         src={cards}
+         muted={true}
+         isVideo={true}
+         alt="card game"
+         heading="The Quantum Card Game"
+         subHeading="My first react js project"
+         description={`This is an upgraded version of my
+         first ever react js project, a card matching game
+         to test memory and reaction time.
+         This project taught me how to make a game
+         lifecycle, from the start page, gameplay
+         layout and what happens when the game ends
+         then  how to reset everything for another
+         round. I also learned how to make a user account
+         and send their score to a mongodb database`}
+         />
 
         <FlashContent
         setTotalPageTime={setTotalPageTime}
@@ -170,6 +193,8 @@ const Homepage = () => {
          images={blogCarouselData}
          bgImage={true}
          />
+
+        
 
 
         <AuroraHero
