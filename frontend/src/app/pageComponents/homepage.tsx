@@ -6,7 +6,7 @@ import { Metadata } from "next";
 
 import { useGeneralContext } from "@/context/context";
 import { herobannerData, RestaurantContentBoxData, planningContent, monthlyContent, scrollableImages,
-blogCarouselData,cards } from "@/data/data";
+blogCarouselData } from "@/data/data";
 
 import BigNav from "@/components/bigNav/navbar";  // Load navbar immediately
 import Herobanner from "@/components/herobanner/herobanner"; // Load hero banner immediately
@@ -55,7 +55,7 @@ const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
 });
 
 import infinity from '../../../public/media/infinity.webp';
-import { TextParallaxContentExample } from "@/components/parallaxText/parallaxText";
+
 // import ElectricContainer from "@/canvasComponents/electricContainer/electricContainer";
 
 
@@ -116,7 +116,7 @@ const Homepage = () => {
    
         <div className="h-[30vh]" />
 
-        <TextParallaxContentExample
+        {/* <TextParallaxContentExample
          src={cards}
          muted={true}
          isVideo={true}
@@ -132,7 +132,7 @@ const Homepage = () => {
          then  how to reset everything for another
          round. I also learned how to make a user account
          and send their score to a mongodb database`}
-         />
+         /> */}
 
         <FlashContent
         setTotalPageTime={setTotalPageTime}
