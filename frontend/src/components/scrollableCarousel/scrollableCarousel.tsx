@@ -74,15 +74,15 @@ const ScrollableCarousel: React.FC<Props> = ({ title, description, images }) => 
     };
 
     const componentRef = useIntersectionObserver(setInView, options);
-    const [hoveredImage, setHoveredImage] = useState<number | null>(null);
+    // const [hoveredImage, setHoveredImage] = useState<number | null>(null);
 
-    const handleMouseEnter = (index: number) => {
-        setHoveredImage(index);
-    };
+    // const handleMouseEnter = (index: number) => {
+    //     setHoveredImage(index);
+    // };
 
-    const handleMouseLeave = () => {
-        setHoveredImage(null);
-    };
+    // const handleMouseLeave = () => {
+    //     setHoveredImage(null);
+    // };
 
     return (
         <>
@@ -115,7 +115,7 @@ const ScrollableCarousel: React.FC<Props> = ({ title, description, images }) => 
                             key={index}
                            
                         >
-                            <h3 className="mb-8 text-3xl" style={{ opacity: hoveredImage === index ? 1 : 0, transition: 'opacity 0.3s ease-in' }}>
+                            <h3 className="mb-8 text-3xl" >
                                 {image.details.title}
                             </h3>
                             <Image

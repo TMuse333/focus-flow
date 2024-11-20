@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import {  useInView, Variants } from "framer-motion";
+import {   Variants } from "framer-motion";
 
 import Image, { StaticImageData } from "next/image";
 
@@ -31,37 +31,37 @@ const ScrollCarousel: React.FC<Props> = ({ title, description, images,
 
     const ref = useRef(null)
 
-    const inView = useInView(ref,{
-        once:false
-      })
+    // const inView = useInView(ref,{
+    //     once:false
+    //   })
      
 
     // Variants for the animation of images
-    const imageVariants = (index: number): Variants => {
-        return {
-            initial: {
-                opacity: 0,
-                y: -100,
-            },
-            animate: {
-                opacity: 1,
-                y: 0,
-                transition: {
-                    delay: index * 0.5,
-                },
-            },
-        };
-    };
+    // const imageVariants = (index: number): Variants => {
+    //     return {
+    //         initial: {
+    //             opacity: 0,
+    //             y: -100,
+    //         },
+    //         animate: {
+    //             opacity: 1,
+    //             y: 0,
+    //             transition: {
+    //                 delay: index * 0.5,
+    //             },
+    //         },
+    //     };
+    // };
 
-    const [hoveredImage, setHoveredImage] = useState<number | null>(null);
+    // const [hoveredImage, setHoveredImage] = useState<number | null>(null);
 
-    const handleMouseEnter = (index: number) => {
-        setHoveredImage(index);
-    };
+    // const handleMouseEnter = (index: number) => {
+    //     setHoveredImage(index);
+    // };
 
-    const handleMouseLeave = () => {
-        setHoveredImage(null);
-    };
+    // const handleMouseLeave = () => {
+    //     setHoveredImage(null);
+    // };
 
     return (
         <>
@@ -85,7 +85,9 @@ const ScrollCarousel: React.FC<Props> = ({ title, description, images,
                            
                            
                         >
-             <h5 className="text-white my-4 text-center px-2 relative font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-xl
+             <h5 className="text-white my-4 text-center px-2 
+             relative font-semibold bg-gradient-to-b from-white to-gray-300 
+             bg-clip-text text-transparent text-xl
              sm:text-2xl md:text-3xl">{image.title}</h5>
 
              {image.date && (
@@ -105,17 +107,8 @@ const ScrollCarousel: React.FC<Props> = ({ title, description, images,
  ${bgImage ? 'h-[40%]' : 'h-[90%]'}`}
  width={1000}
  height={55}
- style={{
-     transform: `translateY(${inView ? '0' : '-12rem'}) \
-     }`,
-     transitionDelay: `${(images.length - 1 - index) * 0.2}s, ${
-         0.2 + (images.length - 1 - index) * 0.2
-     }s`,
-     opacity: inView ? 1 : 0,
-     transitionProperty: 'transform, opacity',
-     transitionDuration: '0.5s',
-     transitionTimingFunction: 'ease-in-out',
- }}
+ sizes="(max-width: 768px) 85vw, (max-width: 1200px) 50vw, 500px"
+ 
 />
 
                            

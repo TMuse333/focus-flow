@@ -61,14 +61,16 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
         </h2>
         
         {/* Image with width and height defined */}
-        <Image 
-          src={brain}
-          alt='An image of a brain to represent creative web design in halifax'
-          width={384}  // Define explicit width for image
-          height={384} // Define explicit height for image
-          className='mx-auto w-[50vw] object-contain max-w-[384px] max-h-[384px]'
-          priority
-        />
+        <Image
+    src={brain}
+    alt="An image of a brain to represent creative web design in Halifax"
+    width={384}  // Define explicit width for image
+    height={384} // Define explicit height for image
+    className="mx-auto w-[50vw] object-contain max-w-[384px] max-h-[384px]"
+    priority
+    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 40vw, 384px"
+/>
+
         
         <p className="text-left px-3 text-sm relative z-[3] text-lg sm:text-xl text-white">
           FocusFlow Software specializes in web design based out of Halifax, Nova Scotia, <span className="font-bold">

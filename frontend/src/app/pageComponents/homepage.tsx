@@ -40,6 +40,7 @@ export const metadata: Metadata = {
   },
 };
 import Head from "next/head";
+import { useInView } from "framer-motion";
 // Dynamic imports (lazy-loaded components)
 
 const ScrollableCarousel = dynamic(() => import('@/components/scrollableCarousel/scrollableCarousel'),{ssr:true});
@@ -54,11 +55,15 @@ const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
   loading: () => <p>Loading Aurora Hero...</p>,
 });
 
-import infinity from '../../../public/media/infinity.webp';
+// import infinity from '../../../public/media/infinity.webp';
 
 // import ElectricContainer from "@/canvasComponents/electricContainer/electricContainer";
 
+const ref = useRef(null)
 
+const inView = useInView(ref,{
+  once:true
+})
 
 
 
@@ -172,11 +177,18 @@ const Homepage = () => {
   </section>
         
 
-         <ScrollCarousel
-         title="The FocusFlow Blog"
-         images={blogCarouselData}
-         bgImage={true}
-         />
+<section ref={ref}
+>
+{inView && (
+ <ScrollCarousel
+ title="The FocusFlow Blog"
+ images={blogCarouselData}
+ bgImage={true}
+ />
+)}
+
+        
+         </section>
 
         
 
