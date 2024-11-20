@@ -129,15 +129,16 @@ const Homepage = () => {
    
 
         <Content 
-       
+      
         {...planningContent}
+        image={planningContent.image.src}
      
         
          />
         <Content
         
          {...monthlyContent}
-         image={monthlyContent.image}
+         image={monthlyContent.image.src}
          
           />
         <ContentBox 
