@@ -116,7 +116,7 @@ useEffect(() => {
         animate-gradient  font-semibold
         text-4xl mb-4
         sm:text-5xl md:text-6xl">
-          FocusFlow Software
+          FocusFlow Software dev
         </h2>
         <Image src={brain}
             alt='An image of a brain to represent creative web design in halifax'

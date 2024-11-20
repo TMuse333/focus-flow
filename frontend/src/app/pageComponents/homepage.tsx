@@ -1,6 +1,6 @@
 "use client"
 
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import {  useRef, } from "react";
 import { Metadata } from "next";
 
@@ -8,9 +8,9 @@ import { useGeneralContext } from "@/context/context";
 import { herobannerData, RestaurantContentBoxData, planningContent, monthlyContent, scrollableImages,
 blogCarouselData } from "@/data/data";
 
-import BigNav from "@/components/bigNav/navbar";  // Load navbar immediately
-import Herobanner from "@/components/herobanner/herobanner"; // Load hero banner immediately
-import { SelectedCarouselImage } from "@/components/scrollableCarousel/scrollableCarousel";
+// import BigNav from "@/components/bigNav/navbar";  // Load navbar immediately
+// import Herobanner from "@/components/herobanner/herobanner"; // Load hero banner immediately
+// import { SelectedCarouselImage } from "@/components/scrollableCarousel/scrollableCarousel";
 import ParticlesComponent from "@/components/particles/particles"; // Particles are essential, load without lazy
 
 import ScrollCarousel from "@/components/scrollCarousel/scrollCarousel";
@@ -42,17 +42,17 @@ export const metadata: Metadata = {
 import Head from "next/head";
 // Dynamic imports (lazy-loaded components)
 
-const ScrollableCarousel = dynamic(() => import('@/components/scrollableCarousel/scrollableCarousel'),{ssr:true});
-const Content = dynamic(() => import('@/components/content/content'));
-const FlashContent = dynamic(() => import('@/components/flashConent/flashContent'),{ssr:true});
-const ContentBox = dynamic(() => import('@/components/contentBox/contentBox'),{ssr:true});
-// const AppearingContent = dynamic(() => import('@/components/appearingContent/appearingContent'),{ssr:true});
-const Testimonials = dynamic(() => import('@/components/testimonials/testimonials'),{ssr:true});
-const Footer2 = dynamic(() => import('@/components/footer2/footer2'),{ssr:true});
-const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
-  ssr: false, // Client-side rendering only
-  loading: () => <p>Loading Aurora Hero...</p>,
-});
+// const ScrollableCarousel = dynamic(() => import('@/components/scrollableCarousel/scrollableCarousel'),{ssr:true});
+// const Content = dynamic(() => import('@/components/content/content'));
+// const FlashContent = dynamic(() => import('@/components/flashConent/flashContent'),{ssr:true});
+// const ContentBox = dynamic(() => import('@/components/contentBox/contentBox'),{ssr:true});
+// // const AppearingContent = dynamic(() => import('@/components/appearingContent/appearingContent'),{ssr:true});
+// const Testimonials = dynamic(() => import('@/components/testimonials/testimonials'),{ssr:true});
+// const Footer2 = dynamic(() => import('@/components/footer2/footer2'),{ssr:true});
+// const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
+//   ssr: false, // Client-side rendering only
+//   loading: () => <p>Loading Aurora Hero...</p>,
+// });
 
 import infinity from '../../../public/media/infinity.webp';
 
@@ -89,11 +89,11 @@ const Homepage = () => {
         <link rel="canonical" href="https://www.focusflowsoftware.com" />
       </Head>
       <ParticlesComponent />
-      <SelectedCarouselImage />
+      {/* <SelectedCarouselImage /> */}
 
-      <BigNav excludedLink="Home" />
+      {/* <BigNav excludedLink="Home" /> */}
 
-      <main 
+      {/* <main 
       ref={ref}
       id='homepage'
       className="text-center z-[30]  lg:mt-[2rem]
@@ -134,16 +134,14 @@ const Homepage = () => {
          and send their score to a mongodb database`}
          /> */}
 
-        <FlashContent
+        {/* <FlashContent
         setTotalPageTime={setTotalPageTime}
         id='homepage-flash-content'
           src={infinity.src}
           alt="An infinity logo symbolizing limitless possibilities and custom web design services using advanced technologies like React.js to show FocusFlow Software has the most Creative web design in Halifax"
         />
 
-        {/* <ElectricContainer
-        data={electricContainerData}
-        /> */}
+   
 
         <Content 
         id='homepage-content-1'
@@ -207,8 +205,8 @@ const Homepage = () => {
         <Footer2 
        
         id="homepage-footer"
-        excludedLink='Home' />
-      </main>
+        excludedLink='Home' /> */}
+      {/* </main>  */}
     </>
   );
 }

@@ -2,18 +2,17 @@
 
 import React, { useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic'; // Import dynamic from Next.js
-import { useInView, Variants } from 'framer-motion';
+import { useInView, Variants, motion } from 'framer-motion';
 
 import Link from 'next/link';
 
 // Import HTMLMotionProps for type safety
 import { HTMLMotionProps } from 'framer-motion';
 import { useComponentTimeTracker } from '@/lib/componentTracker';
+import Image from 'next/image'
 
 // Dynamically import motion components from framer-motion
-const MotionImage = dynamic(() => import('framer-motion').then(mod => mod.motion.img), {
-  ssr: false,
-}) as React.ComponentType<HTMLMotionProps<'img'>>;
+
 
 const MotionH2 = dynamic(() => import('framer-motion').then(mod => mod.motion.h2), {
   ssr: false,
@@ -62,6 +61,8 @@ const Content: React.FC<ContentProps> = ({
   setTotalPageTime,
   bgColor
 }) => {
+
+  const MotionImage = motion(Image)
 
 
   const baseVariants = (x: number, delay: number): Variants => ({
@@ -136,16 +137,17 @@ setTotalPageTime:setTotalPageTime})
        {  iframe}
          </div>
       ) : (
-<MotionImage
+<Image
         className="rounded-xl w-[90vw] h-[55vw] max-h-[567px] max-w-[668px] ml-auto mr-auto object-contain
         my-auto md:w-[48vw]"
-        variants={hasAnimation ? imageVariants : {}}
-        initial={hasAnimation ? 'initial' : ''}
-        animate={shouldAnimate ? 'animate' : ''}
+        // variants={hasAnimation ? imageVariants : {}}
+        // initial={hasAnimation ? 'initial' : ''}
+        // animate={shouldAnimate ? 'animate' : ''}
         src={image ? image : ''}
         alt={alt ? alt : 'creative web design halifax'}
         width={1300}
         height={600}
+        layout='responsive'
       />
       )}
       
