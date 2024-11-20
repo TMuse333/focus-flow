@@ -85,7 +85,7 @@ const Content: React.FC<ContentProps> = ({
     },
   };
 
-const ref = useRef(null)
+const ref = useRef(null);
 
   const inView = useInView(ref,{
     once:false
