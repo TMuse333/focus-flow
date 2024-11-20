@@ -1,27 +1,18 @@
 "use client"
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { FiArrowRight } from "react-icons/fi";
 import {
   useMotionTemplate,
   useMotionValue,
   motion,
   animate,
-  useInView,
 } from "framer-motion";
 import Link from "next/link";
-import { useComponentTimeTracker } from "@/lib/componentTracker";
-
-interface Props  {
-  setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
-    time:number}[]>>
-}
 
 
 const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
- const AuroraHero:React.FC<Props> = ({
-  setTotalPageTime
- }) => {
+ const AuroraHero = () => {
   const color = useMotionValue(COLORS_TOP[0]);
 
   useEffect(() => {
@@ -37,21 +28,10 @@ const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
   const border = useMotionTemplate`1px solid ${color}`;
   const boxShadow = useMotionTemplate`0px 4px 24px ${color}`;
 
-  const ref = useRef(null)
-
-  const inView = useInView(ref,{
-    once:false
-  })
-
-  const {totalTimeInView} = useComponentTimeTracker({inView,id:'homepage-aurora-hero',
-setTotalPageTime:setTotalPageTime})
-
   return (
     <>
     
-    
     <motion.section
-    id='homepage-aurora-hero'
       style={{
         backgroundImage,
       }}

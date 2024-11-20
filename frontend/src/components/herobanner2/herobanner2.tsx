@@ -1,33 +1,18 @@
-import { useComponentTimeTracker } from "@/lib/componentTracker";
-import { useInView } from "framer-motion";
 import Image from "next/image";
-import React, { useRef } from "react";
+import React from "react";
 import brain from '../../../public/media/focusFlow-brain-nobg.webp'
 
 interface props {
     title:string,
     description:string
-    setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
-        time:number}[]>>,
-        id:string
 }
 
 
 const Herobanner:React.FC<props> = ({
-    title,description,
-    setTotalPageTime,
-    id
+    title,description
 }) => {
 
-    const ref = useRef(null)
 
-
-    const inView = useInView(ref,{
-      once:false
-    })
-    const {totalTimeInView} = useComponentTimeTracker({inView,id:id,
-    setTotalPageTime:setTotalPageTime,
-    pageTracker:false})
 
     return (
         <section className=" mt-[4rem] bg-['radial-gradient(circle, #0080bf -50%, rgba(0, 128, 191, 0%) 60%)']

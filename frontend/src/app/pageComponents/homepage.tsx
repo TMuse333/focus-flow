@@ -1,6 +1,6 @@
 "use client"
 
-// import dynamic from "next/dynamic";
+import dynamic from "next/dynamic";
 import {  useRef, } from "react";
 import { Metadata } from "next";
 
@@ -8,9 +8,9 @@ import { useGeneralContext } from "@/context/context";
 import { herobannerData, RestaurantContentBoxData, planningContent, monthlyContent, scrollableImages,
 blogCarouselData } from "@/data/data";
 
-// import BigNav from "@/components/bigNav/navbar";  // Load navbar immediately
+import BigNav from "@/components/bigNav/navbar";  // Load navbar immediately
 import Herobanner from "@/components/herobanner/herobanner"; // Load hero banner immediately
-// import { SelectedCarouselImage } from "@/components/scrollableCarousel/scrollableCarousel";
+import { SelectedCarouselImage } from "@/components/scrollableCarousel/scrollableCarousel";
 import ParticlesComponent from "@/components/particles/particles"; // Particles are essential, load without lazy
 
 import ScrollCarousel from "@/components/scrollCarousel/scrollCarousel";
@@ -42,17 +42,17 @@ export const metadata: Metadata = {
 import Head from "next/head";
 // Dynamic imports (lazy-loaded components)
 
-// const ScrollableCarousel = dynamic(() => import('@/components/scrollableCarousel/scrollableCarousel'),{ssr:true});
-// const Content = dynamic(() => import('@/components/content/content'));
-// const FlashContent = dynamic(() => import('@/components/flashConent/flashContent'),{ssr:true});
-// const ContentBox = dynamic(() => import('@/components/contentBox/contentBox'),{ssr:true});
-// // const AppearingContent = dynamic(() => import('@/components/appearingContent/appearingContent'),{ssr:true});
-// const Testimonials = dynamic(() => import('@/components/testimonials/testimonials'),{ssr:true});
-// const Footer2 = dynamic(() => import('@/components/footer2/footer2'),{ssr:true});
-// const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
-//   ssr: false, // Client-side rendering only
-//   loading: () => <p>Loading Aurora Hero...</p>,
-// });
+const ScrollableCarousel = dynamic(() => import('@/components/scrollableCarousel/scrollableCarousel'),{ssr:true});
+const Content = dynamic(() => import('@/components/content/content'));
+const FlashContent = dynamic(() => import('@/components/flashConent/flashContent'),{ssr:true});
+const ContentBox = dynamic(() => import('@/components/contentBox/contentBox'),{ssr:true});
+// const AppearingContent = dynamic(() => import('@/components/appearingContent/appearingContent'),{ssr:true});
+const Testimonials = dynamic(() => import('@/components/testimonials/testimonials'),{ssr:true});
+const Footer2 = dynamic(() => import('@/components/footer2/footer2'),{ssr:true});
+const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
+  ssr: false, // Client-side rendering only
+  loading: () => <p>Loading Aurora Hero...</p>,
+});
 
 import infinity from '../../../public/media/infinity.webp';
 
@@ -93,11 +93,11 @@ const Homepage = () => {
           // setTotalPageTime={setTotalPageTime}
           
          sections={herobannerData} />
-      {/* <SelectedCarouselImage /> */}
+      <SelectedCarouselImage />
 
-      {/* <BigNav excludedLink="Home" /> */}
+      <BigNav excludedLink="Home" />
 
-      {/* <main 
+      <main 
       ref={ref}
       id='homepage'
       className="text-center z-[30]  lg:mt-[2rem]
@@ -117,27 +117,11 @@ const Homepage = () => {
    
         <div className="h-[30vh]" />
 
-        {/* <TextParallaxContentExample
-         src={cards}
-         muted={true}
-         isVideo={true}
-         alt="card game"
-         heading="The Quantum Card Game"
-         subHeading="My first react js project"
-         description={`This is an upgraded version of my
-         first ever react js project, a card matching game
-         to test memory and reaction time.
-         This project taught me how to make a game
-         lifecycle, from the start page, gameplay
-         layout and what happens when the game ends
-         then  how to reset everything for another
-         round. I also learned how to make a user account
-         and send their score to a mongodb database`}
-         /> */}
+       
 
-        {/* <FlashContent
-        setTotalPageTime={setTotalPageTime}
-        id='homepage-flash-content'
+         <FlashContent
+     
+        
           src={infinity.src}
           alt="An infinity logo symbolizing limitless possibilities and custom web design services using advanced technologies like React.js to show FocusFlow Software has the most Creative web design in Halifax"
         />
@@ -145,33 +129,33 @@ const Homepage = () => {
    
 
         <Content 
-        id='homepage-content-1'
+       
         {...planningContent}
-        image={planningContent.image.src}
-        setTotalPageTime={setTotalPageTime}
+     
+        
          />
         <Content
-        id='homepage-content-2'
+        
          {...monthlyContent}
-         image={monthlyContent.image.src}
-         setTotalPageTime={setTotalPageTime}
+         image={monthlyContent.image}
+         
           />
         <ContentBox 
-        id='homepage-content-box'
+       
         {...RestaurantContentBoxData}
-        setTotalPageTime={setTotalPageTime}
+       
          />
 
         <ScrollableCarousel
-        id='homepage-scrollable-carousel'
+      
           images={scrollableImages}
           title="Creating Digital Excellence"
           description="Explore some of our showcased projects. Click on each for detailed insights and excellence in digital creation."
-          setTotalPageTime={setTotalPageTime}
+         
         />
 
         <Testimonials
-        setTotalPageTime={setTotalPageTime}
+     
        
          />
 
@@ -196,8 +180,8 @@ const Homepage = () => {
         
 
 
-        <AuroraHero
-        setTotalPageTime={setTotalPageTime}
+         <AuroraHero
+        // setTotalPageTime={setTotalPageTime}
       
          />
 
@@ -205,9 +189,9 @@ const Homepage = () => {
 
         <Footer2 
        
-        id="homepage-footer"
-        excludedLink='Home' /> */}
-      {/* </main>  */}
+      
+        excludedLink='Home' /> 
+      </main> 
     </>
   );
 }

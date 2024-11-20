@@ -7,8 +7,6 @@ import {useIntersectionObserver} from '../intersectionObserver/intersectionObser
 
 import { useGeneralContext } from '@/context/context';
 import Image from 'next/image';
-import { useInView } from 'framer-motion';
-import { useComponentTimeTracker } from '@/lib/componentTracker';
 
 
 interface CarouselProps {
@@ -21,9 +19,6 @@ interface CarouselProps {
     }[]
     title?: string,
     description?: string
-    id:string,
-    setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
-      time:number}[]>>
 }
 
 interface SliderProps {
@@ -335,24 +330,24 @@ h-[90vh] bg-red-200 md:max-h-[800px] overflow-y-visible py-4'>
 
 
 
-const SlideShowCarousel: React.FC<CarouselProps> = ({ images, title, description,
-id, setTotalPageTime }) => {
+const SlideShowCarousel: React.FC<CarouselProps> = ({ images, title, description }) => {
     const [currentElement, setCurrentElement] = useState(0);
     const containerRef = useRef<HTMLDivElement>(null);
 
     const {isMobile} = useGeneralContext()
     const [shift, setShift] = useState(0)
 
-   const componentRef = useRef(null)
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: !isMobile ? 0.5 : 0.8,
+      toggle:true
+    };
 
-   const inView = useInView(componentRef,
-    {
-      once:false
-    })
+    const [inView, setInView] = useState(false);
 
-    const {totalTimeInView} = useComponentTimeTracker({inView,id:id,
-      setTotalPageTime:setTotalPageTime,
-      pageTracker:false})
+    
+    const componentRef = useIntersectionObserver(setInView, options, false, true);
 
     const [relativeScrollPosition, setRelativeScrollPosition] = useState(0)
 

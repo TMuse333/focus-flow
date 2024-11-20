@@ -1,10 +1,8 @@
-import React, {useEffect, useRef} from 'react';
+import React from 'react';
 import dynamic from 'next/dynamic'; // Import dynamic
 
 import Link from 'next/link';
-import { HTMLMotionProps, useInView } from 'framer-motion';
-import { useComponentTimeTracker } from '@/lib/componentTracker';
-import Image from 'next/image';
+import { HTMLMotionProps } from 'framer-motion';
 
 // Dynamically import motion components from framer-motion
 const MotionImg = dynamic(() => import('framer-motion').then(mod => mod.motion.img), {
@@ -30,51 +28,32 @@ const AppearingGradient = dynamic(() => import('../appearingGradient/appearingGr
 interface Props {
     src: string;
     alt: string;
-    id?:string,
-    setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
-        time:number}[]>>
 }
 
-
-
-const FlashContent: React.FC<Props> = ({ src, alt,
-id, setTotalPageTime }) => {
-
-
-    const ref = useRef(null)
-
-    const inView = useInView(ref,{
-        once:false
-    })
-
-
-
-    const {totalTimeInView} = useComponentTimeTracker({inView, id:id?id:'flash-content',
-setTotalPageTime:setTotalPageTime})
-
-    useEffect(()=>{
-        if(totalTimeInView > 0)
-        console.log(`time spent in ${id} ${totalTimeInView} ms`)
-    },[totalTimeInView])
-
+const FlashContent: React.FC<Props> = ({ src, alt }) => {
     return (
         <>
-            <section id={id}
-            ref={ref}
-            className='mx-auto w-screen max-w-[1200px] relative mb-8'>
+            <section className='mx-auto w-screen max-w-[1200px] relative mb-8'>
                 <AppearingGradient
                     text='True Custom Web Design'
                     subText='We really are built different'
                 />
-                <Image
+                <MotionImg
                     src={src}
                     alt={alt}
                     width={600}
                    
-                   
+                    layout='preserve-aspect'
                     height={1300}
                     className='w-[70vw] mx-auto my-5 md:w-[50vw] h-[205px] sm:h-[223px] md:h-[270px] object-contain'
-                   
+                    animate={{
+                        y: [0, -4, 0], // Oscillate up and down
+                    }}
+                    transition={{
+                        duration: 1.5, // Duration of the oscillation
+                        repeat: Infinity, // Infinite loop
+                        ease: 'easeInOut', // Smooth transition
+                    }}
                 />
                 <MotionP className='px-4 mx-auto md:w-[80%] md:text-lg rounded-2xl text-white text-left sm:text-center'>
                     In today's web design market, many websites rely on basic drag-and-drop, low-code frameworks. However, we've taken a more <span className='font-bold'>advanced</span> approach by offering custom web design services through <span className='font-bold'>100% custom-coded applications</span> using React.js—the same technology powering platforms like Facebook, Instagram, and Netflix. This ensures that your website stands out from the crowd, providing limitless creativity and control that basic templates can't match.

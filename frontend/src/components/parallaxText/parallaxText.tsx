@@ -1,8 +1,7 @@
 "use client"
 
 import  { ReactNode, useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform, motionValue,
-useMotionValueEvent} from "framer-motion";
+import { motion, useScroll, useTransform, motionValue} from "framer-motion";
 // import { FiArrowUpRight } from "react-icons/fi";
 // import laptop from '../../media/laptop.jpg'
 
@@ -115,7 +114,7 @@ const Video:React.FC<VideoProps> = (
 
 
   useEffect(() => {
-    if(videoRef.current && (!inView || textYPosition === 0) && muted ){
+    if(videoRef.current && !inView && muted){
       setVideoPlaying(false)
       videoRef.current.pause();
       videoRef.current.currentTime = 0;

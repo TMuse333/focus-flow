@@ -6,22 +6,17 @@ import brain from '../../../public/media/focusFlow-brain-nobg.webp';
 import Link from 'next/link'
 import AppearingGradient from "../appearingGradient/appearingGradient";
 import { useGeneralContext } from "@/context/context";
-import { useComponentTimeTracker } from "@/lib/componentTracker";
 
 interface Props {
   title:string,
   description:string,
   buttonText:string,
   buttonDestination:string
-  setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
-    time:number}[]>>
-    id:string
 }
 
 const AppearingSquare:React.FC<Props> = ({
   title, description,
-  buttonText, buttonDestination,
-  setTotalPageTime, id
+  buttonText, buttonDestination
 }) => {
   const [scope, scopeAnimate] = useAnimate();
 
@@ -40,7 +35,9 @@ const AppearingSquare:React.FC<Props> = ({
   const backgroundImage = useMotionTemplate`linear-gradient(45deg,${color1}, ${color2})`
 
 
+  const [animationComplete, setAnimationComplete] = useState(false);
 
+  const { scrollY } = useScroll();
 
   const {isMobile} = useGeneralContext()
 
@@ -50,10 +47,6 @@ const AppearingSquare:React.FC<Props> = ({
    
     amount:!isMobile ? 0.7 : 0.2
   })
-
-  const {totalTimeInView} = useComponentTimeTracker({inView,id:id,
-  setTotalPageTime:setTotalPageTime,
-  pageTracker:false})
 
 
       const handleAnimation = async () => {

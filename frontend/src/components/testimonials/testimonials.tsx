@@ -1,10 +1,9 @@
-import React, { useRef, useState } from 'react';
-import { AnimatePresence, useInView } from 'framer-motion';
+import React, { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 import dynamic from 'next/dynamic';
 import { HTMLMotionProps } from 'framer-motion';
-import { useComponentTimeTracker } from '@/lib/componentTracker';
 
 const SlidingText = dynamic(() => import('../slidingText/slidingText.prod'))
 
@@ -20,9 +19,6 @@ interface TestimonialProps {
     author: string;
     effect: string;
   }[];
-  id?:string,
-  setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
-    time:number}[]>>
 }
 
 const testimonialsData = [
@@ -48,8 +44,7 @@ const testimonialsData = [
   },
 ];
 
-const Testimonials: React.FC<TestimonialProps> = ({ testimonials = testimonialsData,
-id, setTotalPageTime }) => {
+const Testimonials: React.FC<TestimonialProps> = ({ testimonials = testimonialsData }) => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const nextTestimonial = () => {
@@ -59,16 +54,6 @@ id, setTotalPageTime }) => {
   const prevTestimonial = () => {
     setCurrentTestimonial((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
   };
-
-  const componentRef = useRef(null)
-
-    const inView = useInView(componentRef,
-        {
-            once:false
-        })
-
-    const {totalTimeInView} = useComponentTimeTracker({inView,id:id?id:'content',
-    setTotalPageTime:setTotalPageTime})
 
   return (
     <>
@@ -81,9 +66,7 @@ id, setTotalPageTime }) => {
       text='Client Success, Delivered'
       />
 
-      <section 
-      id={id}
-      className='bg-gradient-to-b from-[#00a2e4] via-[#00a2e4] to-[#00e0ff]
+      <section className='bg-gradient-to-b from-[#00a2e4] via-[#00a2e4] to-[#00e0ff]
         ml-auto mr-auto max-w-[1200px] w-screen 
         relative mb-8 rounded-lg text-white
         h-[80vh] max-h-[600px] sm:w-[90vw]'

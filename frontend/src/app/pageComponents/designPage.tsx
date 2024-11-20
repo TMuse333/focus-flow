@@ -28,28 +28,26 @@ const DesignPage = () => {
             <BigNav excludedLink="Top tier custom web design" />
             <main className="mt-[3rem] relative z-[4] text-white">
                 <MultiLayerParallax
-                 setTotalPageTime={setTotalPageTime}
+              
                  />
 
                 <StickyCarousel 
-                 setTotalPageTime={setTotalPageTime}
+                
                 images={stickyScrollables}
-                id='design-sticky-carousel'
+                
                  />
 
                 <PortalContent 
-                id='design-portal-content'
-                 setTotalPageTime={setTotalPageTime}
+                
+                 
                 image={infinity.src} />
 
                 <CircleInfoGraphic
-                id='design-circle-infographic'
-                 setTotalPageTime={setTotalPageTime}
+        
                  />
 
                 <AppearingSquare {...designPageCloser}
-                setTotalPageTime={setTotalPageTime}
-                id='design-closer'
+               
                 />
 
                 <Footer2 excludedLink="Top tier custom web design" />

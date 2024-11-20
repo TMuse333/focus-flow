@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useAnimate,useInView } from "framer-motion";
 import { useGeneralContext } from "@/context/context";
-import { useComponentTimeTracker } from "@/lib/componentTracker";
 
 
 interface PageProps {
@@ -17,9 +16,7 @@ interface PageData {
        
         objectives:string[]
        
-    }[],
-    setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
-        time:number}[]>>
+    }[]
 }
 
 
@@ -54,7 +51,7 @@ const PageElement:React.FC<PageProps> = ({
 
 
 const PageCreation:React.FC<PageData> = ({
-    pageContent, setTotalPageTime
+    pageContent
 }) => {
 
     const [scope, animate] = useAnimate()
@@ -137,9 +134,7 @@ const PageCreation:React.FC<PageData> = ({
         }
     },[inView])
 
-    const {totalTimeInView} = useComponentTimeTracker({inView,id:'monthly-page-creation',
-        setTotalPageTime:setTotalPageTime,
-        pageTracker:false})
+   
 
 
     return (

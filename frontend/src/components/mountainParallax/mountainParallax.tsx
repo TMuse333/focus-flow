@@ -4,29 +4,19 @@ import { useRef } from "react";
 import bottom from '../../../public/media/mountain-bg-bottom.webp';
 import full from '../../../public/media/mountain-bg-full.webp';
 
-import {useInView, useScroll, useTransform } from 'framer-motion';
+import {useScroll, useTransform } from 'framer-motion';
 
 import Link from "next/link";
 import { useGeneralContext } from "@/context/context";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import { HTMLMotionProps } from 'framer-motion';
-import { useComponentTimeTracker } from "@/lib/componentTracker";
 
 // Dynamically import motion components from framer-motion
 const MotionH2 = dynamic(() => import('framer-motion').then(mod => mod.motion.h2), { ssr: false }) as React.ComponentType<HTMLMotionProps<'h2'>>;
 const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false }) as React.ComponentType<HTMLMotionProps<'div'>>;
 
-interface Prop {
-  setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
-    time:number}[]>>
- 
-
-}
-
-export default function MultiLayerParallax({
-  setTotalPageTime
-}:Prop) {
+export default function MultiLayerParallax() {
   const ref = useRef(null);
 
   const {isMobile} = useGeneralContext()
@@ -36,15 +26,6 @@ export default function MultiLayerParallax({
   });
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   const textY = useTransform(scrollYProgress, [0, 1], ["-30%", "200%"]);
-
-  const inView = useInView(ref,{
-    once:false
-   })
-   
-   
-   const {totalTimeInView} = useComponentTimeTracker({inView,id:'design-mountain-parallax',
-   setTotalPageTime:setTotalPageTime,
-   pageTracker:false})
 
 
   return (

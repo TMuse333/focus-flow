@@ -2,28 +2,12 @@ import Image from 'next/image';
 import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import logo from '../../../public/media/focusFlow-brain-nobg.webp'
-import { motion, useInView } from 'framer-motion';
-import { useComponentTimeTracker } from '@/lib/componentTracker';
-
-interface Prop {
-  setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
-    time:number}[]>>
-}
-
-const ThreeJSWave: React.FC<Prop> = ({
-  setTotalPageTime
-}) => {
+import { motion } from 'framer-motion';
+const ThreeJSWave: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const frameId = useRef<number | null>(null);
 
-  const inView = useInView(containerRef,{
-    once:false
-   })
-   
-   
-   const {totalTimeInView} = useComponentTimeTracker({inView,id:'art-page-herobanner',
-   setTotalPageTime:setTotalPageTime,
-   pageTracker:false})
+ 
 
   useEffect(() => {
     const container = containerRef.current;

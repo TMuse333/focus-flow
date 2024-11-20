@@ -28,21 +28,21 @@ const {setTotalPageTime} = useGeneralContext()
             <main className="mt-[3rem] relative z-[4] overflow-x-hidden
             text-white">
                 <Curtain 
-                  setTotalPageTime={setTotalPageTime}
+                
                   />
 
                 <PageCreation pageContent={processPageContent}
-                  setTotalPageTime={setTotalPageTime}
+                  
                 />
 
                 <SlideShowCarousel images={processSlideShow}
-                  setTotalPageTime={setTotalPageTime}
-                  id={'process-slideshow-carousel'}
+                
+                 
                  />
 
                 <AppearingSquare {...processPageCloser}
-                  setTotalPageTime={setTotalPageTime}
-                  id='process-closer'
+          
+                  
                  />
 
                 <Footer2 excludedLink="Our Process" />

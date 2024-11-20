@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { motion, useInView, Variants } from "framer-motion";
-import { useIntersectionObserver } from '../intersectionObserver/intersectionObserver';
+import {  useInView, Variants } from "framer-motion";
+
 import Image, { StaticImageData } from "next/image";
-import { useComponentTimeTracker } from "@/lib/componentTracker";
+
 import Link from 'next/link'
 
 // Define the props interface with title, description, and images array
@@ -21,23 +21,20 @@ interface Props {
         date?:string
        
     }[];
-    setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
-        time:number}[]>>
+   
 }
 
 // ScrollableCarousel component without onClick features
 const ScrollCarousel: React.FC<Props> = ({ title, description, images,
     bgImage, 
-setTotalPageTime, }) => {
+ }) => {
 
     const ref = useRef(null)
 
     const inView = useInView(ref,{
         once:false
       })
-      const {totalTimeInView} = useComponentTimeTracker({inView,id:'restaurant-feature-boxes',
-      setTotalPageTime:setTotalPageTime,
-      pageTracker:false})
+     
 
     // Variants for the animation of images
     const imageVariants = (index: number): Variants => {

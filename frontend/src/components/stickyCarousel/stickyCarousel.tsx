@@ -3,8 +3,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image, { StaticImageData } from 'next/image'; // Assuming you're using Next.js for image optimization
 import dynamic from 'next/dynamic'
-import { useInView } from 'framer-motion';
-import { useComponentTimeTracker } from '@/lib/componentTracker';
 
 
 const AppearingGradient = dynamic(()=>import('../appearingGradient/appearingGradient'))
@@ -55,13 +53,9 @@ interface Props {
   description?: string;
   images: Array<{ src: string|StaticImageData; alt: string,
   title: string, description:string }>;
-  setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
-    time:number}[]>>
-    id:string
 }
 
-const StickyCarousel: React.FC<Props> = ({ title, description, images,
-setTotalPageTime, id }) => {
+const StickyCarousel: React.FC<Props> = ({ title, description, images }) => {
   const containerRef = useRef<HTMLDivElement | null>(null); // Specify the type of the ref
   const carouselRef = useRef<HTMLDivElement | null>(null);
 
@@ -93,15 +87,6 @@ setTotalPageTime, id }) => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
-
-  const inView = useInView(containerRef,{
-    once:false
-   })
-   
-   
-   const {totalTimeInView} = useComponentTimeTracker({inView,id:id,
-   setTotalPageTime:setTotalPageTime,
-   pageTracker:false})
 
   return (
     <>

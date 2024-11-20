@@ -1,18 +1,20 @@
 "use client"; // Enable client-side rendering for this component
 
-import React, { useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import dynamic from 'next/dynamic'; // Import dynamic from Next.js
-import { useInView, Variants, motion } from 'framer-motion';
-
+import { Variants } from 'framer-motion';
+import { useIntersectionObserver } from '../intersectionObserver/intersectionObserver';
+import { useGeneralContext } from '../../context/context';
+import  { StaticImageData } from 'next/image';
 import Link from 'next/link';
 
 // Import HTMLMotionProps for type safety
 import { HTMLMotionProps } from 'framer-motion';
-import { useComponentTimeTracker } from '@/lib/componentTracker';
-import Image from 'next/image'
 
 // Dynamically import motion components from framer-motion
-
+const MotionImage = dynamic(() => import('framer-motion').then(mod => mod.motion.img), {
+  ssr: false,
+}) as React.ComponentType<HTMLMotionProps<'img'>>;
 
 const MotionH2 = dynamic(() => import('framer-motion').then(mod => mod.motion.h2), {
   ssr: false,
@@ -27,7 +29,7 @@ const MotionButton = dynamic(() => import('framer-motion').then(mod => mod.motio
 }) as React.ComponentType<HTMLMotionProps<'button'>>;
 
 interface ContentProps {
-  image?: string ;
+  image?: StaticImageData | null;
   customText?: React.ReactNode;
   description?: string[];
   reverse?: boolean;
@@ -37,11 +39,7 @@ interface ContentProps {
   buttonLink?: string;
   buttonText?: string;
   alt?: string;
-  iframe?: React.ReactNode,
-  id?:string
-  setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
-    time:number}[]>>
-    bgColor?:boolean
+  iframe?: React.ReactNode
 }
 
 
@@ -56,14 +54,18 @@ const Content: React.FC<ContentProps> = ({
   buttonLink,
   buttonText = 'button',
   alt,
-  iframe,
-  id,
-  setTotalPageTime,
-  bgColor
+  iframe
 }) => {
+  const [inView, setInView] = useState(false);
+  const { isMobile } = useGeneralContext();
 
-  const MotionImage = motion(Image)
+  const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.7,
+  };
 
+  const componentRef = useIntersectionObserver(setInView, options);
 
   const baseVariants = (x: number, delay: number): Variants => ({
     initial: { x, opacity: 0 },
@@ -86,35 +88,16 @@ const Content: React.FC<ContentProps> = ({
     },
   };
 
-const ref = useRef(null);
-
-  const inView = useInView(ref,{
-    once:false
-  })
-
   const shouldAnimate = hasAnimation && inView;
 
-  const {totalTimeInView} = useComponentTimeTracker({inView,id:id?id:'content',
-setTotalPageTime:setTotalPageTime})
-
-  useEffect(()=>{
-    if(totalTimeInView > 0)
-    console.log(`time spent in ${id} ${totalTimeInView} ms`)
-},[totalTimeInView])
-
   return (
-
     <article
-      id={id}
-      ref={ref}
+      ref={componentRef}
       className={`flex flex-col justify-center items-center pt-8 pb-8
-        relative mr-auto ml-auto
-        max-w-[1200px] z-1
-       
-        ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}
-        ${bgColor ? `bg-[#00bfff] bg-opacity-[0.2] ` : ''}`
-        
-     }
+        relative mr-auto ml-auto 
+        md:w-screen md:max-w-[1200px] sm:max-w-[668px] z-1
+        md:justify-around
+        ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}`}
     >
       <MotionH2
             variants={baseVariants(reverse ? -30 : 30, 0)}
@@ -137,24 +120,23 @@ setTotalPageTime:setTotalPageTime})
        {  iframe}
          </div>
       ) : (
-<Image
+<MotionImage
         className="rounded-xl w-[90vw] h-[55vw] max-h-[567px] max-w-[668px] ml-auto mr-auto object-contain
         my-auto md:w-[48vw]"
-        // variants={hasAnimation ? imageVariants : {}}
-        // initial={hasAnimation ? 'initial' : ''}
-        // animate={shouldAnimate ? 'animate' : ''}
-        src={image ? image : ''}
+        variants={hasAnimation ? imageVariants : {}}
+        initial={hasAnimation ? 'initial' : ''}
+        animate={shouldAnimate ? 'animate' : ''}
+        src={image?.src}
         alt={alt ? alt : 'creative web design halifax'}
         width={1300}
         height={600}
-        layout='responsive'
       />
       )}
       
 
       {customText || (
-        <div className='w-screen md:w-[45vw]
-        pr-4 md:pr-0'>
+        <div className='w-screen md:w-[50vw]
+        pr-4'>
           <MotionH2
             variants={baseVariants(reverse ? -30 : 30, 0)}
             initial={hasAnimation ? 'initial' : ''}

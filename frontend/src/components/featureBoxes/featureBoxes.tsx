@@ -1,7 +1,5 @@
-import { useComponentTimeTracker } from "@/lib/componentTracker";
-import { useInView } from "framer-motion";
 import Image from "next/image";
-import React, { useRef } from "react";
+import React from "react";
 import AppearingGradient from "../appearingGradient/appearingGradient";
 
 interface BoxProps {
@@ -20,8 +18,6 @@ interface Data {
     description:string
     bigBox:boolean
     }[]
-    setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
-        time:number}[]>>
 }
 
 
@@ -51,17 +47,9 @@ const FeatureBox:React.FC<BoxProps> = ({
 
 
 const FeatureBoxes:React.FC<Data> = ({
-    boxData, setTotalPageTime
+    boxData
 }) => {
 
-    const ref = useRef(null)
-  
-    const inView = useInView(ref,{
-      once:false
-    })
-    const {totalTimeInView} = useComponentTimeTracker({inView,id:'restaurant-feature-boxes',
-    setTotalPageTime:setTotalPageTime,
-    pageTracker:false})
 
     return (
         <section className="md:h-screen">
@@ -76,8 +64,7 @@ const FeatureBoxes:React.FC<Data> = ({
         <section className="flex flex-col mx-auto
         justify-center items-center
         sm:grid grid-cols-2
-        "
-        ref={ref}>
+        ">
 
             {boxData.map((box, index) => (
                 <FeatureBox

@@ -25,15 +25,15 @@ const MonthlyPage = () => {
             <BigNav excludedLink="Your long term success" />
             <main className="mt-6 text-white">
                 <Herobanner {...monthlyOpener}
-                id='monthly-herobanner'
-                setTotalPageTime={setTotalPageTime}
+              
+               
                  />
                 
                 <Accordion
                     hasIntro={false}
                     text={monthlyAccordion}
-                    setTotalPageTime={setTotalPageTime}
-                    id='monthly-accordion'
+                
+                   
                 />
 
                 <p className="px-6 mx-auto max-w-[1200px] mb-[8rem]">
@@ -41,8 +41,7 @@ const MonthlyPage = () => {
                 </p>
 
                 <AppearingSquare {...monthlyPageOutro}
-                id='monthly-outro'
-                setTotalPageTime={setTotalPageTime}
+             
                  />
 
                 <Footer2 excludedLink="Your long term success" />

@@ -1,10 +1,9 @@
 "use client"
 
-import React, {useRef, useState} from 'react'
-import {motion, useInView, Variants} from 'framer-motion'
+import React, {useState} from 'react'
+import {motion, Variants} from 'framer-motion'
 import {useIntersectionObserver} from '../intersectionObserver/intersectionObserver'
 import Link  from 'next/link'
-import { useComponentTimeTracker } from '@/lib/componentTracker'
 
 interface Props {
     text: {
@@ -15,25 +14,25 @@ interface Props {
     intro?: string | null,
     description?: string | null,
     link?: string | null
-    id:string,
-    setTotalPageTime?:React.Dispatch<React.SetStateAction<{name:string,
-      time:number}[]>>
 
 }
 
 const Accordion: React.FC<Props> = ({text,
-hasIntro,intro,description, link,
-id, setTotalPageTime}) => {
+hasIntro,intro,description, link}) => {
 
-const ref = useRef(null)
+    const [inView, setInView] = useState(false);
 
-const inView = useInView(ref,{
-  once:false
-})
+//  const {isMobile} = useGeneralContext()
 
-const {totalTimeInView} = useComponentTimeTracker({inView,id:id,
-setTotalPageTime:setTotalPageTime,
-pageTracker:false})
+  // Configure intersection observer options
+  const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold:  0.7,
+  };
+
+  // Use the custom hook to get a ref and observe intersection
+  const componentRef = useIntersectionObserver(setInView, options);
 
     const [expandedIndices, setExpandedIndices] =
     useState<number[]>([])
@@ -68,9 +67,7 @@ pageTracker:false})
 
     return (
         <>
-        <article 
-       
-        className='flex flex-col justify-start items-center
+        <article className='flex flex-col justify-start items-center
         mb-12 overflow-visible '>
 
        
@@ -87,7 +84,7 @@ pageTracker:false})
         )}
         <section className='mt-[3rem] border-4 border-black rounded-xl
         text-white bg-opacity-75'
-        ref={ref}>
+        ref={componentRef}>
             {text.map((text,index:number) => (
                 <div key={index}
               
