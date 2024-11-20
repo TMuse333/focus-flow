@@ -59,12 +59,6 @@ const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
 
 // import ElectricContainer from "@/canvasComponents/electricContainer/electricContainer";
 
-const ref = useRef(null)
-
-const inView = useInView(ref,{
-  once:true
-})
-
 
 
 
@@ -75,6 +69,12 @@ const Homepage = () => {
 
   const ref = useRef(null)
 
+  const ref2 = useRef(null)
+
+  const inView = useInView(ref,{
+    once:true
+  })
+  
 
 
   // const { setTotalPageTime} = useGeneralContext()
@@ -177,7 +177,7 @@ const Homepage = () => {
   </section>
         
 
-<section ref={ref}
+<section ref={ref2}
 >
 {inView && (
  <ScrollCarousel
