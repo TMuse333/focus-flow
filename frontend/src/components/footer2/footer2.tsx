@@ -116,49 +116,35 @@ const Footer2:React.FC<props> = ({
       });
 
 
-    return (
-        <footer className="w-screen relative flex flex-col
-        items-center justify-center mx-auto  my-12">
-            <h6 className="text-3xl sm:text-4xl font-semibold
-            mb-8">Site map</h6>
+      return (
+      <footer className="w-screen relative flex flex-col items-center justify-center mx-auto my-12">
+      <h6 className="text-3xl sm:text-4xl font-semibold mb-8">Site map</h6>
+    
+      <div className="flex flex-col mx-auto sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:flex-row w-full mt-6 justify-center items-center md:justify-center md:items-start">
+        {filteredLinks.map((link, index) => (
+          <div key={index} className="flex flex-col mx-auto items-center justify-center">
             
-<ul className="flex flex-col mx-auto
-sm:grid sm:grid-cols-2
-md:grid-cols-3 lg:grid-cols-4
-            md:flex-row w-full mt-6
-              w-full
-            justify-center items-center
-            md:justify-center md:items-start " >
-
-
-{filteredLinks.map((link, index) => (
-  <React.Fragment key={index}>
-    <ul className="flex flex-col mx-auto 
-    items-center justify-center">
-   
-    <p className="text-lg sm:text-xl md:text-2xl
-     mb-4 font-semibold
-     mx-auto text-center">
-      {link.name}</p>
-    {link.secondaryLinks && link.secondaryLinks.map((link2, innerIndex) => (
-      <Link href={link2.destination}>
-
-
-      <li className="mb-2 text-center hover:text-[#00bfff]"
-      key={innerIndex}>{link2.name}</li>
-            </Link>
-    ))}
-     </ul>
-  </React.Fragment>
-))}
-</ul>
-
-
-
-
-
-        </footer>
-    )
+            <h3 className="text-lg sm:text-xl md:text-2xl mb-4 font-semibold mx-auto text-center">
+              {link.name}
+            </h3>
+    
+            {link.secondaryLinks && (
+              <ul className="list-none p-0">
+                {link.secondaryLinks.map((link2, innerIndex) => (
+                  <li key={innerIndex} className="mb-2 text-center hover:text-[#00bfff]">
+                    <Link href={link2.destination}>
+                      <a>{link2.name}</a>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+      </div>
+    </footer>
+      )
+    
 }
 
 export default Footer2

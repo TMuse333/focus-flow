@@ -82,8 +82,7 @@ const ScrollCarousel: React.FC<Props> = ({ title, description, images,
                             pb-6 max-w-[500px] z-[2]
                             ${bgImage ? 'bg-[#00bfff] bg-opacity-[0.3]' : ''}`}
                             key={index}
-                            onMouseEnter={() => handleMouseEnter(index)}
-                            onMouseLeave={handleMouseLeave}
+                           
                            
                         >
              <h5 className="text-white my-4 text-center px-2 relative font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-xl
@@ -107,8 +106,7 @@ const ScrollCarousel: React.FC<Props> = ({ title, description, images,
  width={1000}
  height={55}
  style={{
-     transform: `translateY(${inView ? '0' : '-12rem'}) ${
-         hoveredImage === index ? 'scale(1.05)' : ''
+     transform: `translateY(${inView ? '0' : '-12rem'}) \
      }`,
      transitionDelay: `${(images.length - 1 - index) * 0.2}s, ${
          0.2 + (images.length - 1 - index) * 0.2
@@ -134,7 +132,8 @@ const ScrollCarousel: React.FC<Props> = ({ title, description, images,
                                     >
                                         <button
                                          className='mt-8 bg-[#00bfff] py-3 px-6 rounded-2xl
-                                         relative z-[4] hover:bg-white hover:text-[#00bfff]'>
+                                         text-black
+                                         relative z-[4] hover:bg-black hover:text-[#00bfff]'>
 Read
                                         </button>
                                         

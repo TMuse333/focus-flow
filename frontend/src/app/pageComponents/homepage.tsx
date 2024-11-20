@@ -115,7 +115,7 @@ const Homepage = () => {
 
 
    
-        <div className="h-[30vh]" />
+        {/* <div className="h-[30vh]" />
 
        
 
@@ -124,18 +124,18 @@ const Homepage = () => {
         
           src={infinity.src}
           alt="An infinity logo symbolizing limitless possibilities and custom web design services using advanced technologies like React.js to show FocusFlow Software has the most Creative web design in Halifax"
-        />
+        /> */}
 
    
 
-        <Content 
+        {/* <Content 
       
         {...planningContent}
         image={planningContent.image.src}
      
         
-         />
-        <Content
+         /> */}
+        {/* <Content
         
          {...monthlyContent}
          image={monthlyContent.image.src}
@@ -145,7 +145,7 @@ const Homepage = () => {
        
         {...RestaurantContentBoxData}
        
-         />
+         /> */}
 
         <ScrollableCarousel
       
