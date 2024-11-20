@@ -71,6 +71,12 @@ const Homepage = () => {
 
   const ref2 = useRef(null)
 
+  const ref3 = useRef(null)
+
+  const inView2 = useInView(ref3,{
+    once:true
+  })
+
   const inView = useInView(ref,{
     once:true
   })
@@ -152,13 +158,18 @@ const Homepage = () => {
        
          /> */}
 
-        <ScrollableCarousel
+<section ref={ref3}>
+  {inView2 && (
+   <ScrollableCarousel
       
-          images={scrollableImages}
-          title="Creating Digital Excellence"
-          description="Explore some of our showcased projects. Click on each for detailed insights and excellence in digital creation."
-         
-        />
+   images={scrollableImages}
+   title="Creating Digital Excellence"
+   description="Explore some of our showcased projects. Click on each for detailed insights and excellence in digital creation."
+  
+ />
+  )}
+</section>
+     
 
         <Testimonials
      
