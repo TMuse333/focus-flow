@@ -167,6 +167,7 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
             height={1300}
             className='mx-auto w-[50vw] object-contain
             max-w-[384px] max-h-[384px]'
+            priority
             />
         <p className="text-left px-3 text-sm relative z-[3]
   text-lg sm:text-xl text-white">

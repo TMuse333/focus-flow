@@ -133,6 +133,7 @@ const ScrollableCarousel: React.FC<Props> = ({ title, description, images }) => 
                                     transitionDuration: '0.5s',
                                     transitionTimingFunction: 'ease-in-out',
                                 }}
+                                sizes="(max-width: 768px) 85vw, (max-width: 1200px) 50vw, 500px"
                                 onClick={() => handleImageClick(index)}
                             />
                         </MotionDiv>

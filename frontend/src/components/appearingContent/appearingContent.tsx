@@ -3,6 +3,7 @@
 import React, { useEffect, useState , useRef} from "react";
 import { motion, useAnimate, useScroll, useTransform } from "framer-motion";
 import SlidingText from "../slidingText/slidingText";
+import Image from "next/image";
 
 interface ContentProps {
     src: string;
@@ -127,10 +128,10 @@ max-h-[500px] h-[50vh]">
 
                         ) : (
 
-                            <motion.img
+                            <Image
                             id={`content-${id}`}
                             src={src}
-                            alt={alt}
+                            alt={alt? alt : 'web design halifax'}
                             className="w-full mx-auto object-contain opacity-0
 
                             max-h-[500px]"
