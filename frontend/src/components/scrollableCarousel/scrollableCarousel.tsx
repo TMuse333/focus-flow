@@ -110,11 +110,10 @@ const ScrollableCarousel: React.FC<Props> = ({ title, description, images }) => 
                 )}
                 <div className="w-screen pr-[3rem] pl-[3rem] flex ml-auto sm:ml-0 sm:mr-0 overflow-x-scroll overflow-y-hidden">
                     {images.map((image, index) => (
-                        <MotionDiv
+                        <div
                             className="w-[70vw] relative flex-shrink-0 h-[90vw] max-h-[600px] mr-10"
                             key={index}
-                            onMouseEnter={inView ? () => handleMouseEnter(index) : undefined}
-                            onMouseLeave={handleMouseLeave}
+                           
                         >
                             <h3 className="mb-8 text-3xl" style={{ opacity: hoveredImage === index ? 1 : 0, transition: 'opacity 0.3s ease-in' }}>
                                 {image.details.title}
@@ -125,18 +124,11 @@ const ScrollableCarousel: React.FC<Props> = ({ title, description, images }) => 
                                 className='relative ml-auto mr-auto mt-auto z-[5] object-contain object-center transition-all h-[85vw] max-h-[500px] rounded-lg'
                                 width={1000}
                                 height={55}
-                                style={{
-                                    transform: `translateY(${inView ? '0' : '-12rem'}) ${hoveredImage === index ? 'scale(1.05)' : ''}`,
-                                    transitionDelay: `${((images.length - 1 - index) * 0.2)}s, ${0.2 + ((images.length - 1 - index) * 0.2)}s`,
-                                    opacity: inView ? 1 : 0,
-                                    transitionProperty: 'transform, opacity',
-                                    transitionDuration: '0.5s',
-                                    transitionTimingFunction: 'ease-in-out',
-                                }}
+                                
                                 sizes="(max-width: 768px) 85vw, (max-width: 1200px) 50vw, 500px"
                                 onClick={() => handleImageClick(index)}
                             />
-                        </MotionDiv>
+                        </div>
                     ))}
                 </div>
             </section>
