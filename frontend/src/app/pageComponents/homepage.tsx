@@ -9,7 +9,7 @@ import { herobannerData, RestaurantContentBoxData, planningContent, monthlyConte
 blogCarouselData } from "@/data/data";
 
 // import BigNav from "@/components/bigNav/navbar";  // Load navbar immediately
-// import Herobanner from "@/components/herobanner/herobanner"; // Load hero banner immediately
+import Herobanner from "@/components/herobanner/herobanner"; // Load hero banner immediately
 // import { SelectedCarouselImage } from "@/components/scrollableCarousel/scrollableCarousel";
 import ParticlesComponent from "@/components/particles/particles"; // Particles are essential, load without lazy
 
@@ -89,6 +89,10 @@ const Homepage = () => {
         <link rel="canonical" href="https://www.focusflowsoftware.com" />
       </Head>
       <ParticlesComponent />
+      <Herobanner
+          // setTotalPageTime={setTotalPageTime}
+          
+         sections={herobannerData} />
       {/* <SelectedCarouselImage /> */}
 
       {/* <BigNav excludedLink="Home" /> */}
@@ -106,10 +110,7 @@ const Homepage = () => {
 
 
        
-        <Herobanner
-          setTotalPageTime={setTotalPageTime}
-          
-         sections={herobannerData} />
+  
 
 
 
