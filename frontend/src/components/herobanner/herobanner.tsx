@@ -9,7 +9,7 @@ import Image from 'next/image'
 import { motion, useMotionTemplate, useMotionValue, animate,
 useInView } from "framer-motion";
 import bg from '../../../public/media/puddle-bg.jpg'
-import { useComponentTimeTracker } from "@/lib/componentTracker";
+// import { useComponentTimeTracker } from "@/lib/componentTracker";
 
 import Link from "next/link";
 import brain from '../../../public/media/focusFlow-brain-nobg.webp'
@@ -75,15 +75,15 @@ const inView = useInView(ref,{
   once:false
 })
 
-const {totalTimeInView} = useComponentTimeTracker({inView,id:'homepage-herobanner',
-setTotalPageTime:setTotalPageTime,
-pageTracker:false})
+// const {totalTimeInView} = useComponentTimeTracker({inView,id:'homepage-herobanner',
+// setTotalPageTime:setTotalPageTime,
+// pageTracker:false})
 
-useEffect(() => {
+// useEffect(() => {
   
-    console.log(`Total time spent in Herobanner: ${totalTimeInView} ms`);
+//     console.log(`Total time spent in Herobanner: ${totalTimeInView} ms`);
   
-}, [totalTimeInView]);
+// }, [totalTimeInView]);
 
   return (
     <section 
