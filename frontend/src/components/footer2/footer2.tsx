@@ -133,7 +133,7 @@ const Footer2:React.FC<props> = ({
                 {link.secondaryLinks.map((link2, innerIndex) => (
                   <li key={innerIndex} className="mb-2 text-center hover:text-[#00bfff]">
                     <Link href={link2.destination}>
-                      <a>{link2.name}</a>
+                     {link2.name}
                     </Link>
                   </li>
                 ))}

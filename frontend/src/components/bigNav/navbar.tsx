@@ -167,6 +167,7 @@ interface SubMenuProps {
             mt-auto  mr-auto'
             src={src}
             alt={alt}
+            sizes="(max-width: 768px) 80vw, (max-width: 1200px) 40vw, 30vw"
             />
 
             <div className="flex flex-col mx-auto">

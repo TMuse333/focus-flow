@@ -1019,7 +1019,26 @@ export const blogCarouselData = [
    }
 ]
   
-  export const cards = '/videos/card-gameplay.mp4'
+
+export const experienceCard1 = {
+     title: 'We offer top tier web design in halifax',
+    src: '/media/infinity.webp',
+    alt: 'Web design in halifax',
+    description:`FocusFlow software is designed to elevate your digital presence through expertly crafted websites by strategically displaying what viewers need to see to convert them into clients
+    and establish you as an autority online.\n
+    This is done by using expertly crafted 
+    web designs that attract your users
+    attention and with 100% custom web design
+    to ensure there is no limitation`,
+    aspects: [
+        'Newest technology',
+        'Unparalled creativity',
+        'Designed for success'
+    ],
+    link: '/best-web-design-halifax',
+    
+    aspectHeader:'Our web design includes'
+}
 
 
   

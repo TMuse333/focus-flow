@@ -6,7 +6,9 @@ import { Metadata } from "next";
 
 import { useGeneralContext } from "@/context/context";
 import { herobannerData, scrollableImages,
-blogCarouselData } from "@/data/data";
+blogCarouselData, planningContent,
+monthlyContent,RestaurantContentBoxData,
+experienceCard1} from "@/data/data";
 
 import BigNav from "@/components/bigNav/navbar";  // Load navbar immediately
 import Herobanner from "@/components/herobanner/herobanner"; // Load hero banner immediately
@@ -41,13 +43,14 @@ export const metadata: Metadata = {
 };
 import Head from "next/head";
 import { useInView } from "framer-motion";
+import ExperienceCard from "@/components/experienceCard/experienceCard";
 // Dynamic imports (lazy-loaded components)
 
 const ScrollableCarousel = dynamic(() => import('@/components/scrollableCarousel/scrollableCarousel'),{ssr:true});
-// const Content = dynamic(() => import('@/components/content/content'));
+const Content = dynamic(() => import('@/components/content/content'));
 // const FlashContent = dynamic(() => import('@/components/flashConent/flashContent'),{ssr:true});
-// const ContentBox = dynamic(() => import('@/components/contentBox/contentBox'),{ssr:true});
-// const AppearingContent = dynamic(() => import('@/components/appearingContent/appearingContent'),{ssr:true});
+const ContentBox = dynamic(() => import('@/components/contentBox/contentBox'),{ssr:true});
+const AppearingContent = dynamic(() => import('@/components/appearingContent/appearingContent'),{ssr:true});
 const Testimonials = dynamic(() => import('@/components/testimonials/testimonials'),{ssr:true});
 const Footer2 = dynamic(() => import('@/components/footer2/footer2'),{ssr:true});
 const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
@@ -104,6 +107,10 @@ const Homepage = () => {
           // setTotalPageTime={setTotalPageTime}
           
          sections={herobannerData} />
+
+         <ExperienceCard
+         {...experienceCard1}
+         />
       <SelectedCarouselImage />
 
       <BigNav excludedLink="Home" />
@@ -139,14 +146,14 @@ const Homepage = () => {
 
    
 
-        {/* <Content 
+        <Content 
       
         {...planningContent}
         image={planningContent.image.src}
      
         
-         /> */}
-        {/* <Content
+         />
+        <Content
         
          {...monthlyContent}
          image={monthlyContent.image.src}
@@ -156,7 +163,7 @@ const Homepage = () => {
        
         {...RestaurantContentBoxData}
        
-         /> */}
+         />
 
 <section ref={ref3}>
   {inView2 && (
