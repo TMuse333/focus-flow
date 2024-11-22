@@ -119,7 +119,7 @@ const Homepage = () => {
       ref={ref}
       id='homepage'
       className="text-center z-[30]  lg:mt-[2rem]
-      text-white"
+      text-white w-screen overflow-x-hidden"
         style={{
           filter: selectedCarouselImageIndex !== null ? 'blur(8px)' : 'none',
           overflowY: selectedCarouselImageIndex !== null ? 'hidden' : 'auto',
