@@ -73,8 +73,9 @@ const ExperienceCard: React.FC<Props> = ({
     
       if (header && image && description) {
    
-          animate(header, { opacity: 1, y: 0, scale: 1.3,
+          animate(header, { opacity: 1, y: 0, scale: 1,
          }, { ease: 'easeInOut', })
+
           animate(image, { opacity: 1 }, { ease: 'easeInOut',
         delay:0.2 })
           animate(description, { opacity: 1 }, { ease: 'easeInOut',
