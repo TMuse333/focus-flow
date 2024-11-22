@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, Suspense, lazy } from "react";
 import { animate, useScroll, useTransform, useInView } from 'framer-motion';
 import Image from "next/image";
+import { useGeneralContext } from "@/context/context";
 
 
 interface Props {
@@ -13,6 +14,8 @@ interface Props {
 
 const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
   const ref = useRef(null);
+
+  const {isMobile} = useGeneralContext()
 
  const [isDesktop, setIsDesktop] = useState(false)
 
@@ -40,7 +43,7 @@ const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
 
 
   useEffect(()=>{
-    if(inView && !animationComplete){
+    if(inView && !animationComplete && !isMobile){
       handleAnimation()
     }
   },[inView, animationComplete])
@@ -48,7 +51,7 @@ const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
   const initialTranslate = isDesktop ? '-23rem' : '-15rem'
 
   
-
+  const initialOpacity = isMobile ? 1 : 0
 
 
 
@@ -135,7 +138,9 @@ z-[20] top-[-5%]"/> */}
       my-auto z-[4]
      '>
        
+{!isMobile && (
 
+<>
 <div className="bg-black h-[30px] sm:h-[60px] md:h-[80px] w-screen
 relative z-[4]"
 />
@@ -152,13 +157,15 @@ relative z-[4]"
           >
  
 </div>
+</>
+)}
 
 <h3 id='portal-header'
 
-className={`opacity-0  mx-auto
+className={`opacity-${initialOpacity} mx-auto
 py-4 font-semibold px-3
 text-center text-2xl sm:text-3xl md:text-4xl 
-${animationComplete ? 'text-glow' : ''}`}
+${animationComplete || isMobile? 'text-glow' : ''}`}
 
 >More than a website: A piece of art</h3>
 
@@ -169,7 +176,7 @@ justify-evenly items-end ${isDesktop ? 'flex-row' : 'flex-col'} `}>
 
 
 <article id='portal-article-1'
-className={`ml-auto order-2 opacity-0 
+className={`ml-auto order-2 opacity-${initialOpacity} 
 ${isDesktop ? 'translate-x-1/2' : ''}`}>
 
 <h3 
@@ -190,29 +197,29 @@ Aesthetic Brilliance </h3>
 
   
 <Image
-id='portal-image'
-src={image}
-alt='an atom to describe why Focus Flow Software has the best creative web design halifax'
-className={`w-[40vw] object-contain 
-mx-auto relative z-[-1] flex-shrink-0 max-w-[437px]
-opacity-0
+  id="portal-image"
+  src={image}
+  alt="an atom to describe why Focus Flow Software has the best creative web design halifax"
+  className={`w-[40vw] object-contain mx-auto relative z-[-1] flex-shrink-0 max-w-[437px] opacity-${initialOpacity} 
+    ${!isDesktop ? 'order-0' : 'order-1'}
+    ${isMobile ? '' : 'animate-style-class'}`} // Add mobile conditional check here to exclude styles/animations on mobile
+  width={300}
+  height={1300}
+  style={
+    isMobile || animationComplete 
+      ? {} // No styles or animations on mobile or after animation is complete
+      : {
+          transform: `translateY(${initialTranslate}) scale(0.2)`,
+          transition: 'transform 1s 1s ease-in',
+        }
+  }
+/>
 
-
-${!isDesktop ? 'order-0' : 'order-1'}`}
-        
-width={300}
-height={1300}
-style={
-  !animationComplete ? {
-    transform:`translateY(${initialTranslate}) scale(0.2)`,
-    transition: 'transform 1s 1s ease-in',
-} : {}} 
- />
 
 
 
 <article id='portal-article-2'
-className={`mr-auto opacity-0
+className={`mr-auto opacity-${initialOpacity} 
 ${isDesktop ? 'translate-x-1/2' : ''}`}>
 <h3 
 className="text-left text-green-300 pl-4 mr-auto font-semibold mb-2
@@ -234,7 +241,7 @@ style={{
 </section>
 
 <article id='portal-article-3'
-className={`mx-auto md:w-[50vw] text-center opacity-0 
+className={`mx-auto md:w-[50vw] text-center opacity-${initialOpacity}  
 ${isDesktop ? '-translate-y-1/2' : ''}`}>
 <h3 
 className="text-left text-green-300 pl-4 mr-auto font-semibold mb-2
