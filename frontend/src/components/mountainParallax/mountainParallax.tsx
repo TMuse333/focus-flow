@@ -34,13 +34,14 @@ export default function MultiLayerParallax() {
     <>
       <Head>
         <link rel="canonical" href="https://www.focusflowsoftware.com/best-web-design-halifax" />
+        <meta name="viewport"></meta>
       </Head>
     <div
       ref={ref}
       className="w-full h-screen overflow-hidden relative grid place-items-center"
     >
       <MotionDiv
-        style={{ y: !isMobile ?  textY : 0 }}
+        style={{ y: textY}}
         className="relative z-[20] "
       >
        <h1 className="text-4xl mx-auto
@@ -76,7 +77,7 @@ export default function MultiLayerParallax() {
           backgroundImage: `url(${full.src})`,
           backgroundPosition: "bottom",
           backgroundSize: "cover",
-          y:!isMobile ?  backgroundY : 0,
+          y:backgroundY
         }}
       />
 
