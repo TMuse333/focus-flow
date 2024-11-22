@@ -4,7 +4,7 @@ import { useRef } from "react";
 import bottom from '../../../public/media/mountain-bg-bottom.webp';
 import full from '../../../public/media/mountain-bg-full.webp';
 
-import {useScroll, useTransform } from 'framer-motion';
+import {useScroll, useTransform, useMotionValue } from 'framer-motion';
 
 import Link from "next/link";
 import { useGeneralContext } from "@/context/context";
@@ -26,8 +26,8 @@ export default function MultiLayerParallax() {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const backgroundY =!isMobile ? useTransform(scrollYProgress, [0, 1], ["0%", "100%"]) : 0;
-  const textY = !isMobile ?  useTransform(scrollYProgress, [0, 1], ["-30%", "200%"]) : 0;
+  const backgroundY =!isMobile ? useTransform(scrollYProgress, [0, 1], ["0%", "100%"]) : useMotionValue(0);
+  const textY = !isMobile ?  useTransform(scrollYProgress, [0, 1], ["-30%", "200%"]) : useMotionValue(0);
 
 
   return (
