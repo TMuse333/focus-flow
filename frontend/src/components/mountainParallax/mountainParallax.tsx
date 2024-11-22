@@ -3,11 +3,11 @@
 import { useRef } from "react";
 import bottom from '../../../public/media/mountain-bg-bottom.webp';
 import full from '../../../public/media/mountain-bg-full.webp';
-
-import {useScroll, useTransform } from 'framer-motion';
+import Image from "next/image";
+import {useScroll, useTransform, motion } from 'framer-motion';
 
 import Link from "next/link";
-import { useGeneralContext } from "@/context/context";
+// import { useGeneralContext } from "@/context/context";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import { HTMLMotionProps } from 'framer-motion';
@@ -19,9 +19,9 @@ const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.d
 export default function MultiLayerParallax() {
   const ref = useRef(null);
 
-  
+  const MotionImage = motion(Image)
 
-  const {isMobile} = useGeneralContext()
+  // const {isMobile} = useGeneralContext()
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -60,36 +60,45 @@ export default function MultiLayerParallax() {
      <Link href='lets-work'>
 
      
-     {/* <motion.button className="relative bg-[#00bfff] p-3 rounded-xl mt-4
-       hover:text-[#00bfff] hover:bg-white z-[200]
-       hover:scale-[1.05] transition-all
-       mt-5">
-         Win today
-       </motion.button> */}
+    
        </Link>
       </MotionDiv>
 
 
      
 
-      <MotionDiv
-        className="absolute inset-0 z-0"
+      <MotionImage
+      priority
+        className="absolute inset-0 z-0  
+        w-full object-cover h-full"
+        // style={{
+        //   backgroundImage: `url(${full.src})`,
+        //   backgroundPosition: "bottom",
+        //   backgroundSize: "cover",
+        //   y:backgroundY
+        // }}
+        src={full.src}
+        width={600}
+        height={1300}
+        alt='A mountain of greatness to represent creative web design halifax'
         style={{
-          backgroundImage: `url(${full.src})`,
-          backgroundPosition: "bottom",
-          backgroundSize: "cover",
           y:backgroundY
         }}
+        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 100vw"
       />
 
-      <div
-        className="absolute inset-0 z-[195]"
-        style={{
-          backgroundImage: `url(${bottom.src})`,
-          backgroundPosition: "bottom",
-          backgroundSize: "cover",
-        }}
-      />
+<Image
+  src={bottom.src}
+  alt="Hero Banner"
+  className="object-cover z-[195]"
+  layout="fill"
+  priority
+  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 100vw"
+  
+  // placeholder="blur"
+  // blurDataURL={desktopImage.lowResSrc} // Low-res image URL for blur effect
+/>
+
     </div>
     </>
   );
