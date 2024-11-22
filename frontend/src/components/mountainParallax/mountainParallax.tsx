@@ -26,8 +26,8 @@ export default function MultiLayerParallax() {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const backgroundY =!isMobile ? useTransform(scrollYProgress, [0, 1], ["0%", "100%"]) : 0;
-  const textY = !isMobile ?  useTransform(scrollYProgress, [0, 1], ["-30%", "200%"]) : 0;
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]) 
+  const textY = useTransform(scrollYProgress, [0, 1], ["-30%", "200%"]) 
 
 
   return (
