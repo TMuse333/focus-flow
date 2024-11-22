@@ -67,7 +67,10 @@ const DesignPage = () => {
                 
                  />
 
-                 {isMobile && !inView ? (
+<div ref={ref2}>
+
+
+                 {isMobile && !inView2 ? (
                   null
                  ) : (
                     <PortalContent 
@@ -76,11 +79,14 @@ const DesignPage = () => {
                 image={infinity.src} />
                  )}
 
-                
+</div>
 
                 <CircleInfoGraphic
         
                  />
+
+<div ref={ref}>
+
 
                  {inView && (
  <ScrollCarousel
@@ -88,6 +94,7 @@ const DesignPage = () => {
  images={designScrollables}
  />
                  )}
+                 </div>
 
                 
 
