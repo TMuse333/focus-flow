@@ -16,6 +16,7 @@ import { stickyScrollables, designPageCloser, creativeExperienceCard,
  designScrollables} from "@/data/data";
 import infinity from '../../../public/media/atom-gif.gif';
 import { useInView } from "framer-motion";
+import { useGeneralContext } from "@/context/context";
 // import { useRouterContext } from "@/lib/useRouterContext";
 // import { useGeneralContext } from "@/context/context";
 
@@ -37,6 +38,15 @@ const DesignPage = () => {
         once:true
     })
 
+    const ref2 = useRef(null)
+
+    const inView2 = useInView(ref2,
+        {
+            once:true
+        })
+
+        const {isMobile} = useGeneralContext()
+
     return (
         <>
             <BigNav excludedLink="Top tier custom web design" />
@@ -57,10 +67,16 @@ const DesignPage = () => {
                 
                  />
 
-                <PortalContent 
+                 {isMobile && !inView ? (
+                  null
+                 ) : (
+                    <PortalContent 
                 
                  
                 image={infinity.src} />
+                 )}
+
+                
 
                 <CircleInfoGraphic
         
