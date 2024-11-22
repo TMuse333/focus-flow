@@ -32,11 +32,11 @@ const DesignPage = () => {
 
     // const {setTotalPageTime} = useGeneralContext()
 
-    // const ref = useRef(null)
+    const ref = useRef(null)
 
-    // const inView = useInView(ref,{
-    //     once:true
-    // })
+    const inView = useInView(ref,{
+        once:true
+    })
 
     const ref2 = useRef(null)
 
@@ -82,20 +82,17 @@ const DesignPage = () => {
 
 </div>
 
-                <CircleInfoGraphic
-        
-                 />
+                
 
-{/* <div ref={ref}>
+<div ref={ref}>
 
 
                  {inView && (
- <ScrollCarousel
- iframe
- images={designScrollables}
- />
+                    <CircleInfoGraphic
+        
+        />
                  )}
-                 </div> */}
+                 </div>
 
                 
 
