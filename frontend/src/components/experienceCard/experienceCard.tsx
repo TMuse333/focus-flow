@@ -66,34 +66,25 @@ const ExperienceCard: React.FC<Props> = ({
 
     
     const handleAnimation = async () => {
-        // const header = document.getElementById(`${title}-header`)
-        // const image = document.getElementById(`${title}-image`)
-        // const description = document.getElementById(`${title}-description`)
+        
         const header = headerRef.current;
   const image = imageRef.current;
   const description = descriptionRef.current;
     
-      const animations = [];
-    
-      if (header) {
-        animations.push(
-          animate(header, { opacity: 1, y: 0, scale: 1.3 }, { ease: 'easeInOut' })
-        );
-        animations.push(animate(header, { scale: 1 }));
+      if (header && image && description) {
+   
+          animate(header, { opacity: 1, y: 0, scale: 1.3,
+         }, { ease: 'easeInOut', })
+          animate(image, { opacity: 1 }, { ease: 'easeInOut',
+        delay:0.2 })
+          animate(description, { opacity: 1 }, { ease: 'easeInOut',
+        delay:0.4 })
+        
+        
       }
     
-      if (image) {
-        animations.push(animate(image, { opacity: 1 }, { ease: 'easeInOut' }));
-      }
     
-      if (description) {
-        animations.push(animate(description, { opacity: 1 }, { ease: 'easeInOut' }));
-      }
-    
-      // Wait for all animations to finish
-      await Promise.all(animations);
-    
-      // Run list animation if not on mobile
+     
       if (!isMobile) {
         setStartLiAnimation(true);
       }
