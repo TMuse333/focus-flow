@@ -19,13 +19,15 @@ const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.d
 export default function MultiLayerParallax() {
   const ref = useRef(null);
 
+  
+
   const {isMobile} = useGeneralContext()
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-  const textY = useTransform(scrollYProgress, [0, 1], ["-30%", "200%"]);
+  const backgroundY =!isMobile ? useTransform(scrollYProgress, [0, 1], ["0%", "100%"]) : 0;
+  const textY = !isMobile ?  useTransform(scrollYProgress, [0, 1], ["-30%", "200%"]) : 0;
 
 
   return (
@@ -38,7 +40,7 @@ export default function MultiLayerParallax() {
       className="w-full h-screen overflow-hidden relative grid place-items-center"
     >
       <MotionDiv
-        style={{ y: !isMobile ?  textY : textY }}
+        style={{ y: textY }}
         className="relative z-[20] "
       >
        <h1 className="text-4xl mx-auto
@@ -74,7 +76,7 @@ export default function MultiLayerParallax() {
           backgroundImage: `url(${full.src})`,
           backgroundPosition: "bottom",
           backgroundSize: "cover",
-          y:!isMobile ?  backgroundY : backgroundY,
+          y:backgroundY
         }}
       />
 

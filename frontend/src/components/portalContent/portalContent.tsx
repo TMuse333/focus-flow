@@ -30,13 +30,10 @@ const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
  })
 
   // Capture the scroll position within the referenced element
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  });
+ 
 
   // Map the scroll position to height values (e.g., 0px to 300px)
-  const height = useTransform(scrollYProgress, [0, 0.15], ["120px", "330px"]);
+
   const [animationComplete, setAnimationComplete] = useState(false);
 
   const inView = useInView(ref,{amount: isDesktop ? 0.75 : 0.35})
@@ -53,7 +50,7 @@ const PortalContent: React.FC<Props> = ({ image, alt, description }) => {
   
 
 
-  const [atomLanded, setAtomLanded] = useState(false)
+
 
   
 
@@ -195,7 +192,7 @@ Aesthetic Brilliance </h3>
 <Image
 id='portal-image'
 src={image}
-alt='alt'
+alt='an atom to describe why Focus Flow Software has the best creative web design halifax'
 className={`w-[40vw] object-contain 
 mx-auto relative z-[-1] flex-shrink-0 max-w-[437px]
 opacity-0
@@ -255,7 +252,7 @@ style={{
 </article>
 
 
-        {/* Your content here */}
+       
       </section>
       </div>
     </>

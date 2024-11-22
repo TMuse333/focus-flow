@@ -136,21 +136,13 @@ title, description, index,titleInView,slideComplete}) => {
             width={100}
             height={100}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            alt="lol"
+            alt={`image to display creative web design halifax ${title}`}
             />
         {/*        ${inView ? 'glow' : ''}`}*/}
             <div className="relative flex flex-col justify-center
             items-center mt-auto mb-auto"
            >
-            {/* <Image className="w-[20%]
-           h-[50%]
-            max-w-[115px] max-h-[115px] 
-            sm:w-[10vw]  object-cover 
-            mr-auto ml-auto text-center mb-5
-            mt-[-2rem]"
-            src={image}
-            alt='image'
-            /> */}
+     
             <section className="h-[200px]  flex flex-col
             items-center justify-center mb-auto mt-auto">
 
@@ -227,10 +219,7 @@ interface Props {
 <section className="mt-[10rem]">
 
 
-        {/* <AppearingGradient
-        text="Maximizing Business Impact Through Design"
-        subText="Uncover the Benefits of Our Designs for Your Brand’s Growth"
-        /> */}
+     
 
         <SlidingText
                 text="Maximizing Business Impact Through creative web design"
@@ -247,15 +236,7 @@ interface Props {
            
        </div>
 
-          {/* <div 
-           className="mt-5
-        w-[90vw] h-[5px]
-         bg-gradient-to-r from-[#003647] via-[#3e7384] to-[#003647]
-        ml-auto mr-auto rounded-[200rem]
-        mb-8
-        ">
-           
-       </div> */}
+  
 
        <div className="w-screen"
        ref={contentRef}>
