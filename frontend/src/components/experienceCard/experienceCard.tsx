@@ -1,6 +1,7 @@
 "use client"
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState,
+useCallback } from "react";
 import { motion, useScroll, useTransform, useMotionValueEvent, animate, useInView } from 'framer-motion';
 import { useGeneralContext } from "@/context/context";
 
@@ -59,37 +60,45 @@ const ExperienceCard: React.FC<Props> = ({
         }
     });
 
+    const headerRef = useRef(null);
+    const imageRef = useRef(null);
+    const descriptionRef = useRef(null);
 
+    
     const handleAnimation = async () => {
-
-        const header = document.getElementById(`${title}-header`)
-        const image = document.getElementById(`${title}-image`)
-        const description = document.getElementById(`${title}-description`)
-        if(header){
-            await animate(header,{opacity:1, y:0,scale:1.3},
-                {ease:'easeInOut'})
-                await animate(header,{scale:1},
-            
-                )
-        }
-
-        if(image){
-            await animate(image,{opacity:1},
-                {ease:'easeInOut'}
-                )
-        }
-     
-        if(description){
-            await animate(description,{opacity:1},
-                {ease:'easeInOut'})
-        }
-
-        if(!isMobile){
-            setStartLiAnimation(true)
-        }
-        
-        
-    }
+        // const header = document.getElementById(`${title}-header`)
+        // const image = document.getElementById(`${title}-image`)
+        // const description = document.getElementById(`${title}-description`)
+        const header = headerRef.current;
+  const image = imageRef.current;
+  const description = descriptionRef.current;
+    
+      const animations = [];
+    
+      if (header) {
+        animations.push(
+          animate(header, { opacity: 1, y: 0, scale: 1.3 }, { ease: 'easeInOut' })
+        );
+        animations.push(animate(header, { scale: 1 }));
+      }
+    
+      if (image) {
+        animations.push(animate(image, { opacity: 1 }, { ease: 'easeInOut' }));
+      }
+    
+      if (description) {
+        animations.push(animate(description, { opacity: 1 }, { ease: 'easeInOut' }));
+      }
+    
+      // Wait for all animations to finish
+      await Promise.all(animations);
+    
+      // Run list animation if not on mobile
+      if (!isMobile) {
+        setStartLiAnimation(true);
+      }
+    };
+    
 
     useEffect(() => {
         if(startAnimation){
@@ -98,24 +107,24 @@ const ExperienceCard: React.FC<Props> = ({
     },[startAnimation])
 
 
-    const liVariants =(delay:number,index:number) => {
-
+    const liVariants = useCallback((delay: number, index: number) => {
         return {
-            initial:{
-                opacity:0,
-                x:isMobile && index % 2 === 0 ? -20 : 20,
+            initial: {
+                opacity: 0,
+                x: isMobile && index % 2 === 0 ? -20 : 20,
                 y: !isMobile ? 20 : 0
             },
-            animate:{
-                opacity:1,
-                x:0,
-                y:0,
-                transition:{
-                    delay:0.3 + delay
+            animate: {
+                opacity: 1,
+                x: 0,
+                y: 0,
+                transition: {
+                    delay: 0.3 + delay
                 }
             }
         }
-    }
+    }, [isMobile]);
+    
     
 
     return (
@@ -126,7 +135,9 @@ const ExperienceCard: React.FC<Props> = ({
                 className="relative mx-auto w-[98vw] rounded-2xl bg-gradient-to-b from-blue-600 to-blue-300
               opacity-1 my-8"
             >
-                <h2 id={`${title}-header`}
+                <h2 
+                ref={headerRef}
+                id={`${title}-header`}
                     className="text-center w-full text-3xl sm:text-4xl  mb-6 font-bold pt-4
                     translate-y-[-2rem] opacity-0 px-3"
                 >
@@ -134,6 +145,7 @@ const ExperienceCard: React.FC<Props> = ({
                 </h2>
                 <section className={`flex flex-col md:px-4 mx-auto ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
                     <Image
+                    ref={imageRef}
                         id={`${title}-image`}
                         src={src}
                         alt={alt}
@@ -141,22 +153,30 @@ const ExperienceCard: React.FC<Props> = ({
                         height={1300}
                         className='w-[80vw] mx-auto mb-4 md:w-[40vw] max-w-[500px] rounded-2xl
                          opacity-0 object-contain'
+                         sizes="(max-width: 768px) 80vw, (max-width: 1024px) 40vw, 500px" 
+                         priority={false}
                     />
                     <motion.p
+                    ref={descriptionRef}
                         id={`${title}-description`}
                         className="px-4 font-semibold my-auto
                         opacity-0 md:text-lg whitespace-pre-line"
                     >
                         {description}
                         <br/>
+                        {link !== '' && (
+
+  
                         <button className="bg-blue-500
                         p-2 rounded-2xl mt-3 hover:text-blue-500
                         hover:bg-white transition-all">
+                          
                             <Link href={link}
                             >
                                 Check it out
                             </Link>
                         </button>
+                                              )}
                     </motion.p>
                 </section>
 

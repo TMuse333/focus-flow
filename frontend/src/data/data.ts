@@ -1129,7 +1129,7 @@ export const creativeExperienceCard = {
         'A lifetime of design and technical experience',
         
     ],
-    link: '/best-web-design-halifax',
+    link: '',
     
     aspectHeader:'FocusFlow Software: Best creative web design in halifax'
 }
