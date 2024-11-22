@@ -32,10 +32,11 @@ export default function MultiLayerParallax() {
 
   return (
     <>
-      <Head>
-        <link rel="canonical" href="https://www.focusflowsoftware.com/best-web-design-halifax" />
-        <meta name="viewport"></meta>
-      </Head>
+  <Head>
+  <link rel="canonical" href="https://www.focusflowsoftware.com/best-web-design-halifax" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</Head>
+
     <div
       ref={ref}
       className="w-full h-screen overflow-hidden relative grid place-items-center"

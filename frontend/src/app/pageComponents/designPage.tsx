@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import dynamic from 'next/dynamic';
-
+import Head from "next/head";
 // Lazy load components
 const BigNav = dynamic(() => import("@/components/bigNav/navbar"), { ssr: false });
 import MultiLayerParallax from "@/components/mountainParallax/mountainParallax";
@@ -49,8 +49,9 @@ const DesignPage = () => {
 
     return (
         <>
+        
             <BigNav excludedLink="Top tier custom web design" />
-            <main ref={ref}
+            <main 
             className="mt-[3rem] relative z-[4] text-white
             w-screen overflow-x-hidden">
                 <MultiLayerParallax
