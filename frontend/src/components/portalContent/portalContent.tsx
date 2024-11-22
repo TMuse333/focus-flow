@@ -177,7 +177,7 @@ ${isDesktop ? 'translate-x-1/2' : ''}`}>
 
 <h3 
 className="text-left text-green-300 pl-4 mr-auto font-semibold mb-2
-bg-clip-text text-transparent"
+bg-clip-text text-transparent text-lg sm:text-xl md:text-2xl"
 style={{
   backgroundImage: "linear-gradient(to right, #00e0ff, #00a2e4, #00e0ff)",
 }}>
@@ -219,7 +219,7 @@ className={`mr-auto opacity-0
 ${isDesktop ? 'translate-x-1/2' : ''}`}>
 <h3 
 className="text-left text-green-300 pl-4 mr-auto font-semibold mb-2
-bg-clip-text text-transparent"
+bg-clip-text text-transparent text-lg sm:text-xl md:text-2xl"
 style={{
   backgroundImage: "linear-gradient(to right, #00e0ff, #00a2e4, #00e0ff)",
 }}>
@@ -241,7 +241,7 @@ className={`mx-auto md:w-[50vw] text-center opacity-0
 ${isDesktop ? '-translate-y-1/2' : ''}`}>
 <h3 
 className="text-left text-green-300 pl-4 mr-auto font-semibold mb-2
-bg-clip-text text-transparent"
+bg-clip-text text-transparent text-lg sm:text-xl md:text-2xl"
 style={{
   backgroundImage: "linear-gradient(to right, #00e0ff, #00a2e4, #00e0ff)",
 }}>

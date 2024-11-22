@@ -5,11 +5,12 @@ import Image from 'next/image';
 
 interface CarouselProps {
   images: {
-    url: string;
+    url: string ;
     title: string;
     description: string;
     link?: string;
     isVideo?:boolean
+
   }[];
   hasDescription?: boolean;
   style?:string
@@ -216,16 +217,13 @@ style }) => {
         max-w-[805px]
         max-h-[624px]
         md:max-w-[700px]
- bg-gray-700 
- border border-[#045db5]
+        bg-gray-700 
+        border border-[#045db5]
         h-[100%]`
         : `w-[100vw] 
-        max-w-[1400px] ml-auto mr-auto max-h-[900px]
-
-      `}
+        max-w-[1400px] ml-auto mr-auto max-h-[900px]`}
       object-contain  z-[65]
       ml-auto mr-auto `}
-     // Add controls for video playback
     width={600}
     height={1300}
     autoPlay
@@ -236,7 +234,7 @@ style }) => {
     <source src={image.url} type="video/mp4" /> {/* Change the type as necessary */}
     Your browser does not support the video tag.
   </video>
-) : (
+)  : (
   <Image
     alt={image.title}
     src={image.url}
@@ -249,12 +247,12 @@ style }) => {
         md:max-w-[700px]
         h-[100%]`
         : `w-[100vw] 
-        max-w-[1400px] ml-auto mr-auto max-h-[900px]
-      `}
+        max-w-[1400px] ml-auto mr-auto max-h-[900px]`}
       object-contain  z-[25]
       ml-auto mr-auto`}
   />
 )}
+
 
               </div>
             ))}

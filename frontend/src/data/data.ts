@@ -45,15 +45,29 @@ export const contentData1 = {
 export const workTenets = [
     {
         title: 'Enhanced User Experience Leads to Higher Conversions',
-        description: 'Our focus on user experience ensures that every interaction on your website is seamless and intuitive. By prioritizing usability and aesthetic appeal, we create engaging environments that not only captivate visitors but also guide them toward taking action, ultimately boosting your conversion rates and driving sales.'
+        description: `We believe that the process of getting a viewer that sees your website to getting them to book a meeting or purchasing
+        a product, or whatever the goal of your website is can be broken down into a formula and a 
+        calculated series of steps. We will sit down with you and discuss how we can systematically
+         design your website so that we can convert your viewers and 
+         give the highest probability of success.`
     },
     {
         title: 'Brand Credibility and Trust',
-        description: 'A professionally designed website instills confidence in your brand. We understand the importance of establishing trust with your audience, and our designs reflect your values and mission, ensuring that potential customers feel secure and motivated to engage with your business. Trust translates to loyalty, and loyalty leads to growth.'
+        description: `How you do one thing is how you do everything, especially if your website is the 
+        first point of contact between you and your client. You'll want to come across as an expert
+        in your field and that you can get your client results. This can be done 
+        by having a modern and expertly done website that captures
+        attention and displays the correct information to gain
+        credibility and trust.`
     },
     {
         title: 'Quick Delivery',
-        description: 'With over 1000 hours dedicated to web design in the last year, we have streamlined our process to ensure rapid delivery without compromising quality. We recognize the urgency of launching your online presence, and our efficient approach guarantees that your website will be up and running in record time, ready to serve your audience.'
+        description: `With over 1100 hours dedicated to creative web design to enhance peoples online presence, 
+        we have developed a very efficient system to deliver high quality
+        websites quickly. We have over 75 website components
+        at our disposal ready to use. We can combine and modify
+        these components to fit your needs and deliver a standout
+        website in a short amount of time.`
     },
     {
         title: 'Frequent Communication',
@@ -275,16 +289,19 @@ export const stickyScrollables = [
         src:focusFlow.src,
         alt:'the focused codeer',
         title:'New technologies and 100% control',
-        description:'The vast majority of websites today are made with the same generic templates that dont use the full potential of whats available today'
+        description:"The vast majority of websites today are made with the same generic, drag and drop templates that don't use the full potential of whats available today"+
+        "Focus Flow Software chose the more difficult approach of learning to make websites using the same technologies that the biggest tech companies use, react js to ensure"+
+        ' we can put your brand in the bet light with no technical limitations.'
     },
     {
         src:focusFlow.src,
-        alt:'the focused codeer',
-        title:'Constant inovation',
-        description:`There are limitless possibilites with websites when you can use custom code and we are interetsted in trying as many as we can.
-         We are constanly creating new components and are dedicated to making
-         websites with animations and designs never seen before 
-         to ensure you stay ahead of the competition`
+        alt:'the focused coder',
+        title:'Constant innovation',
+        description:`Focus Flow software is dedicated to truly having the best creative web design in halifax. 
+        This requires constantly pushing the boundaries and creating new designs
+        to stand out. We constantly try new designs and approaches
+        to our creative web design so that you we can elevate your
+        brand the best way possible.`
     },
     {
         src:focusFlow.src,
@@ -615,6 +632,51 @@ export const genericContent = {
       
   ]
 
+  export const designScrollables = [
+    {
+        src:"https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7263655978661724160",
+        title:'Different layouts for creative web design in halifax with react js',
+        alt:'',
+        description:''
+    },
+    {
+        src:'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7258162259279888386',
+        title:'Different layouts for creative web design in halifax with react js',
+        alt:'',
+        description:''
+    },
+    {
+        src:' https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7260047095733043201',
+        title:'Different layouts for creative web design in halifax with react js',
+        alt:'',
+        description:''
+    },
+    {
+        src:'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7261163440788979712',
+        title:'Different Carousels you can use with react js',
+        alt:'',
+        description:''
+
+    }
+  ]
+
+
+//   images: {
+//     url: string;
+//     title: string;
+//     description: string;
+//     link?: string;
+//     isVideo?:boolean
+//     iframe?:boolean
+//   }[];
+//   hasDescription?: boolean;
+//   style?:string
+  
+
+  
+
+ 
+
 
     //words to add
 //     digital marketing
@@ -740,11 +802,11 @@ export const processSlideShow = [
 
 export const designPageCloser = {
     title:'Time to elevate your digital presence',
-    description:`Now that you've seen firsthand why FocusFlow stands above the rest, it's time to take the next step. Your website is more than just an online presence — it's a crucial part of your business's success. It deserves to be built and managed by a team with the technical expertise and creative vision to set you apart from the competition.
-    Don't settle for average when you can have a website that truly reflects the heart of your brand and drives results. We’re ready to design a site that not only captures your audience's attention but also elevates your business to new heights.
-    Start your project with us today and let's bring your vision to life. Click below to get started — we're excited to work with you and create something extraordinary.`,
+    description: `With our creativity, design expertise, technical skills, and intense focus, we are confident that we can deliver the best creative web design in Halifax. Let us help you establish a professional and highly respectable online presence through a systematic process that sets you up for success. Ready to elevate your brand and achieve results quickly? Contact us and take the first step toward transforming your online presence.`,
+
+
     buttonDestination:'/lets-work',
-    buttonText:'Get started with FocusFlow'
+    buttonText:'Get started with Focus Flow'
 }
 
 export const processPageCloser = {
@@ -873,7 +935,7 @@ export const monthlyPageOutro = {
 
 export const restaurantPackageDetails = [
     {
-      src: iphones,
+      src: iphones.src,
       alt: 'iPhone displaying a custom restaurant website',
       title: "Custom Restaurant Website",
       description: "Showcase your menu with a custom-designed website."
@@ -1040,6 +1102,37 @@ export const experienceCard1 = {
     aspectHeader:'Our web design includes'
 }
 
+
+export const creativeExperienceCard = {
+    title:'What is creative web design?',
+    description:'Creative web design is the ability to connect different'+
+    ' ideas and designs together in such a manner that is new so it attracts'+
+    ' the viewers attention so that your brand is '+
+    'displayed to give you the highest perceived '+
+    'status.\n\n Creative web design requires '+
+    'two main prerequisites, technical competency'+
+    ' and vast experience of design to be able to'+
+    ' grab inspiration from different fields of'+
+    ' work and combine them into something unique.'+
+    ' FocusFlow Software has a lifetime of design '+
+    'experience and creates websites 100% custom'+
+    ' coded. This means we have lots of ideas to pull from '+
+    ' and we have no technical limitations so we are'+
+    'best equipped to give you true custom web '+
+    'design in halifax and elevate your digital presence',
+    src: '/media/infinity.webp',
+    alt: 'The infinity symbol to represent custom web design in halifax.',
+   
+    aspects: [
+        'websites made with react js (used by meta)',
+        '1100+ hours of experience with react js',
+        'A lifetime of design and technical experience',
+        
+    ],
+    link: '/best-web-design-halifax',
+    
+    aspectHeader:'FocusFlow Software: Best creative web design in halifax'
+}
 
   
   

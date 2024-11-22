@@ -26,12 +26,13 @@ interface CircleProps {
     title:string,
     description:string,
     index:number,
-    titleInView:boolean
+    titleInView:boolean,
+    slideComplete:boolean
    
 }
 
 const CircleElement: React.FC<CircleProps> = ({image,
-title, description, index,titleInView}) => {
+title, description, index,titleInView,slideComplete}) => {
 
     const [inView, setInView] = useState<boolean>(false)
 
@@ -100,7 +101,7 @@ title, description, index,titleInView}) => {
         id={`infographic-container-${index}`}
         variants={containerVariants}
         initial='initial'
-        animate={inView  && titleInView? 'animate' : 'initial'}
+        animate={inView  && titleInView && slideComplete? 'animate' : 'initial'}
         
         whileHover='hover'
         whileTap="hover"
@@ -129,7 +130,7 @@ title, description, index,titleInView}) => {
             <MotionImage className="absolute h-full w-full object-cover"
             variants={imageVariants(index)}
             initial='initial'
-            animate={inView ? 'animate' : 'initial'}
+            animate={inView && slideComplete ? 'animate' : 'initial'}
             onAnimationComplete={()=>setAnimationComplete(true)}
             src={image.src}
             width={100}
@@ -206,6 +207,8 @@ interface Props {
 
     const contentRef = useIntersectionObserver(setInView, options, false)
 
+    const [slideComplete, setSlideComplete] = useState(false)
+
     const images = [
         coder,
         twoHands,
@@ -229,9 +232,10 @@ interface Props {
         /> */}
 
         <SlidingText
-                text="Maximizing Business Impact Through Design"
+                text="Maximizing Business Impact Through creative web design"
                 subText="Uncover the Benefits of Our Designs for Your Brand’s Growth"
                 // toggle={false}
+                setSlideComplete={setSlideComplete}
                 />
 
 
@@ -256,25 +260,25 @@ interface Props {
        ref={contentRef}>
        {title && (
             <>
-             <motion.h1
+             <motion.h2
              initial={{
                opacity:0,
                y:50
              }} 
              animate={{
-               opacity:inView ? 1 : 0,
-               y: inView ? 0 : 50
+               opacity:inView && slideComplete ? 1 : 0,
+               y: inView && slideComplete ? 0 : 50
              }}
              className='relative text-2xl bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent 
-            text-4xl sm:text-5xl font-semibold text-center'>Built to work, work to build</motion.h1>
+            text-4xl sm:text-5xl font-semibold text-center'>Built to work, work to build</motion.h2>
               <motion.p
             initial={{
               opacity:0,
               x:50
             }} 
             animate={{
-              opacity:inView ? 1 : 0,
-              x: inView ? 0 : 50,
+              opacity:inView && slideComplete ? 1 : 0,
+              x: inView && slideComplete ? 0 : 50,
               transition:{
                 delay:0.5
               }
@@ -305,6 +309,7 @@ interface Props {
                 image={images[index]}
                 key={index}
                 titleInView={inView}
+                slideComplete={slideComplete}
                 />
 
             ))}

@@ -50,7 +50,7 @@ const ScrollableCarousel = dynamic(() => import('@/components/scrollableCarousel
 const Content = dynamic(() => import('@/components/content/content'));
 // const FlashContent = dynamic(() => import('@/components/flashConent/flashContent'),{ssr:true});
 const ContentBox = dynamic(() => import('@/components/contentBox/contentBox'),{ssr:true});
-const AppearingContent = dynamic(() => import('@/components/appearingContent/appearingContent'),{ssr:true});
+
 const Testimonials = dynamic(() => import('@/components/testimonials/testimonials'),{ssr:true});
 const Footer2 = dynamic(() => import('@/components/footer2/footer2'),{ssr:true});
 const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
@@ -68,7 +68,7 @@ const AuroraHero = dynamic(() => import('@/components/auroraHero/auroraHero'), {
 const Homepage = () => {
 
 
-  // const { selectedCarouselImageIndex } = useGeneralContext();
+  const { selectedCarouselImageIndex } = useGeneralContext();
 
   const ref = useRef(null)
 
@@ -120,10 +120,10 @@ const Homepage = () => {
       id='homepage'
       className="text-center z-[30]  lg:mt-[2rem]
       text-white"
-        // style={{
-        //   filter: selectedCarouselImageIndex !== null ? 'blur(8px)' : 'none',
-        //   overflowY: selectedCarouselImageIndex !== null ? 'hidden' : 'auto',
-        // }}
+        style={{
+          filter: selectedCarouselImageIndex !== null ? 'blur(8px)' : 'none',
+          overflowY: selectedCarouselImageIndex !== null ? 'hidden' : 'auto',
+        }}
       >
 
 

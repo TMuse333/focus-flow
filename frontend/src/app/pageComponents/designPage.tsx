@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import dynamic from 'next/dynamic';
 
 // Lazy load components
@@ -12,23 +12,43 @@ const CircleInfoGraphic = dynamic(() => import("@/components/circleInfographic/c
 const AppearingSquare = dynamic(() => import("@/components/appearingSquare/appearingSquare"), { ssr: false });
 const Footer2 = dynamic(() => import("@/components/footer2/footer2"), { ssr: false });
 
-import { stickyScrollables, designPageCloser } from "@/data/data";
+import { stickyScrollables, designPageCloser, creativeExperienceCard,
+ designScrollables} from "@/data/data";
 import infinity from '../../../public/media/atom-gif.gif';
-import { useRouterContext } from "@/lib/useRouterContext";
-import { useGeneralContext } from "@/context/context";
+import { useInView } from "framer-motion";
+// import { useRouterContext } from "@/lib/useRouterContext";
+// import { useGeneralContext } from "@/context/context";
+
+const ExperienceCard  = dynamic(() => import("@/components/experienceCard/experienceCard"))
+
+const ScrollCarousel = dynamic(()=>import("@/components/scrollCarousel/scrollCarousel"))
+
+
 
 const DesignPage = () => {
 
-    useRouterContext()
+    // useRouterContext()
 
-    const {setTotalPageTime} = useGeneralContext()
+    // const {setTotalPageTime} = useGeneralContext()
+
+    const ref = useRef(null)
+
+    const inView = useInView(ref,{
+        once:true
+    })
 
     return (
         <>
             <BigNav excludedLink="Top tier custom web design" />
-            <main className="mt-[3rem] relative z-[4] text-white">
+            <main ref={ref}
+            className="mt-[3rem] relative z-[4] text-white
+            w-screen overflow-x-hidden">
                 <MultiLayerParallax
               
+                 />
+
+                 <ExperienceCard
+                 {...creativeExperienceCard}
                  />
 
                 <StickyCarousel 
@@ -45,6 +65,19 @@ const DesignPage = () => {
                 <CircleInfoGraphic
         
                  />
+
+                 {inView && (
+ <ScrollCarousel
+ iframe
+ images={designScrollables}
+ />
+                 )}
+
+                
+
+                 
+
+
 
                 <AppearingSquare {...designPageCloser}
                

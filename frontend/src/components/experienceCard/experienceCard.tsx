@@ -165,14 +165,14 @@ const ExperienceCard: React.FC<Props> = ({
 
                 
                 <h3
-                    className="text-center my-6 text-3xl font-semibold"
+                    className="text-center my-6 text-3xl font-semibold px-4"
                 >
                    {aspectHeader}
                 </h3>
-                <ul className="mx-auto font-semibold mt-4 md:flex flex-row md:px-4
-                pb-8">
+                <ul className="mx-auto font-semibold mt-4 md:grid md:grid-cols-3  md:px-4
+                pb-8 w-full justify-around ">
                     {aspects.map((aspect, index) => (
-                        <motion.li className="mb-4 w-[90%] mx-auto p-3 bg-blue-600 rounded-2xl flex justify-center items-center text-center md:w-full md:mr-4"
+                        <motion.li className="mb-4 w-[90%] max-w-[250px] mx-auto p-3 bg-blue-600 rounded-2xl flex justify-center items-center text-center md:w-full md:mr-4"
                             key={index}
                             variants={liVariants(isMobile ? index * 0.2 : index * 0.1,index)}
                             initial='initial'
