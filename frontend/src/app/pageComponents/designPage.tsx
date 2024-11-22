@@ -13,7 +13,7 @@ const AppearingSquare = dynamic(() => import("@/components/appearingSquare/appea
 const Footer2 = dynamic(() => import("@/components/footer2/footer2"), { ssr: false });
 
 import { stickyScrollables, designPageCloser, creativeExperienceCard,
- designScrollables} from "@/data/data";
+ } from "@/data/data";
 import infinity from '../../../public/media/atom-gif.gif';
 import { useInView } from "framer-motion";
 import { useGeneralContext } from "@/context/context";
@@ -22,7 +22,7 @@ import { useGeneralContext } from "@/context/context";
 
 const ExperienceCard  = dynamic(() => import("@/components/experienceCard/experienceCard"))
 
-const ScrollCarousel = dynamic(()=>import("@/components/scrollCarousel/scrollCarousel"))
+
 
 
 
@@ -32,11 +32,11 @@ const DesignPage = () => {
 
     // const {setTotalPageTime} = useGeneralContext()
 
-    const ref = useRef(null)
+    // const ref = useRef(null)
 
-    const inView = useInView(ref,{
-        once:true
-    })
+    // const inView = useInView(ref,{
+    //     once:true
+    // })
 
     const ref2 = useRef(null)
 
@@ -86,7 +86,7 @@ const DesignPage = () => {
         
                  />
 
-<div ref={ref}>
+{/* <div ref={ref}>
 
 
                  {inView && (
@@ -95,7 +95,7 @@ const DesignPage = () => {
  images={designScrollables}
  />
                  )}
-                 </div>
+                 </div> */}
 
                 
 
