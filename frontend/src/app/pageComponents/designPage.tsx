@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import Head from "next/head";
 // Lazy load components
 const BigNav = dynamic(() => import("@/components/bigNav/navbar"), { ssr: false });
-import MultiLayerParallax from "@/components/mountainParallax/mountainParallax";
+// import MultiLayerParallax from "@/components/mountainParallax/mountainParallax";
 const StickyCarousel = dynamic(() => import("@/components/stickyCarousel/stickyCarousel"), { ssr: false });
 const PortalContent = dynamic(() => import("@/components/portalContent/portalContent"), { ssr: false });
 const CircleInfoGraphic = dynamic(() => import("@/components/circleInfographic/circleInfoGraphic"), { ssr: false });
@@ -54,9 +54,9 @@ const DesignPage = () => {
             <main 
             className="mt-[3rem] relative z-[4] text-white
             w-screen overflow-x-hidden">
-                <MultiLayerParallax
+                {/* <MultiLayerParallax
               
-                 />
+                 /> */}
 
                  <ExperienceCard
                  {...creativeExperienceCard}
