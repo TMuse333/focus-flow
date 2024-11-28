@@ -56,6 +56,10 @@ interface SubMenuProps {
           name: 'Restaurant Software',
           destination: '/online-food-ordering-system',
         },
+        // {
+        //   name:'Real estate agent websites',
+        //   destination:'/real-estate-agent-websites'
+        // },
       
       ],
       listSubMenu: true,
@@ -65,7 +69,7 @@ interface SubMenuProps {
     },
    
     {
-      name: 'Bulding Your Success',
+      name: 'Building Your Success',
       secondaryLinks: [
         {
             name:'Top tier custom web design',

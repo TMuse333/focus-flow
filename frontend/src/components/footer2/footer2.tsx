@@ -1,7 +1,10 @@
 import React from "react";
 import twoHand from '../../../public/media/gemeni-two-hand-stick.webp'
+import instagram from '../../../public/media/instagram.webp'
+import linkedin from '../../../public/media/linkedin.png'
 
 import Link from "next/link";
+import Image from "next/image";
 
 
 interface props  {
@@ -142,6 +145,32 @@ const Footer2:React.FC<props> = ({
           </div>
         ))}
       </div>
+      <h6 className="text-3xl sm:text-4xl font-semibold mb-8">Social media</h6>
+      <p>See some highlights of our creative
+        web design in halifax
+      </p>
+      <section className="flex">
+        <Image
+        src={instagram}
+        alt='The instagram logo that leads to focusflow softwares instagram to represent creative web design in halifax'
+        width={600}
+        height={1300}
+        className='w-[200px] object-contain'
+        />
+              <Image
+        src={linkedin}
+        alt='The instagram logo that leads to focusflow softwares instagram to represent creative web design in halifax'
+        width={600}
+        height={1300}
+        className='w-[200px] h-[50px] object-contain my-auto'
+        />
+      </section>
+
+      <p>For every action, there is an equal and
+        opposite reaction. Use this law everyday to create
+        the reality you desire.
+      </p>
+
     </footer>
       )
     

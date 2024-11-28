@@ -1,24 +1,40 @@
 import Link from "next/link";
 import React from "react";
 
+interface Props  {
+  h1:string,
+  h2Color:string
+  h2:string,
+  pTag:string,
+  boxData:{
+    title:string,
+    description:string
+  }[]
+}
 
 
-const Herobanner = () => {
+
+const Herobanner:React.FC<Props> = ({
+  h1,h2Color,h2,pTag,boxData
+}) => {
 
     return (
         <section className="w-screen md:h-screen bg-black flex justify-center items-center flex-col"
         style={{
-            background: "radial-gradient(circle, #001F3F 40%, black 100%)"
+            background: "radial-gradient(circle, #00759F -15%, black 100%)"
         }}>
+           <h1 className="text-sm px-4 sm:text-md mb-4 mt-8 sm:text-md md:text-lg font-semibold text-center mb-4 animate-gradient">
+          {h1}
+        </h1>
             <h1 className="text-4xl px-4  mb-4 mt-3
         sm:text-5xl md:text-6xl 
         font-semibold bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent
        
-          font-semibold text-center mb-4 ">Revolutionize Your
+          font-semibold text-center mb-4 ">{h2}
           <br/>
                 <span
                 className="animate-gradient">
-                    Restaurant Experience
+                    {h2Color}
                 </span>
             </h1>
             <p className="text-white w-[80%] mx-auto ">Transform your restaurant with powerful tools to simplify orders, increase sales, and grow your business faster than ever.</p>
@@ -44,31 +60,19 @@ href='https://focusflowrestaurant.vercel.app'>
 
             </section>
             <section className="flex flex-col md:flex-row md:w-[90%] mx-auto mt-12 md:justify-evenly">
-  <div className="bg-[#003d7a] rounded-xl w-[75vw] mx-auto py-4 mb-8 md:mr-3">
-  <h2 className="text-left ml-8 text-xl font-semibold bg-gradient-to-b from-gray-300 to-gray-200 bg-clip-text text-transparent ">
-  Fast and Easy Setup
-</h2>
-<p className="ml-8 text-left mt-4 text-gray-300">
-  Get your restaurant online with minimal effort. Our platform is designed for quick setup, so you can start accepting orders in no time.
-</p>
 
-  </div>
-  <div className="bg-[#003d7a] rounded-xl w-[75vw] mx-auto py-4 mb-8 md:mr-3">
+  {boxData.map((box, index) => (
+    <div className="bg-[#00759F] border border-gray-200 rounded-xl w-[75vw] mx-auto py-4 mb-8 md:mr-3"
+    key={index}>
     <h2 className="text-left ml-8 text-xl font-semibold bg-gradient-to-b from-gray-300 to-gray-200 bg-clip-text text-transparent ">
-      Boost Orders
+      {box.title}
     </h2>
     <p className="ml-8 text-left mt-4 text-gray-300">
-      Increase your order volume with an intuitive system that makes it easier for customers to order online.
+     {box.description}
     </p>
   </div>
-  <div className="bg-[#003d7a] rounded-xl w-[75vw] mx-auto py-4 mb-8">
-    <h2 className="text-left ml-8 text-xl font-semibold bg-gradient-to-b from-gray-300 to-gray-200 bg-clip-text text-transparent ">
-      Higher Earnings
-    </h2>
-    <p className="ml-8 text-left mt-4 text-gray-300">
-      Keep more of your revenue by cutting down on third-party platform fees, so you save on every order.
-    </p>
-  </div>
+  ))}
+
 </section>
 
         </section>

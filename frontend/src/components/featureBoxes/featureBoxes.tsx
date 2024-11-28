@@ -11,6 +11,8 @@ interface BoxProps {
 }
 
 interface Data {
+    title:string,
+    description:string,
     boxData:{
         src:string,
     alt:string,
@@ -47,15 +49,15 @@ const FeatureBox:React.FC<BoxProps> = ({
 
 
 const FeatureBoxes:React.FC<Data> = ({
-    boxData
+    boxData, title, description
 }) => {
 
 
     return (
         <section className="md:h-screen">
         <AppearingGradient
-  text="Elevate Your Restaurant"
-  subText="Reimagine service. Delight every customer."
+  text={title}
+  subText={description}
   
 
 />

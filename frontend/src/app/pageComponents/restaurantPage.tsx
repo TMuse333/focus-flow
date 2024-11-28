@@ -26,7 +26,7 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import { useRouterContext } from "@/lib/useRouterContext";
 import { useGeneralContext } from "@/context/context";
-
+import { restaurantHeroBanner } from "@/data/data2";
 
 
 
@@ -56,11 +56,12 @@ const RestaurantPage = () => {
         excludedLink="Restaurant software"
         />
         <Herobanner
-      
+      {...restaurantHeroBanner}
         />
 
         <FeatureBox
-       
+       title='Elevate Your Restaurant'
+       description="Reimage service. Delight every customer"
        boxData={RestaurantFeatures}
        />
      

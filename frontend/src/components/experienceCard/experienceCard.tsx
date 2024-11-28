@@ -125,7 +125,7 @@ const ExperienceCard: React.FC<Props> = ({
                 ref={ref}
                 style={{ scale,  }}
                 className="relative mx-auto w-[98vw] rounded-2xl bg-gradient-to-b from-blue-600 to-blue-300
-              opacity-1 my-8"
+              opacity-1 my-8 max-w-[1200px]"
             >
                 <h2 
                 ref={headerRef}

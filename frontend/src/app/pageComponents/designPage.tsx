@@ -24,6 +24,9 @@ const ExperienceCard  = dynamic(() => import("@/components/experienceCard/experi
 
 
 
+{/* <Head>
+  <link rel="preload" href="/_next/static/chunks/critical-chunk.js" as="script" />
+</Head> */}
 
 
 const DesignPage = () => {
