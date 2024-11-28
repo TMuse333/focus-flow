@@ -1,6 +1,6 @@
 import FeatureBoxes from "@/components/featureBoxes/featureBoxes";
 import React from "react";
-import RealEstate from "../../app/pageComponents/realEstate";
+import RealEstate from "../pageComponents/realEstate";
 
 
 
