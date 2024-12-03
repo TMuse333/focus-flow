@@ -191,11 +191,14 @@ const Homepage = () => {
          />
 
 <section className="relative mx-auto">
-<h2>
+<h2 className=" bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent 
+                text-4xl sm:text-5xl font-semibold text-center relative transition-colors
+                mb-4">
           The FocusFlow Blog
          </h2>
 
-         <p>Learn about website trends and anything
+         <p className="sm:text-lg
+         md:text-xl">Learn about website trends and anything
           websites in general with the FocusFlow Blog
          </p>
 
