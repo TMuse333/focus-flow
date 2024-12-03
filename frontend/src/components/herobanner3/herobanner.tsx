@@ -9,13 +9,21 @@ interface Props  {
   boxData:{
     title:string,
     description:string
-  }[]
+  }[],
+  buttonText:string,
+  destination:string
+  buttonText2:string,
+  destination2:string
 }
 
 
 
 const Herobanner:React.FC<Props> = ({
-  h1,h2Color,h2,pTag,boxData
+  h1,h2Color,h2,pTag,boxData,
+  buttonText,
+  destination,
+  buttonText2,
+  destination2
 }) => {
 
     return (
@@ -40,21 +48,21 @@ const Herobanner:React.FC<Props> = ({
             <p className="text-white w-[80%] mx-auto ">Transform your restaurant with powerful tools to simplify orders, increase sales, and grow your business faster than ever.</p>
             <section className=" mt-4 flex justify-center items-center">
                 <Link
-                href='lets-work'>
+                href={destination}>
 
   
             <button className="bg-[#002D5F] text-white rounded-2xl
                 p-4 mr-4 hover:bg-[#003d7a]">
-    Get yours now
+    {buttonText}
 </button>
 </Link>
 <Link
-href='https://focusflowrestaurant.vercel.app'>
+href={destination2}>
 
 
 <button className="bg-[#f0f4f8] text-[#002D5F] rounded-2xl
                 p-3 ml-4 border border-[#002D5F] hover:bg-[#e5f1fb]">
-    Make a demo order
+   {buttonText2}
 </button>
 </Link>
 

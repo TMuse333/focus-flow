@@ -16,13 +16,14 @@ interface Props {
     description: string,
     aspects: string[],
     link: string,
+    buttonText:string
     reverse?: boolean
     aspectHeader:string
 }
 
 const ExperienceCard: React.FC<Props> = ({
     title, src, alt, description, aspects,
-    link, reverse, aspectHeader
+    link, reverse, aspectHeader,buttonText
 }) => {
     const ref = useRef(null);
     const { isMobile } = useGeneralContext();
@@ -152,6 +153,7 @@ const ExperienceCard: React.FC<Props> = ({
                     ref={descriptionRef}
                         id={`${title}-description`}
                         className="px-4 font-semibold my-auto
+                        md:w-[50%]
                         opacity-0 md:text-lg whitespace-pre-line"
                     >
                         {description}

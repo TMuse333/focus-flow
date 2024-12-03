@@ -44,6 +44,7 @@ export const metadata: Metadata = {
 import Head from "next/head";
 import { useInView } from "framer-motion";
 import ExperienceCard from "@/components/experienceCard/experienceCard";
+import { experienceCard2 } from "@/data/data2";
 // Dynamic imports (lazy-loaded components)
 
 const ScrollableCarousel = dynamic(() => import('@/components/scrollableCarousel/scrollableCarousel'),{ssr:true});
@@ -110,6 +111,12 @@ const Homepage = () => {
 
          <ExperienceCard
          {...experienceCard1}
+         buttonText='View to tier design'
+         />
+
+         <ExperienceCard
+         {...experienceCard2}
+         reverse
          />
       <SelectedCarouselImage />
 
@@ -166,7 +173,7 @@ const Homepage = () => {
          />
 
 <section ref={ref3}>
-  {inView2 && (
+  
    <ScrollableCarousel
       
    images={scrollableImages}
@@ -174,7 +181,7 @@ const Homepage = () => {
    description="Explore some of our showcased projects. Click on each for detailed insights and excellence in digital creation."
   
  />
-  )}
+  
 </section>
      
 

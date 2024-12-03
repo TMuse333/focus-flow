@@ -139,27 +139,27 @@ export const realEstateFeatures = [
 
  export const realEstateFaq = [
 {
-    src: "/media/dollar-sign.svg", 
+    src: "/media/focusFlow-brain-nobg.webp", 
       alt: "A simple pricing comparison showing 2.9% vs 15%", 
       title: "Can I mix and match templates?",
       description: "Yes. The templates are only there to help you see different options, "+
       " we have many more designs in store and can make any combinations of designs you desire."
 },
 {
-    src: "/media/dollar-sign.svg", 
+    src: "/media/clock.svg", 
       alt: "A simple pricing comparison showing 2.9% vs 15%", 
       title: "How fast can the website be done?",
       description: "We have our website process down very well, once we have a deal and start the project, we are typically finished within 3 weeks, depending on how fast response times are."
 },
 {
-    src: "/media/dollar-sign.svg", 
+    src: "/media/user-check.svg", 
       alt: "A simple pricing comparison showing 2.9% vs 15%", 
       title: "Do I own the website?",
       description: "Yes. There are two options when hosting the website. Either we can host it on our account, or we can make a separate account "+
       " that you have ownership of and we will manage it for you. Either option works fine!"
 },
 {
-    src: "/media/dollar-sign.svg", 
+    src: "/media/image.svg", 
     alt: "A simple pricing comparison showing 2.9% vs 15%", 
     title:'Is the website mobile friendly?',
     description:'Of course. We design our websites with a mobile first approach, ensuring that performance and '+
@@ -168,7 +168,7 @@ export const realEstateFeatures = [
     "and we will make sure it's a fantastic first impression."
 },
 {
-    src: "/media/dollar-sign.svg", 
+    src: "/media/seo-gears.webp", 
     alt: "A simple pricing comparison showing 2.9% vs 15%", 
     title:'Is the website seo optimized?',
     description:"Yes. We design our websites with seo in mind. "+
@@ -177,7 +177,7 @@ export const realEstateFeatures = [
     " package, we will also write monthly articles to even further enhance your seo ranking."
 },
 {
-    src: "/media/dollar-sign.svg", 
+    src: "/media/global-money.webp", 
     alt: "A simple pricing comparison showing 2.9% vs 15%", 
     title:'How do I know the website will work?',
     description:"We care about delivering a useful product and we want to ensure "+
@@ -202,11 +202,12 @@ export const realEstateFeatures = [
 'brief details process',
 'testimonials',
 'contact form'],
-    cta:'slatty'  
+    destination:'/',
+    buttonText:''
     },
     {
         name:"Elevate pack",
-    price:'1500$',
+    price:'2000$',
     description:'A great way to start on your journey of'+
     ' greatness',
     aspects:['5 pages',
@@ -216,8 +217,11 @@ export const realEstateFeatures = [
 'page 4: Personal page',
 'Page 5: Contact page'
 ],
-    cta:'slatty'  
+   
+    destination:'https://focusflowrealtorpage.vercel.app',
+    buttonText:'Check it out'
     },
+    
     {
         name:'Custom solution',
         price:'Contact us',
@@ -227,7 +231,9 @@ export const realEstateFeatures = [
             'As many pages as desired',
             'Can cover any aspect of your practice',
             
-        ]
+        ],
+        destination:'/lets-work',
+    buttonText:'Get a custom solution'
     }
   ]
 
@@ -320,7 +326,7 @@ export const realEstateCloser = {
 
 
 export const infoExperienceCard = {
-    src:'/media/real-estate-website-digital-presence.webp',
+    src:'/media2/realtor-dev.webp',
     alt:'A man elevating his digital presence with a real estate website',
     title:'What is on a real estate agents website?',
     description:'Our real estate agent websites are designed'+
@@ -343,5 +349,157 @@ export const infoExperienceCard = {
     ],
     reverse:true,
     link:''
+
+}
+
+
+export const aboutHerobanner = {
+    title:'About Focus Flow Software',
+    description:'Focus Flow SOftware is dedicated to quickly providing unique and visually appealing web designs to help clients improve their online presence by standing out.'+
+    'This is done through a craftmans mindset and doing difficult work '+
+    ' everyday to ensure our designs stand out above the rest.'+
+    ' '
+}
+
+
+export const aboutData1 = {
+    image:'/media2/tom-suit.webp' ,
+   
+    description: [
+        'Thomas Musial, the founder of Focus Flow Software,' +
+        ' is deeply committed to becoming extremely competent and delivering excellence through focused,' +
+        ' detail-oriented work every single day. His mission is to elevate' +
+        ' digital presence and empower businesses to thrive online.',
+    
+        'Thomas brings a lifetime of design experience through drawing and' +
+        ' animation, combined with advanced technical expertise, to create' +
+        ' top-tier, visually stunning, and user-friendly websites.',
+    
+        'With a strong foundation in continuous learning and years of' +
+        ' hands-on experience, Thomas has developed an unmatched ability' +
+        ' to understand client needs, craft tailored solutions, and' +
+        ' deliver results that exceed expectations.'
+      ],
+  
+    mainTitle: 'Meet Thomas Musial',
+    
+    buttonLink: '/artist',
+    buttonText:'View other art',
+    alt: 'Thomas Musial in a suit',
+   
+}
+
+export const aboutData2 = {
+    image:'/media2/tom-lion.webp' ,
+   
+     description: [
+        "Thomas approaches each day with a relentless, no-excuses mentality, " +
+          "driven by a commitment to excellence and a determination " +
+          "to get the job done no matter the challenges.",
+      
+        "With over a decade of competitive basketball experience " +
+          "and years of intense physical training, he has honed " +
+          "a work ethic rooted in discipline, resilience, and success.",
+      
+        "Through countless hours on the court and in the gym, " +
+          "Thomas learned to embrace challenges head-on and perform " +
+          "at a high level, consistently exceeding expectations."
+      ],
+      
+  
+    mainTitle: 'Built to work, work to build',
+    
+    buttonLink: 'https://www.youtube.com/@tmuse333',
+    buttonText:'View Youtube',
+    alt: 'Thomas Musial in a suit',
+    reverse:true 
+}
+
+
+export const aboutData3 = {
+    image:'/media2/tom-in-suit-2.png' ,
+   
+     description: [
+       "You only live once, and Thomas believes "+
+       " that with calculated action you can live exactly the "+
+       "life you want. This means breaking down what set of actions will "+
+       "give you the highest probability of success and executing with high energy, day after day after day.",
+       " This approach of problem solving along with "+
+       "a relentless strong focus, discipline and competency "+
+       "has allowed Thomas to make substantial "+
+       " progress in different areas like video editing "+
+       " web design, basketball, vertical jump training, "+
+       " drawing and much more.",
+       "With this approach Thomas is confident he can "+
+       " continue to grow and help others elevate their "+
+       " digital presence through a calculated plan."
+      ],
+      
+  
+    mainTitle: 'Calculated for greatness',
+    
+    buttonLink: 'https://www.instagram.com/thomas__musial/',
+    buttonText:'View Instagram',
+    alt: 'Thomas Musial in a suit',
+    reverse:false 
+}
+
+
+export const aboutCloser = {
+    image:'/media/art/goku-vs-jiren.webp',
+    alt:'Goku vs jiren',
+    title:"Hustlers don't stop, they keep going. ",
+    description:'Asides from websites, Thomas enjoys '+
+    "going to the gym, learning about how the universe works, mediating"+
+    " and learning new things to make his life better on the never "+
+    "ending journey of greatness in all realms of human endeavour. "+
+    "Hopefully you can be apart of the journey and we "+
+    "can make a great project together!",
+    buttonText:'Lets get to work',
+    destination:'/lets-work'
+}
+
+// title: string,
+// src: string,
+// alt: string,
+// description: string,
+// aspects: string[],
+// link: string,
+// buttonText:string
+// reverse?: boolean
+// aspectHeader:string
+
+export const experienceCard2 = {
+    src:'/media2/realtor-page.webp',
+    alt:'The web page for realtors',
+    title:'Real estate websites',
+    description: 'Showcase your properties and elevate your ' +
+    'brand with a professionally designed real ' +
+    'estate website that\'s as dynamic as ' +
+    'your business. Our websites are quick to ' +
+    'set up, highly customizable to reflect ' +
+    'your personal style, and built to ' +
+    'save you time.\n\n Instantly impress your clients ' +
+    'and boost your online credibility with a ' +
+    'platform that makes you stand out in a ' +
+    'competitive market. We handle all the ' +
+    'technical work so you can focus on what ' +
+    'you do best—selling homes and building ' +
+    'relationships. Achieve professional results ' +
+    'in less time, with less effort, and with ' +
+    'a guarantee of a polished, functional, ' +
+    'and stylish website designed for your success.',
+  
+
+aspects: [
+    'Professional, high status online presence',
+    'Save time, close deals faster',
+    'Quick to implement',
+    'Very customizable'
+],
+link: '/real-estate-agent-website',
+buttonText:'Learn more',
+
+aspectHeader:'Stand Out, Sell More, and Save Time'
 
 }

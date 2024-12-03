@@ -5,6 +5,7 @@ import BigNav from "@/components/bigNav/navbar";
 import DisplayBoxes from "@/components/displayBox/displayBox";
 import ExperienceCard from "@/components/experienceCard/experienceCard";
 import FeatureBoxes from "@/components/featureBoxes/featureBoxes";
+import Footer2 from "@/components/footer2/footer2";
 import Herobanner from "@/components/herobanner3/herobanner";
 import ImageAccordion from "@/components/imageAccordion/imageAccordion";
 import Pricing from "@/components/pricing/pricing";
@@ -27,13 +28,19 @@ const RealEstate = () => {
            
             <Herobanner
             {...realEstateHerobanner}
+            destination='https://focusflowrealtorpage.vercel.app'
+            buttonText="See a sample"
+            destination2="/lets-work"
+            buttonText2="Get your own"
             />
             <ExperienceCard
             {...realEstateExperienceCard}
+            buttonText='See a sample'
             />
 
             <ExperienceCard
             {...infoExperienceCard}
+            buttonText=''
             />
            
             <FeatureBoxes
@@ -64,6 +71,10 @@ const RealEstate = () => {
 
             <AppearingSquare
             {...realEstateCloser}
+            />
+
+            <Footer2
+            excludedLink="Real Estate Agent Websites"
             />
         </section>
         </>

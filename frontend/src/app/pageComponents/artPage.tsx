@@ -16,7 +16,8 @@ const ArtPage = () => {
         <BigNav
         excludedLink="Extras"
         />
-        <main className="mt-4 md:mt-[4rem]">
+        <main className="mt-4 md:mt-[4rem]
+        bg-[#00bfff] bg-opacity-[0.2]">
 
             <ThreeJSWave/>
 

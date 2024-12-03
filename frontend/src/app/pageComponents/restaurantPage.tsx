@@ -56,6 +56,10 @@ const RestaurantPage = () => {
         excludedLink="Restaurant software"
         />
         <Herobanner
+        destination='https://focusflowrestaurant.vercel.app'
+        buttonText="Make a demo order"
+        destination2="/lets-work"
+        buttonText2="Get your own"
       {...restaurantHeroBanner}
         />
 

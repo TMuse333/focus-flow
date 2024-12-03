@@ -23,7 +23,8 @@ import focusFlow from '../../public/media/focusFlow-brain-nobg.webp'
 import iphones from '../../public/media/iphone-menu.webp'
 import iPhoneOrder from '../../public/media/iphone-order.webp'
 import viewOrders from '../../public/media/view-orders.webp'
-
+import assante from '../../public/media/assante.webp'
+import assante2 from '../../public/media/assante2.webp'
 
 
 export const orderStatus = '/videos/change-order-status.mp4'
@@ -173,6 +174,23 @@ export const scrollableImages = [
         ],
         link: 'https://dolcevitaconstructionandpm.com'
       }
+    },
+    {
+        src:assante.src,
+        alt:' alt: "Creative web design Halifax for Assante Bedford Station',
+        details: {
+          mainImage: assante.src,
+          alt: "Main image of The Quantum Card Game website featuring a hand-drawn card matching game and creative web design Halifax",
+          secondaryImage: assante2.src,
+          alt2: "Secondary image of the the website for assante wealth management",
+          title: 'Assante Bedford Station',
+          description: [
+            `This is the web page for Assante Wealth Management in Bedford, Nova Scotia—designed to showcase their expertise, team, and location in a modern, accessible, and impactful way`,
+            `Assante wanted to showcase their location and team in a way that is not only visually captivating but also effortlessly accessible, ensuring clients can connect with them seamlessly and feel inspired to take the next step.
+            We enhanced the app with sleek grid layouts for better organization and seamlessly integrated Google Maps, making it easier than ever for users to navigate and explore locations effortlessly."`
+          ],
+          link: 'https://www.assantebedfordstation.com'
+        }
     },
     {
       src: cards2.src,
@@ -1061,6 +1079,15 @@ export const electricContainerData = [
 
 export const blogCarouselData = [
     {
+        src: "/media/focusFlow-brain-nobg.webp",
+        alt: "The FocusFlow Software brain to represent creative web design in Halifax",
+        title: "How Creative Web Design in Halifax Can Help Your Business Stand Out",
+        description: "Discover how creative web design in Halifax can elevate your business, boost your online presence, and help you attract more customers. Learn about the key benefits of investing in effective web design.",
+        link: "https://www.focusflowsoftware.com/creative-web-design-halifax",
+        date: "November 30th, 2024"
+    },
+    
+    {
          src:'/media/focusFlow-brain-nobg.webp',
          alt:'The focusflow software brain to represent creative web design in halifax',
          title:'Why web design in halifax is crucial for online business',
@@ -1086,12 +1113,22 @@ export const experienceCard1 = {
      title: 'We offer top tier web design in halifax',
     src: '/media/infinity.webp',
     alt: 'Web design in halifax',
-    description:`FocusFlow software is designed to elevate your digital presence through expertly crafted websites by strategically displaying what viewers need to see to convert them into clients
-    and establish you as an autority online.\n
-    This is done by using expertly crafted 
-    web designs that attract your users
-    attention and with 100% custom web design
-    to ensure there is no limitation`,
+    description: 'FocusFlow Software is designed to elevate your ' +
+    'digital presence through expertly crafted websites ' +
+    'that strategically display exactly what viewers need ' +
+    'to see to convert them into clients while firmly ' +
+    'establishing you as an authority online. We achieve ' +
+    'this by combining visually stunning web designs that ' +
+    'capture and hold attention with 100% custom web ' +
+    'development to ensure your online presence knows no ' +
+    'limitations.\n\n Our process minimizes your effort while ' +
+    'maximizing results, delivering a platform that not ' +
+    'only attracts but also converts your audience into ' +
+    'paying clients. We handle every detail so you can ' +
+    'focus on growing your business, knowing your ' +
+    'digital presence is built to dominate and deliver ' +
+    'exceptional results.'
+  ,
     aspects: [
         'Newest technology',
         'Unparalled creativity',

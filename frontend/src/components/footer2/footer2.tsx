@@ -40,6 +40,10 @@ const Footer2:React.FC<props> = ({
           name: 'Restaurant Software',
           destination: '/online-food-ordering-system',
         },
+        {
+          name:'Real Estate Agent Websites',
+          destination:'/real-estate-agent-websites'
+        }
       
       ],
       listSubMenu: true,
@@ -97,9 +101,13 @@ const Footer2:React.FC<props> = ({
         {
             name:'Artwork',
             destination:'/artist'
+        },
+        {
+          name:'About the Founder',
+          destination:'/about'
         }
       ],
-      listSubMenu: false,
+      listSubMenu: true,
     },
   ];
 

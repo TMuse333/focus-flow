@@ -56,10 +56,10 @@ interface SubMenuProps {
           name: 'Restaurant Software',
           destination: '/online-food-ordering-system',
         },
-        // {
-        //   name:'Real estate agent websites',
-        //   destination:'/real-estate-agent-websites'
-        // },
+        {
+          name:'Real estate agent websites',
+          destination:'/real-estate-agent-websites'
+        },
       
       ],
       listSubMenu: true,
@@ -108,6 +108,10 @@ interface SubMenuProps {
             name:'Artwork',
             destination:'/artist'
         },
+        {
+          name:'About the Founder',
+          destination:'/about'
+        }
         // {
         //   name: 'Your long term success',
         //   destination: '/long-term-success',

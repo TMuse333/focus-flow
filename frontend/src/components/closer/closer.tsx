@@ -74,7 +74,7 @@ destination,buttonText}) => {
             className='absolute w-full h-full
             object-cover'
                 style={{
-                    filter:'brightness(0.6)'
+                    filter:'brightness(0.3)'
                 }}
             />
 

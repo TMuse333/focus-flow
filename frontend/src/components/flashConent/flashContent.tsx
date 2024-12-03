@@ -2,7 +2,7 @@ import React from 'react';
 import dynamic from 'next/dynamic'; // Import dynamic
 
 import Link from 'next/link';
-import { HTMLMotionProps } from 'framer-motion';
+import { HTMLMotionProps,motion } from 'framer-motion';
 
 // Dynamically import motion components from framer-motion
 const MotionImg = dynamic(() => import('framer-motion').then(mod => mod.motion.img), {
@@ -33,11 +33,34 @@ interface Props {
 const FlashContent: React.FC<Props> = ({ src, alt }) => {
     return (
         <>
-            <section className='mx-auto w-screen max-w-[1200px] relative mb-8'>
-                <AppearingGradient
-                    text='True Custom Web Design'
-                    subText='We really are built different'
-                />
+            <section className='mx-auto w-screen max-w-[1200px] relative mb-8
+            mt-10'
+            style={{
+                background:'radial-gradient(circle, #0080bf -50%, rgba(0, 128, 191, 0%) 60%)'
+            }}>
+                <h2 className='text-center font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent 
+                text-lg sm:text-xl md:text-2xl px-2'>
+                    Discipline, Focus, Creativity, Tenacity</h2>
+     <motion.h1
+    className="bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent 
+    text-4xl sm:text-4xl md:text-5xl font-semibold text-center relative transition-colors
+    px-3 mt-2"
+    animate={{
+        backgroundImage: [
+            "linear-gradient(to right, #00e0ff, #00a2e4, #00e0ff)", // Default colors
+            "linear-gradient(to right, #33e8ff, #33b5d6, #33e8ff)", // Brighter colors
+            "linear-gradient(to right, #00e0ff, #00a2e4, #00e0ff)", // Back to default
+        ],
+    }}
+    transition={{
+        repeat: Infinity,
+        repeatType: "mirror",
+        duration: 3, // Control how fast the gradient oscillates
+    }}
+>
+    About Focus Flow Software
+</motion.h1>
+
                 <MotionImg
                     src={src}
                     alt={alt}
@@ -56,16 +79,14 @@ const FlashContent: React.FC<Props> = ({ src, alt }) => {
                     }}
                 />
                 <MotionP className='px-4 mx-auto md:w-[80%] md:text-lg rounded-2xl text-white text-left sm:text-center'>
-                    In today's web design market, many websites rely on basic drag-and-drop, low-code frameworks. However, we've taken a more <span className='font-bold'>advanced</span> approach by offering custom web design services through <span className='font-bold'>100% custom-coded applications</span> using React.js—the same technology powering platforms like Facebook, Instagram, and Netflix. This ensures that your website stands out from the crowd, providing limitless creativity and control that basic templates can't match.
-                    <br />
-                    <br />
-                    Our creative web page design delivers <span className='font-bold'>superior performance and full customization</span>, driving higher user engagement and <span className='font-bold'>elevating your brand's reputation.</span> As an experienced web designer in Halifax, we specialize in building unique, high-performing websites that take your business to the next level. Visit our design page to see how our expertise can help you stay ahead of the competition.
-                    <br /><br />
-                    <Link href='best-web-design-halifax'>
+                At Focus Flow Software, every project is approached with precision, calculated strategy, and uncompromising standards. We don’t just build websites—we craft tools for domination in the digital space, ensuring your brand stands above the rest.
+<br/><br/>
+This relentless focus is driven by Thomas Musial, a creator forged through years of discipline, competition, and overcoming adversity. Thomas doesn’t rely on inspiration—he executes with laser focus and methodical action, delivering solutions that are built to perform at the highest level.
+                    {/* <Link href='best-web-design-halifax'>
                         <MotionButton className='bg-[#00bfff] rounded-xl p-3 text-white'>
                             See What Sets Us Apart
                         </MotionButton>
-                    </Link>
+                    </Link> */}
                 </MotionP>
             </section>
         </>

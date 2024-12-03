@@ -63,6 +63,7 @@ const DesignPage = () => {
 
                  <ExperienceCard
                  {...creativeExperienceCard}
+                 buttonText='Get your creative solution'
                  />
 
                 <StickyCarousel 

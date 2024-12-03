@@ -88,7 +88,8 @@ const Content: React.FC<ContentProps> = ({
 const ref = useRef(null);
 
   const inView = useInView(ref,{
-    once:false
+    once:true,
+    amount:0.7
   })
 
   const shouldAnimate = hasAnimation && inView;
@@ -137,7 +138,7 @@ setTotalPageTime:setTotalPageTime})
          </div>
       ) : (
 <MotionImage
-        className="rounded-xl w-[90vw] h-[55vw] max-h-[567px] max-w-[668px] ml-auto mr-auto object-contain
+        className="rounded-xl w-[90vw] h-[80vh] md:h-[55vw] max-h-[567px] max-w-[668px] ml-auto mr-auto object-contain
         my-auto md:w-[48vw]"
         variants={hasAnimation ? imageVariants : {}}
         initial={hasAnimation ? 'initial' : ''}
@@ -163,38 +164,34 @@ setTotalPageTime:setTotalPageTime})
           >
             {mainTitle}
           </MotionH2>
-          <MotionP
-            variants={baseVariants(reverse ? -30 : 30, 0.45)}
-            initial={hasAnimation ? 'initial' : ''}
-            animate={shouldAnimate ? 'animate' : ''}
-            className="mt-6 pl-5 text-left sm:pl-12 whitespace-pre-line
-            pr-4 text-white"
-          >
-            {description[0] || 'Default description text.'}
-          </MotionP>
-          {description[1] && (
-            <MotionP
-              variants={baseVariants(reverse ? -30 : 30, 0.65)}
-              initial={hasAnimation ? 'initial' : ''}
-              animate={shouldAnimate ? 'animate' : ''}
-              className="mt-6 text-left pl-5 sm:pl-12 pr-4"
-            >
-              {description[1]}
-              <br />
-              {buttonLink && (
-                <Link href={buttonLink}>
-                  <MotionButton
-                    variants={baseVariants(reverse ? -30 : 30, 1.2)}
-                    initial={hasAnimation ? 'initial' : ''}
-                    animate={shouldAnimate ? 'animate' : ''}
-                    className="mt-6 bg-[#00bfff] p-3 rounded-xl hover:bg-white hover:text-[#00bfff] "
-                  >
-                    {buttonText}
-                  </MotionButton>
-                </Link>
-              )}
-            </MotionP>
-          )}
+          {description.map((desc, index) => (
+  <MotionP
+    key={index}
+    variants={baseVariants(reverse ? -30 : 30, 0.45 + index * 0.2)} // Adjust delay for each item
+    initial={hasAnimation ? 'initial' : ''}
+    animate={shouldAnimate ? 'animate' : ''}
+    className={`mt-6 pl-5 text-left sm:pl-12 pr-4 ${
+      index === 0 ? 'text-white' : ''
+    }`}
+  >
+    {desc}
+  </MotionP>
+))}
+
+{buttonLink && (
+  <Link href={buttonLink}>
+    <MotionButton
+      variants={baseVariants(reverse ? -30 : 30, 1.2)}
+      initial={hasAnimation ? 'initial' : ''}
+      animate={shouldAnimate ? 'animate' : ''}
+      className="mt-6 bg-[#00bfff] p-3 rounded-xl hover:bg-white hover:text-[#00bfff]
+      text-gray-600 transition-colors ml-10"
+    >
+      {buttonText}
+    </MotionButton>
+  </Link>
+)}
+
         </div>
       )}
     </article>

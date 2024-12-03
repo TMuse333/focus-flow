@@ -1,20 +1,25 @@
-import React, {useState, useRef} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import {motion, animate, useInView} from 'framer-motion'
+import Link from "next/link";
 
 interface PriceCard {
     name:string,
     price:string,
     description:string,
     aspects:string[]
-    cta?:string
+    buttonText?:string,
+    destination?:string
 }
 
 
 const PriceCard:React.FC<PriceCard> = ({
     name,price,description,
-    aspects,cta
+    aspects,buttonText, destination
 }) => {
 
+    useEffect(()=>{
+        console.log('button',buttonText,destination)
+    },[])
     const nameRef = useRef(null)
 
     const [style, setStyle] = useState({ transform: 'rotateX(0deg) rotateY(0deg)' });
@@ -60,6 +65,7 @@ const PriceCard:React.FC<PriceCard> = ({
             bg-opacity-[0.3] my-6
             rounded-2xl"
             />
+             
             <ul className="h-[60%] ">
             {aspects.map((aspect,index) => (
                 <li key={index}
@@ -69,7 +75,18 @@ const PriceCard:React.FC<PriceCard> = ({
                     {aspect}
                 </li>
             ))}
+            {buttonText && destination && (
+                <Link href={destination}>
+                    <button className="bg-[#00bfff]
+                    text-black rounded-2xl
+                    p-3 ml-4">
+                        {buttonText}
+                    </button>
+                </Link>
+            )}
             </ul>
+          
+            
         </div>
     )
 }

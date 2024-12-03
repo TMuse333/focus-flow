@@ -56,7 +56,7 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
         <h1 className="text-sm px-4 sm:text-md mb-4 mt-8 sm:text-md md:text-lg font-semibold text-center mb-4 animate-gradient">
           Creative and Custom Web Design in Halifax
         </h1>
-        <h2 className="animate-gradient font-semibold text-4xl mb-4 sm:text-5xl md:text-6xl">
+        <h2 className="animate-gradient font-semibold text-center text-4xl mb-4 sm:text-5xl md:text-6xl">
           FocusFlow Software
         </h2>
         
@@ -80,6 +80,7 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
           </span>
           <br /><br />
         </p>
+      
 
         <Link href='/lets-work' passHref className="relative z-[15]">
           <motion.button

@@ -89,10 +89,11 @@ const ThreeJSWave: React.FC = () => {
   }, []);
 
   return (
-    <header className='w-screen h-screen md:h-screen'>
+    <header className='w-screen h-screen md:h-screen
+    bg-[#00bfff] bg-opacity-[0.2]'>
 
 <section className='flex flex-col md:flex-row
-'>
+bg-[#00bfff] bg-opacity-[0.2]'>
 
 
 <div className='flex flex-col
@@ -138,6 +139,7 @@ z-[3] max-w-[445px] max-h-[445px] hidden md:block'
 </section>
        
       <div className='w-screen absolute bottom-0 h-[50vh]
+      
       z-[22]' ref={containerRef}></div>
     </header>
   );
