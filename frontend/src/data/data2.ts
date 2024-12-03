@@ -373,12 +373,12 @@ export const aboutData1 = {
     
         'Thomas brings a lifetime of design experience through drawing and' +
         ' animation, combined with advanced technical expertise, to create' +
-        ' top-tier, visually stunning, and user-friendly websites.',
+        ' interactive, visually stunning, and user-friendly websites.',
     
         'With a strong foundation in continuous learning and years of' +
-        ' hands-on experience, Thomas has developed an unmatched ability' +
-        ' to understand client needs, craft tailored solutions, and' +
-        ' deliver results that exceed expectations.'
+        ' hands-on experience perfecting his craft, Thomas has developed an very strong' +
+        ' ability to make effective designs and deliver them quickly' +
+        ' to ensure his clients get a top quality product.'
       ],
   
     mainTitle: 'Meet Thomas Musial',
