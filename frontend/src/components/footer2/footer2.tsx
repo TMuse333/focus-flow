@@ -153,7 +153,7 @@ const Footer2:React.FC<props> = ({
           </div>
         ))}
       </div>
-      <h6 className="text-3xl sm:text-4xl font-semibold mb-8">Social media</h6>
+      <h6 className="text-3xl sm:text-4xl font-semibold my-8">Social media</h6>
       <p>See some highlights of our creative
         web design in halifax
       </p>

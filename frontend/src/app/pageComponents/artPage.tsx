@@ -14,7 +14,7 @@ const ArtPage = () => {
     return (
         <>
         <BigNav
-        excludedLink="Extras"
+        excludedLink="Artwork"
         />
         <main className="mt-4 md:mt-[4rem]
         bg-[#00bfff] bg-opacity-[0.2]">
@@ -30,7 +30,7 @@ const ArtPage = () => {
         />
 
         <Footer2
-        excludedLink="Extras"
+        excludedLink="Artwork"
         />
 
         </main>

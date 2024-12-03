@@ -449,10 +449,10 @@ export const aboutCloser = {
     image:'/media/art/goku-vs-jiren.webp',
     alt:'Goku vs jiren',
     title:"Hustlers don't stop, they keep going. ",
-    description:'Asides from websites, Thomas enjoys '+
+    description:'Asides from websites, Thomas is committed '+
     "going to the gym, learning about how the universe works, mediating"+
-    " and learning new things to make his life better on the never "+
-    "ending journey of greatness in all realms of human endeavour. "+
+    " and learning new things to improve on the never "+
+    "ending journey of greatness. "+
     "Hopefully you can be apart of the journey and we "+
     "can make a great project together!",
     buttonText:'Lets get to work',

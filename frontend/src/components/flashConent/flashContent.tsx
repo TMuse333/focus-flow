@@ -81,7 +81,8 @@ const FlashContent: React.FC<Props> = ({ src, alt }) => {
                 <MotionP className='px-4 mx-auto md:w-[80%] md:text-lg rounded-2xl text-white text-left sm:text-center'>
                 At Focus Flow Software, every project is approached with precision, calculated strategy, and uncompromising standards. We don’t just build websites—we craft tools for domination in the digital space, ensuring your brand stands above the rest.
 <br/><br/>
-This relentless focus is driven by Thomas Musial, a creator forged through years of discipline, competition, and overcoming adversity. Thomas doesn’t rely on inspiration—he executes with laser focus and methodical action, delivering solutions that are built to perform at the highest level.
+This relentless focus is driven by Thomas Musial, a creator forged through years of discipline, competition, and overcoming adversity. This allows Focus Flow Software to quickly deliver unique and visually appealing websites
+quickly to help their clients elevate their digital presence.
                     {/* <Link href='best-web-design-halifax'>
                         <MotionButton className='bg-[#00bfff] rounded-xl p-3 text-white'>
                             See What Sets Us Apart

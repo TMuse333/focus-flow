@@ -86,7 +86,7 @@ destination,buttonText}) => {
            
             className="pl-4 text-3xl
             font-semibold text-2xl bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent 
-            text-4xl sm:text-5xl  ">{title}
+            text-4xl sm:text-5xl py-3 ">{title}
             </motion.h3>
           
             <p className="mt-4 text-left pl-4 pr-4
