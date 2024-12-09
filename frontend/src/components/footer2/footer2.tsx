@@ -154,7 +154,7 @@ const Footer2:React.FC<props> = ({
         ))}
       </div>
       <h6 className="text-3xl sm:text-4xl font-semibold my-8">Social media</h6>
-      <p>See some highlights of our creative
+      <p className="px-4">See some highlights of our creative
         web design in halifax
       </p>
       <section className="flex">
@@ -174,7 +174,7 @@ const Footer2:React.FC<props> = ({
         />
       </section>
 
-      <p>For every action, there is an equal and
+      <p className="px-4">For every action, there is an equal and
         opposite reaction. Use this law everyday to create
         the reality you desire.
       </p>

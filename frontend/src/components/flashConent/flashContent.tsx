@@ -33,8 +33,8 @@ interface Props {
 const FlashContent: React.FC<Props> = ({ src, alt }) => {
     return (
         <>
-            <section className='mx-auto w-screen max-w-[1200px] relative mb-8
-            mt-10'
+            <section className='mx-auto w-screen max-w-[1200px] relative mb-14
+            mt-10 h-screen'
             style={{
                 background:'radial-gradient(circle, #0080bf -50%, rgba(0, 128, 191, 0%) 60%)'
             }}>
@@ -66,17 +66,17 @@ const FlashContent: React.FC<Props> = ({ src, alt }) => {
                     alt={alt}
                     width={600}
                    
-                    layout='preserve-aspect'
+                 
                     height={1300}
                     className='w-[70vw] mx-auto my-5 md:w-[50vw] h-[205px] sm:h-[223px] md:h-[270px] object-contain'
-                    animate={{
-                        y: [0, -4, 0], // Oscillate up and down
-                    }}
-                    transition={{
-                        duration: 1.5, // Duration of the oscillation
-                        repeat: Infinity, // Infinite loop
-                        ease: 'easeInOut', // Smooth transition
-                    }}
+                    // animate={{
+                    //     y: [0, -4, 0], // Oscillate up and down
+                    // }}
+                    // transition={{
+                    //     duration: 1.5, // Duration of the oscillation
+                    //     repeat: Infinity, // Infinite loop
+                    //     ease: 'easeInOut', // Smooth transition
+                    // }}
                 />
                 <MotionP className='px-4 mx-auto md:w-[80%] md:text-lg rounded-2xl text-white text-left sm:text-center'>
                 At Focus Flow Software, every project is approached with precision, calculated strategy, speed, and uncompromising standards. We create a digital solution specifically designed to stand out and win in the digital space.
