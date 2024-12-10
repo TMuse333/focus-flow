@@ -163,11 +163,12 @@ export const SelectedCarouselImage = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: imageSelected ? 1 : 0, transition: { duration: 1, delay: imageSelected ? 0 : 0 } }}
                 exit={{ opacity: 0 }}
-                className="w-screen bg-gray-600 fixed top-[5%] left-[50%] translate-x-[-50%] md:rounded-3xl border-t-4 md:border-4 border-[#00bfff] p-2 text-center overflow-x-hidden"
+                className="w-screen bg-gray-600 fixed top-[5%] left-[50%] translate-x-[-50%] md:rounded-3xl border-t-4 md:border-4 border-[#00bfff] p-2  text-center overflow-x-hidden
+                pb-6"
                 style={{
                     overflowY: 'scroll',
                     zIndex: imageSelected ? 250 : -1,
-                    height: imageSelected ? '95vh' : '0vh',
+                    height: imageSelected ? '98vh' : '0vh',
                     transition: `height 0.3s ease-in, ${!imageSelected ? 'z-index 1s ease-in' : ''}`,
                     transitionDelay: imageSelected ? '0.1s' : '0'
                 }}
@@ -183,15 +184,34 @@ export const SelectedCarouselImage = () => {
                         {selectedCarouselImageDescription[0]}
                     </p>
                 </article>
-                <article className="lg:flex lg:flex-row-reverse lg:w-[90vw] ml-auto mr-auto max-w-[1200px] bg-gray-400 sm:w-[75vw] rounded-xl">
-                    <img
+                <article className="lg:flex lg:flex-row-reverse lg:w-[90vw] ml-auto mr-auto max-w-[1200px] bg-gray-400 sm:w-[75vw] rounded-xl
+                pb-8">
+                    <Image
+                    width={600}
+                    height={1300}
                         alt={selectedCarouselImageAlt2}
                         src={selectedCarouselImageSecondaryImage}
                         className='w-[90vw] mr-auto ml-auto object-cover mb-5 sm:w-[70vw] max-w-[640px] lg:w-[60vw] lg:max-w-[750px] rounded-2xl'
                     />
                     <p className="sm:w-[70vw] pl-3 pr-3 mb-5 text-left max-w-[650px] ml-auto mr-auto lg:mt-[5rem] lg:text-center">
                         {selectedCarouselImageDescription[1]}
+                        <br/>
+                        <br/>
+                        <Link
+                    className="bg-[#00bfff]
+                    p-1 rounded-2xl mt-4 "
+                    href={selectedCarouselImageLink}
+                    >
+  <button >
+  Check it out
+  </button>
+                    </Link>
                     </p>
+                  
+
+                   
+ 
+                  
                 </article>
                 <button className="absolute top-4 right-4 text-white" onClick={handleExitClick}>
                     X

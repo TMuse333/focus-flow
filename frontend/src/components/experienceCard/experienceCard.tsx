@@ -144,7 +144,7 @@ const ExperienceCard: React.FC<Props> = ({
                         alt={alt}
                         width={600}
                         height={1300}
-                        className='w-[80vw] mx-auto mb-4 md:w-[40vw] max-w-[500px] rounded-2xl
+                        className='w-[80vw] mx-auto mb-4 sm:w-[40vw] max-w-[500px] rounded-2xl
                          opacity-0 object-contain'
                          sizes="(max-width: 768px) 80vw, (max-width: 1024px) 40vw, 500px" 
                          priority={true}

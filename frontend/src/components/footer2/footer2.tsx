@@ -131,11 +131,13 @@ const Footer2:React.FC<props> = ({
       <footer className="w-screen relative flex flex-col items-center justify-center mx-auto my-12">
       <h6 className="text-3xl sm:text-4xl font-semibold mb-8">Site map</h6>
     
-      <div className="flex flex-col mx-auto sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:flex-row w-full mt-6 justify-center items-center md:justify-center md:items-start">
+      <div className="flex flex-col mx-auto sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:flex-row w-full mt-6 justify-center items-center md:justify-center md:items-start
+  ">
         {filteredLinks.map((link, index) => (
-          <div key={index} className="flex flex-col mx-auto items-center justify-center">
+          <div key={index} className="flex flex-col mx-auto items-center justify-center
+          mb-8">
             
-            <h3 className="text-lg sm:text-xl md:text-2xl mb-4 font-semibold mx-auto text-center">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl mb-4 font-semibold mx-auto text-center">
               {link.name}
             </h3>
     

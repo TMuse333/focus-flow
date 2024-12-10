@@ -49,8 +49,8 @@ const PriceCard:React.FC<PriceCard> = ({
         md:w-[30vw] rounded-2xl
         text-white
         border border-white mx-auto flex flex-col
-        items-center justify-center h-[80vh]
-         max-w-[350px] mb-6 pb-8
+        items-center justify-center h-[85vh]
+         max-w-[350px] mb-6 pb-8 min-h-[650px]
          hover:bg-gradient-to-b from-[#4992AC] to-[#00759F]
          transition-colors
          "

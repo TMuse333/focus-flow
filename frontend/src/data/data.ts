@@ -416,8 +416,8 @@ export const restaurantFaq = [
 export const herobannerData = [
     {
         src: "/media/brain.png", // Empty for now
-        alt: "Creative Web Design in Halifax",
-        heading: "Creative Web Design in Halifax",
+        alt: "Creative Web Design ",
+        heading: "Creative Web Design ",
     },
     {
         src: "/media/dollar-sign-logo.webp", // Empty for now

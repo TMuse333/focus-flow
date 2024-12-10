@@ -497,7 +497,7 @@ aspects: [
     'Quick to implement',
     'Very customizable'
 ],
-link: '/real-estate-agent-website',
+link: '/real-estate-agent-websites',
 buttonText:'Learn more',
 
 aspectHeader:'Stand Out, Sell More, and Save Time'

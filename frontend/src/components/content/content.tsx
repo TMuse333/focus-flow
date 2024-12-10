@@ -86,13 +86,13 @@ const Content: React.FC<ContentProps> = ({
     },
   };
 
-  const {isMobile} = useGeneralContext()
+  const {isMobile,isDesktop} = useGeneralContext()
 
 const ref = useRef(null);
 
   const inView = useInView(ref,{
     once:true,
-    amount: isMobile ? 0.2 : 0.7
+    amount: !isDesktop ? 0.2 : 0.7
   })
 
   const shouldAnimate = hasAnimation && inView;

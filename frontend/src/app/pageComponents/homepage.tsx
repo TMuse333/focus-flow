@@ -166,11 +166,11 @@ const Homepage = () => {
          image={monthlyContent.image.src}
          
           />
-        <ContentBox 
+        {/* <ContentBox 
        
         {...RestaurantContentBoxData}
        
-         />
+         /> */}
 
 <section ref={ref3}>
   
