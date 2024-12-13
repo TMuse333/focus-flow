@@ -44,6 +44,8 @@ export const realEstateHerobanner = {
     
 }
 
+//
+
 export const realEstateExperienceCard = {
     title:'Enhance your status with a real estate website',
     description: 'In today\'s competitive real estate market, having a powerful '+ 
