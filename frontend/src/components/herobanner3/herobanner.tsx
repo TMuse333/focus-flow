@@ -45,7 +45,7 @@ const Herobanner:React.FC<Props> = ({
                     {h2Color}
                 </span>
             </h1>
-            <p className="text-white w-[80%] mx-auto ">Transform your restaurant with powerful tools to simplify orders, increase sales, and grow your business faster than ever.</p>
+            <p className="text-white w-[80%] mx-auto ">{pTag}</p>
             <section className=" mt-4 flex justify-center items-center">
                 <Link
                 href={destination}>

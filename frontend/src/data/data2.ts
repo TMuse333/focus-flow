@@ -25,7 +25,30 @@ export const realEstateHerobanner = {
     h1:'real estate agent website',
     h2: 'Sell More Properties with a',
     h2Color: 'Website That Works as Hard as You Do',
-    pTag: 'Elevate your real estate practice with a professional website designed to showcase properties, attract clients, and streamline your business operations.',
+    // pTag: 'Eleate your real estate practice with a professional website designed to showcase properties, attract clients, and streamline your business operations.',
+
+    boxData: [
+        {
+            title: 'Showcase Listings Like a Pro',
+            description: 'Display your properties with stunning visuals and interactive galleries, giving potential buyers a seamless browsing experience.'
+        },
+        {
+            title: 'Generate More Leads',
+            description: 'Capture leads with integrated contact forms and automated inquiries, helping you connect with interested buyers and sellers instantly.'
+        },
+        {
+            title: 'Boost Your Professional Image',
+            description: 'Establish trust and authority in the market with a modern, visually appealing website tailored to your personal brand.'
+        }
+    ]
+    
+}
+
+export const realEstateHerobanner2 = {
+    h1:'real estate agent website',
+    h2: 'Sell More Properties with a',
+    h2Color: 'Website That Works as Hard as You Do',
+    pTag: 'Eleate your real estate practice with a professional website designed to showcase properties, attract clients, and streamline your business operations.',
 
     boxData: [
         {

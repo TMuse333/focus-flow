@@ -13,7 +13,8 @@ import Testimonials from "@/components/testimonials/testimonials";
 import { realEstateExperienceCard, realEstateFeatures, realEstateHerobanner,
 realEstateFaq,realEstatePrices,monthlyDisplay,
 infoExperienceCard,
-realEstateCloser } from "@/data/data2";
+realEstateCloser, 
+realEstateHerobanner2} from "@/data/data2";
 import React from "react";
 
 const RealEstate = () => {
@@ -27,11 +28,12 @@ const RealEstate = () => {
         <section className="w-screen overflow-x-hidden">
            
             <Herobanner
-            {...realEstateHerobanner}
+            {...realEstateHerobanner2}
             destination='https://focusflowrealtorpage.vercel.app'
             buttonText="See a sample"
             destination2="/lets-work"
             buttonText2="Get your own"
+           
             />
             <ExperienceCard
             {...realEstateExperienceCard}
