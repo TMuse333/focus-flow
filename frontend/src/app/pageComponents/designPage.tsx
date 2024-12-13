@@ -72,19 +72,15 @@ const DesignPage = () => {
                 
                  />
 
-<div ref={ref2}>
 
 
-                 {isMobile && !inView2 ? (
-                  null
-                 ) : (
+
+             
                     <PortalContent 
-                
-                 
-                image={infinity.src} />
-                 )}
+             
+                image={infinity.src} 
+                />
 
-</div>
 
                 
 
