@@ -9,6 +9,7 @@ import Link from 'next/link';
 // Import HTMLMotionProps for type safety
 import { HTMLMotionProps } from 'framer-motion';
 import { useComponentTimeTracker } from '@/lib/componentTracker';
+import { useGeneralContext } from '@/context/context';
 
 // Dynamically import motion components from framer-motion
 const MotionImage = dynamic(() => import('framer-motion').then(mod => mod.motion.img), {
@@ -85,11 +86,13 @@ const Content: React.FC<ContentProps> = ({
     },
   };
 
+  const {isDesktop} = useGeneralContext()
+
 const ref = useRef(null);
 
   const inView = useInView(ref,{
     once:true,
-    amount:0.7
+    amount:isDesktop ? 0.7 : 0.3
   })
 
   const shouldAnimate = hasAnimation && inView;
