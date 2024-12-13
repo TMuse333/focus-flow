@@ -19,7 +19,7 @@ export const restaurantHeroBanner = {
     ]
 }
 
-
+//
 
 export const realEstateHerobanner = {
     h1:'real estate agent website',
@@ -205,8 +205,8 @@ export const realEstateFeatures = [
 'brief details process',
 'testimonials',
 'contact form'],
-    destination:'/',
-    buttonText:''
+    destination:'',
+    buttonText:'Check it out'
     },
     {
         name:"Elevate pack",
