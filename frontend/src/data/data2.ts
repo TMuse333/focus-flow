@@ -25,7 +25,8 @@ export const realEstateHerobanner = {
     h1:'real estate agent website',
     h2: 'Sell More Properties with a',
     h2Color: 'Website That Works as Hard as You Do',
-    pTag:'Transform your restaurant with powerful tools to simplify orders, increase sales, and grow your business faster than ever.',
+    pTag: 'Elevate your real estate practice with a professional website designed to showcase properties, attract clients, and streamline your business operations.',
+
     boxData: [
         {
             title: 'Showcase Listings Like a Pro',
