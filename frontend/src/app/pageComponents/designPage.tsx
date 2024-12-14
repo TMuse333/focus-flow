@@ -66,11 +66,11 @@ const DesignPage = () => {
                  buttonText='Get your creative solution'
                  />
 
-                <StickyCarousel 
+                {/* <StickyCarousel 
                 
                 images={stickyScrollables}
                 
-                 />
+                 /> */}
 
 
 
