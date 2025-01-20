@@ -15,12 +15,7 @@ import TextAndList from "@/components/textAndList/textAndList";
 import { realEstateExperienceCard, realEstateFeatures, realEstateHerobanner,
 realEstateFaq,realEstatePrices,monthlyDisplay,
 infoExperienceCard,
-<<<<<<< HEAD
 realEstateCloser,realEstateTextList } from "@/data/data2";
-=======
-realEstateCloser, 
-realEstateHerobanner2} from "@/data/data2";
->>>>>>> 0acf1997d86bd0a3ec761edd651b1a96040e5f0c
 import React from "react";
 
 const RealEstate = () => {
@@ -34,7 +29,8 @@ const RealEstate = () => {
         <section className="w-screen overflow-x-hidden">
            
             <Herobanner
-            {...realEstateHerobanner2}
+            {...realEstateHerobanner}
+            pTag='Eleate your real estate practice with a professional website designed to showcase properties, attract clients, and streamline your business operations.'
             destination='https://focusflowrealtorpage.vercel.app'
             buttonText="See a sample"
             destination2="/lets-work"

@@ -228,13 +228,8 @@ export const realEstateFeatures = [
 'brief details process',
 'testimonials',
 'contact form'],
-<<<<<<< HEAD
     destination:'https://focusflow-single-page.vercel.app',
     buttonText:'View example'
-=======
-    destination:'',
-    buttonText:'Check it out'
->>>>>>> 0acf1997d86bd0a3ec761edd651b1a96040e5f0c
     },
     {
         name:"Elevate pack",
