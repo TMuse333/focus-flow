@@ -66,25 +66,21 @@ const DesignPage = () => {
                  buttonText='Get your creative solution'
                  />
 
-                <StickyCarousel 
+                {/* <StickyCarousel 
                 
                 images={stickyScrollables}
                 
-                 />
-
-<div ref={ref2}>
+                 /> */}
 
 
-                 {isMobile && !inView2 ? (
-                  null
-                 ) : (
+
+
+             
                     <PortalContent 
-                
-                 
-                image={infinity.src} />
-                 )}
+             
+                image={infinity.src} 
+                />
 
-</div>
 
                 
 
