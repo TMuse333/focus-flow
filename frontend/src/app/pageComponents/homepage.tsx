@@ -20,7 +20,13 @@ import ScrollCarousel from "@/components/scrollCarousel/scrollCarousel";
 export const metadata: Metadata = {
   title: "Web Design Halifax | Focusflow Software",
   description: "Focusflow Software offers top-tier web design Halifax services, combining cutting-edge technology and creativity to deliver custom websites quickly.",
-  keywords: "web design halifax, custom web design services, creative web page design, web designer halifax",
+  keywords: [
+    "web design halifax",
+    "custom web design services",
+    "creative web page design",
+    "web designer halifax"
+  ],
+  
   openGraph: {
     title: "Focus Flow Software | Web Design Halifax",
     description: "Experience the fastest and most creative web design Halifax solutions with Focus Flow Software.",

@@ -9,11 +9,13 @@ import Footer2 from "@/components/footer2/footer2";
 import Herobanner from "@/components/herobanner3/herobanner";
 import ImageAccordion from "@/components/imageAccordion/imageAccordion";
 import Pricing from "@/components/pricing/pricing";
+import SlidingText from "@/components/slidingText/slidingText.prod";
 import Testimonials from "@/components/testimonials/testimonials";
+import TextAndList from "@/components/textAndList/textAndList";
 import { realEstateExperienceCard, realEstateFeatures, realEstateHerobanner,
 realEstateFaq,realEstatePrices,monthlyDisplay,
 infoExperienceCard,
-realEstateCloser } from "@/data/data2";
+realEstateCloser,realEstateTextList } from "@/data/data2";
 import React from "react";
 
 const RealEstate = () => {
@@ -42,6 +44,11 @@ const RealEstate = () => {
             {...infoExperienceCard}
             buttonText=''
             />
+
+            <TextAndList
+           
+            {...realEstateTextList}
+            />
            
             <FeatureBoxes
             title='Secure your advantage with Focus Flow'
@@ -57,6 +64,12 @@ const RealEstate = () => {
             <Testimonials
             />
 
+<SlidingText
+text="Pricing"
+subText="While the price of a website can vary greatly,
+Here are some general packages that we offer."
+/>
+
             <Pricing
             priceData={realEstatePrices}
             />
@@ -65,7 +78,7 @@ const RealEstate = () => {
             data={monthlyDisplay}
             />
 
-<ImageAccordion
+            <ImageAccordion
             items={realEstateFaq}
             />
 

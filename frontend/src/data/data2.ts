@@ -503,3 +503,85 @@ buttonText:'Learn more',
 aspectHeader:'Stand Out, Sell More, and Save Time'
 
 }
+
+
+// subTitle:string
+// title:string,
+// src?:string,
+// alt?:string,
+// description:string,
+// listAspects:{
+//     src:string,
+//     alt:string,
+//     title:string,
+//     description:string
+// }[]
+
+
+export const realEstateTextList = {
+    subTitle:'Designed for you to succeed',
+    title:'How we design our real estate websites',
+    description:'Your website is essentially a place '+
+    ' to offer your services and display your information. '+
+    "To ensure you have the best possible offer, we have the framework of "+
+    "a high value outcome with a high probability of success "+
+    " in a short amount of time with minimal sacrifice "+
+    "we design all of our aspects with this in mind "+
+    "to ensure you have the best probability of success.",
+    src:'/media/focusFlow-brain-nobg.webp',
+    alt:'Focus flow brain',
+    listAspects:[
+        {
+             src:'/media/focusFlow-brain-nobg.webp',
+            alt:'/',
+            title:'Qualifications and testimonials',
+            description:'A key aspect of your website'+
+            ' is building trust and convincing your potential '+
+            ' clients that you have a high probability '+
+            ' to deliver on your offer'
+        },
+        {
+            src:'/media/focusFlow-brain-nobg.webp',
+            alt:'/',
+            title:'Advanced layouts',
+            description:'With real estate, the way you display your pictures '+
+            " is essential. That's why we have multiple different "+
+            " different image carousels and layouts to show the best of "+
+            " your properties to ensure you get the sale."
+        },
+        {
+            src:'/media/focusFlow-brain-nobg.webp',
+            alt:'/',
+            title:'Attention grabbing animations',
+            description:"With everyone's attention span being so short these days"+
+            " you are going to need a stimulating website to keep them on it."+
+            " Focus Flow softwares specialty is creating attention grabbing animations "+
+            " to keep your users on the page and display you are a high end "+
+            " realtor by having high tech animations on your website, "+
+            " separating you from the rest."
+        },
+        {
+            src:'/media/focusFlow-brain-nobg.webp',
+            alt:'/',
+            title:'Show your process',
+            description:"Another great way to build trust is "+
+            " being able clearly show in depth how you are going "+
+            " help them achieve the result. This can be done by having "+
+            " an entire page dedicated to showing your clients the process "+
+            " of real estate. Doing this will also save you lots of "+
+            " time because your clients will be able "+
+            " to look up vital information all on your website "+
+            " instead of contacting you."
+        },
+        {
+            src:'/media/focusFlow-brain-nobg.webp',
+            alt:'/',
+            title:'Whatever it takes to win',
+            description:"We have thought of many ways "+
+            " to deliver fantastic websites are we are adaptable "+
+            " to whatever your needs are. "+
+            "Whatever you need on your website to "+
+            " elevate your online presence, we will make it happen."
+        },
+    ]
+}

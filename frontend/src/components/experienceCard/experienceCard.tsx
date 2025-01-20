@@ -2,11 +2,13 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useState,
 useCallback } from "react";
-import { motion, useScroll, useTransform, useMotionValueEvent, animate, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValueEvent, animate, useInView, inView } from 'framer-motion';
 import { useGeneralContext } from "@/context/context";
 
 import { easeIn} from 'framer-motion/dom'
 import Link from "next/link";
+import TypeAlongText from "../typeAlongText/typeAlongText";
+
 
 
 interface Props {
@@ -50,9 +52,16 @@ const ExperienceCard: React.FC<Props> = ({
         offset: ["start end", "end start"], // Trigger based on when it enters and leaves the viewport
     });
 
+
+
     // Map scrollYProgress to scale and opacity
     const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.7, 1, 1, 0.7],  { ease:easeIn });
 
+    const [h2AnimationComplete,setH2AnimationComplete] = useState(false)
+    
+    useEffect(()=>{
+        console.log('set animation complete',h2AnimationComplete)
+    },[h2AnimationComplete])
 
     useMotionValueEvent(scale, "change", (latestScale) => {
         if (latestScale === 1) {
@@ -68,14 +77,14 @@ const ExperienceCard: React.FC<Props> = ({
     
     const handleAnimation = async () => {
         
-        const header = headerRef.current;
+        
   const image = imageRef.current;
   const description = descriptionRef.current;
     
-      if (header && image && description) {
+      if (  image && description
+        && h2AnimationComplete) {
    
-          animate(header, { opacity: 1, y: 0, scale: 1,
-         }, { ease: 'easeInOut', })
+
 
           animate(image, { opacity: 1 }, { ease: 'easeInOut',
         delay:0.2 })
@@ -87,17 +96,17 @@ const ExperienceCard: React.FC<Props> = ({
     
     
      
-      if (!isMobile) {
+      if (!isMobile && h2AnimationComplete) {
         setStartLiAnimation(true);
       }
     };
     
 
     useEffect(() => {
-        if(startAnimation){
+        if(startAnimation && h2AnimationComplete){
             handleAnimation()
         }
-    },[startAnimation])
+    },[startAnimation, h2AnimationComplete])
 
 
     const liVariants = useCallback((delay: number, index: number) => {
@@ -128,14 +137,24 @@ const ExperienceCard: React.FC<Props> = ({
                 className="relative mx-auto w-[98vw] rounded-2xl bg-gradient-to-b from-blue-600 to-blue-300
               opacity-1 my-8 max-w-[1200px]"
             >
-                <h2 
+                {/* <h2 
                 ref={headerRef}
                 id={`${title}-header`}
                     className="text-center w-full text-3xl sm:text-4xl  mb-6 font-bold pt-4
                     translate-y-[-2rem] opacity-0 px-3"
                 >
                     {title}
-                </h2>
+                </h2> */}
+                <TypeAlongText
+                as="h2"
+                text={title}
+                styles="text-center w-full text-3xl sm:text-4xl  mb-6 font-bold pt-4
+                px-3"
+                startAnimation={startAnimation}
+                setAnimationComplete={setH2AnimationComplete}
+                
+
+                />
                 <section className={`flex flex-col md:px-4 mx-auto ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
                     <Image
                     ref={imageRef}
@@ -190,7 +209,7 @@ const ExperienceCard: React.FC<Props> = ({
                             key={index}
                             variants={liVariants(isMobile ? index * 0.2 : index * 0.1,index)}
                             initial='initial'
-                            animate={startLiAnimation ? 'animate' : 'initial'}
+                            animate={startLiAnimation && h2AnimationComplete ? 'animate' : 'initial'}
                             >
                             {aspect}
                         </motion.li>
