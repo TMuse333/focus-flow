@@ -72,9 +72,9 @@ subText="While the price of a website can vary greatly,
 Here are some general packages that we offer."
 />
 
-            <Pricing
+            {/* <Pricing
             priceData={realEstatePrices}
-            />
+            /> */}
 
             <DisplayBoxes
             data={monthlyDisplay}
