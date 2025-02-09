@@ -870,7 +870,7 @@ export const monthlyPageOutro = {
     title: 'Taking the next step towards elevating your digital presence',
     description: `Congratulations, you have made an excellent choice and are on the path to greatness! We’re excited to learn more about your vision and turn it into reality. 
      
-    You can directly contact us via the information below or fill out the following form. By sharing a few details about your project, we can better understand your needs and provide tailored solutions.
+    Below you can book a meeting with us so we can understand your needs. You can also directly contact us via the information below or fill out the following form. By sharing a few details about your project, we can better understand your needs and provide tailored solutions.
     
     Rest assured, we prioritize every project with the same dedication to speed and quality. From initial concept to final execution, we're here to support you every step of the way.
     

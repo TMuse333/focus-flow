@@ -12,6 +12,9 @@ import { useInView } from "framer-motion";
 import { useComponentTimeTracker } from "@/lib/componentTracker";
 import { useGeneralContext } from "@/context/context";
 import { useRouterContext } from "@/lib/useRouterContext";
+import {InlineWidget} from 'react-calendly'
+
+
 const Contact = dynamic(() => import("@/components/contactPage/contactPage"), { ssr: false });
 const Footer2 = dynamic(() => import("@/components/footer2/footer2"), { ssr: false });
 
@@ -40,9 +43,14 @@ const {totalTimeInView} = useComponentTimeTracker({inView,id:'contact-page',
       </Head>
             <Navbar excludedLink="Contact" />
             <main className="w-screen mt-[6rem] text-white">
+
                 <Herobanner {...ContactOpener}
                 
                  />
+                           <InlineWidget url='https://calendly.com/thomaslmusial/30min'/>
+
+
+
                 
                 <section className="w-full py-6 flex justify-center items-center relative flex-col mx-auto my-10 bg-[#00bfff] bg-opacity-[0.2]">
                     <h3 className="text-3xl mb-4 sm:text-4xl font-semibold bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent text-3xl

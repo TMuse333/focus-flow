@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { motion, useMotionValue, animate, useMotionTemplate } from "framer-motion";
 import Image from 'next/image';
 import Link from "next/link";
 import { useGeneralContext } from "@/context/context";
 import brain from '../../../public/media/focusFlow-brain-nobg.webp';
+import { PopupWidget } from "react-calendly"
+import BookingButton from "../bookingButton/bookingButton";
 
 interface HerobannerProps {
   sections: {
@@ -75,10 +77,15 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
         <p className="text-left px-3 text-sm relative z-[3] text-lg sm:text-xl text-white">
           FocusFlow Software specializes in web design, <span className="font-bold">
             offering custom web design services that are both innovative
-          </span> and tailored to your business. We are dedicated to constantly improving our craft and delivering web page designs that capture your brand and engage your audience, positioning us as <span className='font-bold'>
+          </span> and tailored to 
+          your business. We are dedicated to constantly improving our craft and delivering web page designs that capture your brand and engage your audience, positioning us as <span className='font-bold'>
             your go-to web designer.
+
           </span>
+         
           <br /><br />
+          {/* <BookingButton/> */}
+          
         </p>
       
 
@@ -91,6 +98,10 @@ const Herobanner: React.FC<HerobannerProps> = ({ sections }) => {
             Elevate Your Digital Presence
           </motion.button>
         </Link>
+     
+      
+
+
       </section>
     </section>
   );

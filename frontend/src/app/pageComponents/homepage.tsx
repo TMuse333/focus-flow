@@ -51,6 +51,7 @@ import Head from "next/head";
 import { useInView } from "framer-motion";
 import ExperienceCard from "@/components/experienceCard/experienceCard";
 import { experienceCard2 } from "@/data/data2";
+import { InlineWidget } from "react-calendly";
 // Dynamic imports (lazy-loaded components)
 
 const ScrollableCarousel = dynamic(() => import('@/components/scrollableCarousel/scrollableCarousel'),{ssr:true});
@@ -109,11 +110,16 @@ const Homepage = () => {
     <Head>
         <link rel="canonical" href="https://www.focusflowsoftware.com" />
       </Head>
+
+        
+    
       <ParticlesComponent />
+
       <Herobanner
           // setTotalPageTime={setTotalPageTime}
           
          sections={herobannerData} />
+
 
          <ExperienceCard
          {...experienceCard1}
@@ -225,20 +231,22 @@ const Homepage = () => {
          </section>
 
         
-
+  
+         
 
          <AuroraHero
         // setTotalPageTime={setTotalPageTime}
       
          />
 
-       
 
         <Footer2 
        
       
         excludedLink='Home' /> 
-      </main> 
+
+
+</main>
     </>
   );
 }
