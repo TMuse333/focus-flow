@@ -2,12 +2,13 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useState,
 useCallback } from "react";
-import { motion, useScroll, useTransform, useMotionValueEvent, animate, useInView, inView } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValueEvent, animate, useInView } from 'framer-motion';
 import { useGeneralContext } from "@/context/context";
 
 import { easeIn} from 'framer-motion/dom'
 import Link from "next/link";
-import TypeAlongText from "../typeAlongText/typeAlongText";
+// import TypeAlongText from "@/components/textAnimations/typeAlongText/typeAlongText";
+
 
 
 
@@ -70,7 +71,7 @@ const ExperienceCard: React.FC<Props> = ({
         }
     });
 
-    const headerRef = useRef(null);
+    // const headerRef = useRef(null);
     const imageRef = useRef(null);
     const descriptionRef = useRef(null);
 
@@ -134,27 +135,33 @@ const ExperienceCard: React.FC<Props> = ({
             <motion.section
                 ref={ref}
                 style={{ scale,  }}
-                className="relative mx-auto w-[98vw] rounded-2xl bg-gradient-to-b from-blue-600 to-blue-300
-              opacity-1 my-8 max-w-[1200px]"
+                className="relative mx-auto w-[98vw] rounded-2xl bg-gradient-to-b from-[#0077b3] to-blue-300
+              opacity-1 my-8 max-w-[1200px] overflow-x-hidden
+              max-h-[850px] "
             >
-                {/* <h2 
-                ref={headerRef}
+                <motion.h2 
+                animate={{
+                    y:startAnimation ? 0 : -30,
+                    opacity:startAnimation ? 1 : 0
+                }}
+                onAnimationComplete={()=>setH2AnimationComplete(true)}
+                // ref={headerRef}
                 id={`${title}-header`}
                     className="text-center w-full text-3xl sm:text-4xl  mb-6 font-bold pt-4
                     translate-y-[-2rem] opacity-0 px-3"
                 >
                     {title}
-                </h2> */}
-                <TypeAlongText
+                </motion.h2>
+                {/* <TypeAlongText
                 as="h2"
                 text={title}
                 styles="text-center w-full text-3xl sm:text-4xl  mb-6 font-bold pt-4
                 px-3"
                 startAnimation={startAnimation}
                 setAnimationComplete={setH2AnimationComplete}
-                
+                duration={0.01}
 
-                />
+                /> */}
                 <section className={`flex flex-col md:px-4 mx-auto ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
                     <Image
                     ref={imageRef}
@@ -164,7 +171,7 @@ const ExperienceCard: React.FC<Props> = ({
                         width={600}
                         height={1300}
                         className='w-[80vw] mx-auto mb-4 sm:w-[40vw] max-w-[500px] rounded-2xl
-                         opacity-0 object-contain'
+                         opacity-0 object-contain max-h-[400px] rounded-2xl max-h-['
                          sizes="(max-width: 768px) 80vw, (max-width: 1024px) 40vw, 500px" 
                          priority={true}
                     />
@@ -186,7 +193,7 @@ const ExperienceCard: React.FC<Props> = ({
                           
                             <Link href={link}
                             >
-                                Check it out
+                                {buttonText}
                             </Link>
                         </button>
                                               )}
