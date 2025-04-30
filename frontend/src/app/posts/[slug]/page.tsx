@@ -2,9 +2,7 @@ import { client } from '@/lib/sanity'
 import { allPostsQuery, singlePostQuery } from '@/lib/queries'
 import Link from 'next/link'
 import { PortableText } from '@portabletext/react'
-console.log('[client]', client)
-console.log('[allPostsQuery]', allPostsQuery)
-console.log('[singlePostQuery]', singlePostQuery)
+
 
 export default async function BlogPage() {
   const query = allPostsQuery // if it's a function, call it like allPostsQuery()

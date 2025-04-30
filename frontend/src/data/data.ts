@@ -1080,33 +1080,15 @@ export const electricContainerData = [
 //         time:number}[]>>
 
 export const blogCarouselData = [
-    {
-        src: "/media/focusFlow-brain-nobg.webp",
-        alt: "The FocusFlow Software brain to represent creative web design in Halifax",
-        title: "How Creative Web Design in Halifax Can Help Your Business Stand Out",
-        description: "Discover how creative web design in Halifax can elevate your business, boost your online presence, and help you attract more customers. Learn about the key benefits of investing in effective web design.",
-        link: "https://www.focusflowsoftware.com/creative-web-design-halifax",
-        date: "November 30th, 2024"
-    },
-    
-    {
-         src:'/media/focusFlow-brain-nobg.webp',
-         alt:'The focusflow software brain to represent creative web design in halifax',
-         title:'Why web design in halifax is crucial for online business',
-         description:'Learn why FocusFLow software is the best equipped team to quickly deliver web design in halifax',
-         link:'http://focusflowsoftware.com/blog/why-us',
-         date:'November 12th 2024',
 
-    },
     {
         src:'/media/focusFlow-brain-nobg.webp',
         alt:'The focusflow software brain to represent creative web design in halifax',
-        title:'How to ensure monumental success is the only possible outcome',
-        description:`Learn more about the efficient process of creating a website
-        to ensure the only outcome possible is having your digital presence
-        elevated.`,
-        link:'http://focusflowsoftware.com/blog/planning-a-website',
-        date:'November 15th 2024'
+        title:'How can a website help out real estate agents',
+        description:`Learn about all of the benefits that an expertly crafted website can bring to any real estate agent
+       .`,
+        link:'/blog/real-estate-agent-websites-in-halifax',
+        date:'April 30th 2025'
    }
 ]
   

@@ -1,4 +1,4 @@
-import { getPostData } from '../../../lib/posts';
+import { getPostData, getRelatedPosts,getAllPostIds } from '../../../lib/posts';
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import Content from '../../../components/content/content';
@@ -7,223 +7,120 @@ import Footer2 from '@/components/footer2/footer2';
 import Image from 'next/image';
 import logo from '../../../../public/media/focusFlow-brain-nobg.webp';
 import { Metadata } from 'next';
-import Head from 'next/head'
-import Link from 'next/link';
+// import TableOfContents from '@/components/table-of-contents';
+
+import SchemaMarkup from '../../../lib/schemaMarkup'
 
 type PostProps = {
   params: { id: string };
 };
 
-// Dynamic metadata generation
+// Static generation for better performance
+export async function generateStaticParams() {
+  const posts = await getAllPostIds(); // Hypothetical function
+  return posts.map((post) => ({ id: post.id }));
+}
+
+// Dynamic metadata with structured data
 export async function generateMetadata({ params }: PostProps): Promise<Metadata> {
   const postData = await getPostData(params.id);
-
-  if (!postData) {
-    return notFound();
-  }
-
-
+  if (!postData) return notFound();
 
   return {
-    title: postData.title ,
-    description: postData.metaDescription ,
+    title: postData.title,
+    description: postData.metaDescription,
+  
     openGraph: {
-      title: postData.title ,
-      description: postData.metaOpenGraph.description,
+      title: postData.title,
+      description: postData.metaDescription,
       url: `https://www.focusflowsoftware.com/posts/${params.id}`,
       images: [
         {
-          url: "https://www.focusflowsoftware.com/media/focusFlow-logo.png",
+          url: postData.metaOpenGraph.url || 'https://www.focusflowsoftware.com/media/focusFlow-logo.png',
           width: 1200,
           height: 630,
-          alt: "Focus Flow Software - Best Web Design in Halifax",
+          alt: `${postData.title} - Focus Flow Software`,
         },
       ],
-      type: "article",
+      type: 'article',
     },
-    
   };
 }
 
 // Main post component
 export default async function Post({ params }: PostProps) {
   const postData = await getPostData(params.id);
-
-  if (!postData) {
-    return notFound();
-  }
-
-  // const structuredData = {
-  //   "@context": "https://schema.org",
-  //   "@type": "Article",
-  //   "headline": "How FocusFlow Software plans websites to offer fast and effective web design in Halifax",
-  //   "description": "Learn more about how FocusFlow software plans how to create effective websites...",
-  //   "author": {
-  //     "@type": "Person",
-  //     "name": "John Doe",
-  //   },
-  //   "datePublished": "2024-11-15",
-  //   "mainEntityOfPage": {
-  //     "@type": "WebPage",
-  //     "@id": `https://www.focusflowsoftware.com/posts/${params.id}`,
-  //   },
-  //   "image": {
-  //     "@type": "ImageObject",
-  //     "url": "https://www.focusflowsoftware.com/media/focusFlow-logo.png",
-  //     "width": 1200,
-  //     "height": 630,
-  //   },
-  //   "publisher": {
-  //     "@type": "Organization",
-  //     "name": "FocusFlow Software",
-  //     "logo": {
-  //       "@type": "ImageObject",
-  //       "url": "https://www.focusflowsoftware.com/media/focusFlow-logo.png",
-  //       "width": 1200,
-  //       "height": 630,
-  //     },
-  //   },
-  // };
+  const relatedPosts = await getRelatedPosts(params.id); // Hypothetical function
+  if (!postData) return notFound();
 
   return (
     <>
-    {/* <Head>
-      
-    <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-    </Head> */}
-      <BigNav excludedLink='' />
-      <main className="w-screen overflow-x-hidden flex flex-col items-center justify-center mt-12"
-        style={{
-          background: 'radial-gradient(circle, #00bfff -150%, rgba(0, 191, 255, 0%) 80%)',
-        }}>
-        
-        <article>
-          <section className=''
-          style={{
-            background: 'radial-gradient(circle, #00bfff -150%, rgba(0, 191, 255, 0%) 80%)'
-          }}>
-           
-          <section className="flex flex-col w-screen md:w-[80vw] justify-center items-center mx-auto max-w-[1200px] px-4"
-         >
-            <h1 className="text-4xl font-bold mb-4">{postData.title}</h1>
-            <p className="text-white">
-              {postData.date}, &nbsp; written by Thomas Musial, owner of FocusFlow Software
+      <SchemaMarkup
+        type="BlogPosting"
+        data={{
+          headline: postData.title,
+          description: postData.metaDescription,
+          datePublished: postData.date,
+          author: { name: 'Thomas Musial' }, // Hardcoded as per your usage
+        }}
+      />
+      <BigNav excludedLink="" />
+      <main className="w-screen min-h-screen overflow-x-hidden flex flex-col items-center bg-[#0e0e0e] text-gray-200">
+        <article className="w-full flex flex-col items-center">
+          <section className="flex flex-col w-full md:w-[80vw] max-w-[1200px] px-4 text-center">
+            <h1 className="text-4xl font-bold text-white mb-4">{postData.title}</h1>
+            <p className="text-gray-300">
+              {postData.date} | By Thomas Musial, FocusFlow Software
             </p>
+            {/* <ReadingTime content={postData.contentHtml} /> */}
           </section>
 
           <Image
             src={logo}
-            alt="The FocusFlow logo for web design in Halifax"
+            alt={`${postData.title} featured image`}
             width={600}
-            height={1300}
-            className="w-[40vw] mx-auto object-contain max-w-[460px] max-h-[460px]"
-            
+            height={400}
+            sizes="(max-width: 768px) 100vw, 600px"
+            className="w-[40vw] max-w-[600px] max-h-[400px] mt-4 object-cover"
+            priority={true} // For above-the-fold image
           />
 
-          
+          {/* <TableOfContents content={postData.contentHtml} /> */}
 
-          <section className="p-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-2
-            ">
-              {postData.header1}
-            </h2>
-            <p className='whitespace-pre-line'>{postData.description1}</p>
-          </section>
+          <section className="p-4 w-full md:w-[80vw] max-w-[1200px]">
+            <h2 className="text-3xl font-semibold mb-2 text-white">{postData.header1}</h2>
+            <p className="text-gray-300 whitespace-pre-line">{postData.description1}</p>
           </section>
 
-          <div className='w-[80vw] max-w-[1200px] mx-auto
-        h-[5px] bg-[#00bfff] bg-opacity-[0.6]
-        my-14'
-        />
+          <div className="w-[80vw] max-w-[1200px] mx-auto h-[5px] bg-[#00bfff] bg-opacity-[0.6] my-14" />
 
-          <Content
-          image={postData.contentBox1.image}
-          description={postData.contentBox1.description}
-          mainTitle={postData.contentBox1.mainTitle}
-          reverse={postData.contentBox1.reverse}
-          alt={postData.contentBox1.alt}
-          floatingImage={false}
-          hasAnimation={false}
-        />
+          {postData.contentBoxes?.map((contentBox, index) => (
+            <div key={index}>
+              <Content
+                image={contentBox.image}
+                description={contentBox.description}
+                mainTitle={contentBox.mainTitle}
+                reverse={contentBox.reverse}
+                alt={contentBox.alt}
+                floatingImage={false}
+                hasAnimation={false}
+                // Lazy-load non-critical content
+              />
+              {/* {igetPostData index < postData.contentBoxes.length - 1 && (
+                <div className="w-[80vw] max-w-[1200px] mx-auto h-[5px] bg-[#00bfff] bg-opacity-[0.6] my-14" />
+              )} */}
+            </div>
+          ))}
 
-<div className='w-[80vw] max-w-[1200px] mx-auto
-        h-[5px] bg-[#00bfff] bg-opacity-[0.6]
-        my-14'
-        />
+          <div className="w-[80vw] max-w-[1200px] mx-auto h-[5px] bg-[#00bfff] bg-opacity-[0.6] my-14" />
 
-        <Content
-          image={postData.contentBox2.image}
-          description={postData.contentBox2.description}
-          mainTitle={postData.contentBox2.mainTitle}
-          reverse={postData.contentBox2.reverse}
-          alt={postData.contentBox2.alt}
-          floatingImage={false}
-          hasAnimation={false}
-       
-        />
+          <ReactMarkdown className="markdown-styles px-4 max-w-[1200px]">
+            {postData.contentHtml}
+          </ReactMarkdown>
 
-<div className='w-[80vw] max-w-[1200px] mx-auto
-        h-[5px] bg-[#00bfff] bg-opacity-[0.6]
-        my-14'
-        />
-
-        <Content
-         image={postData.contentBox3.image}
-          description={postData.contentBox3.description}
-          mainTitle={postData.contentBox3.mainTitle}
-          reverse={postData.contentBox3.reverse}
-          alt={postData.contentBox3.alt}
-          floatingImage={false}
-          hasAnimation={false}
-        />
-
-<div className='w-[80vw] max-w-[1200px] mx-auto
-        h-[5px] bg-[#00bfff] bg-opacity-[0.6]
-        my-14'
-        />
-
-<section className="p-4 bg-[#00bfff] bg-opacity-[0.2]
-py-6">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-2">
-              {postData.header2}
-            </h2>
-            <p 
-            className='whitespace-pre-line mb-6'>{postData.description2}</p>
-            {postData.hasButtons  && (
-              <>
-              <button className='mt-2 p-3
-              bg-[#00bfff] hover:text-[#00bfff]
-              hover:bg-white transition-all rounded-2xl mr-2'>
-                <Link href='/lets-work'>
-                Book a meeting today
-                </Link>
-                </button>
-                {postData.buttonDestination &&
-                postData.buttonText && (
-                  <button className='mt-2 p-3
-                  hover:bg-[#00bfff] hover:text-white
-                  text-[#00bfff] bg-white
-                  transition-all rounded-2xl'>
-                    <Link href={postData.buttonDestination}>
-                  {postData.buttonText}
-                    </Link>
-                    </button>
-                )}
-               
-              </>
-            )}
-          
-
-           
-          
-          </section>
-
-          <ReactMarkdown>{postData.contentHtml}</ReactMarkdown>
-          <Footer2 excludedLink='' />
+          {/* <RelatedPosts posts={relatedPosts} /> */}
         </article>
+        <Footer2 excludedLink="" />
       </main>
     </>
   );

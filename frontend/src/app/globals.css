@@ -139,4 +139,58 @@ body {
 
 }
 
+.markdown-styles{
+  /* color:black; */
+}
+
+
+
+/* styles/markdown-styles.css */
+.markdown-styles h2 {
+  margin: 2rem 0 1rem;
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.markdown-styles h3 {
+  margin: 1.5rem 0 1rem;
+  font-size: 1.25rem;
+  color: #ffffff;
+}
+
+.markdown-styles p {
+  margin: 1rem 0;
+  font-size: 1rem;
+  color: #cccccc;
+}
+
+.markdown-styles a {
+  color: #00bfff;
+  text-decoration: underline;
+}
+
+.markdown-styles code {
+  background-color: #1a1a1a;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  color: #ffcc66;
+  font-family: 'Fira Code', monospace;
+}
+
+@media screen and (min-width: 768px) {
+  .markdown-styles h2 {
+    font-size: 2.2rem;
+  }
+
+  .markdown-styles h3 {
+    font-size: 1.8rem;
+  }
+
+  .markdown-styles p {
+    font-size: 1.2rem;
+  }
+
+
+}
+
 

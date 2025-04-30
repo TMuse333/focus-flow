@@ -1,8 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { StaticImageData } from 'next/image';
-import { Metadata } from 'next';
+
 interface MetaOpenGraphImage {
   url: string;
   width: number;
@@ -17,19 +16,15 @@ interface MetaOpenGraphProps {
   images: MetaOpenGraphImage[];
 }
 
-// Define an interface for the post data
-// Define an interface for the ContentBox data
-interface ContentBoxProps {
+interface ContentBoxProps  {
   image: string;
   description: string[];
   mainTitle: string;
   reverse: boolean;
   alt: string;
-  bgColor?:boolean
-
+  bgColor?: boolean;
 }
 
-// Define an interface for the post data
 interface PostData {
   id: string;
   metaTitle: string;
@@ -40,43 +35,21 @@ interface PostData {
   title: string;
   header1: string;
   description1: string;
-  header2: string;
-  description2: string;
   contentHtml: string;
-  contentBox1: ContentBoxProps;
-  contentBox2: ContentBoxProps;
-  contentBox3: ContentBoxProps;
-  hasButtons?:boolean
-  buttonText?:string
-  buttonDestination?:string,
-
+  contentBoxes: ContentBoxProps[];
 }
-
-
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const postData = await getPostData(params.id);
-
-  return {
-    title: postData.metaTitle,
-    description: postData.metaDescription,
-    keywords: postData.metaKeywords.split(','),
-    openGraph: {
-      title: postData.metaOpenGraph.title,
-      description: postData.metaOpenGraph.description,
-      url: postData.metaOpenGraph.url,
-      images: postData.metaOpenGraph.images.map((img) => ({
-        url: img.url,
-        width: img.width,
-        height: img.height,
-        alt: img.alt,
-      })),
-    },
-  };
-}
-
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
+// Get all post IDs
+export function getAllPostIds(): { id: string }[] {
+  const fileNames = fs.readdirSync(postsDirectory);
+  return fileNames.map((fileName) => ({
+    id: fileName.replace(/\.md$/, ''),
+  }));
+}
+
+// Get single post data
 export async function getPostData(id: string): Promise<PostData> {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
@@ -92,16 +65,37 @@ export async function getPostData(id: string): Promise<PostData> {
     title: matterResult.data.title,
     header1: matterResult.data.header1,
     description1: matterResult.data.description1,
-    header2: matterResult.data.header2,
-    description2: matterResult.data.description2,
     contentHtml: matterResult.content,
-    contentBox1: matterResult.data.contentBox1,
-    contentBox2: matterResult.data.contentBox2,
-    contentBox3: matterResult.data.contentBox3,
-    hasButtons: matterResult.data.hasButtons,
-    buttonText: matterResult.data.buttonText,
-    buttonDestination: matterResult.data.buttonDestination
+    contentBoxes: matterResult.data.contentBoxes || [],
   };
 }
 
+// Get related posts based on shared keywords
+export async function getRelatedPosts(id: string, limit: number = 3): Promise<PostData[]> {
+  const currentPost = await getPostData(id);
+  const currentKeywords = currentPost.metaKeywords.split(',').map((kw) => kw.trim().toLowerCase());
 
+  const allPostIds = getAllPostIds().filter((post) => post.id !== id); // Exclude current post
+  const relatedPosts: PostData[] = [];
+
+  for (const postId of allPostIds) {
+    const post = await getPostData(postId.id);
+    const postKeywords = post.metaKeywords.split(',').map((kw) => kw.trim().toLowerCase());
+    const sharedKeywords = currentKeywords.filter((kw) => postKeywords.includes(kw));
+
+    if (sharedKeywords.length > 0) {
+      relatedPosts.push(post);
+    }
+  }
+
+  // Sort by number of shared keywords (descending) and limit results
+  return relatedPosts
+    .sort((a, b) => {
+      const aKeywords = a.metaKeywords.split(',').map((kw) => kw.trim().toLowerCase());
+      const bKeywords = b.metaKeywords.split(',').map((kw) => kw.trim().toLowerCase());
+      const aShared = currentKeywords.filter((kw) => aKeywords.includes(kw)).length;
+      const bShared = currentKeywords.filter((kw) => bKeywords.includes(kw)).length;
+      return bShared - aShared; // Sort by most shared keywords
+    })
+    .slice(0, limit);
+}
