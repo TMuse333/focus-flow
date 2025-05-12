@@ -1089,7 +1089,16 @@ export const blogCarouselData = [
        .`,
         link:'/blog/real-estate-agent-websites-in-halifax',
         date:'April 30th 2025'
-   }
+   },
+   {
+    src: '/blogImages/chris/chris-hero.png',
+    alt: 'Real estate agent website Halifax case study for Chris Crowell by FocusFlow Software',
+    title: 'Chris Crowell Real Estate Website – Halifax Web Design Case Study',
+    description: `See how we built a professional, SEO-driven website for top REALTOR® Chris Crowell in Halifax that wins referrals and saves time.`,
+    link: '/blog/chris-crowell-real-estate-agent-website-halifax',
+    date: 'May 12th 2025'
+  }
+  
 ]
   
 

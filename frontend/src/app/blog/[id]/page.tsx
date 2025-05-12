@@ -65,7 +65,8 @@ export default async function Post({ params }: PostProps) {
         }}
       />
       <BigNav excludedLink="" />
-      <main className="w-screen min-h-screen overflow-x-hidden flex flex-col items-center bg-[#0e0e0e] text-gray-200">
+      <main className="w-screen min-h-screen overflow-x-hidden flex flex-col items-center bg-[#0e0e0e] text-gray-200
+      mt-12">
         <article className="w-full flex flex-col items-center">
           <section className="flex flex-col w-full md:w-[80vw] max-w-[1200px] px-4 text-center">
             <h1 className="text-4xl font-bold text-white mb-4">{postData.title}</h1>
