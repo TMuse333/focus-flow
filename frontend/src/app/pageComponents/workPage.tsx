@@ -3,11 +3,11 @@
 import React, { useRef } from "react";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import { ContactOpener } from "@/data/data";
+// import { ContactOpener } from "@/data/data";
 
 // Lazy load components
 const Navbar = dynamic(() => import("@/components/bigNav/navbar"), { ssr: false });
-import Herobanner from "@/components/herobanner2/herobanner2";
+// import Herobanner from "@/components/herobanner2/herobanner2";
 import { useInView } from "framer-motion";
 import { useComponentTimeTracker } from "@/lib/componentTracker";
 import { useGeneralContext } from "@/context/context";
@@ -44,9 +44,10 @@ const {totalTimeInView} = useComponentTimeTracker({inView,id:'contact-page',
             <Navbar excludedLink="Contact" />
             <main className="w-screen mt-[6rem] text-white">
 
-                <Herobanner {...ContactOpener}
+            <Contact />
+                {/* <Herobanner {...ContactOpener}
                 
-                 />
+                 /> */}
                            <InlineWidget url='https://calendly.com/thomaslmusial/30min'/>
 
 
@@ -67,7 +68,7 @@ const {totalTimeInView} = useComponentTimeTracker({inView,id:'contact-page',
                     </section>
                 </section>
                 
-                <Contact />
+              
                 
                 <Footer2 excludedLink="Contact" />
             </main>
