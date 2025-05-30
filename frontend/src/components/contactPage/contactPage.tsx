@@ -30,7 +30,7 @@ const Contact = () => {
         e.preventDefault();
     
         try {
-            const response = await axios.post('/api/sendEmail', {
+            const response = await axios.post('https://www.focusflowsoftware.com/api/sendEmail', {
                 name: formData.name,
                 email: formData.email,
                 phone: formData.phone,
