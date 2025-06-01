@@ -6,6 +6,7 @@ import React from "react";
 import { Metadata } from "next";
 
 import dynamic from 'next/dynamic'
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const WorkPage = dynamic(()=>import('../pageComponents/workPage'))
 
@@ -59,7 +60,7 @@ const Work = () => {
 
     return (
         <>
-        
+        <GoogleAnalytics gaId="G-RP2LH1T5SC"/>
     <WorkPage/>
         </>
     )

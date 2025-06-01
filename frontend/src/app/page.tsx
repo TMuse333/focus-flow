@@ -4,7 +4,7 @@ import { useRouterContext } from "@/lib/useRouterContext";
 import { Metadata } from "next";
 import { useRouter } from "next/router";
 import Homepage from "./pageComponents/homepage";
-
+import {GoogleAnalytics} from '@next/third-parties/google'
 export const metadata: Metadata = {
   title: "Web Design Halifax | Focusflow Software",
   description: "Focusflow Software offers top-tier web design Halifax services, combining cutting-edge technology and creativity to deliver custom websites quickly.",
@@ -42,7 +42,8 @@ export default function Home() {
  
   return (
     <>
-
+    
+<GoogleAnalytics gaId="G-RP2LH1T5SC"/>
 <Homepage/>
 
 

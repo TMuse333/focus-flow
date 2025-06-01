@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import React, { Suspense } from "react";
 import Head from "next/head";
 import RestaurantPage from "../pageComponents/restaurantPage";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 
 export const metadata: Metadata = {
@@ -38,7 +39,7 @@ const Restaurant = () => {
 
     return (
         <>
- 
+ <GoogleAnalytics gaId="G-RP2LH1T5SC"/>
            <RestaurantPage/>
         </>
     );

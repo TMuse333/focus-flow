@@ -4,6 +4,7 @@ import { Metadata } from "next";
 
 // Lazy load DesignPage
 import DesignPage from "../pageComponents/designPage";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 // Metadata for the Design page
 export const metadata: Metadata = {
@@ -36,6 +37,7 @@ export const metadata: Metadata = {
 const Design = () => {
   return (
     <>
+    <GoogleAnalytics gaId="G-RP2LH1T5SC"/>
       <DesignPage />
     </>
   );

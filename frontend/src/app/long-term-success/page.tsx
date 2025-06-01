@@ -1,6 +1,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 // Lazy load MonthlyPage
 const MonthlyPage = dynamic(()=>import("../pageComponents/monthlyPage"))
@@ -34,6 +35,7 @@ export const metadata: Metadata = {
 const LongTermSuccess = () => {
   return (
     <>
+    <GoogleAnalytics gaId="G-RP2LH1T5SC"/>
       <MonthlyPage />
     </>
   );

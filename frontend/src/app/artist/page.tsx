@@ -1,6 +1,7 @@
 import React, { lazy } from "react";
 import { Metadata } from "next";
 import ArtPage from "../pageComponents/artPage";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
     title: "Best Creative Web Design Halifax | Focusflow Software",
@@ -33,6 +34,7 @@ const Art = () => {
 
     return (
         <>
+        <GoogleAnalytics gaId="G-RP2LH1T5SC"/>
         <ArtPage/>
         </>
     )
