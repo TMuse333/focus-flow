@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import ArtPage from "../pageComponents/artPage";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
+
 export const metadata: Metadata = {
     title: "Best Creative Web Design Halifax | Focusflow Software",
     description: "Explore how the artistic approach at Focusflow Software defines the best creative web design in Halifax, blending innovation with technology for custom solutions.",
@@ -34,6 +35,7 @@ const Art = () => {
 
     return (
         <>
+       
         <GoogleAnalytics gaId="G-RP2LH1T5SC"/>
         <ArtPage/>
         </>

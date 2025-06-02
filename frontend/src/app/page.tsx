@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import { useRouter } from "next/router";
 import Homepage from "./pageComponents/homepage";
 import {GoogleAnalytics} from '@next/third-parties/google'
+import Script from "next/script";
 export const metadata: Metadata = {
   title: "Web Design Halifax | Focusflow Software",
   description: "Focusflow Software offers top-tier web design Halifax services, combining cutting-edge technology and creativity to deliver custom websites quickly.",
@@ -42,7 +43,10 @@ export default function Home() {
  
   return (
     <>
-    
+     <Script
+        src="https://analytics.ahrefs.com/analytics.js"
+        key="s0xdwZuz3jF7QSWqcXIUyQ"
+        />
 <GoogleAnalytics gaId="G-RP2LH1T5SC"/>
 <Homepage/>
 
